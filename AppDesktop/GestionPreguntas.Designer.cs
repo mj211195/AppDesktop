@@ -1,6 +1,6 @@
 ﻿namespace AppDesktop
 {
-    partial class formGestionPreguntas
+    partial class FormGestionPreguntas
     {
         /// <summary>
         /// Required designer variable.
@@ -36,6 +36,8 @@
             this.labelPreguntas = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listBoxPreguntas = new System.Windows.Forms.ListBox();
+            this.labelRespuestas = new System.Windows.Forms.Label();
+            this.listBoxRespuestas = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,6 +96,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.listBoxRespuestas);
+            this.groupBox1.Controls.Add(this.labelRespuestas);
             this.groupBox1.Controls.Add(this.listBoxPreguntas);
             this.groupBox1.Controls.Add(this.labelPreguntas);
             this.groupBox1.Controls.Add(this.buttonEliminar);
@@ -101,7 +105,7 @@
             this.groupBox1.Controls.Add(this.buttonModificarPregunta);
             this.groupBox1.Location = new System.Drawing.Point(26, 78);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(377, 390);
+            this.groupBox1.Size = new System.Drawing.Size(742, 390);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBoxPreguntas";
@@ -114,7 +118,24 @@
             this.listBoxPreguntas.Size = new System.Drawing.Size(322, 290);
             this.listBoxPreguntas.TabIndex = 6;
             // 
-            // formGestionPreguntas
+            // labelRespuestas
+            // 
+            this.labelRespuestas.AutoSize = true;
+            this.labelRespuestas.Location = new System.Drawing.Point(390, 55);
+            this.labelRespuestas.Name = "labelRespuestas";
+            this.labelRespuestas.Size = new System.Drawing.Size(60, 13);
+            this.labelRespuestas.TabIndex = 7;
+            this.labelRespuestas.Text = "Respostes:";
+            // 
+            // listBoxRespuestas
+            // 
+            this.listBoxRespuestas.FormattingEnabled = true;
+            this.listBoxRespuestas.Location = new System.Drawing.Point(393, 72);
+            this.listBoxRespuestas.Name = "listBoxRespuestas";
+            this.listBoxRespuestas.Size = new System.Drawing.Size(313, 290);
+            this.listBoxRespuestas.TabIndex = 8;
+            // 
+            // FormGestionPreguntas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -122,7 +143,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.comboBoxNivel);
             this.Controls.Add(this.labelNivel);
-            this.Name = "formGestionPreguntas";
+            this.Name = "FormGestionPreguntas";
             this.Text = "Gestió de preguntes";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -141,5 +162,7 @@
         private System.Windows.Forms.Label labelPreguntas;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListBox listBoxPreguntas;
+        private System.Windows.Forms.Label labelRespuestas;
+        private System.Windows.Forms.ListBox listBoxRespuestas;
     }
 }
