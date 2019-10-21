@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AppDesktop
 {
-    public partial class GestionPreguntas : Form
+    public partial class formGestionPreguntas : Form
     {
-        public GestionPreguntas()
+        public formGestionPreguntas()
         {
             InitializeComponent();
         }
