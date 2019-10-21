@@ -16,7 +16,7 @@ namespace AppDesktop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormGestionPreguntas());
+            Application.Run(new Form1());
         }
     }
 }
