@@ -46,7 +46,7 @@
             // labelNivel
             // 
             this.labelNivel.AutoSize = true;
-            this.labelNivel.Location = new System.Drawing.Point(325, 39);
+            this.labelNivel.Location = new System.Drawing.Point(313, 31);
             this.labelNivel.Name = "labelNivel";
             this.labelNivel.Size = new System.Drawing.Size(36, 13);
             this.labelNivel.TabIndex = 0;
@@ -55,7 +55,7 @@
             // comboBoxNivel
             // 
             this.comboBoxNivel.FormattingEnabled = true;
-            this.comboBoxNivel.Location = new System.Drawing.Point(367, 36);
+            this.comboBoxNivel.Location = new System.Drawing.Point(355, 28);
             this.comboBoxNivel.Name = "comboBoxNivel";
             this.comboBoxNivel.Size = new System.Drawing.Size(204, 21);
             this.comboBoxNivel.TabIndex = 1;
@@ -105,7 +105,7 @@
             this.groupBox1.Controls.Add(this.buttonEliminar);
             this.groupBox1.Controls.Add(this.buttonNuevaPregunta);
             this.groupBox1.Controls.Add(this.buttonModificarPregunta);
-            this.groupBox1.Location = new System.Drawing.Point(26, 87);
+            this.groupBox1.Location = new System.Drawing.Point(14, 79);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(742, 390);
             this.groupBox1.TabIndex = 6;
@@ -140,7 +140,7 @@
             // labelIdioma
             // 
             this.labelIdioma.AutoSize = true;
-            this.labelIdioma.Location = new System.Drawing.Point(25, 39);
+            this.labelIdioma.Location = new System.Drawing.Point(13, 31);
             this.labelIdioma.Name = "labelIdioma";
             this.labelIdioma.Size = new System.Drawing.Size(41, 13);
             this.labelIdioma.TabIndex = 7;
@@ -149,7 +149,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(72, 36);
+            this.comboBox1.Location = new System.Drawing.Point(60, 28);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(204, 21);
             this.comboBox1.TabIndex = 8;
@@ -158,7 +158,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 489);
+            this.ClientSize = new System.Drawing.Size(770, 478);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.labelIdioma);
             this.Controls.Add(this.groupBox1);
