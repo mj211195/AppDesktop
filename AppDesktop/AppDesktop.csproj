@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnadirPregunta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnadirPregunta.Designer.cs">
+      <DependentUpon>AnadirPregunta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AnadirPregunta.resx">
+      <DependentUpon>AnadirPregunta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GestionPreguntas.resx">
       <DependentUpon>GestionPreguntas.cs</DependentUpon>
     </EmbeddedResource>
