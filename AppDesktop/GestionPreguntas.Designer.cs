@@ -38,24 +38,26 @@
             this.listBoxPreguntas = new System.Windows.Forms.ListBox();
             this.labelRespuestas = new System.Windows.Forms.Label();
             this.listBoxRespuestas = new System.Windows.Forms.ListBox();
+            this.labelIdioma = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelNivel
             // 
             this.labelNivel.AutoSize = true;
-            this.labelNivel.Location = new System.Drawing.Point(23, 42);
+            this.labelNivel.Location = new System.Drawing.Point(325, 39);
             this.labelNivel.Name = "labelNivel";
-            this.labelNivel.Size = new System.Drawing.Size(33, 13);
+            this.labelNivel.Size = new System.Drawing.Size(36, 13);
             this.labelNivel.TabIndex = 0;
-            this.labelNivel.Text = "Nivell";
+            this.labelNivel.Text = "Nivell:";
             // 
             // comboBoxNivel
             // 
             this.comboBoxNivel.FormattingEnabled = true;
-            this.comboBoxNivel.Location = new System.Drawing.Point(74, 33);
+            this.comboBoxNivel.Location = new System.Drawing.Point(367, 36);
             this.comboBoxNivel.Name = "comboBoxNivel";
-            this.comboBoxNivel.Size = new System.Drawing.Size(147, 21);
+            this.comboBoxNivel.Size = new System.Drawing.Size(204, 21);
             this.comboBoxNivel.TabIndex = 1;
             // 
             // buttonNuevaPregunta
@@ -103,7 +105,7 @@
             this.groupBox1.Controls.Add(this.buttonEliminar);
             this.groupBox1.Controls.Add(this.buttonNuevaPregunta);
             this.groupBox1.Controls.Add(this.buttonModificarPregunta);
-            this.groupBox1.Location = new System.Drawing.Point(26, 78);
+            this.groupBox1.Location = new System.Drawing.Point(26, 87);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(742, 390);
             this.groupBox1.TabIndex = 6;
@@ -135,11 +137,30 @@
             this.listBoxRespuestas.Size = new System.Drawing.Size(313, 290);
             this.listBoxRespuestas.TabIndex = 8;
             // 
+            // labelIdioma
+            // 
+            this.labelIdioma.AutoSize = true;
+            this.labelIdioma.Location = new System.Drawing.Point(25, 39);
+            this.labelIdioma.Name = "labelIdioma";
+            this.labelIdioma.Size = new System.Drawing.Size(41, 13);
+            this.labelIdioma.TabIndex = 7;
+            this.labelIdioma.Text = "Idioma:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(72, 36);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(204, 21);
+            this.comboBox1.TabIndex = 8;
+            // 
             // FormGestionPreguntas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 489);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.labelIdioma);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.comboBoxNivel);
             this.Controls.Add(this.labelNivel);
@@ -164,5 +185,7 @@
         private System.Windows.Forms.ListBox listBoxPreguntas;
         private System.Windows.Forms.Label labelRespuestas;
         private System.Windows.Forms.ListBox listBoxRespuestas;
+        private System.Windows.Forms.Label labelIdioma;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
