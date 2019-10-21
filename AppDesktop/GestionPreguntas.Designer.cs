@@ -62,7 +62,7 @@
             // 
             // buttonNuevaPregunta
             // 
-            this.buttonNuevaPregunta.Location = new System.Drawing.Point(6, 19);
+            this.buttonNuevaPregunta.Location = new System.Drawing.Point(18, 19);
             this.buttonNuevaPregunta.Name = "buttonNuevaPregunta";
             this.buttonNuevaPregunta.Size = new System.Drawing.Size(101, 23);
             this.buttonNuevaPregunta.TabIndex = 2;
@@ -71,18 +71,18 @@
             // 
             // buttonModificarPregunta
             // 
-            this.buttonModificarPregunta.Location = new System.Drawing.Point(120, 19);
+            this.buttonModificarPregunta.Location = new System.Drawing.Point(125, 19);
             this.buttonModificarPregunta.Name = "buttonModificarPregunta";
-            this.buttonModificarPregunta.Size = new System.Drawing.Size(75, 23);
+            this.buttonModificarPregunta.Size = new System.Drawing.Size(101, 23);
             this.buttonModificarPregunta.TabIndex = 3;
             this.buttonModificarPregunta.Text = "Modificar";
             this.buttonModificarPregunta.UseVisualStyleBackColor = true;
             // 
             // buttonEliminar
             // 
-            this.buttonEliminar.Location = new System.Drawing.Point(214, 19);
+            this.buttonEliminar.Location = new System.Drawing.Point(232, 19);
             this.buttonEliminar.Name = "buttonEliminar";
-            this.buttonEliminar.Size = new System.Drawing.Size(75, 23);
+            this.buttonEliminar.Size = new System.Drawing.Size(101, 23);
             this.buttonEliminar.TabIndex = 4;
             this.buttonEliminar.Text = "Eliminar";
             this.buttonEliminar.UseVisualStyleBackColor = true;
