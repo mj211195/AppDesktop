@@ -1,4 +1,5 @@
-﻿namespace AppDesktop
+﻿using ePOSOne.btnProduct;
+namespace AppDesktop
 {
     partial class Form1
     {
