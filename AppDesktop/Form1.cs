@@ -16,5 +16,11 @@ namespace AppDesktop
         {
             InitializeComponent();
         }
+
+        private void button_WOC1_MouseHover(object sender, EventArgs e)
+        {
+            button_WOCGestionar.BackColor = Color.Transparent;
+
+        }
     }
 }
