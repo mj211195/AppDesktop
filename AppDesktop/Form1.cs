@@ -23,5 +23,11 @@ namespace AppDesktop
             FormGestionPreguntas formGestionar = new FormGestionPreguntas();
             formGestionar.Show();
         }
+
+        private void button_WOCSuport_Click(object sender, EventArgs e)
+        {
+            FormSuport formSuport = new FormSuport();
+            formSuport.Show();
+        }
     }
 }

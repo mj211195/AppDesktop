@@ -68,6 +68,7 @@ namespace AppDesktop
             this.button_WOCSuport.Text = "Suport";
             this.button_WOCSuport.TextColor = System.Drawing.Color.Black;
             this.button_WOCSuport.UseVisualStyleBackColor = false;
+            this.button_WOCSuport.Click += new System.EventHandler(this.button_WOCSuport_Click);
             // 
             // button_WOCGestionar
             // 
@@ -105,7 +106,7 @@ namespace AppDesktop
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Inicio";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.ResumeLayout(false);
 
