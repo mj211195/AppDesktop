@@ -18,5 +18,10 @@ namespace AppDesktop
             InitializeComponent();
         }
 
+        private void button_WOCGestionar_Click(object sender, EventArgs e)
+        {
+            FormGestionPreguntas formGestionar = new FormGestionPreguntas();
+            formGestionar.Show();
+        }
     }
 }

@@ -89,6 +89,7 @@ namespace AppDesktop
             this.button_WOCGestionar.Text = "Gestionar";
             this.button_WOCGestionar.TextColor = System.Drawing.Color.Black;
             this.button_WOCGestionar.UseVisualStyleBackColor = false;
+            this.button_WOCGestionar.Click += new System.EventHandler(this.button_WOCGestionar_Click);
             // 
             // Form1
             // 
