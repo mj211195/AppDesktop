@@ -30,6 +30,7 @@
         {
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
+            this.button_WOCSuport = new ePOSOne.btnProduct.Button_WOC();
             this.button_WOCGestionar = new ePOSOne.btnProduct.Button_WOC();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
@@ -45,25 +46,51 @@
             this.pictureBoxLogo.TabIndex = 2;
             this.pictureBoxLogo.TabStop = false;
             // 
+            // button_WOCSuport
+            // 
+            this.button_WOCSuport.BackColor = System.Drawing.Color.Transparent;
+            this.button_WOCSuport.BorderColor = System.Drawing.Color.Black;
+            this.button_WOCSuport.ButtonColor = System.Drawing.SystemColors.Info;
+            this.button_WOCSuport.FlatAppearance.BorderSize = 0;
+            this.button_WOCSuport.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button_WOCSuport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button_WOCSuport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_WOCSuport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_WOCSuport.Location = new System.Drawing.Point(106, 238);
+            this.button_WOCSuport.Name = "button_WOCSuport";
+            this.button_WOCSuport.OnHoverBorderColor = System.Drawing.Color.Gray;
+            this.button_WOCSuport.OnHoverButtonColor = System.Drawing.Color.Beige;
+            this.button_WOCSuport.OnHoverTextColor = System.Drawing.Color.Gray;
+            this.button_WOCSuport.Size = new System.Drawing.Size(117, 40);
+            this.button_WOCSuport.TabIndex = 4;
+            this.button_WOCSuport.Text = "Suport";
+            this.button_WOCSuport.TextColor = System.Drawing.Color.Black;
+            this.button_WOCSuport.UseVisualStyleBackColor = false;
+            this.button_WOCSuport.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button_WOCSuport_MouseDown);
+            this.button_WOCSuport.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button_WOCSuport_MouseUp);
+            // 
             // button_WOCGestionar
             // 
             this.button_WOCGestionar.BackColor = System.Drawing.Color.Transparent;
             this.button_WOCGestionar.BorderColor = System.Drawing.Color.Black;
             this.button_WOCGestionar.ButtonColor = System.Drawing.SystemColors.Info;
             this.button_WOCGestionar.FlatAppearance.BorderSize = 0;
+            this.button_WOCGestionar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button_WOCGestionar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button_WOCGestionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_WOCGestionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_WOCGestionar.Location = new System.Drawing.Point(95, 194);
+            this.button_WOCGestionar.Location = new System.Drawing.Point(106, 192);
             this.button_WOCGestionar.Name = "button_WOCGestionar";
             this.button_WOCGestionar.OnHoverBorderColor = System.Drawing.Color.Gray;
-            this.button_WOCGestionar.OnHoverButtonColor = System.Drawing.Color.Yellow;
+            this.button_WOCGestionar.OnHoverButtonColor = System.Drawing.Color.Beige;
             this.button_WOCGestionar.OnHoverTextColor = System.Drawing.Color.Gray;
-            this.button_WOCGestionar.Size = new System.Drawing.Size(144, 58);
+            this.button_WOCGestionar.Size = new System.Drawing.Size(117, 40);
             this.button_WOCGestionar.TabIndex = 3;
             this.button_WOCGestionar.Text = "Gestionar";
             this.button_WOCGestionar.TextColor = System.Drawing.Color.Black;
             this.button_WOCGestionar.UseVisualStyleBackColor = false;
-            this.button_WOCGestionar.MouseHover += new System.EventHandler(this.button_WOC1_MouseHover);
+            this.button_WOCGestionar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button_WOCGestionar_MouseDown);
+            this.button_WOCGestionar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button_WOCGestionar_MouseUp);
             // 
             // Form1
             // 
@@ -72,6 +99,7 @@
             this.BackgroundImage = global::AppDesktop.Properties.Resources.Terrasa1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(323, 359);
+            this.Controls.Add(this.button_WOCSuport);
             this.Controls.Add(this.button_WOCGestionar);
             this.Controls.Add(this.pictureBoxLogo);
             this.Name = "Form1";
@@ -86,6 +114,7 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.PictureBox pictureBoxLogo;
         private ePOSOne.btnProduct.Button_WOC button_WOCGestionar;
+        private ePOSOne.btnProduct.Button_WOC button_WOCSuport;
     }
 }
 
