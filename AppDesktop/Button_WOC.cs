@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Linq;
+using System.Threading;
 
 namespace ePOSOne.btnProduct
 {
@@ -18,7 +20,7 @@ namespace ePOSOne.btnProduct
         private int _borderThicknessByTwo = 3;
 
 
-       /* public Button_WOC()
+        public Button_WOC()
         {
             DoubleBuffered = true;
             MouseEnter += (sender, e) =>
@@ -31,7 +33,7 @@ namespace ePOSOne.btnProduct
                 _isHovering = false;
                 Invalidate();
             };
-        }*/
+        }
 
 
         protected override void OnPaint(PaintEventArgs e)
@@ -66,6 +68,17 @@ namespace ePOSOne.btnProduct
             g.DrawString(Text, Font, brush, (Width - stringSize.Width) / 2, (Height - stringSize.Height) / 2);
         }
 
+        protected override void OnMouseDown(MouseEventArgs mevent)
+        {
+            base.OnMouseDown(mevent);
+            OnHoverButtonColor = Color.DarkGray;
+        }
+
+        protected override void OnMouseUp(MouseEventArgs mevent)
+        {
+            base.OnMouseUp(mevent);
+            OnHoverButtonColor = Color.Beige;
+        }
 
         public Color BorderColor
         {

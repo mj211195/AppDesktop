@@ -65,10 +65,7 @@
             this.button_WOCSuport.TabIndex = 4;
             this.button_WOCSuport.Text = "Suport";
             this.button_WOCSuport.TextColor = System.Drawing.Color.Black;
-            this.button_WOCSuport.UseVisualStyleBackColor = false;
-            this.button_WOCSuport.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button_WOCSuport_MouseDown);
-            this.button_WOCSuport.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button_WOCSuport_MouseUp);
-            // 
+            this.button_WOCSuport.UseVisualStyleBackColor = false; // 
             // button_WOCGestionar
             // 
             this.button_WOCGestionar.BackColor = System.Drawing.Color.Transparent;
@@ -89,8 +86,6 @@
             this.button_WOCGestionar.Text = "Gestionar";
             this.button_WOCGestionar.TextColor = System.Drawing.Color.Black;
             this.button_WOCGestionar.UseVisualStyleBackColor = false;
-            this.button_WOCGestionar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button_WOCGestionar_MouseDown);
-            this.button_WOCGestionar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button_WOCGestionar_MouseUp);
             // 
             // Form1
             // 
