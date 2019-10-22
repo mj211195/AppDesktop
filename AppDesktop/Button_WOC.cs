@@ -21,10 +21,6 @@ namespace AppDesktop
 
         public Button_WOC()
         {
-        }
-
-        public Button_WOC(char caracter)
-        {
             DoubleBuffered = true;
             MouseEnter += (sender, e) =>
             {
