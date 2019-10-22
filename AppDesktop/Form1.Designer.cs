@@ -32,8 +32,8 @@ namespace AppDesktop
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
-            this.button_WOCSuport = new AppDesktop.Button_WOC();
-            this.button_WOCGestionar = new AppDesktop.Button_WOC();
+            this.button_WOCSuport = new AppDesktop.Button_WOC('a');
+            this.button_WOCGestionar = new AppDesktop.Button_WOC('a');
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 

@@ -19,8 +19,12 @@ namespace AppDesktop
         private int _borderThickness = 6;
         private int _borderThicknessByTwo = 3;
 
+        /*public Button_WOC()
+        {
 
-        public Button_WOC()
+        }*/
+
+        public Button_WOC(char caracter)
         {
             DoubleBuffered = true;
             MouseEnter += (sender, e) =>
