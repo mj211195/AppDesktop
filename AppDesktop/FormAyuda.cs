@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace AppDesktop
 {
-    public partial class AnadirPregunta : Form
+    public partial class FormAyuda : Form
     {
-        public AnadirPregunta()
+        public FormAyuda()
         {
             InitializeComponent();
-        }
-
-        private void buttonAyuda_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

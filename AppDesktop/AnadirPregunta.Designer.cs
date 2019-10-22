@@ -109,6 +109,7 @@
             this.buttonAyuda.TabIndex = 48;
             this.buttonAyuda.Text = "Ajuda";
             this.buttonAyuda.UseVisualStyleBackColor = true;
+            this.buttonAyuda.Click += new System.EventHandler(this.buttonAyuda_Click);
             // 
             // textBoxResposta
             // 
@@ -119,10 +120,10 @@
             // 
             // textBoxPregunta
             // 
-            this.textBoxPregunta.Location = new System.Drawing.Point(70, 114);
+            this.textBoxPregunta.Location = new System.Drawing.Point(70, 112);
             this.textBoxPregunta.Multiline = true;
             this.textBoxPregunta.Name = "textBoxPregunta";
-            this.textBoxPregunta.Size = new System.Drawing.Size(417, 20);
+            this.textBoxPregunta.Size = new System.Drawing.Size(417, 43);
             this.textBoxPregunta.TabIndex = 46;
             // 
             // comboBoxNivel
