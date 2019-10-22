@@ -1,16 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Drawing2D;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
 
 namespace AppDesktop
 {
-    class RoundedButton : Button
+    public partial class RoundButton : Button
     {
+        public RoundButton()
+        {
+            InitializeComponent();
+        }
+
         GraphicsPath GetRoundPath(RectangleF Rect, int radius)
         {
             float m = 2.75F;
@@ -48,4 +55,3 @@ namespace AppDesktop
         }
     }
 }
-
