@@ -56,7 +56,7 @@
             this.button_WOCSuport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button_WOCSuport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_WOCSuport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_WOCSuport.Location = new System.Drawing.Point(106, 238);
+            this.button_WOCSuport.Location = new System.Drawing.Point(106, 251);
             this.button_WOCSuport.Name = "button_WOCSuport";
             this.button_WOCSuport.OnHoverBorderColor = System.Drawing.Color.Gray;
             this.button_WOCSuport.OnHoverButtonColor = System.Drawing.Color.Beige;
@@ -65,7 +65,8 @@
             this.button_WOCSuport.TabIndex = 4;
             this.button_WOCSuport.Text = "Suport";
             this.button_WOCSuport.TextColor = System.Drawing.Color.Black;
-            this.button_WOCSuport.UseVisualStyleBackColor = false; // 
+            this.button_WOCSuport.UseVisualStyleBackColor = false;
+            // 
             // button_WOCGestionar
             // 
             this.button_WOCGestionar.BackColor = System.Drawing.Color.Transparent;
