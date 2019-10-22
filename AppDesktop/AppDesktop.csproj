@@ -60,12 +60,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RoundButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="RoundButton.Designer.cs">
-      <DependentUpon>RoundButton.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -82,9 +76,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="RoundButton.resx">
-      <DependentUpon>RoundButton.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -103,6 +94,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Logo Museu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Terrasa1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
