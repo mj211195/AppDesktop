@@ -35,9 +35,9 @@
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.labelPreguntas = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listBoxPreguntas = new System.Windows.Forms.ListBox();
-            this.labelRespuestas = new System.Windows.Forms.Label();
             this.listBoxRespuestas = new System.Windows.Forms.ListBox();
+            this.labelRespuestas = new System.Windows.Forms.Label();
+            this.listBoxPreguntas = new System.Windows.Forms.ListBox();
             this.labelIdioma = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
@@ -68,6 +68,7 @@
             this.buttonNuevaPregunta.TabIndex = 2;
             this.buttonNuevaPregunta.Text = "Nova pregunta";
             this.buttonNuevaPregunta.UseVisualStyleBackColor = true;
+            this.buttonNuevaPregunta.Click += new System.EventHandler(this.buttonNuevaPregunta_Click);
             // 
             // buttonModificarPregunta
             // 
@@ -112,13 +113,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBoxPreguntas";
             // 
-            // listBoxPreguntas
+            // listBoxRespuestas
             // 
-            this.listBoxPreguntas.FormattingEnabled = true;
-            this.listBoxPreguntas.Location = new System.Drawing.Point(18, 72);
-            this.listBoxPreguntas.Name = "listBoxPreguntas";
-            this.listBoxPreguntas.Size = new System.Drawing.Size(322, 290);
-            this.listBoxPreguntas.TabIndex = 6;
+            this.listBoxRespuestas.FormattingEnabled = true;
+            this.listBoxRespuestas.Location = new System.Drawing.Point(393, 72);
+            this.listBoxRespuestas.Name = "listBoxRespuestas";
+            this.listBoxRespuestas.Size = new System.Drawing.Size(313, 290);
+            this.listBoxRespuestas.TabIndex = 8;
             // 
             // labelRespuestas
             // 
@@ -129,13 +130,13 @@
             this.labelRespuestas.TabIndex = 7;
             this.labelRespuestas.Text = "Respostes:";
             // 
-            // listBoxRespuestas
+            // listBoxPreguntas
             // 
-            this.listBoxRespuestas.FormattingEnabled = true;
-            this.listBoxRespuestas.Location = new System.Drawing.Point(393, 72);
-            this.listBoxRespuestas.Name = "listBoxRespuestas";
-            this.listBoxRespuestas.Size = new System.Drawing.Size(313, 290);
-            this.listBoxRespuestas.TabIndex = 8;
+            this.listBoxPreguntas.FormattingEnabled = true;
+            this.listBoxPreguntas.Location = new System.Drawing.Point(18, 72);
+            this.listBoxPreguntas.Name = "listBoxPreguntas";
+            this.listBoxPreguntas.Size = new System.Drawing.Size(322, 290);
+            this.listBoxPreguntas.TabIndex = 6;
             // 
             // labelIdioma
             // 
