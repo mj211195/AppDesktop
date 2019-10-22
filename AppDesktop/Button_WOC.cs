@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using System.Linq;
 using System.Threading;
 
-namespace ePOSOne.btnProduct
+namespace AppDesktop
 {
     public class Button_WOC : Button
     {

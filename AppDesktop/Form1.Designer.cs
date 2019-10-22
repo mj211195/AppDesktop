@@ -1,4 +1,4 @@
-﻿using ePOSOne.btnProduct;
+﻿
 namespace AppDesktop
 {
     partial class Form1
@@ -31,8 +31,8 @@ namespace AppDesktop
         {
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
-            this.button_WOCSuport = new ePOSOne.btnProduct.Button_WOC();
-            this.button_WOCGestionar = new ePOSOne.btnProduct.Button_WOC();
+            this.button_WOCSuport = new AppDesktop.Button_WOC();
+            this.button_WOCGestionar = new AppDesktop.Button_WOC();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,8 +110,8 @@ namespace AppDesktop
 
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.PictureBox pictureBoxLogo;
-        private ePOSOne.btnProduct.Button_WOC button_WOCGestionar;
-        private ePOSOne.btnProduct.Button_WOC button_WOCSuport;
+        private AppDesktop.Button_WOC button_WOCGestionar;
+        private AppDesktop.Button_WOC button_WOCSuport;
     }
 }
 
