@@ -50,7 +50,7 @@
             this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.labelAyuda);
             this.Name = "FormAyuda";
-            this.Text = "FormAyuda";
+            this.Text = "Ajuda - Petita guia per a la inserció/modificació de preguntes";
             this.ResumeLayout(false);
             this.PerformLayout();
 

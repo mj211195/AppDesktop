@@ -230,7 +230,7 @@
             this.Controls.Add(this.labelPregunta);
             this.Controls.Add(this.labelNivel);
             this.Name = "AnadirPregunta";
-            this.Text = "AnadirPregunta";
+            this.Text = "Afegir pregunta";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -19,7 +19,9 @@ namespace AppDesktop
 
         private void buttonAyuda_Click(object sender, EventArgs e)
         {
+            FormAyuda f = new FormAyuda();
 
+            f.Show();
         }
     }
 }
