@@ -7,9 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ePOSOne.btnProduct; /// <summary>
-/// prueba
-/// </summary>
+using ePOSOne.btnProduct;
 
 namespace AppDesktop
 {

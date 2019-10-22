@@ -18,7 +18,7 @@ namespace ePOSOne.btnProduct
         private int _borderThicknessByTwo = 3;
 
 
-        public Button_WOC()
+       /* public Button_WOC()
         {
             DoubleBuffered = true;
             MouseEnter += (sender, e) =>
@@ -31,7 +31,7 @@ namespace ePOSOne.btnProduct
                 _isHovering = false;
                 Invalidate();
             };
-        }
+        }*/
 
 
         protected override void OnPaint(PaintEventArgs e)
