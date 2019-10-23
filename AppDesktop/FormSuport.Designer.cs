@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSuport));
             this.labelSuport = new System.Windows.Forms.Label();
+            this.linkLabelCorreo = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // labelSuport
@@ -43,6 +44,19 @@
             this.labelSuport.TabIndex = 0;
             this.labelSuport.Text = "Página de soporte en desarrollo";
             // 
+            // linkLabelCorreo
+            // 
+            this.linkLabelCorreo.AutoSize = true;
+            this.linkLabelCorreo.BackColor = System.Drawing.Color.Transparent;
+            this.linkLabelCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabelCorreo.Location = new System.Drawing.Point(110, 215);
+            this.linkLabelCorreo.Name = "linkLabelCorreo";
+            this.linkLabelCorreo.Size = new System.Drawing.Size(155, 20);
+            this.linkLabelCorreo.TabIndex = 1;
+            this.linkLabelCorreo.TabStop = true;
+            this.linkLabelCorreo.Text = "Contactar por correo";
+            this.linkLabelCorreo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelCorreo_LinkClicked);
+            // 
             // FormSuport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -50,6 +64,7 @@
             this.BackgroundImage = global::AppDesktop.Properties.Resources.Terrasa1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(388, 450);
+            this.Controls.Add(this.linkLabelCorreo);
             this.Controls.Add(this.labelSuport);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -64,5 +79,6 @@
         #endregion
 
         private System.Windows.Forms.Label labelSuport;
+        private System.Windows.Forms.LinkLabel linkLabelCorreo;
     }
 }
