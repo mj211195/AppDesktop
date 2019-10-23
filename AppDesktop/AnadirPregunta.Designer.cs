@@ -103,7 +103,7 @@
             // 
             // buttonAyuda
             // 
-            this.buttonAyuda.Location = new System.Drawing.Point(447, 15);
+            this.buttonAyuda.Location = new System.Drawing.Point(515, 5);
             this.buttonAyuda.Name = "buttonAyuda";
             this.buttonAyuda.Size = new System.Drawing.Size(75, 23);
             this.buttonAyuda.TabIndex = 48;

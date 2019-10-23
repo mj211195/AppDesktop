@@ -39,7 +39,7 @@
             this.labelAyuda.Location = new System.Drawing.Point(12, 9);
             this.labelAyuda.MaximumSize = new System.Drawing.Size(750, 450);
             this.labelAyuda.Name = "labelAyuda";
-            this.labelAyuda.Size = new System.Drawing.Size(750, 120);
+            this.labelAyuda.Size = new System.Drawing.Size(750, 150);
             this.labelAyuda.TabIndex = 0;
             this.labelAyuda.Text = resources.GetString("labelAyuda.Text");
             // 
