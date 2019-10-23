@@ -16,5 +16,11 @@ namespace AppDesktop
         {
             InitializeComponent();
         }
+
+        private void buttonNuevaPregunta_Click(object sender, EventArgs e)
+        {
+            AnadirPregunta anadirPregunta = new AnadirPregunta();
+            anadirPregunta.ShowDialog();
+        }
     }
 }
