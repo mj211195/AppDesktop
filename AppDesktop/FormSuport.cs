@@ -18,9 +18,11 @@ namespace AppDesktop
             InitializeComponent();
         }
 
-        private void linkLabelCorreo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void buttonEnviar_Click(object sender, EventArgs e)
         {
-            Process.Start("Outlook.exe", "/c ipm.note /m carlos25840@gmail.com");
+            String prueba = (String)richTextBoxContacto.Text;
+            String mensaje = "/c ipm.note /m carlos25840@gmail.com&subject=Contacte%20Museu%20Terrassa&body=" + prueba;
+            Process.Start("Outlook.exe", mensaje);
         }
     }
 }

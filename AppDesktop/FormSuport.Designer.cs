@@ -29,33 +29,42 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSuport));
-            this.labelSuport = new System.Windows.Forms.Label();
-            this.linkLabelCorreo = new System.Windows.Forms.LinkLabel();
+            this.groupBoxContacto = new System.Windows.Forms.GroupBox();
+            this.buttonEnviar = new System.Windows.Forms.Button();
+            this.richTextBoxContacto = new System.Windows.Forms.RichTextBox();
+            this.groupBoxContacto.SuspendLayout();
             this.SuspendLayout();
             // 
-            // labelSuport
+            // groupBoxContacto
             // 
-            this.labelSuport.AutoSize = true;
-            this.labelSuport.BackColor = System.Drawing.Color.Transparent;
-            this.labelSuport.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSuport.Location = new System.Drawing.Point(38, 125);
-            this.labelSuport.Name = "labelSuport";
-            this.labelSuport.Size = new System.Drawing.Size(318, 25);
-            this.labelSuport.TabIndex = 0;
-            this.labelSuport.Text = "Página de soporte en desarrollo";
+            this.groupBoxContacto.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxContacto.Controls.Add(this.buttonEnviar);
+            this.groupBoxContacto.Controls.Add(this.richTextBoxContacto);
+            this.groupBoxContacto.Location = new System.Drawing.Point(13, 13);
+            this.groupBoxContacto.Name = "groupBoxContacto";
+            this.groupBoxContacto.Size = new System.Drawing.Size(363, 237);
+            this.groupBoxContacto.TabIndex = 2;
+            this.groupBoxContacto.TabStop = false;
+            this.groupBoxContacto.Text = "Contacte";
             // 
-            // linkLabelCorreo
+            // buttonEnviar
             // 
-            this.linkLabelCorreo.AutoSize = true;
-            this.linkLabelCorreo.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabelCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabelCorreo.Location = new System.Drawing.Point(110, 215);
-            this.linkLabelCorreo.Name = "linkLabelCorreo";
-            this.linkLabelCorreo.Size = new System.Drawing.Size(155, 20);
-            this.linkLabelCorreo.TabIndex = 1;
-            this.linkLabelCorreo.TabStop = true;
-            this.linkLabelCorreo.Text = "Contactar por correo";
-            this.linkLabelCorreo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelCorreo_LinkClicked);
+            this.buttonEnviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEnviar.Location = new System.Drawing.Point(282, 208);
+            this.buttonEnviar.Name = "buttonEnviar";
+            this.buttonEnviar.Size = new System.Drawing.Size(75, 23);
+            this.buttonEnviar.TabIndex = 3;
+            this.buttonEnviar.Text = "Enviar";
+            this.buttonEnviar.UseVisualStyleBackColor = true;
+            this.buttonEnviar.Click += new System.EventHandler(this.buttonEnviar_Click);
+            // 
+            // richTextBoxContacto
+            // 
+            this.richTextBoxContacto.Location = new System.Drawing.Point(7, 20);
+            this.richTextBoxContacto.Name = "richTextBoxContacto";
+            this.richTextBoxContacto.Size = new System.Drawing.Size(350, 186);
+            this.richTextBoxContacto.TabIndex = 2;
+            this.richTextBoxContacto.Text = "";
             // 
             // FormSuport
             // 
@@ -64,21 +73,20 @@
             this.BackgroundImage = global::AppDesktop.Properties.Resources.Terrasa1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(388, 450);
-            this.Controls.Add(this.linkLabelCorreo);
-            this.Controls.Add(this.labelSuport);
+            this.Controls.Add(this.groupBoxContacto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FormSuport";
             this.Text = "Suport";
+            this.groupBoxContacto.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label labelSuport;
-        private System.Windows.Forms.LinkLabel linkLabelCorreo;
+        private System.Windows.Forms.GroupBox groupBoxContacto;
+        private System.Windows.Forms.RichTextBox richTextBoxContacto;
+        private System.Windows.Forms.Button buttonEnviar;
     }
 }
