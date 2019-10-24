@@ -96,7 +96,7 @@ namespace AppDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::AppDesktop.Properties.Resources.Terrasa1;
+            this.BackgroundImage = global::AppDesktop.Properties.Resources.Fondo;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(341, 359);
             this.Controls.Add(this.button_WOCSuport);
