@@ -10,11 +10,24 @@ using System.Windows.Forms;
 
 namespace AppDesktop
 {
+    
     public partial class Form1 : Form
     {
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button_WOCGestionar_Click(object sender, EventArgs e)
+        {
+            FormGestionPreguntas formGestionar = new FormGestionPreguntas();
+            formGestionar.Show();
+        }
+
+        private void button_WOCSuport_Click(object sender, EventArgs e)
+        {
+            FormSuport formSuport = new FormSuport();
+            formSuport.Show();
         }
     }
 }
