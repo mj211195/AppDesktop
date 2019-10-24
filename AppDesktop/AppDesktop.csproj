@@ -85,6 +85,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormAyuda.resx">
+      <DependentUpon>FormAyuda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormSuport.resx">
       <DependentUpon>FormSuport.cs</DependentUpon>
     </EmbeddedResource>
@@ -113,6 +116,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Fondo.jpg" />
+    <Content Include="Resources\Logo Museu.png" />
+    <Content Include="Resources\museu.jpg" />
+    <Content Include="Resources\Terrasa.jpg" />
+    <Content Include="Resources\Terrasa1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
