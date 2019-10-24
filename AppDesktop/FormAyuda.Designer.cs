@@ -41,7 +41,7 @@
             this.labelAyuda.Name = "labelAyuda";
             this.labelAyuda.Size = new System.Drawing.Size(750, 150);
             this.labelAyuda.TabIndex = 0;
-            this.labelAyuda.Text = resources.GetString("labelAyuda.Text");
+            //this.labelAyuda.Text = resources.GetString("labelAyuda.Text");
             // 
             // FormAyuda
             // 
