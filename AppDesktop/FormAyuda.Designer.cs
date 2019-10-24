@@ -37,9 +37,9 @@
             this.labelAyuda.AutoSize = true;
             this.labelAyuda.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelAyuda.Location = new System.Drawing.Point(12, 9);
-            this.labelAyuda.MaximumSize = new System.Drawing.Size(750, 450);
+            this.labelAyuda.MaximumSize = new System.Drawing.Size(750, 600);
             this.labelAyuda.Name = "labelAyuda";
-            this.labelAyuda.Size = new System.Drawing.Size(750, 150);
+            this.labelAyuda.Size = new System.Drawing.Size(749, 510);
             this.labelAyuda.TabIndex = 0;
             this.labelAyuda.Text = resources.GetString("labelAyuda.Text");
             // 
@@ -47,7 +47,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 461);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(790, 582);
             this.Controls.Add(this.labelAyuda);
             this.Name = "FormAyuda";
             this.Text = "Ajuda - Petita guia per a la inserció/modificació de preguntes";
