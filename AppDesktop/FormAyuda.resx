@@ -118,33 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="labelAyuda.Text" xml:space="preserve">
-    <value>1) Seleccionar l'idioma de la pregunta a afegir. Es pot escollir entre:
-    - Castella
-    - Català
-    - Anglès
-
-2) Seleccionar el nivell de la pregunta a afegir. Les opcions són:
-    - Infantil
-    - Adult
-          · Fàcil
-          · Mitjà
-          · Difícil
-
-3) Escriure la pregunta. Un cop es doni per bona, premi el botó [Validar]. Si la pregunta no està validada no es podran afegir respostes. Un cop estigui validada, el camp es tornarà de lectura, volent dir que no es podrà modificar (en cas de que ho desitgi, es pot modificar prement el botó [Reiniciar] que trovarà al final del formulari).
-
-4) S'escriu la resposta. Si es la correcta, es marca la casella i al botó [Afegir]. Si no és la correcta no es marca amb el tick y seguidament, [Afegir].
-
-5) En la taula d'abaix aniran sortin les respostes que vagi afegint. En una columna sortiran les respostes i en l'altre sortirà una la qual indicarà quina és la correcta.
-
-6) Un cop afegides les respostes i es vulgui donar per finalitzada, caldrà prémer el botó [Afegir] (per tal de que es pugui guardar correctament, tots els camps hauran d'estar correctament omplerts i una de les respostes haurà d'haver estat marcada com correcta).
-
-
-Si es dona el cas de que es vulgui modificar una resposta, caldrà prémer el botó [Modificar] (havent seleccionat prèviament la resposta a modificar) o, en cas de voler eliminar-la, caldrà fer el mateix però amb el botó [Eliminar].
-Si per qualsevol motiu vol reiniciar el formulari (buidar els camps), s'haurà de prémer el botó [Reinciar].
-
-
-
-PENDIENTE DE VALIDAR
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</value>
+    <value>dqwdqwdqw
+dqwdqwdwq
+Lorem ipsum dolor sit amet consectetur adipiscing, elit ante tellus ac aptent ornare purus,
+eleifend conubia tristique pulvinar gravida. Aliquet semper dapibus taciti feugiat massa commodo augue aptent, hendrerit mauris habitant ligula integer ultrices morbi torquent, tempor fusce arcu litora facilisis quis porta.Dapibus curae odio iaculis sagittis volutpat fames praesent, nisi suscipit porttitor nec lobortis faucibus, netus diam donec rhoncus class inceptos. Lacus aliquam cras quam phasellus sempergravida aptent augue, velit vel ornare vivamus auctor mus blandit nunc ullamcorper, venenatis nostra ultrices vulputate dignissim eros porta.Litora platea potenti facilisis magnis congue montes,blandit imperdiet inceptos penatibus ligula netus, dictumst maecenas massa urna vulputate. Integer himenaeos hac ad congue montes lacinia fames, aliquam duis dapibus augue lectus cubilia volutpat,
+vivamus curae eros neque placerat natoque.</value>
   </data>
 </root>
