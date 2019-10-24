@@ -30,7 +30,7 @@
         {
             this.comboBoxIdioma = new System.Windows.Forms.ComboBox();
             this.labelIdioma = new System.Windows.Forms.Label();
-            this.buttonGuardarYSalir = new System.Windows.Forms.Button();
+            this.buttonGuardar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.labelTitol = new System.Windows.Forms.Label();
             this.checkBoxCorrecta = new System.Windows.Forms.CheckBox();
@@ -38,7 +38,7 @@
             this.textBoxResposta = new System.Windows.Forms.TextBox();
             this.textBoxPregunta = new System.Windows.Forms.TextBox();
             this.comboBoxNivel = new System.Windows.Forms.ComboBox();
-            this.buttonGuardar = new System.Windows.Forms.Button();
+            this.buttonReiniciar = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.buttonModificar = new System.Windows.Forms.Button();
             this.buttonAnadir = new System.Windows.Forms.Button();
@@ -66,14 +66,14 @@
             this.labelIdioma.TabIndex = 53;
             this.labelIdioma.Text = "Idioma";
             // 
-            // buttonGuardarYSalir
+            // buttonGuardar
             // 
-            this.buttonGuardarYSalir.Location = new System.Drawing.Point(398, 415);
-            this.buttonGuardarYSalir.Name = "buttonGuardarYSalir";
-            this.buttonGuardarYSalir.Size = new System.Drawing.Size(108, 23);
-            this.buttonGuardarYSalir.TabIndex = 52;
-            this.buttonGuardarYSalir.Text = "Guardar i sortir";
-            this.buttonGuardarYSalir.UseVisualStyleBackColor = true;
+            this.buttonGuardar.Location = new System.Drawing.Point(398, 415);
+            this.buttonGuardar.Name = "buttonGuardar";
+            this.buttonGuardar.Size = new System.Drawing.Size(108, 23);
+            this.buttonGuardar.TabIndex = 52;
+            this.buttonGuardar.Text = "Guardar";
+            this.buttonGuardar.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -134,14 +134,14 @@
             this.comboBoxNivel.Size = new System.Drawing.Size(159, 21);
             this.comboBoxNivel.TabIndex = 45;
             // 
-            // buttonGuardar
+            // buttonReiniciar
             // 
-            this.buttonGuardar.Location = new System.Drawing.Point(289, 415);
-            this.buttonGuardar.Name = "buttonGuardar";
-            this.buttonGuardar.Size = new System.Drawing.Size(101, 23);
-            this.buttonGuardar.TabIndex = 44;
-            this.buttonGuardar.Text = "Guardar canvis";
-            this.buttonGuardar.UseVisualStyleBackColor = true;
+            this.buttonReiniciar.Location = new System.Drawing.Point(289, 415);
+            this.buttonReiniciar.Name = "buttonReiniciar";
+            this.buttonReiniciar.Size = new System.Drawing.Size(101, 23);
+            this.buttonReiniciar.TabIndex = 44;
+            this.buttonReiniciar.Text = "Reiniciar";
+            this.buttonReiniciar.UseVisualStyleBackColor = true;
             // 
             // buttonEliminar
             // 
@@ -178,6 +178,7 @@
             this.buttonValidar.TabIndex = 40;
             this.buttonValidar.Text = "Validar";
             this.buttonValidar.UseVisualStyleBackColor = true;
+            this.buttonValidar.Click += new System.EventHandler(this.buttonValidar_Click);
             // 
             // labelResposta
             // 
@@ -213,7 +214,7 @@
             this.ClientSize = new System.Drawing.Size(602, 450);
             this.Controls.Add(this.comboBoxIdioma);
             this.Controls.Add(this.labelIdioma);
-            this.Controls.Add(this.buttonGuardarYSalir);
+            this.Controls.Add(this.buttonGuardar);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.labelTitol);
             this.Controls.Add(this.checkBoxCorrecta);
@@ -221,7 +222,7 @@
             this.Controls.Add(this.textBoxResposta);
             this.Controls.Add(this.textBoxPregunta);
             this.Controls.Add(this.comboBoxNivel);
-            this.Controls.Add(this.buttonGuardar);
+            this.Controls.Add(this.buttonReiniciar);
             this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.buttonModificar);
             this.Controls.Add(this.buttonAnadir);
@@ -241,7 +242,7 @@
 
         private System.Windows.Forms.ComboBox comboBoxIdioma;
         private System.Windows.Forms.Label labelIdioma;
-        private System.Windows.Forms.Button buttonGuardarYSalir;
+        private System.Windows.Forms.Button buttonGuardar;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label labelTitol;
         private System.Windows.Forms.CheckBox checkBoxCorrecta;
@@ -249,7 +250,7 @@
         private System.Windows.Forms.TextBox textBoxResposta;
         private System.Windows.Forms.TextBox textBoxPregunta;
         private System.Windows.Forms.ComboBox comboBoxNivel;
-        private System.Windows.Forms.Button buttonGuardar;
+        private System.Windows.Forms.Button buttonReiniciar;
         private System.Windows.Forms.Button buttonEliminar;
         private System.Windows.Forms.Button buttonModificar;
         private System.Windows.Forms.Button buttonAnadir;
