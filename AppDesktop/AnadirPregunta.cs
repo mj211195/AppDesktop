@@ -12,6 +12,8 @@ namespace AppDesktop
 {
     public partial class AnadirPregunta : Form
     {
+        //booleano para marcar como ReadOnly o desmarcarlo la pregunta validada
+        bool preguntaValidada = false;
         public AnadirPregunta()
         {
             InitializeComponent();
@@ -22,6 +24,21 @@ namespace AppDesktop
             FormAyuda f = new FormAyuda();
 
             f.Show();
+        }
+
+        private void buttonValidar_Click(object sender, EventArgs e)
+        {
+            //condicional para marcar/desmarcar como ReadOnly la pregunta
+            if (preguntaValidada == false)
+            {
+                textBoxPregunta.ReadOnly = true;
+                preguntaValidada = true;
+            }
+            else
+            {
+                textBoxPregunta.ReadOnly = false;
+                preguntaValidada = false;
+            }
         }
     }
 }
