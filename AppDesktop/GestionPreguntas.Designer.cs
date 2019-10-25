@@ -34,13 +34,13 @@
             this.buttonModificarPregunta = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.labelPreguntas = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxPreguntas = new System.Windows.Forms.GroupBox();
             this.listBoxRespuestas = new System.Windows.Forms.ListBox();
             this.labelRespuestas = new System.Windows.Forms.Label();
             this.listBoxPreguntas = new System.Windows.Forms.ListBox();
             this.labelIdioma = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxPreguntas.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelNivel
@@ -98,21 +98,20 @@
             this.labelPreguntas.TabIndex = 5;
             this.labelPreguntas.Text = "Preguntes:";
             // 
-            // groupBox1
+            // groupBoxPreguntas
             // 
-            this.groupBox1.Controls.Add(this.listBoxRespuestas);
-            this.groupBox1.Controls.Add(this.labelRespuestas);
-            this.groupBox1.Controls.Add(this.listBoxPreguntas);
-            this.groupBox1.Controls.Add(this.labelPreguntas);
-            this.groupBox1.Controls.Add(this.buttonEliminar);
-            this.groupBox1.Controls.Add(this.buttonNuevaPregunta);
-            this.groupBox1.Controls.Add(this.buttonModificarPregunta);
-            this.groupBox1.Location = new System.Drawing.Point(14, 79);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(742, 390);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBoxPreguntas";
+            this.groupBoxPreguntas.Controls.Add(this.listBoxRespuestas);
+            this.groupBoxPreguntas.Controls.Add(this.labelRespuestas);
+            this.groupBoxPreguntas.Controls.Add(this.listBoxPreguntas);
+            this.groupBoxPreguntas.Controls.Add(this.labelPreguntas);
+            this.groupBoxPreguntas.Controls.Add(this.buttonEliminar);
+            this.groupBoxPreguntas.Controls.Add(this.buttonNuevaPregunta);
+            this.groupBoxPreguntas.Controls.Add(this.buttonModificarPregunta);
+            this.groupBoxPreguntas.Location = new System.Drawing.Point(14, 79);
+            this.groupBoxPreguntas.Name = "groupBoxPreguntas";
+            this.groupBoxPreguntas.Size = new System.Drawing.Size(742, 390);
+            this.groupBoxPreguntas.TabIndex = 6;
+            this.groupBoxPreguntas.TabStop = false;
             // 
             // listBoxRespuestas
             // 
@@ -168,13 +167,13 @@
             this.ClientSize = new System.Drawing.Size(770, 478);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.labelIdioma);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxPreguntas);
             this.Controls.Add(this.comboBoxNivel);
             this.Controls.Add(this.labelNivel);
             this.Name = "FormGestionPreguntas";
             this.Text = "Gestió de preguntes";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxPreguntas.ResumeLayout(false);
+            this.groupBoxPreguntas.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,7 +187,7 @@
         private System.Windows.Forms.Button buttonModificarPregunta;
         private System.Windows.Forms.Button buttonEliminar;
         private System.Windows.Forms.Label labelPreguntas;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxPreguntas;
         private System.Windows.Forms.ListBox listBoxPreguntas;
         private System.Windows.Forms.Label labelRespuestas;
         private System.Windows.Forms.ListBox listBoxRespuestas;
