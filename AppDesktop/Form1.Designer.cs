@@ -29,12 +29,20 @@ namespace AppDesktop
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripInicio = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonGestionar = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonSuport = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonSortir = new System.Windows.Forms.ToolStripButton();
             this.button_WOCSuport = new AppDesktop.Button_WOC();
             this.button_WOCGestionar = new AppDesktop.Button_WOC();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
+            this.toolStripInicio.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxLogo
@@ -47,6 +55,60 @@ namespace AppDesktop
             this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxLogo.TabIndex = 2;
             this.pictureBoxLogo.TabStop = false;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // toolStripInicio
+            // 
+            this.toolStripInicio.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonGestionar,
+            this.toolStripButtonSuport,
+            this.toolStripSeparator1,
+            this.toolStripButtonSortir});
+            this.toolStripInicio.Location = new System.Drawing.Point(0, 0);
+            this.toolStripInicio.Name = "toolStripInicio";
+            this.toolStripInicio.Size = new System.Drawing.Size(341, 25);
+            this.toolStripInicio.TabIndex = 6;
+            this.toolStripInicio.Text = "ToolStripInicio";
+            // 
+            // toolStripButtonGestionar
+            // 
+            this.toolStripButtonGestionar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonGestionar.Image = global::AppDesktop.Properties.Resources._006_edit;
+            this.toolStripButtonGestionar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonGestionar.Name = "toolStripButtonGestionar";
+            this.toolStripButtonGestionar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.toolStripButtonGestionar.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonGestionar.Text = "Gestionar";
+            this.toolStripButtonGestionar.Click += new System.EventHandler(this.toolStripButtonGestionar_Click);
+            // 
+            // toolStripButtonSuport
+            // 
+            this.toolStripButtonSuport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonSuport.Image = global::AppDesktop.Properties.Resources._012_envelope;
+            this.toolStripButtonSuport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSuport.Name = "toolStripButtonSuport";
+            this.toolStripButtonSuport.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonSuport.Text = "Suport";
+            this.toolStripButtonSuport.Click += new System.EventHandler(this.toolStripButtonSuport_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButtonSortir
+            // 
+            this.toolStripButtonSortir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonSortir.Image = global::AppDesktop.Properties.Resources._022_logout;
+            this.toolStripButtonSortir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSortir.Name = "toolStripButtonSortir";
+            this.toolStripButtonSortir.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonSortir.Text = "Sortir";
+            this.toolStripButtonSortir.Click += new System.EventHandler(this.toolStripButtonSortir_Click);
             // 
             // button_WOCSuport
             // 
@@ -99,6 +161,7 @@ namespace AppDesktop
             this.BackgroundImage = global::AppDesktop.Properties.Resources.Fondo;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(341, 359);
+            this.Controls.Add(this.toolStripInicio);
             this.Controls.Add(this.button_WOCSuport);
             this.Controls.Add(this.button_WOCGestionar);
             this.Controls.Add(this.pictureBoxLogo);
@@ -108,7 +171,10 @@ namespace AppDesktop
             this.Name = "Form1";
             this.Text = "Inicio";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
+            this.toolStripInicio.ResumeLayout(false);
+            this.toolStripInicio.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -118,6 +184,12 @@ namespace AppDesktop
         private System.Windows.Forms.PictureBox pictureBoxLogo;
         private AppDesktop.Button_WOC button_WOCGestionar;
         private AppDesktop.Button_WOC button_WOCSuport;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStrip toolStripInicio;
+        private System.Windows.Forms.ToolStripButton toolStripButtonGestionar;
+        private System.Windows.Forms.ToolStripButton toolStripButtonSuport;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton toolStripButtonSortir;
     }
 }
 

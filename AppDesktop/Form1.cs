@@ -29,5 +29,22 @@ namespace AppDesktop
             FormSuport formSuport = new FormSuport();
             formSuport.Show();
         }
+
+        private void toolStripButtonSortir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void toolStripButtonGestionar_Click(object sender, EventArgs e)
+        {
+            FormGestionPreguntas formGestionar = new FormGestionPreguntas();
+            formGestionar.Show();
+        }
+
+        private void toolStripButtonSuport_Click(object sender, EventArgs e)
+        {
+            FormSuport formSuport = new FormSuport();
+            formSuport.Show();
+        }
     }
 }
