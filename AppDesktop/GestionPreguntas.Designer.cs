@@ -56,6 +56,11 @@
             // 
             this.comboBoxNivel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxNivel.FormattingEnabled = true;
+            this.comboBoxNivel.Items.AddRange(new object[] {
+            "Infantil",
+            "Adult (Fàcil)",
+            "Adult (Intermedi)",
+            "Adult (Difícil)"});
             this.comboBoxNivel.Location = new System.Drawing.Point(355, 28);
             this.comboBoxNivel.Name = "comboBoxNivel";
             this.comboBoxNivel.Size = new System.Drawing.Size(204, 21);
