@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGestionPreguntas));
             this.labelNivel = new System.Windows.Forms.Label();
             this.comboBoxNivel = new System.Windows.Forms.ComboBox();
             this.buttonNuevaPregunta = new System.Windows.Forms.Button();
@@ -175,6 +176,7 @@
             this.Controls.Add(this.groupBoxPreguntas);
             this.Controls.Add(this.comboBoxNivel);
             this.Controls.Add(this.labelNivel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormGestionPreguntas";
             this.Text = "Gestió de preguntes";
             this.groupBoxPreguntas.ResumeLayout(false);
