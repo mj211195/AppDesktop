@@ -27,7 +27,7 @@ namespace AppDesktop
         private void button_WOCSuport_Click(object sender, EventArgs e)
         {
             FormSuport formSuport = new FormSuport();
-            formSuport.Show();
+            formSuport.ShowDialog();
         }
 
         private void toolStripButtonSortir_Click(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace AppDesktop
         private void toolStripButtonSuport_Click(object sender, EventArgs e)
         {
             FormSuport formSuport = new FormSuport();
-            formSuport.Show();
+            formSuport.ShowDialog();
         }
     }
 }
