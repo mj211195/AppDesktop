@@ -106,6 +106,7 @@
             // 
             // groupBoxPreguntas
             // 
+            this.groupBoxPreguntas.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxPreguntas.Controls.Add(this.listBoxRespuestas);
             this.groupBoxPreguntas.Controls.Add(this.labelRespuestas);
             this.groupBoxPreguntas.Controls.Add(this.listBoxPreguntas);
@@ -170,6 +171,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::AppDesktop.Properties.Resources.grande_fondo;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(770, 478);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.labelIdioma);

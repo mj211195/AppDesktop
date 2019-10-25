@@ -126,7 +126,7 @@
     <None Include="Resources\012-envelope.png" />
     <None Include="Resources\022-logout.png" />
     <Content Include="Resources\Fondo.jpg" />
-    <Content Include="Resources\grande_fondo.jpg" />
+    <None Include="Resources\grande_fondo1.jpg" />
     <Content Include="Resources\Logo Museu.png" />
     <Content Include="Resources\logo.ico" />
     <Content Include="Resources\museu.jpg" />
