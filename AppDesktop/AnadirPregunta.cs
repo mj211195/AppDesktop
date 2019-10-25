@@ -19,13 +19,6 @@ namespace AppDesktop
             InitializeComponent();
         }
 
-        private void buttonAyuda_Click(object sender, EventArgs e)
-        {
-            FormAyuda f = new FormAyuda();
-
-            f.Show();
-        }
-
         private void buttonValidar_Click(object sender, EventArgs e)
         {
             //condicional para marcar/desmarcar como ReadOnly la pregunta
