@@ -46,23 +46,23 @@
             this.labelPregunta = new System.Windows.Forms.Label();
             this.labelNivel = new System.Windows.Forms.Label();
             this.groupBoxAfegirPregunta = new System.Windows.Forms.GroupBox();
-            this.groupBoxGestionRespuestas = new System.Windows.Forms.GroupBox();
-            this.pictureBoxValidar = new System.Windows.Forms.PictureBox();
-            this.pictureBoxNivel = new System.Windows.Forms.PictureBox();
-            this.pictureBoxIdioma = new System.Windows.Forms.PictureBox();
-            this.pictureBoxAnadirResp = new System.Windows.Forms.PictureBox();
-            this.pictureBoxGestionResp = new System.Windows.Forms.PictureBox();
             this.pictureBoxReiniciar = new System.Windows.Forms.PictureBox();
+            this.pictureBoxAnadirResp = new System.Windows.Forms.PictureBox();
+            this.pictureBoxIdioma = new System.Windows.Forms.PictureBox();
+            this.pictureBoxNivel = new System.Windows.Forms.PictureBox();
+            this.pictureBoxValidar = new System.Windows.Forms.PictureBox();
+            this.groupBoxGestionRespuestas = new System.Windows.Forms.GroupBox();
+            this.pictureBoxGestionResp = new System.Windows.Forms.PictureBox();
             this.toolTipAyuda = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBoxAfegirPregunta.SuspendLayout();
-            this.groupBoxGestionRespuestas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxValidar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNivel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIdioma)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAnadirResp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGestionResp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxReiniciar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAnadirResp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIdioma)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNivel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxValidar)).BeginInit();
+            this.groupBoxGestionRespuestas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGestionResp)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxIdioma
@@ -232,52 +232,17 @@
             this.groupBoxAfegirPregunta.TabStop = false;
             this.groupBoxAfegirPregunta.Text = "Afegir pregunta";
             // 
-            // groupBoxGestionRespuestas
+            // pictureBoxReiniciar
             // 
-            this.groupBoxGestionRespuestas.Controls.Add(this.pictureBoxGestionResp);
-            this.groupBoxGestionRespuestas.Controls.Add(this.dataGridView1);
-            this.groupBoxGestionRespuestas.Controls.Add(this.buttonModificar);
-            this.groupBoxGestionRespuestas.Controls.Add(this.buttonEliminar);
-            this.groupBoxGestionRespuestas.Location = new System.Drawing.Point(6, 216);
-            this.groupBoxGestionRespuestas.Name = "groupBoxGestionRespuestas";
-            this.groupBoxGestionRespuestas.Size = new System.Drawing.Size(670, 226);
-            this.groupBoxGestionRespuestas.TabIndex = 55;
-            this.groupBoxGestionRespuestas.TabStop = false;
-            this.groupBoxGestionRespuestas.Text = "Graella de respostes";
-            // 
-            // pictureBoxValidar
-            // 
-            this.pictureBoxValidar.Image = global::AppDesktop.Properties.Resources.logoHelp;
-            this.pictureBoxValidar.Location = new System.Drawing.Point(624, 75);
-            this.pictureBoxValidar.Name = "pictureBoxValidar";
-            this.pictureBoxValidar.Size = new System.Drawing.Size(39, 22);
-            this.pictureBoxValidar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxValidar.TabIndex = 56;
-            this.pictureBoxValidar.TabStop = false;
-            this.toolTipAyuda.SetToolTip(this.pictureBoxValidar, "Apartat per formular la pregunta. Un cop formulada, prémer [Validar].\r\n\r\nNota: no" +
-        " es podrà afegir una pregunta (guardar-la al final) si no està validada!");
-            // 
-            // pictureBoxNivel
-            // 
-            this.pictureBoxNivel.Image = global::AppDesktop.Properties.Resources.logoHelp;
-            this.pictureBoxNivel.Location = new System.Drawing.Point(643, 26);
-            this.pictureBoxNivel.Name = "pictureBoxNivel";
-            this.pictureBoxNivel.Size = new System.Drawing.Size(39, 22);
-            this.pictureBoxNivel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxNivel.TabIndex = 57;
-            this.pictureBoxNivel.TabStop = false;
-            this.toolTipAyuda.SetToolTip(this.pictureBoxNivel, "Seleccionar el nivel de la pregunta.");
-            // 
-            // pictureBoxIdioma
-            // 
-            this.pictureBoxIdioma.Image = global::AppDesktop.Properties.Resources.logoHelp;
-            this.pictureBoxIdioma.Location = new System.Drawing.Point(222, 21);
-            this.pictureBoxIdioma.Name = "pictureBoxIdioma";
-            this.pictureBoxIdioma.Size = new System.Drawing.Size(39, 22);
-            this.pictureBoxIdioma.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxIdioma.TabIndex = 58;
-            this.pictureBoxIdioma.TabStop = false;
-            this.toolTipAyuda.SetToolTip(this.pictureBoxIdioma, "Seleccionar l\'idioma de la pregunta");
+            this.pictureBoxReiniciar.Image = global::AppDesktop.Properties.Resources.logoHelp;
+            this.pictureBoxReiniciar.Location = new System.Drawing.Point(410, 448);
+            this.pictureBoxReiniciar.Name = "pictureBoxReiniciar";
+            this.pictureBoxReiniciar.Size = new System.Drawing.Size(39, 22);
+            this.pictureBoxReiniciar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxReiniciar.TabIndex = 60;
+            this.pictureBoxReiniciar.TabStop = false;
+            this.toolTipAyuda.SetToolTip(this.pictureBoxReiniciar, "- Reiniciar: buida tots els camps.\r\n- Guardar: guarda els canvis i emmagatzema la" +
+        " pregunta amb les respostes a l\'arxiu.");
             // 
             // pictureBoxAnadirResp
             // 
@@ -292,6 +257,54 @@
         "que sigui la vàlida, marcar el tick y prémer [Afegir].\r\n\r\nNota: només una respos" +
         "ta podrà ser la vàlida!");
             // 
+            // pictureBoxIdioma
+            // 
+            this.pictureBoxIdioma.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureBoxIdioma.Image = global::AppDesktop.Properties.Resources.logoHelp;
+            this.pictureBoxIdioma.Location = new System.Drawing.Point(222, 21);
+            this.pictureBoxIdioma.Name = "pictureBoxIdioma";
+            this.pictureBoxIdioma.Size = new System.Drawing.Size(39, 22);
+            this.pictureBoxIdioma.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxIdioma.TabIndex = 58;
+            this.pictureBoxIdioma.TabStop = false;
+            this.toolTipAyuda.SetToolTip(this.pictureBoxIdioma, "Seleccionar l\'idioma de la pregunta");
+            // 
+            // pictureBoxNivel
+            // 
+            this.pictureBoxNivel.Image = global::AppDesktop.Properties.Resources.logoHelp;
+            this.pictureBoxNivel.Location = new System.Drawing.Point(643, 26);
+            this.pictureBoxNivel.Name = "pictureBoxNivel";
+            this.pictureBoxNivel.Size = new System.Drawing.Size(39, 22);
+            this.pictureBoxNivel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxNivel.TabIndex = 57;
+            this.pictureBoxNivel.TabStop = false;
+            this.toolTipAyuda.SetToolTip(this.pictureBoxNivel, "Seleccionar el nivel de la pregunta.");
+            // 
+            // pictureBoxValidar
+            // 
+            this.pictureBoxValidar.Image = global::AppDesktop.Properties.Resources.logoHelp;
+            this.pictureBoxValidar.Location = new System.Drawing.Point(624, 75);
+            this.pictureBoxValidar.Name = "pictureBoxValidar";
+            this.pictureBoxValidar.Size = new System.Drawing.Size(39, 22);
+            this.pictureBoxValidar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxValidar.TabIndex = 56;
+            this.pictureBoxValidar.TabStop = false;
+            this.toolTipAyuda.SetToolTip(this.pictureBoxValidar, "Apartat per formular la pregunta. Un cop formulada, prémer [Validar].\r\n\r\nNota: no" +
+        " es podrà afegir una pregunta (guardar-la al final) si no està validada!");
+            // 
+            // groupBoxGestionRespuestas
+            // 
+            this.groupBoxGestionRespuestas.Controls.Add(this.pictureBoxGestionResp);
+            this.groupBoxGestionRespuestas.Controls.Add(this.dataGridView1);
+            this.groupBoxGestionRespuestas.Controls.Add(this.buttonModificar);
+            this.groupBoxGestionRespuestas.Controls.Add(this.buttonEliminar);
+            this.groupBoxGestionRespuestas.Location = new System.Drawing.Point(6, 216);
+            this.groupBoxGestionRespuestas.Name = "groupBoxGestionRespuestas";
+            this.groupBoxGestionRespuestas.Size = new System.Drawing.Size(670, 226);
+            this.groupBoxGestionRespuestas.TabIndex = 55;
+            this.groupBoxGestionRespuestas.TabStop = false;
+            this.groupBoxGestionRespuestas.Text = "Graella de respostes";
+            // 
             // pictureBoxGestionResp
             // 
             this.pictureBoxGestionResp.Image = global::AppDesktop.Properties.Resources.logoHelp;
@@ -303,18 +316,6 @@
             this.pictureBoxGestionResp.TabStop = false;
             this.toolTipAyuda.SetToolTip(this.pictureBoxGestionResp, "Apartat per modificar/eliminar una resposta.\r\nEn qualsevol cas, s\'ha de marcar la" +
         " resposta sobre la que es vulgui treballar.");
-            // 
-            // pictureBoxReiniciar
-            // 
-            this.pictureBoxReiniciar.Image = global::AppDesktop.Properties.Resources.logoHelp;
-            this.pictureBoxReiniciar.Location = new System.Drawing.Point(410, 448);
-            this.pictureBoxReiniciar.Name = "pictureBoxReiniciar";
-            this.pictureBoxReiniciar.Size = new System.Drawing.Size(39, 22);
-            this.pictureBoxReiniciar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxReiniciar.TabIndex = 60;
-            this.pictureBoxReiniciar.TabStop = false;
-            this.toolTipAyuda.SetToolTip(this.pictureBoxReiniciar, "- Reiniciar: buida tots els camps.\r\n- Guardar: guarda els canvis i emmagatzema la" +
-        " pregunta amb les respostes a l\'arxiu.");
             // 
             // toolTipAyuda
             // 
@@ -339,13 +340,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBoxAfegirPregunta.ResumeLayout(false);
             this.groupBoxAfegirPregunta.PerformLayout();
-            this.groupBoxGestionRespuestas.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxValidar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNivel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIdioma)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAnadirResp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGestionResp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxReiniciar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAnadirResp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIdioma)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNivel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxValidar)).EndInit();
+            this.groupBoxGestionRespuestas.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGestionResp)).EndInit();
             this.ResumeLayout(false);
 
         }
