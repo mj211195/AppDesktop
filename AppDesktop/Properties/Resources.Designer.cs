@@ -163,6 +163,16 @@ namespace AppDesktop.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logoHelp {
+            get {
+                object obj = ResourceManager.GetObject("logoHelp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap museu {
             get {
                 object obj = ResourceManager.GetObject("museu", resourceCulture);

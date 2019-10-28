@@ -68,12 +68,6 @@
     <Compile Include="FormSuport.Designer.cs">
       <DependentUpon>FormSuport.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAyuda.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormAyuda.Designer.cs">
-      <DependentUpon>FormAyuda.cs</DependentUpon>
-    </Compile>
     <Compile Include="GestionPreguntas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,11 +76,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AnadirPregunta.resx">
+      <DependentUpon>AnadirPregunta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormAyuda.resx">
-      <DependentUpon>FormAyuda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSuport.resx">
       <DependentUpon>FormSuport.cs</DependentUpon>
@@ -118,17 +112,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\020-folder-1.png" />
-    <None Include="Resources\012-folder.png" />
-    <None Include="Resources\016-info.png" />
-    <None Include="Resources\006-edit.png" />
-    <None Include="Resources\001-phone-call.png" />
-    <None Include="Resources\012-envelope.png" />
-    <None Include="Resources\022-logout.png" />
     <Content Include="Resources\Fondo.jpg" />
-    <None Include="Resources\grande_fondo1.jpg" />
     <Content Include="Resources\Logo Museu.png" />
-    <Content Include="Resources\logo.ico" />
+    <Content Include="Resources\logoHelp.png" />
     <Content Include="Resources\museu.jpg" />
     <Content Include="Resources\Terrasa.jpg" />
     <Content Include="Resources\Terrasa1.jpg" />
