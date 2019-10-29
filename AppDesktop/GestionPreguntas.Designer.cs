@@ -40,7 +40,7 @@
             this.labelRespuestas = new System.Windows.Forms.Label();
             this.listBoxPreguntas = new System.Windows.Forms.ListBox();
             this.labelIdioma = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxIdioma = new System.Windows.Forms.ComboBox();
             this.groupBoxPreguntas.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +56,7 @@
             // comboBoxNivel
             // 
             this.comboBoxNivel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxNivel.Enabled = false;
             this.comboBoxNivel.FormattingEnabled = true;
             this.comboBoxNivel.Items.AddRange(new object[] {
             "Infantil",
@@ -153,25 +154,26 @@
             this.labelIdioma.TabIndex = 7;
             this.labelIdioma.Text = "Idioma:";
             // 
-            // comboBox1
+            // comboBoxIdioma
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBoxIdioma.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxIdioma.FormattingEnabled = true;
+            this.comboBoxIdioma.Items.AddRange(new object[] {
             "Català",
             "Castellà",
             "Anglès"});
-            this.comboBox1.Location = new System.Drawing.Point(60, 28);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(204, 21);
-            this.comboBox1.TabIndex = 8;
+            this.comboBoxIdioma.Location = new System.Drawing.Point(60, 28);
+            this.comboBoxIdioma.Name = "comboBoxIdioma";
+            this.comboBoxIdioma.Size = new System.Drawing.Size(204, 21);
+            this.comboBoxIdioma.TabIndex = 8;
+            this.comboBoxIdioma.SelectedIndexChanged += new System.EventHandler(this.comboBoxIdioma_SelectedIndexChanged);
             // 
             // FormGestionPreguntas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(770, 478);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxIdioma);
             this.Controls.Add(this.labelIdioma);
             this.Controls.Add(this.groupBoxPreguntas);
             this.Controls.Add(this.comboBoxNivel);
@@ -199,6 +201,6 @@
         private System.Windows.Forms.Label labelRespuestas;
         private System.Windows.Forms.ListBox listBoxRespuestas;
         private System.Windows.Forms.Label labelIdioma;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxIdioma;
     }
 }

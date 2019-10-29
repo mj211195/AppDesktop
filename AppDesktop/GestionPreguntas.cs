@@ -22,5 +22,10 @@ namespace AppDesktop
             AnadirPregunta anadirPregunta = new AnadirPregunta();
             anadirPregunta.ShowDialog();
         }
+
+        private void comboBoxIdioma_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxNivel.Enabled = true;
+        }
     }
 }
