@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.comboBoxIdioma = new System.Windows.Forms.ComboBox();
             this.labelIdioma = new System.Windows.Forms.Label();
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.labelTitol = new System.Windows.Forms.Label();
             this.checkBoxCorrecta = new System.Windows.Forms.CheckBox();
-            this.buttonAyuda = new System.Windows.Forms.Button();
             this.textBoxResposta = new System.Windows.Forms.TextBox();
             this.textBoxPregunta = new System.Windows.Forms.TextBox();
             this.comboBoxNivel = new System.Windows.Forms.ComboBox();
@@ -46,13 +45,30 @@
             this.labelResposta = new System.Windows.Forms.Label();
             this.labelPregunta = new System.Windows.Forms.Label();
             this.labelNivel = new System.Windows.Forms.Label();
+            this.groupBoxAfegirPregunta = new System.Windows.Forms.GroupBox();
+            this.pictureBoxReiniciar = new System.Windows.Forms.PictureBox();
+            this.pictureBoxAnadirResp = new System.Windows.Forms.PictureBox();
+            this.pictureBoxIdioma = new System.Windows.Forms.PictureBox();
+            this.pictureBoxNivel = new System.Windows.Forms.PictureBox();
+            this.pictureBoxValidar = new System.Windows.Forms.PictureBox();
+            this.groupBoxGestionRespuestas = new System.Windows.Forms.GroupBox();
+            this.pictureBoxGestionResp = new System.Windows.Forms.PictureBox();
+            this.toolTipAyuda = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBoxAfegirPregunta.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxReiniciar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAnadirResp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIdioma)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNivel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxValidar)).BeginInit();
+            this.groupBoxGestionRespuestas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGestionResp)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxIdioma
             // 
             this.comboBoxIdioma.FormattingEnabled = true;
-            this.comboBoxIdioma.Location = new System.Drawing.Point(70, 67);
+            this.comboBoxIdioma.Location = new System.Drawing.Point(73, 21);
             this.comboBoxIdioma.Name = "comboBoxIdioma";
             this.comboBoxIdioma.Size = new System.Drawing.Size(143, 21);
             this.comboBoxIdioma.TabIndex = 54;
@@ -60,7 +76,7 @@
             // labelIdioma
             // 
             this.labelIdioma.AutoSize = true;
-            this.labelIdioma.Location = new System.Drawing.Point(9, 70);
+            this.labelIdioma.Location = new System.Drawing.Point(6, 29);
             this.labelIdioma.Name = "labelIdioma";
             this.labelIdioma.Size = new System.Drawing.Size(38, 13);
             this.labelIdioma.TabIndex = 53;
@@ -68,7 +84,7 @@
             // 
             // buttonGuardar
             // 
-            this.buttonGuardar.Location = new System.Drawing.Point(398, 415);
+            this.buttonGuardar.Location = new System.Drawing.Point(564, 448);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(108, 23);
             this.buttonGuardar.TabIndex = 52;
@@ -78,49 +94,30 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 198);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 30);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(494, 211);
+            this.dataGridView1.Size = new System.Drawing.Size(560, 167);
             this.dataGridView1.TabIndex = 51;
-            // 
-            // labelTitol
-            // 
-            this.labelTitol.AutoSize = true;
-            this.labelTitol.Location = new System.Drawing.Point(29, 15);
-            this.labelTitol.Name = "labelTitol";
-            this.labelTitol.Size = new System.Drawing.Size(109, 13);
-            this.labelTitol.TabIndex = 50;
-            this.labelTitol.Text = "AFEGIR PREGUNTA";
             // 
             // checkBoxCorrecta
             // 
             this.checkBoxCorrecta.AutoSize = true;
-            this.checkBoxCorrecta.Location = new System.Drawing.Point(484, 164);
+            this.checkBoxCorrecta.Location = new System.Drawing.Point(524, 166);
             this.checkBoxCorrecta.Name = "checkBoxCorrecta";
             this.checkBoxCorrecta.Size = new System.Drawing.Size(15, 14);
             this.checkBoxCorrecta.TabIndex = 49;
             this.checkBoxCorrecta.UseVisualStyleBackColor = true;
             // 
-            // buttonAyuda
-            // 
-            this.buttonAyuda.Location = new System.Drawing.Point(515, 5);
-            this.buttonAyuda.Name = "buttonAyuda";
-            this.buttonAyuda.Size = new System.Drawing.Size(75, 23);
-            this.buttonAyuda.TabIndex = 48;
-            this.buttonAyuda.Text = "Ajuda";
-            this.buttonAyuda.UseVisualStyleBackColor = true;
-            this.buttonAyuda.Click += new System.EventHandler(this.buttonAyuda_Click);
-            // 
             // textBoxResposta
             // 
-            this.textBoxResposta.Location = new System.Drawing.Point(70, 161);
+            this.textBoxResposta.Location = new System.Drawing.Point(98, 164);
             this.textBoxResposta.Name = "textBoxResposta";
-            this.textBoxResposta.Size = new System.Drawing.Size(395, 20);
+            this.textBoxResposta.Size = new System.Drawing.Size(407, 20);
             this.textBoxResposta.TabIndex = 47;
             // 
             // textBoxPregunta
             // 
-            this.textBoxPregunta.Location = new System.Drawing.Point(70, 112);
+            this.textBoxPregunta.Location = new System.Drawing.Point(88, 76);
             this.textBoxPregunta.Multiline = true;
             this.textBoxPregunta.Name = "textBoxPregunta";
             this.textBoxPregunta.Size = new System.Drawing.Size(417, 43);
@@ -129,14 +126,14 @@
             // comboBoxNivel
             // 
             this.comboBoxNivel.FormattingEnabled = true;
-            this.comboBoxNivel.Location = new System.Drawing.Point(428, 67);
+            this.comboBoxNivel.Location = new System.Drawing.Point(482, 26);
             this.comboBoxNivel.Name = "comboBoxNivel";
             this.comboBoxNivel.Size = new System.Drawing.Size(159, 21);
             this.comboBoxNivel.TabIndex = 45;
             // 
             // buttonReiniciar
             // 
-            this.buttonReiniciar.Location = new System.Drawing.Point(289, 415);
+            this.buttonReiniciar.Location = new System.Drawing.Point(455, 448);
             this.buttonReiniciar.Name = "buttonReiniciar";
             this.buttonReiniciar.Size = new System.Drawing.Size(101, 23);
             this.buttonReiniciar.TabIndex = 44;
@@ -145,7 +142,7 @@
             // 
             // buttonEliminar
             // 
-            this.buttonEliminar.Location = new System.Drawing.Point(512, 300);
+            this.buttonEliminar.Location = new System.Drawing.Point(578, 86);
             this.buttonEliminar.Name = "buttonEliminar";
             this.buttonEliminar.Size = new System.Drawing.Size(75, 23);
             this.buttonEliminar.TabIndex = 43;
@@ -154,7 +151,7 @@
             // 
             // buttonModificar
             // 
-            this.buttonModificar.Location = new System.Drawing.Point(512, 262);
+            this.buttonModificar.Location = new System.Drawing.Point(578, 48);
             this.buttonModificar.Name = "buttonModificar";
             this.buttonModificar.Size = new System.Drawing.Size(75, 23);
             this.buttonModificar.TabIndex = 42;
@@ -163,7 +160,7 @@
             // 
             // buttonAnadir
             // 
-            this.buttonAnadir.Location = new System.Drawing.Point(512, 159);
+            this.buttonAnadir.Location = new System.Drawing.Point(545, 161);
             this.buttonAnadir.Name = "buttonAnadir";
             this.buttonAnadir.Size = new System.Drawing.Size(75, 23);
             this.buttonAnadir.TabIndex = 41;
@@ -172,7 +169,7 @@
             // 
             // buttonValidar
             // 
-            this.buttonValidar.Location = new System.Drawing.Point(512, 112);
+            this.buttonValidar.Location = new System.Drawing.Point(543, 74);
             this.buttonValidar.Name = "buttonValidar";
             this.buttonValidar.Size = new System.Drawing.Size(75, 23);
             this.buttonValidar.TabIndex = 40;
@@ -183,7 +180,7 @@
             // labelResposta
             // 
             this.labelResposta.AutoSize = true;
-            this.labelResposta.Location = new System.Drawing.Point(9, 164);
+            this.labelResposta.Location = new System.Drawing.Point(6, 164);
             this.labelResposta.Name = "labelResposta";
             this.labelResposta.Size = new System.Drawing.Size(52, 13);
             this.labelResposta.TabIndex = 39;
@@ -192,7 +189,7 @@
             // labelPregunta
             // 
             this.labelPregunta.AutoSize = true;
-            this.labelPregunta.Location = new System.Drawing.Point(9, 117);
+            this.labelPregunta.Location = new System.Drawing.Point(6, 76);
             this.labelPregunta.Name = "labelPregunta";
             this.labelPregunta.Size = new System.Drawing.Size(50, 13);
             this.labelPregunta.TabIndex = 38;
@@ -201,40 +198,156 @@
             // labelNivel
             // 
             this.labelNivel.AutoSize = true;
-            this.labelNivel.Location = new System.Drawing.Point(367, 70);
+            this.labelNivel.Location = new System.Drawing.Point(433, 28);
             this.labelNivel.Name = "labelNivel";
             this.labelNivel.Size = new System.Drawing.Size(33, 13);
             this.labelNivel.TabIndex = 37;
             this.labelNivel.Text = "Nivell";
             // 
+            // groupBoxAfegirPregunta
+            // 
+            this.groupBoxAfegirPregunta.Controls.Add(this.pictureBoxReiniciar);
+            this.groupBoxAfegirPregunta.Controls.Add(this.pictureBoxAnadirResp);
+            this.groupBoxAfegirPregunta.Controls.Add(this.pictureBoxIdioma);
+            this.groupBoxAfegirPregunta.Controls.Add(this.pictureBoxNivel);
+            this.groupBoxAfegirPregunta.Controls.Add(this.pictureBoxValidar);
+            this.groupBoxAfegirPregunta.Controls.Add(this.groupBoxGestionRespuestas);
+            this.groupBoxAfegirPregunta.Controls.Add(this.labelNivel);
+            this.groupBoxAfegirPregunta.Controls.Add(this.buttonGuardar);
+            this.groupBoxAfegirPregunta.Controls.Add(this.labelIdioma);
+            this.groupBoxAfegirPregunta.Controls.Add(this.buttonReiniciar);
+            this.groupBoxAfegirPregunta.Controls.Add(this.comboBoxIdioma);
+            this.groupBoxAfegirPregunta.Controls.Add(this.checkBoxCorrecta);
+            this.groupBoxAfegirPregunta.Controls.Add(this.comboBoxNivel);
+            this.groupBoxAfegirPregunta.Controls.Add(this.labelPregunta);
+            this.groupBoxAfegirPregunta.Controls.Add(this.textBoxResposta);
+            this.groupBoxAfegirPregunta.Controls.Add(this.buttonAnadir);
+            this.groupBoxAfegirPregunta.Controls.Add(this.textBoxPregunta);
+            this.groupBoxAfegirPregunta.Controls.Add(this.labelResposta);
+            this.groupBoxAfegirPregunta.Controls.Add(this.buttonValidar);
+            this.groupBoxAfegirPregunta.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxAfegirPregunta.Name = "groupBoxAfegirPregunta";
+            this.groupBoxAfegirPregunta.Size = new System.Drawing.Size(686, 493);
+            this.groupBoxAfegirPregunta.TabIndex = 55;
+            this.groupBoxAfegirPregunta.TabStop = false;
+            this.groupBoxAfegirPregunta.Text = "Afegir pregunta";
+            // 
+            // pictureBoxReiniciar
+            // 
+            this.pictureBoxReiniciar.Image = global::AppDesktop.Properties.Resources.logoHelp;
+            this.pictureBoxReiniciar.Location = new System.Drawing.Point(410, 448);
+            this.pictureBoxReiniciar.Name = "pictureBoxReiniciar";
+            this.pictureBoxReiniciar.Size = new System.Drawing.Size(39, 22);
+            this.pictureBoxReiniciar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxReiniciar.TabIndex = 60;
+            this.pictureBoxReiniciar.TabStop = false;
+            this.toolTipAyuda.SetToolTip(this.pictureBoxReiniciar, "- Reiniciar: buida tots els camps.\r\n- Guardar: guarda els canvis i emmagatzema la" +
+        " pregunta amb les respostes a l\'arxiu.");
+            // 
+            // pictureBoxAnadirResp
+            // 
+            this.pictureBoxAnadirResp.Image = global::AppDesktop.Properties.Resources.logoHelp;
+            this.pictureBoxAnadirResp.Location = new System.Drawing.Point(637, 162);
+            this.pictureBoxAnadirResp.Name = "pictureBoxAnadirResp";
+            this.pictureBoxAnadirResp.Size = new System.Drawing.Size(39, 22);
+            this.pictureBoxAnadirResp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxAnadirResp.TabIndex = 59;
+            this.pictureBoxAnadirResp.TabStop = false;
+            this.toolTipAyuda.SetToolTip(this.pictureBoxAnadirResp, "Afegir una resposta al llistat que es veurà a la graella de respostes\r\nEn cas de " +
+        "que sigui la vàlida, marcar el tick y prémer [Afegir].\r\n\r\nNota: només una respos" +
+        "ta podrà ser la vàlida!");
+            // 
+            // pictureBoxIdioma
+            // 
+            this.pictureBoxIdioma.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureBoxIdioma.Image = global::AppDesktop.Properties.Resources.logoHelp;
+            this.pictureBoxIdioma.Location = new System.Drawing.Point(222, 21);
+            this.pictureBoxIdioma.Name = "pictureBoxIdioma";
+            this.pictureBoxIdioma.Size = new System.Drawing.Size(39, 22);
+            this.pictureBoxIdioma.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxIdioma.TabIndex = 58;
+            this.pictureBoxIdioma.TabStop = false;
+            this.toolTipAyuda.SetToolTip(this.pictureBoxIdioma, "Seleccionar l\'idioma de la pregunta");
+            // 
+            // pictureBoxNivel
+            // 
+            this.pictureBoxNivel.Image = global::AppDesktop.Properties.Resources.logoHelp;
+            this.pictureBoxNivel.Location = new System.Drawing.Point(643, 26);
+            this.pictureBoxNivel.Name = "pictureBoxNivel";
+            this.pictureBoxNivel.Size = new System.Drawing.Size(39, 22);
+            this.pictureBoxNivel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxNivel.TabIndex = 57;
+            this.pictureBoxNivel.TabStop = false;
+            this.toolTipAyuda.SetToolTip(this.pictureBoxNivel, "Seleccionar el nivel de la pregunta.");
+            // 
+            // pictureBoxValidar
+            // 
+            this.pictureBoxValidar.Image = global::AppDesktop.Properties.Resources.logoHelp;
+            this.pictureBoxValidar.Location = new System.Drawing.Point(624, 75);
+            this.pictureBoxValidar.Name = "pictureBoxValidar";
+            this.pictureBoxValidar.Size = new System.Drawing.Size(39, 22);
+            this.pictureBoxValidar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxValidar.TabIndex = 56;
+            this.pictureBoxValidar.TabStop = false;
+            this.toolTipAyuda.SetToolTip(this.pictureBoxValidar, "Apartat per formular la pregunta. Un cop formulada, prémer [Validar].\r\n\r\nNota: no" +
+        " es podrà afegir una pregunta (guardar-la al final) si no està validada!");
+            // 
+            // groupBoxGestionRespuestas
+            // 
+            this.groupBoxGestionRespuestas.Controls.Add(this.pictureBoxGestionResp);
+            this.groupBoxGestionRespuestas.Controls.Add(this.dataGridView1);
+            this.groupBoxGestionRespuestas.Controls.Add(this.buttonModificar);
+            this.groupBoxGestionRespuestas.Controls.Add(this.buttonEliminar);
+            this.groupBoxGestionRespuestas.Location = new System.Drawing.Point(6, 216);
+            this.groupBoxGestionRespuestas.Name = "groupBoxGestionRespuestas";
+            this.groupBoxGestionRespuestas.Size = new System.Drawing.Size(670, 226);
+            this.groupBoxGestionRespuestas.TabIndex = 55;
+            this.groupBoxGestionRespuestas.TabStop = false;
+            this.groupBoxGestionRespuestas.Text = "Graella de respostes";
+            // 
+            // pictureBoxGestionResp
+            // 
+            this.pictureBoxGestionResp.Image = global::AppDesktop.Properties.Resources.logoHelp;
+            this.pictureBoxGestionResp.Location = new System.Drawing.Point(596, 19);
+            this.pictureBoxGestionResp.Name = "pictureBoxGestionResp";
+            this.pictureBoxGestionResp.Size = new System.Drawing.Size(39, 22);
+            this.pictureBoxGestionResp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxGestionResp.TabIndex = 60;
+            this.pictureBoxGestionResp.TabStop = false;
+            this.toolTipAyuda.SetToolTip(this.pictureBoxGestionResp, "Apartat per modificar/eliminar una resposta.\r\nEn qualsevol cas, s\'ha de marcar la" +
+        " resposta sobre la que es vulgui treballar.");
+            // 
+            // toolTipAyuda
+            // 
+            this.toolTipAyuda.AutomaticDelay = 250;
+            this.toolTipAyuda.AutoPopDelay = 5000;
+            this.toolTipAyuda.InitialDelay = 250;
+            this.toolTipAyuda.ReshowDelay = 50;
+            this.toolTipAyuda.ToolTipTitle = "Ajuda";
+            // 
             // AnadirPregunta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(602, 450);
-            this.Controls.Add(this.comboBoxIdioma);
-            this.Controls.Add(this.labelIdioma);
-            this.Controls.Add(this.buttonGuardar);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.labelTitol);
-            this.Controls.Add(this.checkBoxCorrecta);
-            this.Controls.Add(this.buttonAyuda);
-            this.Controls.Add(this.textBoxResposta);
-            this.Controls.Add(this.textBoxPregunta);
-            this.Controls.Add(this.comboBoxNivel);
-            this.Controls.Add(this.buttonReiniciar);
-            this.Controls.Add(this.buttonEliminar);
-            this.Controls.Add(this.buttonModificar);
-            this.Controls.Add(this.buttonAnadir);
-            this.Controls.Add(this.buttonValidar);
-            this.Controls.Add(this.labelResposta);
-            this.Controls.Add(this.labelPregunta);
-            this.Controls.Add(this.labelNivel);
+            this.ClientSize = new System.Drawing.Size(705, 517);
+            this.Controls.Add(this.groupBoxAfegirPregunta);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(721, 556);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(721, 556);
             this.Name = "AnadirPregunta";
             this.Text = "Afegir pregunta";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBoxAfegirPregunta.ResumeLayout(false);
+            this.groupBoxAfegirPregunta.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxReiniciar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAnadirResp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIdioma)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNivel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxValidar)).EndInit();
+            this.groupBoxGestionRespuestas.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGestionResp)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -244,9 +357,7 @@
         private System.Windows.Forms.Label labelIdioma;
         private System.Windows.Forms.Button buttonGuardar;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label labelTitol;
         private System.Windows.Forms.CheckBox checkBoxCorrecta;
-        private System.Windows.Forms.Button buttonAyuda;
         private System.Windows.Forms.TextBox textBoxResposta;
         private System.Windows.Forms.TextBox textBoxPregunta;
         private System.Windows.Forms.ComboBox comboBoxNivel;
@@ -258,5 +369,14 @@
         private System.Windows.Forms.Label labelResposta;
         private System.Windows.Forms.Label labelPregunta;
         private System.Windows.Forms.Label labelNivel;
+        private System.Windows.Forms.GroupBox groupBoxAfegirPregunta;
+        private System.Windows.Forms.GroupBox groupBoxGestionRespuestas;
+        private System.Windows.Forms.PictureBox pictureBoxValidar;
+        private System.Windows.Forms.PictureBox pictureBoxReiniciar;
+        private System.Windows.Forms.PictureBox pictureBoxAnadirResp;
+        private System.Windows.Forms.PictureBox pictureBoxIdioma;
+        private System.Windows.Forms.PictureBox pictureBoxNivel;
+        private System.Windows.Forms.PictureBox pictureBoxGestionResp;
+        private System.Windows.Forms.ToolTip toolTipAyuda;
     }
 }
