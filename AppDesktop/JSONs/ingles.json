@@ -1,0 +1,36 @@
+[
+  {
+    "infantil": 
+    [
+      {
+        "pregunta": "",
+        "respuestas": [],
+        "respuestaCorrecta": ""
+      }
+    ],
+    "facil": 
+    [
+      {
+        "pregunta": "",
+        "respuestas": [],
+        "respuestaCorrecta": ""
+      }
+    ],
+    "medio": 
+    [
+      {
+        "pregunta": "",
+        "respuestas": [],
+        "respuestaCorrecta":""
+      }
+    ],
+    "dificil": 
+    [
+      {
+        "pregunta": "",
+        "respuestas": [],
+        "respuestaCorrecta": ""
+      }
+    ]
+  }
+]
