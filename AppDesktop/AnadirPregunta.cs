@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,9 +18,27 @@ namespace AppDesktop
         //booleano para marcar como ReadOnly o desmarcarlo la pregunta validada
         bool preguntaValidada = false;
 
+        const byte MAX_CHAR_PREG = 140;
+        const byte MAX_CHAR_RESP = 50;
+
+
         public AnadirPregunta()
         {
             InitializeComponent();
+        }
+        
+        private void AnadirPregunta_Load(object sender, EventArgs e)
+        {
+            labelCarPre.Text = MAX_CHAR_PREG.ToString();
+            labelCarRes.Text = MAX_CHAR_RESP.ToString();
+
+            toolTipAyuda.Active = false;
+            //Le indicamos al Visual que no genere automáticamente las columnas y conserve los headers tal cual
+            //se lo hemos indicado
+            dataGridView1.AutoGenerateColumns = false;
+
+            //Cargamos los 3 JSONS
+            //dqwdwqwqqwoeqowieiqowenwqioqiowqenqieoqeqwewq
         }
 
         private void buttonValidar_Click(object sender, EventArgs e)
@@ -35,65 +56,131 @@ namespace AppDesktop
             }
         }
 
+        private void buttonAnadir_Click(object sender, EventArgs e)
+        {
+            if (textBoxResposta.Text.Length>0 &&
+                textBoxResposta.Text.Length<MAX_CHAR_RESP)
+            {
+                //se añade a la lista de respuestas
+                //dqwdwqwqqwoeqowieiqowenwqioqiowqenqieoqeqwewq
+            }
+        }
+
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
             //Contador de campos correctos
             byte cont = 0;
 
-            if (comboBoxIdioma.SelectedIndex>-1)
+            string msgError = "No s'ha pogut guadar correctament la pregunta perquè: ";
+
+            //Comprobamos cuales son los campos correctos y los incorrectos
+            //En los incorrectos, concatenamos mensajes de error para que luego la usuaria sepa qué debe hacer
+            if (comboBoxIdioma.SelectedIndex > -1)
             {
                 cont++;
-                if (comboBoxNivel.SelectedIndex>-1)
+            }
+            else
+            {
+                msgError += "\n  - S'ha d'escollir un idioma";
+            }
+
+
+            if (comboBoxNivel.SelectedIndex > -1)
+            {
+                cont++;
+            }
+            else
+            {
+                msgError += "\n  - S'ha d'escollir un nivell";
+            }
+
+
+            if (textBoxPregunta.Text.Length < MAX_CHAR_PREG &&
+                textBoxPregunta.Text.Length > 20 &&
+                textBoxPregunta.ReadOnly == true)
+            {
+                cont++;
+            }
+            else
+            {
+                msgError += "\n  - S'ha d'escriure una pregunta vàlida i ha d'estar validada";
+            }
+
+
+            if (dataGridView1.RowCount == 4)
+            {
+                cont++;
+                //que una de las respuestas sea la correcta respuesta sea la correcta //////////////////////////////// PENDIENTE
+                if (true)
                 {
                     cont++;
-                    if (textBoxPregunta.Text.Length < 140 &&
-                        textBoxPregunta.Text.Length > 20 &&
-                        textBoxPregunta.Text.Equals(" ") &&
-                        textBoxPregunta.ReadOnly==true)
-                    {
-                        cont++;
-                        if (dataGridView1.RowCount==4)
-                        {
-                            cont++;
-                            //Ultimo verificador: que una respuesta sea válida
-                            /*if ()
-                            {
-                                cont++;
-                            }*/
-                        }
-                    }
+                }
+                else
+                {
+                    msgError += "\n  - Una de les respostes ha d'estar marcada com a correcte";
                 }
             }
-
-            /*
-            //En funcion del numero de campos erroneos se abre un msgbox o otro
-            if ()
+            else
             {
+                msgError += "\n  - Ha d'haver-hi cuatre respostes";
+            }
 
-            }
-            else if()
+
+            //Si todos los campos son correctos se guarda la pregunta, si no, muestra mensaje indicando los errores
+            if (cont==5)
             {
+                //guardar la pregunta
+
+
+
+                limpiarCampos();
             }
-            */
+            else
+            {
+                MessageBox.Show(msgError, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
         private void buttonReiniciar_Click(object sender, EventArgs e)
         {
-            comboBoxIdioma.Items.Clear();
-            comboBoxNivel.Items.Clear();
+            limpiarCampos();
+        }
+
+        /// <summary>
+        /// Limpia (deja en blanco) todos los campos, comboBoxs,...
+        /// </summary>
+        private void limpiarCampos()
+        {
+            comboBoxIdioma.SelectedIndex = -1;
+            comboBoxNivel.SelectedIndex = -1;
             textBoxPregunta.ReadOnly = false;
             textBoxPregunta.Clear();
             textBoxResposta.Clear();
             checkBoxCorrecta.Checked = false;
-            //dataGridView1.Rows.Clear();
+            radioButtonNo.Checked = true;
         }
-        /// <summary>
-        /// Vuelve a llenar los comboBoxs Idioma y Nivel y actualiza el GridView
-        /// </summary>
-        private void refrescar()
-        {
 
+        //Activamos/Desactivamos la ayuda (ToolTip)
+        private void radioButtonSi_CheckedChanged(object sender, EventArgs e)
+        {
+            toolTipAyuda.Active = true;
+        }
+        private void radioButtonNo_CheckedChanged(object sender, EventArgs e)
+        {
+            toolTipAyuda.Active = false;
+        }
+
+        //Eventos para los contadores de números de carácteres de los textBox pregunta y respuesta
+        private void textBoxPregunta_TextChanged(object sender, EventArgs e)
+        {
+            int numCar = MAX_CHAR_PREG - textBoxPregunta.Text.Length;
+            labelCarPre.Text = numCar.ToString();
+        }
+        private void textBoxResposta_TextChanged(object sender, EventArgs e)
+        {
+            int numCar = MAX_CHAR_RESP - textBoxResposta.Text.Length;
+            labelCarRes.Text = numCar.ToString();
         }
     }
 }

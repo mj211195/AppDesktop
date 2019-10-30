@@ -34,6 +34,8 @@
             this.labelIdioma = new System.Windows.Forms.Label();
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Resposta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Correcta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.checkBoxCorrecta = new System.Windows.Forms.CheckBox();
             this.textBoxResposta = new System.Windows.Forms.TextBox();
             this.textBoxPregunta = new System.Windows.Forms.TextBox();
@@ -47,31 +49,32 @@
             this.labelPregunta = new System.Windows.Forms.Label();
             this.labelNivel = new System.Windows.Forms.Label();
             this.groupBoxAfegirPregunta = new System.Windows.Forms.GroupBox();
-            this.pictureBoxAnadirResp = new System.Windows.Forms.PictureBox();
-            this.pictureBoxIdioma = new System.Windows.Forms.PictureBox();
-            this.pictureBoxNivel = new System.Windows.Forms.PictureBox();
-            this.pictureBoxValidar = new System.Windows.Forms.PictureBox();
+            this.labelCarPre = new System.Windows.Forms.Label();
+            this.groupBoxMostrarAjuda = new System.Windows.Forms.GroupBox();
+            this.radioButtonNo = new System.Windows.Forms.RadioButton();
+            this.radioButtonSi = new System.Windows.Forms.RadioButton();
             this.groupBoxGestionRespuestas = new System.Windows.Forms.GroupBox();
-            this.pictureBoxGestionResp = new System.Windows.Forms.PictureBox();
             this.toolTipAyuda = new System.Windows.Forms.ToolTip(this.components);
+            this.labelCarRes = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBoxAfegirPregunta.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAnadirResp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIdioma)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNivel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxValidar)).BeginInit();
+            this.groupBoxMostrarAjuda.SuspendLayout();
             this.groupBoxGestionRespuestas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGestionResp)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxIdioma
             // 
             this.comboBoxIdioma.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxIdioma.FormattingEnabled = true;
+            this.comboBoxIdioma.Items.AddRange(new object[] {
+            "Català",
+            "Castellà",
+            "Anglès"});
             this.comboBoxIdioma.Location = new System.Drawing.Point(73, 26);
             this.comboBoxIdioma.Name = "comboBoxIdioma";
             this.comboBoxIdioma.Size = new System.Drawing.Size(143, 21);
             this.comboBoxIdioma.TabIndex = 54;
+            this.toolTipAyuda.SetToolTip(this.comboBoxIdioma, "Seleccionar l\'idioma de la pregunta");
             // 
             // labelIdioma
             // 
@@ -84,21 +87,40 @@
             // 
             // buttonGuardar
             // 
-            this.buttonGuardar.Location = new System.Drawing.Point(564, 448);
+            this.buttonGuardar.Location = new System.Drawing.Point(564, 464);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(108, 23);
             this.buttonGuardar.TabIndex = 52;
             this.buttonGuardar.Text = "Guardar";
+            this.toolTipAyuda.SetToolTip(this.buttonGuardar, "Guarda la pregunta");
             this.buttonGuardar.UseVisualStyleBackColor = true;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Resposta,
+            this.Correcta});
             this.dataGridView1.Location = new System.Drawing.Point(6, 30);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(560, 167);
             this.dataGridView1.TabIndex = 51;
+            // 
+            // Resposta
+            // 
+            this.Resposta.HeaderText = "Resposta";
+            this.Resposta.Name = "Resposta";
+            this.Resposta.ReadOnly = true;
+            // 
+            // Correcta
+            // 
+            this.Correcta.HeaderText = "Correcta";
+            this.Correcta.Name = "Correcta";
+            this.Correcta.ReadOnly = true;
             // 
             // checkBoxCorrecta
             // 
@@ -107,14 +129,16 @@
             this.checkBoxCorrecta.Name = "checkBoxCorrecta";
             this.checkBoxCorrecta.Size = new System.Drawing.Size(15, 14);
             this.checkBoxCorrecta.TabIndex = 49;
+            this.toolTipAyuda.SetToolTip(this.checkBoxCorrecta, "Si aquesta resposta és la correcta, s\'ha de marcar amb el tick");
             this.checkBoxCorrecta.UseVisualStyleBackColor = true;
             // 
             // textBoxResposta
             // 
-            this.textBoxResposta.Location = new System.Drawing.Point(98, 164);
+            this.textBoxResposta.Location = new System.Drawing.Point(88, 164);
             this.textBoxResposta.Name = "textBoxResposta";
-            this.textBoxResposta.Size = new System.Drawing.Size(407, 20);
+            this.textBoxResposta.Size = new System.Drawing.Size(417, 20);
             this.textBoxResposta.TabIndex = 47;
+            this.textBoxResposta.TextChanged += new System.EventHandler(this.textBoxResposta_TextChanged);
             // 
             // textBoxPregunta
             // 
@@ -123,23 +147,31 @@
             this.textBoxPregunta.Name = "textBoxPregunta";
             this.textBoxPregunta.Size = new System.Drawing.Size(417, 43);
             this.textBoxPregunta.TabIndex = 46;
+            this.textBoxPregunta.TextChanged += new System.EventHandler(this.textBoxPregunta_TextChanged);
             // 
             // comboBoxNivel
             // 
             this.comboBoxNivel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxNivel.FormattingEnabled = true;
+            this.comboBoxNivel.Items.AddRange(new object[] {
+            "Infantil",
+            "Adult (Fàcil)",
+            "Adult (Intermedi)",
+            "Adult (Difícil)"});
             this.comboBoxNivel.Location = new System.Drawing.Point(482, 26);
             this.comboBoxNivel.Name = "comboBoxNivel";
             this.comboBoxNivel.Size = new System.Drawing.Size(159, 21);
             this.comboBoxNivel.TabIndex = 45;
+            this.toolTipAyuda.SetToolTip(this.comboBoxNivel, "Seleccionar el nivel de la pregunta.");
             // 
             // buttonReiniciar
             // 
-            this.buttonReiniciar.Location = new System.Drawing.Point(455, 448);
+            this.buttonReiniciar.Location = new System.Drawing.Point(457, 464);
             this.buttonReiniciar.Name = "buttonReiniciar";
             this.buttonReiniciar.Size = new System.Drawing.Size(101, 23);
             this.buttonReiniciar.TabIndex = 44;
             this.buttonReiniciar.Text = "Reiniciar";
+            this.toolTipAyuda.SetToolTip(this.buttonReiniciar, "Buida tots els camps i menús desplegables");
             this.buttonReiniciar.UseVisualStyleBackColor = true;
             this.buttonReiniciar.Click += new System.EventHandler(this.buttonReiniciar_Click);
             // 
@@ -169,6 +201,7 @@
             this.buttonAnadir.TabIndex = 41;
             this.buttonAnadir.Text = "Afegir";
             this.buttonAnadir.UseVisualStyleBackColor = true;
+            this.buttonAnadir.Click += new System.EventHandler(this.buttonAnadir_Click);
             // 
             // buttonValidar
             // 
@@ -177,6 +210,8 @@
             this.buttonValidar.Size = new System.Drawing.Size(75, 23);
             this.buttonValidar.TabIndex = 40;
             this.buttonValidar.Text = "Validar";
+            this.toolTipAyuda.SetToolTip(this.buttonValidar, "Un cop es doni per bona la pregunta, prémer [Validar].\r\nNota: no es podrà afegir " +
+        "una pregunta (guardar-la al final) si no està validada!\r\n");
             this.buttonValidar.UseVisualStyleBackColor = true;
             this.buttonValidar.Click += new System.EventHandler(this.buttonValidar_Click);
             // 
@@ -211,10 +246,9 @@
             // 
             this.groupBoxAfegirPregunta.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxAfegirPregunta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.groupBoxAfegirPregunta.Controls.Add(this.pictureBoxAnadirResp);
-            this.groupBoxAfegirPregunta.Controls.Add(this.pictureBoxIdioma);
-            this.groupBoxAfegirPregunta.Controls.Add(this.pictureBoxNivel);
-            this.groupBoxAfegirPregunta.Controls.Add(this.pictureBoxValidar);
+            this.groupBoxAfegirPregunta.Controls.Add(this.labelCarRes);
+            this.groupBoxAfegirPregunta.Controls.Add(this.labelCarPre);
+            this.groupBoxAfegirPregunta.Controls.Add(this.groupBoxMostrarAjuda);
             this.groupBoxAfegirPregunta.Controls.Add(this.groupBoxGestionRespuestas);
             this.groupBoxAfegirPregunta.Controls.Add(this.labelNivel);
             this.groupBoxAfegirPregunta.Controls.Add(this.buttonGuardar);
@@ -236,78 +270,61 @@
             this.groupBoxAfegirPregunta.TabStop = false;
             this.groupBoxAfegirPregunta.Text = "Afegir pregunta";
             // 
-            // pictureBoxAnadirResp
+            // labelCarPre
             // 
-            this.pictureBoxAnadirResp.Image = global::AppDesktop.Properties.Resources.logoHelp;
-            this.pictureBoxAnadirResp.Location = new System.Drawing.Point(641, 166);
-            this.pictureBoxAnadirResp.Name = "pictureBoxAnadirResp";
-            this.pictureBoxAnadirResp.Size = new System.Drawing.Size(18, 18);
-            this.pictureBoxAnadirResp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxAnadirResp.TabIndex = 59;
-            this.pictureBoxAnadirResp.TabStop = false;
-            this.toolTipAyuda.SetToolTip(this.pictureBoxAnadirResp, "Afegir una resposta al llistat que es veurà a la graella de respostes\r\nEn cas de " +
-        "que sigui la vàlida, marcar el tick y prémer [Afegir].\r\n\r\nNota: només una respos" +
-        "ta podrà ser la vàlida!");
+            this.labelCarPre.AutoSize = true;
+            this.labelCarPre.Location = new System.Drawing.Point(88, 123);
+            this.labelCarPre.Name = "labelCarPre";
+            this.labelCarPre.Size = new System.Drawing.Size(0, 13);
+            this.labelCarPre.TabIndex = 61;
+            this.toolTipAyuda.SetToolTip(this.labelCarPre, "Número de caràcters restants");
             // 
-            // pictureBoxIdioma
+            // groupBoxMostrarAjuda
             // 
-            this.pictureBoxIdioma.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxIdioma.Image = global::AppDesktop.Properties.Resources.logoHelp;
-            this.pictureBoxIdioma.Location = new System.Drawing.Point(231, 29);
-            this.pictureBoxIdioma.Name = "pictureBoxIdioma";
-            this.pictureBoxIdioma.Size = new System.Drawing.Size(18, 18);
-            this.pictureBoxIdioma.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxIdioma.TabIndex = 58;
-            this.pictureBoxIdioma.TabStop = false;
-            this.toolTipAyuda.SetToolTip(this.pictureBoxIdioma, "Seleccionar l\'idioma de la pregunta");
+            this.groupBoxMostrarAjuda.Controls.Add(this.radioButtonNo);
+            this.groupBoxMostrarAjuda.Controls.Add(this.radioButtonSi);
+            this.groupBoxMostrarAjuda.Location = new System.Drawing.Point(12, 431);
+            this.groupBoxMostrarAjuda.Name = "groupBoxMostrarAjuda";
+            this.groupBoxMostrarAjuda.Size = new System.Drawing.Size(119, 48);
+            this.groupBoxMostrarAjuda.TabIndex = 60;
+            this.groupBoxMostrarAjuda.TabStop = false;
+            this.groupBoxMostrarAjuda.Text = "Mostrar ajuda";
             // 
-            // pictureBoxNivel
+            // radioButtonNo
             // 
-            this.pictureBoxNivel.Image = global::AppDesktop.Properties.Resources.logoHelp;
-            this.pictureBoxNivel.Location = new System.Drawing.Point(643, 29);
-            this.pictureBoxNivel.Name = "pictureBoxNivel";
-            this.pictureBoxNivel.Size = new System.Drawing.Size(18, 18);
-            this.pictureBoxNivel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxNivel.TabIndex = 57;
-            this.pictureBoxNivel.TabStop = false;
-            this.toolTipAyuda.SetToolTip(this.pictureBoxNivel, "Seleccionar el nivel de la pregunta.");
+            this.radioButtonNo.AutoSize = true;
+            this.radioButtonNo.Checked = true;
+            this.radioButtonNo.Location = new System.Drawing.Point(50, 20);
+            this.radioButtonNo.Name = "radioButtonNo";
+            this.radioButtonNo.Size = new System.Drawing.Size(39, 17);
+            this.radioButtonNo.TabIndex = 1;
+            this.radioButtonNo.TabStop = true;
+            this.radioButtonNo.Text = "No";
+            this.radioButtonNo.UseVisualStyleBackColor = true;
+            this.radioButtonNo.CheckedChanged += new System.EventHandler(this.radioButtonNo_CheckedChanged);
             // 
-            // pictureBoxValidar
+            // radioButtonSi
             // 
-            this.pictureBoxValidar.Image = global::AppDesktop.Properties.Resources.logoHelp;
-            this.pictureBoxValidar.Location = new System.Drawing.Point(641, 76);
-            this.pictureBoxValidar.Name = "pictureBoxValidar";
-            this.pictureBoxValidar.Size = new System.Drawing.Size(18, 18);
-            this.pictureBoxValidar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxValidar.TabIndex = 56;
-            this.pictureBoxValidar.TabStop = false;
-            this.toolTipAyuda.SetToolTip(this.pictureBoxValidar, "Apartat per formular la pregunta. Un cop formulada, prémer [Validar].\r\n\r\nNota: no" +
-        " es podrà afegir una pregunta (guardar-la al final) si no està validada!");
+            this.radioButtonSi.AutoSize = true;
+            this.radioButtonSi.Location = new System.Drawing.Point(7, 20);
+            this.radioButtonSi.Name = "radioButtonSi";
+            this.radioButtonSi.Size = new System.Drawing.Size(36, 17);
+            this.radioButtonSi.TabIndex = 0;
+            this.radioButtonSi.Text = "Sí";
+            this.radioButtonSi.UseVisualStyleBackColor = true;
+            this.radioButtonSi.CheckedChanged += new System.EventHandler(this.radioButtonSi_CheckedChanged);
             // 
             // groupBoxGestionRespuestas
             // 
-            this.groupBoxGestionRespuestas.Controls.Add(this.pictureBoxGestionResp);
             this.groupBoxGestionRespuestas.Controls.Add(this.dataGridView1);
             this.groupBoxGestionRespuestas.Controls.Add(this.buttonModificar);
             this.groupBoxGestionRespuestas.Controls.Add(this.buttonEliminar);
             this.groupBoxGestionRespuestas.Location = new System.Drawing.Point(6, 216);
             this.groupBoxGestionRespuestas.Name = "groupBoxGestionRespuestas";
-            this.groupBoxGestionRespuestas.Size = new System.Drawing.Size(670, 226);
+            this.groupBoxGestionRespuestas.Size = new System.Drawing.Size(670, 209);
             this.groupBoxGestionRespuestas.TabIndex = 55;
             this.groupBoxGestionRespuestas.TabStop = false;
             this.groupBoxGestionRespuestas.Text = "Graella de respostes";
-            // 
-            // pictureBoxGestionResp
-            // 
-            this.pictureBoxGestionResp.Image = global::AppDesktop.Properties.Resources.logoHelp;
-            this.pictureBoxGestionResp.Location = new System.Drawing.Point(635, 24);
-            this.pictureBoxGestionResp.Name = "pictureBoxGestionResp";
-            this.pictureBoxGestionResp.Size = new System.Drawing.Size(18, 18);
-            this.pictureBoxGestionResp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxGestionResp.TabIndex = 60;
-            this.pictureBoxGestionResp.TabStop = false;
-            this.toolTipAyuda.SetToolTip(this.pictureBoxGestionResp, "Apartat per modificar/eliminar una resposta.\r\nEn qualsevol cas, s\'ha de marcar la" +
-        " resposta sobre la que es vulgui treballar.");
             // 
             // toolTipAyuda
             // 
@@ -316,6 +333,15 @@
             this.toolTipAyuda.InitialDelay = 250;
             this.toolTipAyuda.ReshowDelay = 50;
             this.toolTipAyuda.ToolTipTitle = "Ajuda";
+            // 
+            // labelCarRes
+            // 
+            this.labelCarRes.AutoSize = true;
+            this.labelCarRes.Location = new System.Drawing.Point(90, 188);
+            this.labelCarRes.Name = "labelCarRes";
+            this.labelCarRes.Size = new System.Drawing.Size(0, 13);
+            this.labelCarRes.TabIndex = 62;
+            this.toolTipAyuda.SetToolTip(this.labelCarRes, "Número de caràcters restants");
             // 
             // AnadirPregunta
             // 
@@ -332,15 +358,13 @@
             this.MinimumSize = new System.Drawing.Size(721, 556);
             this.Name = "AnadirPregunta";
             this.Text = "Afegir pregunta";
+            this.Load += new System.EventHandler(this.AnadirPregunta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBoxAfegirPregunta.ResumeLayout(false);
             this.groupBoxAfegirPregunta.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAnadirResp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIdioma)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNivel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxValidar)).EndInit();
+            this.groupBoxMostrarAjuda.ResumeLayout(false);
+            this.groupBoxMostrarAjuda.PerformLayout();
             this.groupBoxGestionRespuestas.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGestionResp)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -365,11 +389,13 @@
         private System.Windows.Forms.Label labelNivel;
         private System.Windows.Forms.GroupBox groupBoxAfegirPregunta;
         private System.Windows.Forms.GroupBox groupBoxGestionRespuestas;
-        private System.Windows.Forms.PictureBox pictureBoxValidar;
-        private System.Windows.Forms.PictureBox pictureBoxAnadirResp;
-        private System.Windows.Forms.PictureBox pictureBoxIdioma;
-        private System.Windows.Forms.PictureBox pictureBoxNivel;
-        private System.Windows.Forms.PictureBox pictureBoxGestionResp;
         private System.Windows.Forms.ToolTip toolTipAyuda;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Resposta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Correcta;
+        private System.Windows.Forms.GroupBox groupBoxMostrarAjuda;
+        private System.Windows.Forms.RadioButton radioButtonNo;
+        private System.Windows.Forms.RadioButton radioButtonSi;
+        private System.Windows.Forms.Label labelCarPre;
+        private System.Windows.Forms.Label labelCarRes;
     }
 }
