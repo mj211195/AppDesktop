@@ -56,14 +56,10 @@
             this.toolTipAyuda = new System.Windows.Forms.ToolTip(this.components);
             this.dgvRespuesta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvCorrecta = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.anadirPreguntaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.anadirPreguntaBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBoxAfegirPregunta.SuspendLayout();
             this.groupBoxMostrarAjuda.SuspendLayout();
             this.groupBoxGestionRespuestas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.anadirPreguntaBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.anadirPreguntaBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxIdioma
@@ -188,6 +184,7 @@
             this.buttonModificar.TabIndex = 42;
             this.buttonModificar.Text = "Modificar";
             this.buttonModificar.UseVisualStyleBackColor = true;
+            this.buttonModificar.Visible = false;
             // 
             // buttonAnadir
             // 
@@ -342,7 +339,7 @@
             // dgvRespuesta
             // 
             this.dgvRespuesta.DataPropertyName = "respuesta";
-            this.dgvRespuesta.HeaderText = "Respuesta";
+            this.dgvRespuesta.HeaderText = "Respostes";
             this.dgvRespuesta.Name = "dgvRespuesta";
             this.dgvRespuesta.Width = 400;
             // 
@@ -351,14 +348,6 @@
             this.dgvCorrecta.DataPropertyName = "correcta";
             this.dgvCorrecta.HeaderText = "Correcta";
             this.dgvCorrecta.Name = "dgvCorrecta";
-            // 
-            // anadirPreguntaBindingSource
-            // 
-            this.anadirPreguntaBindingSource.DataSource = typeof(AppDesktop.AnadirPregunta);
-            // 
-            // anadirPreguntaBindingSource1
-            // 
-            this.anadirPreguntaBindingSource1.DataSource = typeof(AppDesktop.AnadirPregunta);
             // 
             // AnadirPregunta
             // 
@@ -382,8 +371,6 @@
             this.groupBoxMostrarAjuda.ResumeLayout(false);
             this.groupBoxMostrarAjuda.PerformLayout();
             this.groupBoxGestionRespuestas.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.anadirPreguntaBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.anadirPreguntaBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -414,8 +401,6 @@
         private System.Windows.Forms.RadioButton radioButtonSi;
         private System.Windows.Forms.Label labelCarPre;
         private System.Windows.Forms.Label labelCarRes;
-        private System.Windows.Forms.BindingSource anadirPreguntaBindingSource;
-        private System.Windows.Forms.BindingSource anadirPreguntaBindingSource1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvRespuesta;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dgvCorrecta;
     }

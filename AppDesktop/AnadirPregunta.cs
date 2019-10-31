@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using AppDesktop.Clases;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,11 @@ namespace AppDesktop
 
         const byte MAX_CHAR_PREG = 140;
         const byte MAX_CHAR_RESP = 50;
+        /*
+        BindingList<Nivel> inf = new BindingList<Nivel>();
+        BindingList<Nivel> aFac = new BindingList<Nivel>();
+        BindingList<Nivel> aInt = new BindingList<Nivel>();
+        BindingList<Nivel> aDif = new BindingList<Nivel>();*/
 
         List<Respuesta> listaRespuestas = new List<Respuesta>();
 
@@ -40,9 +46,6 @@ namespace AppDesktop
             //Le indicamos al Visual que no genere automáticamente las columnas y conserve los headers tal cual
             //se lo hemos indicado
             dataGridView1.AutoGenerateColumns = false;
-
-            //Cargamos los 3 JSONS
-            //dqwdwqwqqwoeqowieiqowenwqioqiowqenqieoqeqwewq
         }
 
         private void buttonValidar_Click(object sender, EventArgs e)
@@ -82,8 +85,6 @@ namespace AppDesktop
                 checkBoxCorrecta.Checked = false;
 
                 actualizarDGV();
-                dataGridView1.ClearSelection();
-
             }
         }
 
@@ -116,8 +117,8 @@ namespace AppDesktop
             }
 
 
-            if (textBoxPregunta.Text.Length < MAX_CHAR_PREG &&
-                textBoxPregunta.Text.Length > 20 &&
+            if (textBoxPregunta.Text.Length <= MAX_CHAR_PREG &&
+                textBoxPregunta.Text.Length >= 20 &&
                 textBoxPregunta.ReadOnly == true)
             {
                 cont++;
@@ -160,8 +161,44 @@ namespace AppDesktop
             //Si todos los campos son correctos se guarda la pregunta, si no, muestra mensaje indicando los errores
             if (cont==5)
             {
+                int indexIdioma = comboBoxIdioma.SelectedIndex,
+                    indexNivel = comboBoxNivel.SelectedIndex;
+
+                Pregunta p = new Pregunta(textBoxPregunta.Text, listaRespuestas);
+                /*
                 //guardar la pregunta
-                //dewfewoifewojifewoifwe
+                switch (indexNivel)
+                {
+                    //infantil
+                    case 0:
+                        switch (indexIdioma)
+                        {
+                            //catalan
+                            case 0:
+                                break;
+
+                            //castellano
+                            case 1:
+                                break;
+
+                            //ingles
+                            default:
+                                break;
+                        }
+                        break;
+
+                    //adulto (facil)
+                    case 1:
+                        break;
+
+                    //adulto (intermedio)
+                    case 2:
+                        break;
+
+                    //adulto (dificil)
+                    default:
+                        break;
+                }*/
 
 
                 limpiarCampos();
