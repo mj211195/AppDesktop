@@ -34,8 +34,6 @@
             this.labelIdioma = new System.Windows.Forms.Label();
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Resposta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Correcta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.checkBoxCorrecta = new System.Windows.Forms.CheckBox();
             this.textBoxResposta = new System.Windows.Forms.TextBox();
             this.textBoxPregunta = new System.Windows.Forms.TextBox();
@@ -49,17 +47,23 @@
             this.labelPregunta = new System.Windows.Forms.Label();
             this.labelNivel = new System.Windows.Forms.Label();
             this.groupBoxAfegirPregunta = new System.Windows.Forms.GroupBox();
+            this.labelCarRes = new System.Windows.Forms.Label();
             this.labelCarPre = new System.Windows.Forms.Label();
             this.groupBoxMostrarAjuda = new System.Windows.Forms.GroupBox();
             this.radioButtonNo = new System.Windows.Forms.RadioButton();
             this.radioButtonSi = new System.Windows.Forms.RadioButton();
             this.groupBoxGestionRespuestas = new System.Windows.Forms.GroupBox();
             this.toolTipAyuda = new System.Windows.Forms.ToolTip(this.components);
-            this.labelCarRes = new System.Windows.Forms.Label();
+            this.dgvRespuesta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvCorrecta = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.anadirPreguntaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.anadirPreguntaBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBoxAfegirPregunta.SuspendLayout();
             this.groupBoxMostrarAjuda.SuspendLayout();
             this.groupBoxGestionRespuestas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.anadirPreguntaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.anadirPreguntaBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxIdioma
@@ -102,33 +106,24 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Resposta,
-            this.Correcta});
+            this.dgvRespuesta,
+            this.dgvCorrecta});
             this.dataGridView1.Location = new System.Drawing.Point(6, 30);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(560, 167);
             this.dataGridView1.TabIndex = 51;
-            // 
-            // Resposta
-            // 
-            this.Resposta.HeaderText = "Resposta";
-            this.Resposta.Name = "Resposta";
-            this.Resposta.ReadOnly = true;
-            // 
-            // Correcta
-            // 
-            this.Correcta.HeaderText = "Correcta";
-            this.Correcta.Name = "Correcta";
-            this.Correcta.ReadOnly = true;
             // 
             // checkBoxCorrecta
             // 
             this.checkBoxCorrecta.AutoSize = true;
-            this.checkBoxCorrecta.Location = new System.Drawing.Point(524, 166);
+            this.checkBoxCorrecta.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.checkBoxCorrecta.Location = new System.Drawing.Point(521, 153);
             this.checkBoxCorrecta.Name = "checkBoxCorrecta";
-            this.checkBoxCorrecta.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxCorrecta.Size = new System.Drawing.Size(51, 31);
             this.checkBoxCorrecta.TabIndex = 49;
+            this.checkBoxCorrecta.Text = "Correcta";
             this.toolTipAyuda.SetToolTip(this.checkBoxCorrecta, "Si aquesta resposta és la correcta, s\'ha de marcar amb el tick");
             this.checkBoxCorrecta.UseVisualStyleBackColor = true;
             // 
@@ -183,6 +178,7 @@
             this.buttonEliminar.TabIndex = 43;
             this.buttonEliminar.Text = "Eliminar";
             this.buttonEliminar.UseVisualStyleBackColor = true;
+            this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
             // 
             // buttonModificar
             // 
@@ -195,7 +191,7 @@
             // 
             // buttonAnadir
             // 
-            this.buttonAnadir.Location = new System.Drawing.Point(545, 161);
+            this.buttonAnadir.Location = new System.Drawing.Point(584, 159);
             this.buttonAnadir.Name = "buttonAnadir";
             this.buttonAnadir.Size = new System.Drawing.Size(75, 23);
             this.buttonAnadir.TabIndex = 41;
@@ -270,6 +266,15 @@
             this.groupBoxAfegirPregunta.TabStop = false;
             this.groupBoxAfegirPregunta.Text = "Afegir pregunta";
             // 
+            // labelCarRes
+            // 
+            this.labelCarRes.AutoSize = true;
+            this.labelCarRes.Location = new System.Drawing.Point(90, 188);
+            this.labelCarRes.Name = "labelCarRes";
+            this.labelCarRes.Size = new System.Drawing.Size(0, 13);
+            this.labelCarRes.TabIndex = 62;
+            this.toolTipAyuda.SetToolTip(this.labelCarRes, "Número de caràcters restants");
+            // 
             // labelCarPre
             // 
             this.labelCarPre.AutoSize = true;
@@ -334,14 +339,26 @@
             this.toolTipAyuda.ReshowDelay = 50;
             this.toolTipAyuda.ToolTipTitle = "Ajuda";
             // 
-            // labelCarRes
+            // dgvRespuesta
             // 
-            this.labelCarRes.AutoSize = true;
-            this.labelCarRes.Location = new System.Drawing.Point(90, 188);
-            this.labelCarRes.Name = "labelCarRes";
-            this.labelCarRes.Size = new System.Drawing.Size(0, 13);
-            this.labelCarRes.TabIndex = 62;
-            this.toolTipAyuda.SetToolTip(this.labelCarRes, "Número de caràcters restants");
+            this.dgvRespuesta.DataPropertyName = "respuesta";
+            this.dgvRespuesta.HeaderText = "Respuesta";
+            this.dgvRespuesta.Name = "dgvRespuesta";
+            this.dgvRespuesta.Width = 400;
+            // 
+            // dgvCorrecta
+            // 
+            this.dgvCorrecta.DataPropertyName = "correcta";
+            this.dgvCorrecta.HeaderText = "Correcta";
+            this.dgvCorrecta.Name = "dgvCorrecta";
+            // 
+            // anadirPreguntaBindingSource
+            // 
+            this.anadirPreguntaBindingSource.DataSource = typeof(AppDesktop.AnadirPregunta);
+            // 
+            // anadirPreguntaBindingSource1
+            // 
+            this.anadirPreguntaBindingSource1.DataSource = typeof(AppDesktop.AnadirPregunta);
             // 
             // AnadirPregunta
             // 
@@ -365,6 +382,8 @@
             this.groupBoxMostrarAjuda.ResumeLayout(false);
             this.groupBoxMostrarAjuda.PerformLayout();
             this.groupBoxGestionRespuestas.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.anadirPreguntaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.anadirPreguntaBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -390,12 +409,14 @@
         private System.Windows.Forms.GroupBox groupBoxAfegirPregunta;
         private System.Windows.Forms.GroupBox groupBoxGestionRespuestas;
         private System.Windows.Forms.ToolTip toolTipAyuda;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Resposta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Correcta;
         private System.Windows.Forms.GroupBox groupBoxMostrarAjuda;
         private System.Windows.Forms.RadioButton radioButtonNo;
         private System.Windows.Forms.RadioButton radioButtonSi;
         private System.Windows.Forms.Label labelCarPre;
         private System.Windows.Forms.Label labelCarRes;
+        private System.Windows.Forms.BindingSource anadirPreguntaBindingSource;
+        private System.Windows.Forms.BindingSource anadirPreguntaBindingSource1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvRespuesta;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dgvCorrecta;
     }
 }

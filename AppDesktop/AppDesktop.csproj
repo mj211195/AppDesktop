@@ -79,6 +79,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Respuesta.cs" />
     <EmbeddedResource Include="AnadirPregunta.resx">
       <DependentUpon>AnadirPregunta.cs</DependentUpon>
     </EmbeddedResource>
@@ -105,6 +106,7 @@
     <None Include="JSONs\catalan.json" />
     <None Include="JSONs\castellano.json" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\AnadirPregunta.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

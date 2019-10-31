@@ -21,6 +21,8 @@ namespace AppDesktop
         const byte MAX_CHAR_PREG = 140;
         const byte MAX_CHAR_RESP = 50;
 
+        List<Respuesta> listaRespuestas = new List<Respuesta>();
+
 
         public AnadirPregunta()
         {
@@ -29,6 +31,8 @@ namespace AppDesktop
         
         private void AnadirPregunta_Load(object sender, EventArgs e)
         {
+            //actualizarDGV();
+
             labelCarPre.Text = MAX_CHAR_PREG.ToString();
             labelCarRes.Text = MAX_CHAR_RESP.ToString();
 
@@ -59,10 +63,27 @@ namespace AppDesktop
         private void buttonAnadir_Click(object sender, EventArgs e)
         {
             if (textBoxResposta.Text.Length>0 &&
-                textBoxResposta.Text.Length<MAX_CHAR_RESP)
+                textBoxResposta.Text.Length<=MAX_CHAR_RESP)
             {
-                //se añade a la lista de respuestas
-                //dqwdwqwqqwoeqowieiqowenwqioqiowqenqieoqeqwewq
+                Respuesta r = new Respuesta();
+
+                r.respuesta = textBoxResposta.Text;
+                if (checkBoxCorrecta.Checked)
+                {
+                    r.correcta = true;
+                }
+                else
+                {
+                    r.correcta = false;
+                }
+                listaRespuestas.Add(r);
+
+                textBoxResposta.Text = "";
+                checkBoxCorrecta.Checked = false;
+
+                actualizarDGV();
+                dataGridView1.ClearSelection();
+
             }
         }
 
@@ -110,14 +131,24 @@ namespace AppDesktop
             if (dataGridView1.RowCount == 4)
             {
                 cont++;
+
+                //Contamos cuantas respuestas están marcadas como válidas
+                byte numCorrectas = 0;
+                foreach (Respuesta r in listaRespuestas)
+                {
+                    if (r.correcta)
+                    {
+                        numCorrectas++;
+                    }
+                }
                 //que una de las respuestas sea la correcta respuesta sea la correcta //////////////////////////////// PENDIENTE
-                if (true)
+                if (numCorrectas==1)
                 {
                     cont++;
                 }
                 else
                 {
-                    msgError += "\n  - Una de les respostes ha d'estar marcada com a correcte";
+                    msgError += "\n  - Només una de les respostes ha d'estar marcada com a correcte";
                 }
             }
             else
@@ -130,7 +161,7 @@ namespace AppDesktop
             if (cont==5)
             {
                 //guardar la pregunta
-
+                //dewfewoifewojifewoifwe
 
 
                 limpiarCampos();
@@ -148,7 +179,7 @@ namespace AppDesktop
         }
 
         /// <summary>
-        /// Limpia (deja en blanco) todos los campos, comboBoxs,...
+        /// Limpia (deja en blanco) todos los campos, comboBoxs, DGV...
         /// </summary>
         private void limpiarCampos()
         {
@@ -159,6 +190,9 @@ namespace AppDesktop
             textBoxResposta.Clear();
             checkBoxCorrecta.Checked = false;
             radioButtonNo.Checked = true;
+
+            dataGridView1.DataSource = null;
+            listaRespuestas.Clear();
         }
 
         //Activamos/Desactivamos la ayuda (ToolTip)
@@ -181,6 +215,28 @@ namespace AppDesktop
         {
             int numCar = MAX_CHAR_RESP - textBoxResposta.Text.Length;
             labelCarRes.Text = numCar.ToString();
+        }
+
+        private void actualizarDGV()
+        {
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = listaRespuestas;
+        }
+
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                if (dataGridView1.CurrentRow.Index != -1)
+                {
+                    //Eliminamos la fila seleccionada
+                    listaRespuestas.RemoveAt(dataGridView1.CurrentRow.Index);
+
+                    //Actualizamos el DataGridView para que se reflejen los cambios
+                    actualizarDGV();
+
+                }
+            }
         }
     }
 }
