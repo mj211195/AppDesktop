@@ -1,6 +1,4 @@
 ﻿using AppDesktop.Clases;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,17 +14,10 @@ namespace AppDesktop
 {
     public partial class AnadirPregunta : Form
     {
-        //booleano para marcar como ReadOnly o desmarcarlo la pregunta validada
-        bool preguntaValidada = false;
+        const byte MAX_CHAR_PREG = 100;
+        const byte MAX_CHAR_RESP = 35;
 
-        const byte MAX_CHAR_PREG = 140;
-        const byte MAX_CHAR_RESP = 50;
-        /*
-        BindingList<Nivel> inf = new BindingList<Nivel>();
-        BindingList<Nivel> aFac = new BindingList<Nivel>();
-        BindingList<Nivel> aInt = new BindingList<Nivel>();
-        BindingList<Nivel> aDif = new BindingList<Nivel>();*/
-
+        List<Pregunta> listaPreguntas = new List<Pregunta>();
         List<Respuesta> listaRespuestas = new List<Respuesta>();
 
 
@@ -37,12 +28,13 @@ namespace AppDesktop
         
         private void AnadirPregunta_Load(object sender, EventArgs e)
         {
-            //actualizarDGV();
-
+            //"Iniciamos" las labels de contadores de carácteres para pregunta y respuesta
             labelCarPre.Text = MAX_CHAR_PREG.ToString();
             labelCarRes.Text = MAX_CHAR_RESP.ToString();
 
+            //Indicamos que, de inicio, no se muestre la ayuda
             toolTipAyuda.Active = false;
+
             //Le indicamos al Visual que no genere automáticamente las columnas y conserve los headers tal cual
             //se lo hemos indicado
             dataGridView1.AutoGenerateColumns = false;
@@ -50,21 +42,21 @@ namespace AppDesktop
 
         private void buttonValidar_Click(object sender, EventArgs e)
         {
-            //condicional para marcar/desmarcar como ReadOnly la pregunta
-            if (preguntaValidada == false)
+            //Cambiamos el textBox pregunta a ReadOnly o no cada vez que presionemos el botón [Validar]
+            if (textBoxPregunta.ReadOnly)
             {
-                textBoxPregunta.ReadOnly = true;
-                preguntaValidada = true;
+                textBoxPregunta.ReadOnly = false;
             }
             else
             {
-                textBoxPregunta.ReadOnly = false;
-                preguntaValidada = false;
+                textBoxPregunta.ReadOnly = true;
             }
+
         }
 
         private void buttonAnadir_Click(object sender, EventArgs e)
         {
+            //Añadimos la respuesta si cumple ambos requisitos
             if (textBoxResposta.Text.Length>0 &&
                 textBoxResposta.Text.Length<=MAX_CHAR_RESP)
             {
@@ -79,8 +71,11 @@ namespace AppDesktop
                 {
                     r.correcta = false;
                 }
+
+                //La añadimos a la lista
                 listaRespuestas.Add(r);
 
+                //Limpiamos campos
                 textBoxResposta.Text = "";
                 checkBoxCorrecta.Checked = false;
 
@@ -93,10 +88,11 @@ namespace AppDesktop
             //Contador de campos correctos
             byte cont = 0;
 
-            string msgError = "No s'ha pogut guadar correctament la pregunta perquè: ";
+            string msgError = "No s'ha pogut afegir correctament la pregunta perquè: ";
 
             //Comprobamos cuales son los campos correctos y los incorrectos
             //En los incorrectos, concatenamos mensajes de error para que luego la usuaria sepa qué debe hacer
+            //Checkeo del Idioma
             if (comboBoxIdioma.SelectedIndex > -1)
             {
                 cont++;
@@ -107,6 +103,7 @@ namespace AppDesktop
             }
 
 
+            //Checkeo del Nivel
             if (comboBoxNivel.SelectedIndex > -1)
             {
                 cont++;
@@ -117,8 +114,9 @@ namespace AppDesktop
             }
 
 
+            //Checkeo de la pregunta
             if (textBoxPregunta.Text.Length <= MAX_CHAR_PREG &&
-                textBoxPregunta.Text.Length >= 20 &&
+                textBoxPregunta.Text.Length >= 10 &&
                 textBoxPregunta.ReadOnly == true)
             {
                 cont++;
@@ -129,12 +127,14 @@ namespace AppDesktop
             }
 
 
+            //Checkeo de las respuestas
             if (dataGridView1.RowCount == 4)
             {
                 cont++;
 
                 //Contamos cuantas respuestas están marcadas como válidas
                 byte numCorrectas = 0;
+
                 foreach (Respuesta r in listaRespuestas)
                 {
                     if (r.correcta)
@@ -142,7 +142,7 @@ namespace AppDesktop
                         numCorrectas++;
                     }
                 }
-                //que una de las respuestas sea la correcta respuesta sea la correcta //////////////////////////////// PENDIENTE
+
                 if (numCorrectas==1)
                 {
                     cont++;
@@ -151,6 +151,7 @@ namespace AppDesktop
                 {
                     msgError += "\n  - Només una de les respostes ha d'estar marcada com a correcte";
                 }
+
             }
             else
             {
@@ -161,45 +162,18 @@ namespace AppDesktop
             //Si todos los campos son correctos se guarda la pregunta, si no, muestra mensaje indicando los errores
             if (cont==5)
             {
-                int indexIdioma = comboBoxIdioma.SelectedIndex,
-                    indexNivel = comboBoxNivel.SelectedIndex;
+                Pregunta p = new Pregunta(textBoxPregunta.Text, listaRespuestas,
+                                         (byte)comboBoxIdioma.SelectedIndex, (byte)comboBoxNivel.SelectedIndex);
 
-                Pregunta p = new Pregunta(textBoxPregunta.Text, listaRespuestas);
+                listaPreguntas.Add(p);
+
+                MessageBox.Show("Pregunta afegida correctament!");
+
                 /*
-                //guardar la pregunta
-                switch (indexNivel)
-                {
-                    //infantil
-                    case 0:
-                        switch (indexIdioma)
-                        {
-                            //catalan
-                            case 0:
-                                break;
-
-                            //castellano
-                            case 1:
-                                break;
-
-                            //ingles
-                            default:
-                                break;
-                        }
-                        break;
-
-                    //adulto (facil)
-                    case 1:
-                        break;
-
-                    //adulto (intermedio)
-                    case 2:
-                        break;
-
-                    //adulto (dificil)
-                    default:
-                        break;
-                }*/
-
+                //chivato
+                int contador = listaPreguntas.Count;
+                MessageBox.Show("Numero de preguntas añadidas " + contador);
+                */
 
                 limpiarCampos();
             }
@@ -254,6 +228,9 @@ namespace AppDesktop
             labelCarRes.Text = numCar.ToString();
         }
 
+        /// <summary>
+        /// Refrescamos la DataGridView con la lista de respuestas
+        /// </summary>
         private void actualizarDGV()
         {
             dataGridView1.DataSource = null;

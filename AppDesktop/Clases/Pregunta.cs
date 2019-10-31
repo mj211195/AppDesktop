@@ -10,13 +10,17 @@ namespace AppDesktop.Clases
     {
         public String pregunta { get; set; }
         public List<Respuesta> respuestas { get; set; }
+        public byte idNivel { get; set; }
+        public byte idIdioma { get; set; }
 
+        //Constructores
         public Pregunta() { }
-
-        public Pregunta(String pregunta, List<Respuesta> respuestas)
+        public Pregunta(String pregunta, List<Respuesta> respuestas, byte idNivel, byte idIdioma)
         {
             this.pregunta = pregunta;
             this.respuestas = respuestas;
+            this.idNivel = idNivel;
+            this.idIdioma = idIdioma;
         }
     }
 }

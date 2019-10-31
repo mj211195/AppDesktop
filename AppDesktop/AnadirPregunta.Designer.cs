@@ -34,13 +34,14 @@
             this.labelIdioma = new System.Windows.Forms.Label();
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvRespuesta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvCorrecta = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.checkBoxCorrecta = new System.Windows.Forms.CheckBox();
             this.textBoxResposta = new System.Windows.Forms.TextBox();
             this.textBoxPregunta = new System.Windows.Forms.TextBox();
             this.comboBoxNivel = new System.Windows.Forms.ComboBox();
             this.buttonReiniciar = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
-            this.buttonModificar = new System.Windows.Forms.Button();
             this.buttonAnadir = new System.Windows.Forms.Button();
             this.buttonValidar = new System.Windows.Forms.Button();
             this.labelResposta = new System.Windows.Forms.Label();
@@ -54,8 +55,6 @@
             this.radioButtonSi = new System.Windows.Forms.RadioButton();
             this.groupBoxGestionRespuestas = new System.Windows.Forms.GroupBox();
             this.toolTipAyuda = new System.Windows.Forms.ToolTip(this.components);
-            this.dgvRespuesta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvCorrecta = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBoxAfegirPregunta.SuspendLayout();
             this.groupBoxMostrarAjuda.SuspendLayout();
@@ -111,6 +110,19 @@
             this.dataGridView1.Size = new System.Drawing.Size(560, 167);
             this.dataGridView1.TabIndex = 51;
             // 
+            // dgvRespuesta
+            // 
+            this.dgvRespuesta.DataPropertyName = "respuesta";
+            this.dgvRespuesta.HeaderText = "Respostes";
+            this.dgvRespuesta.Name = "dgvRespuesta";
+            this.dgvRespuesta.Width = 400;
+            // 
+            // dgvCorrecta
+            // 
+            this.dgvCorrecta.DataPropertyName = "correcta";
+            this.dgvCorrecta.HeaderText = "Correcta";
+            this.dgvCorrecta.Name = "dgvCorrecta";
+            // 
             // checkBoxCorrecta
             // 
             this.checkBoxCorrecta.AutoSize = true;
@@ -153,7 +165,7 @@
             this.comboBoxNivel.Name = "comboBoxNivel";
             this.comboBoxNivel.Size = new System.Drawing.Size(159, 21);
             this.comboBoxNivel.TabIndex = 45;
-            this.toolTipAyuda.SetToolTip(this.comboBoxNivel, "Seleccionar el nivel de la pregunta.");
+            this.toolTipAyuda.SetToolTip(this.comboBoxNivel, "Seleccionar el nivel de la pregunta");
             // 
             // buttonReiniciar
             // 
@@ -172,19 +184,10 @@
             this.buttonEliminar.Name = "buttonEliminar";
             this.buttonEliminar.Size = new System.Drawing.Size(75, 23);
             this.buttonEliminar.TabIndex = 43;
-            this.buttonEliminar.Text = "Eliminar";
+            this.buttonEliminar.Text = "Eliminar seleccionada";
+            this.toolTipAyuda.SetToolTip(this.buttonEliminar, "Elimina la pregunta seleccionada");
             this.buttonEliminar.UseVisualStyleBackColor = true;
             this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
-            // 
-            // buttonModificar
-            // 
-            this.buttonModificar.Location = new System.Drawing.Point(578, 48);
-            this.buttonModificar.Name = "buttonModificar";
-            this.buttonModificar.Size = new System.Drawing.Size(75, 23);
-            this.buttonModificar.TabIndex = 42;
-            this.buttonModificar.Text = "Modificar";
-            this.buttonModificar.UseVisualStyleBackColor = true;
-            this.buttonModificar.Visible = false;
             // 
             // buttonAnadir
             // 
@@ -291,6 +294,7 @@
             this.groupBoxMostrarAjuda.TabIndex = 60;
             this.groupBoxMostrarAjuda.TabStop = false;
             this.groupBoxMostrarAjuda.Text = "Mostrar ajuda";
+            this.toolTipAyuda.SetToolTip(this.groupBoxMostrarAjuda, "Activa/Desactiva els missatges d\'ajuda");
             // 
             // radioButtonNo
             // 
@@ -319,7 +323,6 @@
             // groupBoxGestionRespuestas
             // 
             this.groupBoxGestionRespuestas.Controls.Add(this.dataGridView1);
-            this.groupBoxGestionRespuestas.Controls.Add(this.buttonModificar);
             this.groupBoxGestionRespuestas.Controls.Add(this.buttonEliminar);
             this.groupBoxGestionRespuestas.Location = new System.Drawing.Point(6, 216);
             this.groupBoxGestionRespuestas.Name = "groupBoxGestionRespuestas";
@@ -335,19 +338,6 @@
             this.toolTipAyuda.InitialDelay = 250;
             this.toolTipAyuda.ReshowDelay = 50;
             this.toolTipAyuda.ToolTipTitle = "Ajuda";
-            // 
-            // dgvRespuesta
-            // 
-            this.dgvRespuesta.DataPropertyName = "respuesta";
-            this.dgvRespuesta.HeaderText = "Respostes";
-            this.dgvRespuesta.Name = "dgvRespuesta";
-            this.dgvRespuesta.Width = 400;
-            // 
-            // dgvCorrecta
-            // 
-            this.dgvCorrecta.DataPropertyName = "correcta";
-            this.dgvCorrecta.HeaderText = "Correcta";
-            this.dgvCorrecta.Name = "dgvCorrecta";
             // 
             // AnadirPregunta
             // 
@@ -387,7 +377,6 @@
         private System.Windows.Forms.ComboBox comboBoxNivel;
         private System.Windows.Forms.Button buttonReiniciar;
         private System.Windows.Forms.Button buttonEliminar;
-        private System.Windows.Forms.Button buttonModificar;
         private System.Windows.Forms.Button buttonAnadir;
         private System.Windows.Forms.Button buttonValidar;
         private System.Windows.Forms.Label labelResposta;
