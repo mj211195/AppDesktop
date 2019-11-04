@@ -17,8 +17,11 @@ namespace AppDesktop
         const byte MAX_CHAR_PREG = 100;
         const byte MAX_CHAR_RESP = 35;
 
-        List<Pregunta> listaPreguntas = new List<Pregunta>();
+        //List<Pregunta> listaPreguntas = new List<Pregunta>();
         List<Respuesta> listaRespuestas = new List<Respuesta>();
+        Nivel castellano = new Nivel();
+        Nivel ingles = new Nivel();
+        Nivel catalan = new Nivel();
 
 
         public AnadirPregunta()
@@ -162,10 +165,66 @@ namespace AppDesktop
             //Si todos los campos son correctos se guarda la pregunta, si no, muestra mensaje indicando los errores
             if (cont==5)
             {
-                Pregunta p = new Pregunta(textBoxPregunta.Text, listaRespuestas,
-                                         (byte)comboBoxIdioma.SelectedIndex, (byte)comboBoxNivel.SelectedIndex);
+                Pregunta p = new Pregunta(textBoxPregunta.Text, listaRespuestas);
+                if ((String)comboBoxIdioma.SelectedItem == "Anglès")
+                {
+                    switch((byte)comboBoxNivel.SelectedIndex)
+                    {
+                        case 1:
+                            ingles.infantil.Add(p);
+                            break;
+                        case 2:
+                            ingles.facil.Add(p);
+                            break;
+                        case 3:
+                            ingles.medio.Add(p);
+                            break;
+                        case 4:
+                            ingles.dificil.Add(p);
+                            break;
 
-                listaPreguntas.Add(p);
+                    }
+                }
+                else if ((String)comboBoxIdioma.SelectedItem == "Català")
+                {
+                    switch ((byte)comboBoxNivel.SelectedIndex)
+                    {
+                        case 1:
+                            catalan.infantil.Add(p);
+                            break;
+                        case 2:
+                            catalan.facil.Add(p);
+                            break;
+                        case 3:
+                            catalan.medio.Add(p);
+                            break;
+                        case 4:
+                            catalan.dificil.Add(p);
+                            break;
+
+                    }
+                }
+                else if ((String)comboBoxIdioma.SelectedItem == "Castellà")
+                {
+                    switch ((byte)comboBoxNivel.SelectedIndex)
+                    {
+                        case 1:
+                            castellano.infantil.Add(p);
+                            break;
+                        case 2:
+                            castellano.facil.Add(p);
+                            break;
+                        case 3:
+                            castellano.medio.Add(p);
+                            break;
+                        case 4:
+                            castellano.dificil.Add(p);
+                            break;
+
+                    }
+                }
+
+                //listaPreguntas.Add(p);
 
                 MessageBox.Show("Pregunta afegida correctament!");
 
