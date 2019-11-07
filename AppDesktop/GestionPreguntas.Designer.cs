@@ -100,6 +100,7 @@
             this.buttonEliminar.TabIndex = 4;
             this.buttonEliminar.Text = "Eliminar";
             this.buttonEliminar.UseVisualStyleBackColor = true;
+            this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
             // 
             // labelPreguntas
             // 
@@ -211,6 +212,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormGestionPreguntas";
             this.Text = "Gestió de preguntes";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormGestionPreguntas_FormClosing);
+            this.Load += new System.EventHandler(this.FormGestionPreguntas_Load);
             this.groupBoxPreguntas.ResumeLayout(false);
             this.groupBoxPreguntas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRespuestas)).EndInit();

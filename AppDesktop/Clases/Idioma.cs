@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace AppDesktop.Clases
 {
-    public class Nivel
+    public class Idioma
     {
         public BindingList<Pregunta> infantil { get; set; }
         public BindingList<Pregunta> facil { get; set; }
         public BindingList<Pregunta> medio { get; set; }
         public BindingList<Pregunta> dificil { get; set; }
 
-        public Nivel()
+        public Idioma()
         {
             infantil = new BindingList<Pregunta>();
             facil = new BindingList<Pregunta>();

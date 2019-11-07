@@ -7,18 +7,19 @@ namespace AppDesktop
 {
     public partial class AnadirPregunta : Form
     {
+        //Constantes
         const byte MAX_CHAR_PREG = 100;
         const byte MAX_CHAR_RESP = 35;
 
-        //List<Pregunta> listaPreguntas = new List<Pregunta>();
+        //Objetos
         BindingList<Respuesta> listaRespuestas = new BindingList<Respuesta>();
-        Nivel castellano;
-        Nivel ingles;
-        Nivel catalan;
+        Idioma castellano;
+        Idioma ingles;
+        Idioma catalan;
         Pregunta pregunta = new Pregunta();
 
-
-        public AnadirPregunta(Nivel castellano, Nivel catalan, Nivel ingles)
+        //Constructores
+        public AnadirPregunta(Idioma castellano, Idioma catalan, Idioma ingles)
         {
             InitializeComponent();
             this.castellano = castellano;
@@ -26,16 +27,16 @@ namespace AppDesktop
             this.ingles = ingles;
         }
 
-        public AnadirPregunta(Nivel castellano, Nivel catalan, Nivel ingles, Pregunta pregunta, String idioma, String nivel)
+        public AnadirPregunta(Idioma castellano, Idioma catalan, Idioma ingles, Pregunta pregunta, String idioma, String nivel)
         {
             InitializeComponent();
             this.castellano = castellano;
             this.catalan = catalan;
             this.ingles = ingles;
             this.pregunta = pregunta;
-            eliminarPregunta();
             comboBoxIdioma.SelectedItem= idioma;
             comboBoxNivel.SelectedItem = nivel;
+            eliminarPregunta(pregunta);
             textBoxPregunta.Text = pregunta.pregunta;
             listaRespuestas = pregunta.respuestas;
             actualizarDGV();
@@ -53,7 +54,7 @@ namespace AppDesktop
 
             //Le indicamos al Visual que no genere automáticamente las columnas y conserve los headers tal cual
             //se lo hemos indicado
-            dataGridView1.AutoGenerateColumns = false;
+            dataGridViewRespuestas.AutoGenerateColumns = false;
         }
 
         private void buttonAnadir_Click(object sender, EventArgs e)
@@ -129,7 +130,7 @@ namespace AppDesktop
 
 
             //Checkeo de las respuestas
-            if (dataGridView1.RowCount == 4)
+            if (dataGridViewRespuestas.RowCount == 4)
             {
                 cont++;
 
@@ -258,7 +259,7 @@ namespace AppDesktop
             checkBoxCorrecta.Checked = false;
             radioButtonNo.Checked = true;
 
-            dataGridView1.DataSource = null;
+            dataGridViewRespuestas.DataSource = null;
             listaRespuestas.Clear();
         }
 
@@ -284,23 +285,22 @@ namespace AppDesktop
             labelCarRes.Text = numCar.ToString();
         }
 
-        /// <summary>
-        /// Refrescamos la DataGridView con la lista de respuestas
-        /// </summary>
+
+        //Refrescamos la DataGridView con la lista de respuestas
         private void actualizarDGV()
         {
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = listaRespuestas;
+            dataGridViewRespuestas.DataSource = null;
+            dataGridViewRespuestas.DataSource = listaRespuestas;
         }
 
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentRow != null)
+            if (dataGridViewRespuestas.CurrentRow != null)
             {
-                if (dataGridView1.CurrentRow.Index != -1)
+                if (dataGridViewRespuestas.CurrentRow.Index != -1)
                 {
                     //Eliminamos la fila seleccionada
-                    listaRespuestas.RemoveAt(dataGridView1.CurrentRow.Index);
+                    listaRespuestas.RemoveAt(dataGridViewRespuestas.CurrentRow.Index);
 
                     //Actualizamos el DataGridView para que se reflejen los cambios
                     actualizarDGV();
@@ -308,23 +308,66 @@ namespace AppDesktop
                 }
             }
         }
-        private void eliminarPregunta() //Elimina la pregunta que se pasa en el constructor en las listas para poder volver a modificar la pregunta
+
+        //Elimina la pregunta que se pasa en el constructor en las listas para poder volver a modificar la pregunta
+        private void eliminarPregunta(Pregunta pregunta) 
         {
-            //Catalán
-            catalan.infantil.Remove(pregunta);
-            catalan.facil.Remove(pregunta);
-            catalan.medio.Remove(pregunta);
-            catalan.dificil.Remove(pregunta);
-            //Castellano
-            castellano.infantil.Remove(pregunta);
-            castellano.facil.Remove(pregunta);
-            castellano.medio.Remove(pregunta);
-            castellano.dificil.Remove(pregunta);
-            //Inglés
-            ingles.infantil.Remove(pregunta);
-            ingles.facil.Remove(pregunta);
-            ingles.medio.Remove(pregunta);
-            ingles.dificil.Remove(pregunta);
+            if (comboBoxIdioma.SelectedItem.ToString().Equals("Anglès"))
+            {
+                switch (comboBoxNivel.SelectedItem.ToString())
+                {
+                    case "Infantil":
+                        ingles.infantil.Remove(pregunta);
+                        break;
+                    case "Adult (Fàcil)":
+
+                        ingles.facil.Remove(pregunta);
+                        break;
+                    case "Adult (Intermedi)":
+                        ingles.medio.Remove(pregunta);
+                        break;
+                    case "Adult (Difícil)":
+                        ingles.dificil.Remove(pregunta);
+                        break;
+                }
+            }
+            else if (comboBoxIdioma.SelectedItem.ToString().Equals("Català"))
+            {
+                switch (comboBoxNivel.SelectedItem.ToString())
+                {
+                    case "Infantil":
+                        catalan.infantil.Remove(pregunta);
+                        break;
+                    case "Adult (Fàcil)":
+                        catalan.facil.Remove(pregunta);
+                        break;
+                    case "Adult (Intermedi)":
+                        catalan.medio.Remove(pregunta);
+                        break;
+                    case "Adult (Difícil)":
+                        catalan.dificil.Remove(pregunta);
+                        break;
+
+                }
+            }
+            else if (comboBoxIdioma.SelectedItem.ToString().Equals("Castellà"))
+            {
+                switch (comboBoxNivel.SelectedItem.ToString())
+                {
+                    case "Infantil":
+                        castellano.infantil.Remove(pregunta);
+                        break;
+                    case "Adult (Fàcil)":
+                        castellano.facil.Remove(pregunta);
+                        break;
+                    case "Adult (Intermedi)":
+                        castellano.medio.Remove(pregunta);
+                        break;
+                    case "Adult (Difícil)":
+                        castellano.dificil.Remove(pregunta);
+                        break;
+                }
+            }
         }
     }
 }

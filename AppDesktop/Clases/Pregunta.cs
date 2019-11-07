@@ -11,8 +11,6 @@ namespace AppDesktop.Clases
     {
         public String pregunta { get; set; }
         public BindingList<Respuesta> respuestas { get; set; }
-        //public byte idNivel { get; set; }
-        //public byte idIdioma { get; set; }
 
         //Constructores
         public Pregunta()
@@ -27,8 +25,6 @@ namespace AppDesktop.Clases
             {
                 this.respuestas.Add(r);
             }
-
-            //this.respuestas = respuestas;
         }
     }
 }

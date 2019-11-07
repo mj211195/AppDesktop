@@ -11,41 +11,196 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace AppDesktop
 {
     public partial class FormGestionPreguntas : Form
     {
-        Nivel castellano = new Nivel();
-        Nivel ingles = new Nivel();
-        Nivel catalan = new Nivel();
+        //Objetos
+        Idioma castellano = new Idioma();
+        Idioma ingles = new Idioma();
+        Idioma catalan = new Idioma();
+        //Rutas JSONs
         string fileCatalan = @"..\..\JSONs\catalan.json";
         string fileCastellano = @"..\..\JSONs\castellano.json";
         string fileIngles = @"..\..\JSONs\ingles.json";
+
+        //Constructor
         public FormGestionPreguntas()
         {
             InitializeComponent();
         }
 
-        private void guardarFichero(Nivel nivel, string idioma) //Función donde se implementa guardar el fichero
+        private void FormGestionPreguntas_Load(object sender, EventArgs e)
         {
-            JArray jArrayNivel = (JArray)JToken.FromObject(nivel); //La lista de peliculas la casteamos al tipo JArray y hacemos los pasos para guardar el archivo 
+            //Al cargar el formulario nos carga el contenido de los 3 JSONs de idiomas en el correspondiente objecto del tipo Idioma
+            if (File.Exists(fileCatalan) == true)
+            {
+                JObject jsonIdioma = JObject.Parse(File.ReadAllText(fileCatalan));
+                catalan = jsonIdioma.ToObject<Idioma>();
+                int i = 0;
+            }
+            if (File.Exists(fileCastellano) == true)
+            {
+                JObject jsonIdioma = JObject.Parse(File.ReadAllText(fileCastellano));
+                castellano = jsonIdioma.ToObject<Idioma>();
+                int i = 0;
+            }
+            if (File.Exists(fileIngles) == true)
+            {
+                JObject jsonIdioma = JObject.Parse(File.ReadAllText(fileIngles));
+                ingles = jsonIdioma.ToObject<Idioma>();
+                int i = 0;
+            }
+        }
+
+        private void FormGestionPreguntas_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Al cerrar el formulario se guardan los objetos del tipo Idioma, en los JSONs correspondientes, para ello se llama a la función guardarFichero
+            guardarFichero(catalan, fileCatalan);
+            guardarFichero(castellano, fileCastellano);
+            guardarFichero(ingles, fileIngles);
+        }
+        
+        private void buttonNuevaPregunta_Click(object sender, EventArgs e)
+        {
+            //Al hacer click en el botón "Nova Pregunta" se inicia un formulario del tipo AnadirPregunta, donde se le pasan los 3 idiomas para así poder pasar la información entre forms
+            AnadirPregunta anadirPregunta = new AnadirPregunta(castellano,catalan, ingles);
+            anadirPregunta.ShowDialog();
+        }
+
+        private void comboBoxIdioma_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Una vez seleccionado el idioma, habilita la comboBox de Nivel y nos carga las preguntas correspondientes llamando a cargarPreguntas
+            comboBoxNivel.Enabled = true;
+            cargarPreguntas();
+            listBoxPreguntas.ClearSelected();
+        }
+
+        private void comboBoxNivel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Nos carga las preguntas correspondientes llamando a cargarPreguntas
+            cargarPreguntas();
+            listBoxPreguntas.ClearSelected();
+        }
+
+        private void listBoxPreguntas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Si hay una pregunta seleccionada, nos carga la dataGridRespuestas con la lista de respuestas de esa pregunta, si no, no nos muestra nada
+            dataGridViewRespuestas.AutoGenerateColumns = false;
+            Pregunta pregunta = (Pregunta)listBoxPreguntas.SelectedItem;
+            if (pregunta != null)
+            {
+                dataGridViewRespuestas.DataSource = null;
+                dataGridViewRespuestas.DataSource = pregunta.respuestas;
+            }else
+            {
+                dataGridViewRespuestas.DataSource = null;
+            }
+        }
+
+        private void buttonModificarPregunta_Click(object sender, EventArgs e)
+        {
+            //Al hacer click en el botón "Moficicar" se guarda la pregunta seleccionada en un objeto del tipo Pregunta
+            Pregunta pregunta = (Pregunta)listBoxPreguntas.SelectedItem;
+            //Después se comprueba que realmente se haya seleccionado una pregunta (que pregunta no sea null)
+            if (pregunta != null)
+            {
+                //Si hay una pregunta seleccionada, se guardan en dos String el nivel y el idioma
+                String idioma = comboBoxIdioma.SelectedItem.ToString();
+                String nivel = comboBoxNivel.SelectedItem.ToString();
+                //Se crea un formulario del tipo AnadirPregunta, los 3 objetos del tipo Idioma, pasandole la pregunta, y los dos String
+                AnadirPregunta modificarPregunta = new AnadirPregunta(castellano, catalan, ingles, pregunta, idioma, nivel);
+                modificarPregunta.ShowDialog();
+            }
+        }
+
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+            /*Se elimina la pregunta seleccionada de la lista que la contiene llamando a la funcion eliminarPregunta,
+             por ultimo se cargan las preguntas llamando a la función cargarPreguntas*/
+            Pregunta pregunta = (Pregunta)listBoxPreguntas.SelectedItem;
+            eliminarPregunta(pregunta);
+            cargarPreguntas();
+        }
+
+        //Elimina la pregunta que se pasa en el constructor en las lista seleccionada
+        private void eliminarPregunta(Pregunta pregunta) 
+        {
+            //Comprueba el idioma seleccionado y una vez encontrado comprueba el nivel seleccionado para saber donde tiene que eliminar la pregunta
+            if(comboBoxIdioma.SelectedItem != null && comboBoxNivel.SelectedItem != null)
+            {
+                if (comboBoxIdioma.SelectedItem.ToString().Equals("Anglès"))
+                {
+                    switch (comboBoxNivel.SelectedItem.ToString())
+                    {
+                        case "Infantil":
+                            ingles.infantil.Remove(pregunta);
+                            break;
+                        case "Adult (Fàcil)":
+
+                            ingles.facil.Remove(pregunta);
+                            break;
+                        case "Adult (Intermedi)":
+                            ingles.medio.Remove(pregunta);
+                            break;
+                        case "Adult (Difícil)":
+                            ingles.dificil.Remove(pregunta);
+                            break;
+                    }
+                }
+                else if (comboBoxIdioma.SelectedItem.ToString().Equals("Català"))
+                {
+                    switch (comboBoxNivel.SelectedItem.ToString())
+                    {
+                        case "Infantil":
+                            catalan.infantil.Remove(pregunta);
+                            break;
+                        case "Adult (Fàcil)":
+                            catalan.facil.Remove(pregunta);
+                            break;
+                        case "Adult (Intermedi)":
+                            catalan.medio.Remove(pregunta);
+                            break;
+                        case "Adult (Difícil)":
+                            catalan.dificil.Remove(pregunta);
+                            break;
+
+                    }
+                }
+                else if (comboBoxIdioma.SelectedItem.ToString().Equals("Castellà"))
+                {
+                    switch (comboBoxNivel.SelectedItem.ToString())
+                    {
+                        case "Infantil":
+                            castellano.infantil.Remove(pregunta);
+                            break;
+                        case "Adult (Fàcil)":
+                            castellano.facil.Remove(pregunta);
+                            break;
+                        case "Adult (Intermedi)":
+                            castellano.medio.Remove(pregunta);
+                            break;
+                        case "Adult (Difícil)":
+                            castellano.dificil.Remove(pregunta);
+                            break;
+                    }
+                }
+            }
+        }
+
+        //Función donde se implementa guardar el fichero
+        private void guardarFichero(Idioma nivel, string idioma)
+        {
+            JObject jArrayNivel = (JObject)JToken.FromObject(nivel); //El objeto del tipo Idioma lo casteamos al tipo JObject y hacemos los pasos para guardar el archivo
             StreamWriter file = File.CreateText(idioma);
             JsonTextWriter jsonWriter = new JsonTextWriter(file);
             jArrayNivel.WriteTo(jsonWriter);
             jsonWriter.Close(); //Cerramos el editor para que se guarden bien los cambios
         }
 
-        private Nivel cargarFichero(Nivel nivel, string idioma)
-        {
-            if (File.Exists(idioma) == true)
-            {
-                JArray jArrayNivel = JArray.Parse(File.ReadAllText(idioma));
-                nivel = jArrayNivel.ToObject<Nivel>();
-            }
-            return nivel;
-        }
-        
+        //Función que refresca la listBoxPreguntas
         private void refrescarPreguntas(BindingList<Pregunta> preguntas)
         {
             listBoxPreguntas.DataSource = null;
@@ -53,7 +208,8 @@ namespace AppDesktop
             listBoxPreguntas.DisplayMember = "pregunta";
         }
 
-        private void seleccionarNivel(Nivel nivel)
+        //Función que dependiendo del nivel seleccionado, nos llama a la función refrescarPreguntas, pasandole la lista correspondiente
+        private void seleccionarNivel(Idioma nivel)
         {
             if (comboBoxNivel.SelectedItem.ToString().Equals("Infantil"))
             {
@@ -73,75 +229,23 @@ namespace AppDesktop
             }
         }
 
-        private void CargarPreguntas()
+        //Función que dependiendo del idioma seleccionado nos llama a la función seleccionarNivel con uno u otro parametro
+        private void cargarPreguntas()
         {
             if (comboBoxIdioma.SelectedIndex != -1 && comboBoxNivel.SelectedIndex != -1)
             {
                 switch (comboBoxIdioma.SelectedItem.ToString())
                 {
                     case "Català":
-                        //catalan = cargarFichero(catalan, fileCatalan);
                         seleccionarNivel(catalan);
                         break;
                     case "Castellà":
-                        //castellano = cargarFichero(castellano, fileCastellano);
                         seleccionarNivel(castellano);
                         break;
                     case "Anglès":
-                        //ingles = cargarFichero(ingles, fileIngles);
                         seleccionarNivel(ingles);
                         break;
                 }
-            }
-        }
-
-        
-        private void buttonNuevaPregunta_Click(object sender, EventArgs e)
-        {
-            AnadirPregunta anadirPregunta = new AnadirPregunta(castellano,catalan, ingles);
-            anadirPregunta.ShowDialog();
-
-            int i = 0;
-        }
-
-        private void comboBoxIdioma_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            comboBoxNivel.Enabled = true;
-            CargarPreguntas();
-        }
-
-        private void comboBoxNivel_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            CargarPreguntas();
-        }
-
-        private void listBoxPreguntas_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            dataGridViewRespuestas.AutoGenerateColumns = false;
-            Pregunta pregunta = (Pregunta)listBoxPreguntas.SelectedItem;
-            if (pregunta != null)
-            {
-                dataGridViewRespuestas.DataSource = null;
-                dataGridViewRespuestas.DataSource = pregunta.respuestas;
-            }else
-            {
-                dataGridViewRespuestas.DataSource = null;
-            }
-        }
-
-        private void buttonModificarPregunta_Click(object sender, EventArgs e)
-        {
-            Pregunta pregunta = (Pregunta)listBoxPreguntas.SelectedItem;
-            String idioma = comboBoxIdioma.SelectedItem.ToString();
-            String nivel = comboBoxNivel.SelectedItem.ToString();
-            if (pregunta != null)
-            {
-                AnadirPregunta modificarPregunta = new AnadirPregunta(castellano, catalan, ingles, pregunta, idioma, nivel);
-                modificarPregunta.ShowDialog();
-            }
-            else
-            {
-                //dataGridViewRespuestas.DataSource = null;
             }
         }
     }
