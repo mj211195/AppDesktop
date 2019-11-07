@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AppDesktop.Clases
 {
-    class Respuesta
+    public class Respuesta
     {
         public String respuesta { get; set; }
         public bool correcta { get; set; }

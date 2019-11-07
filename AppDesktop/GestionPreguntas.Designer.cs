@@ -36,12 +36,15 @@
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.labelPreguntas = new System.Windows.Forms.Label();
             this.groupBoxPreguntas = new System.Windows.Forms.GroupBox();
-            this.listBoxRespuestas = new System.Windows.Forms.ListBox();
+            this.dataGridViewRespuestas = new System.Windows.Forms.DataGridView();
             this.labelRespuestas = new System.Windows.Forms.Label();
             this.listBoxPreguntas = new System.Windows.Forms.ListBox();
             this.labelIdioma = new System.Windows.Forms.Label();
             this.comboBoxIdioma = new System.Windows.Forms.ComboBox();
+            this.respuesta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Correcta = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBoxPreguntas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRespuestas)).BeginInit();
             this.SuspendLayout();
             // 
             // labelNivel
@@ -67,6 +70,7 @@
             this.comboBoxNivel.Name = "comboBoxNivel";
             this.comboBoxNivel.Size = new System.Drawing.Size(204, 21);
             this.comboBoxNivel.TabIndex = 1;
+            this.comboBoxNivel.SelectedIndexChanged += new System.EventHandler(this.comboBoxNivel_SelectedIndexChanged);
             // 
             // buttonNuevaPregunta
             // 
@@ -108,7 +112,7 @@
             // groupBoxPreguntas
             // 
             this.groupBoxPreguntas.BackColor = System.Drawing.Color.Transparent;
-            this.groupBoxPreguntas.Controls.Add(this.listBoxRespuestas);
+            this.groupBoxPreguntas.Controls.Add(this.dataGridViewRespuestas);
             this.groupBoxPreguntas.Controls.Add(this.labelRespuestas);
             this.groupBoxPreguntas.Controls.Add(this.listBoxPreguntas);
             this.groupBoxPreguntas.Controls.Add(this.labelPreguntas);
@@ -117,17 +121,23 @@
             this.groupBoxPreguntas.Controls.Add(this.buttonModificarPregunta);
             this.groupBoxPreguntas.Location = new System.Drawing.Point(14, 79);
             this.groupBoxPreguntas.Name = "groupBoxPreguntas";
-            this.groupBoxPreguntas.Size = new System.Drawing.Size(742, 390);
+            this.groupBoxPreguntas.Size = new System.Drawing.Size(846, 390);
             this.groupBoxPreguntas.TabIndex = 6;
             this.groupBoxPreguntas.TabStop = false;
             // 
-            // listBoxRespuestas
+            // dataGridViewRespuestas
             // 
-            this.listBoxRespuestas.FormattingEnabled = true;
-            this.listBoxRespuestas.Location = new System.Drawing.Point(393, 72);
-            this.listBoxRespuestas.Name = "listBoxRespuestas";
-            this.listBoxRespuestas.Size = new System.Drawing.Size(313, 290);
-            this.listBoxRespuestas.TabIndex = 8;
+            this.dataGridViewRespuestas.AllowUserToAddRows = false;
+            this.dataGridViewRespuestas.AllowUserToDeleteRows = false;
+            this.dataGridViewRespuestas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewRespuestas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.respuesta,
+            this.Correcta});
+            this.dataGridViewRespuestas.Location = new System.Drawing.Point(393, 72);
+            this.dataGridViewRespuestas.Name = "dataGridViewRespuestas";
+            this.dataGridViewRespuestas.ReadOnly = true;
+            this.dataGridViewRespuestas.Size = new System.Drawing.Size(425, 290);
+            this.dataGridViewRespuestas.TabIndex = 8;
             // 
             // labelRespuestas
             // 
@@ -145,6 +155,7 @@
             this.listBoxPreguntas.Name = "listBoxPreguntas";
             this.listBoxPreguntas.Size = new System.Drawing.Size(322, 290);
             this.listBoxPreguntas.TabIndex = 6;
+            this.listBoxPreguntas.SelectedIndexChanged += new System.EventHandler(this.listBoxPreguntas_SelectedIndexChanged);
             // 
             // labelIdioma
             // 
@@ -169,13 +180,28 @@
             this.comboBoxIdioma.TabIndex = 8;
             this.comboBoxIdioma.SelectedIndexChanged += new System.EventHandler(this.comboBoxIdioma_SelectedIndexChanged);
             // 
+            // respuesta
+            // 
+            this.respuesta.DataPropertyName = "respuesta";
+            this.respuesta.HeaderText = "Resposta";
+            this.respuesta.Name = "respuesta";
+            this.respuesta.ReadOnly = true;
+            this.respuesta.Width = 280;
+            // 
+            // Correcta
+            // 
+            this.Correcta.DataPropertyName = "correcta";
+            this.Correcta.HeaderText = "Correcta";
+            this.Correcta.Name = "Correcta";
+            this.Correcta.ReadOnly = true;
+            // 
             // FormGestionPreguntas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::AppDesktop.Properties.Resources.grande_fondo;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(770, 478);
+            this.ClientSize = new System.Drawing.Size(880, 478);
             this.Controls.Add(this.comboBoxIdioma);
             this.Controls.Add(this.labelIdioma);
             this.Controls.Add(this.groupBoxPreguntas);
@@ -186,6 +212,7 @@
             this.Text = "Gestió de preguntes";
             this.groupBoxPreguntas.ResumeLayout(false);
             this.groupBoxPreguntas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRespuestas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,8 +229,10 @@
         private System.Windows.Forms.GroupBox groupBoxPreguntas;
         private System.Windows.Forms.ListBox listBoxPreguntas;
         private System.Windows.Forms.Label labelRespuestas;
-        private System.Windows.Forms.ListBox listBoxRespuestas;
         private System.Windows.Forms.Label labelIdioma;
         private System.Windows.Forms.ComboBox comboBoxIdioma;
+        private System.Windows.Forms.DataGridView dataGridViewRespuestas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn respuesta;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Correcta;
     }
 }

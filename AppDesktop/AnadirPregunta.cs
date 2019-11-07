@@ -1,13 +1,6 @@
 ﻿using AppDesktop.Clases;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AppDesktop
@@ -18,15 +11,18 @@ namespace AppDesktop
         const byte MAX_CHAR_RESP = 35;
 
         //List<Pregunta> listaPreguntas = new List<Pregunta>();
-        List<Respuesta> listaRespuestas = new List<Respuesta>();
-        Nivel castellano = new Nivel();
-        Nivel ingles = new Nivel();
-        Nivel catalan = new Nivel();
+        BindingList<Respuesta> listaRespuestas = new BindingList<Respuesta>();
+        Nivel castellano;
+        Nivel ingles;
+        Nivel catalan;
 
 
-        public AnadirPregunta()
+        public AnadirPregunta(Nivel castellano, Nivel catalan, Nivel ingles)
         {
             InitializeComponent();
+            this.castellano = castellano;
+            this.catalan = catalan;
+            this.ingles = ingles;
         }
         
         private void AnadirPregunta_Load(object sender, EventArgs e)
@@ -166,61 +162,59 @@ namespace AppDesktop
             if (cont==5)
             {
                 Pregunta p = new Pregunta(textBoxPregunta.Text, listaRespuestas);
-                if ((String)comboBoxIdioma.SelectedItem == "Anglès")
+                if (comboBoxIdioma.SelectedItem.ToString().Equals("Anglès"))
                 {
-                    switch((byte)comboBoxNivel.SelectedIndex)
+                    switch (comboBoxNivel.SelectedItem.ToString())
                     {
-                        case 1:
+                        case "Infantil":
                             ingles.infantil.Add(p);
                             break;
-                        case 2:
+                        case "Adult (Fàcil)":
                             ingles.facil.Add(p);
                             break;
-                        case 3:
+                        case "Adult (Intermedi)":
                             ingles.medio.Add(p);
                             break;
-                        case 4:
+                        case "Adult (Difícil)":
                             ingles.dificil.Add(p);
                             break;
-
                     }
                 }
-                else if ((String)comboBoxIdioma.SelectedItem == "Català")
+                else if (comboBoxIdioma.SelectedItem.ToString().Equals("Català"))
                 {
-                    switch ((byte)comboBoxNivel.SelectedIndex)
+                    switch (comboBoxNivel.SelectedItem.ToString())
                     {
-                        case 1:
+                        case "Infantil":
                             catalan.infantil.Add(p);
                             break;
-                        case 2:
+                        case "Adult (Fàcil)":
                             catalan.facil.Add(p);
                             break;
-                        case 3:
+                        case "Adult (Intermedi)":
                             catalan.medio.Add(p);
                             break;
-                        case 4:
+                        case "Adult (Difícil)":
                             catalan.dificil.Add(p);
                             break;
 
                     }
                 }
-                else if ((String)comboBoxIdioma.SelectedItem == "Castellà")
+                else if (comboBoxIdioma.SelectedItem.ToString().Equals("Castellà"))
                 {
-                    switch ((byte)comboBoxNivel.SelectedIndex)
+                    switch (comboBoxNivel.SelectedItem.ToString())
                     {
-                        case 1:
+                        case "Infantil":
                             castellano.infantil.Add(p);
                             break;
-                        case 2:
+                        case "Adult (Fàcil)":
                             castellano.facil.Add(p);
                             break;
-                        case 3:
+                        case "Adult (Intermedi)":
                             castellano.medio.Add(p);
                             break;
-                        case 4:
+                        case "Adult (Difícil)":
                             castellano.dificil.Add(p);
                             break;
-
                     }
                 }
 
