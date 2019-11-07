@@ -128,5 +128,21 @@ namespace AppDesktop
                 dataGridViewRespuestas.DataSource = null;
             }
         }
+
+        private void buttonModificarPregunta_Click(object sender, EventArgs e)
+        {
+            Pregunta pregunta = (Pregunta)listBoxPreguntas.SelectedItem;
+            String idioma = comboBoxIdioma.SelectedItem.ToString();
+            String nivel = comboBoxNivel.SelectedItem.ToString();
+            if (pregunta != null)
+            {
+                AnadirPregunta modificarPregunta = new AnadirPregunta(castellano, catalan, ingles, pregunta, idioma, nivel);
+                modificarPregunta.ShowDialog();
+            }
+            else
+            {
+                //dataGridViewRespuestas.DataSource = null;
+            }
+        }
     }
 }

@@ -43,7 +43,6 @@
             this.buttonReiniciar = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.buttonAnadir = new System.Windows.Forms.Button();
-            this.buttonValidar = new System.Windows.Forms.Button();
             this.labelResposta = new System.Windows.Forms.Label();
             this.labelPregunta = new System.Windows.Forms.Label();
             this.labelNivel = new System.Windows.Forms.Label();
@@ -199,18 +198,6 @@
             this.buttonAnadir.UseVisualStyleBackColor = true;
             this.buttonAnadir.Click += new System.EventHandler(this.buttonAnadir_Click);
             // 
-            // buttonValidar
-            // 
-            this.buttonValidar.Location = new System.Drawing.Point(543, 74);
-            this.buttonValidar.Name = "buttonValidar";
-            this.buttonValidar.Size = new System.Drawing.Size(75, 23);
-            this.buttonValidar.TabIndex = 40;
-            this.buttonValidar.Text = "Validar";
-            this.toolTipAyuda.SetToolTip(this.buttonValidar, "Un cop es doni per bona la pregunta, prémer [Validar].\r\nNota: no es podrà afegir " +
-        "una pregunta (guardar-la al final) si no està validada!\r\n");
-            this.buttonValidar.UseVisualStyleBackColor = true;
-            this.buttonValidar.Click += new System.EventHandler(this.buttonValidar_Click);
-            // 
             // labelResposta
             // 
             this.labelResposta.AutoSize = true;
@@ -258,7 +245,6 @@
             this.groupBoxAfegirPregunta.Controls.Add(this.buttonAnadir);
             this.groupBoxAfegirPregunta.Controls.Add(this.textBoxPregunta);
             this.groupBoxAfegirPregunta.Controls.Add(this.labelResposta);
-            this.groupBoxAfegirPregunta.Controls.Add(this.buttonValidar);
             this.groupBoxAfegirPregunta.Location = new System.Drawing.Point(12, 12);
             this.groupBoxAfegirPregunta.Name = "groupBoxAfegirPregunta";
             this.groupBoxAfegirPregunta.Size = new System.Drawing.Size(686, 493);
@@ -378,7 +364,6 @@
         private System.Windows.Forms.Button buttonReiniciar;
         private System.Windows.Forms.Button buttonEliminar;
         private System.Windows.Forms.Button buttonAnadir;
-        private System.Windows.Forms.Button buttonValidar;
         private System.Windows.Forms.Label labelResposta;
         private System.Windows.Forms.Label labelPregunta;
         private System.Windows.Forms.Label labelNivel;

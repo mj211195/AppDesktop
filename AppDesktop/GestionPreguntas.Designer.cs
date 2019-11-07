@@ -37,12 +37,12 @@
             this.labelPreguntas = new System.Windows.Forms.Label();
             this.groupBoxPreguntas = new System.Windows.Forms.GroupBox();
             this.dataGridViewRespuestas = new System.Windows.Forms.DataGridView();
+            this.respuesta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Correcta = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.labelRespuestas = new System.Windows.Forms.Label();
             this.listBoxPreguntas = new System.Windows.Forms.ListBox();
             this.labelIdioma = new System.Windows.Forms.Label();
             this.comboBoxIdioma = new System.Windows.Forms.ComboBox();
-            this.respuesta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Correcta = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBoxPreguntas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRespuestas)).BeginInit();
             this.SuspendLayout();
@@ -90,6 +90,7 @@
             this.buttonModificarPregunta.TabIndex = 3;
             this.buttonModificarPregunta.Text = "Modificar";
             this.buttonModificarPregunta.UseVisualStyleBackColor = true;
+            this.buttonModificarPregunta.Click += new System.EventHandler(this.buttonModificarPregunta_Click);
             // 
             // buttonEliminar
             // 
@@ -139,6 +140,21 @@
             this.dataGridViewRespuestas.Size = new System.Drawing.Size(425, 290);
             this.dataGridViewRespuestas.TabIndex = 8;
             // 
+            // respuesta
+            // 
+            this.respuesta.DataPropertyName = "respuesta";
+            this.respuesta.HeaderText = "Resposta";
+            this.respuesta.Name = "respuesta";
+            this.respuesta.ReadOnly = true;
+            this.respuesta.Width = 280;
+            // 
+            // Correcta
+            // 
+            this.Correcta.DataPropertyName = "correcta";
+            this.Correcta.HeaderText = "Correcta";
+            this.Correcta.Name = "Correcta";
+            this.Correcta.ReadOnly = true;
+            // 
             // labelRespuestas
             // 
             this.labelRespuestas.AutoSize = true;
@@ -179,21 +195,6 @@
             this.comboBoxIdioma.Size = new System.Drawing.Size(204, 21);
             this.comboBoxIdioma.TabIndex = 8;
             this.comboBoxIdioma.SelectedIndexChanged += new System.EventHandler(this.comboBoxIdioma_SelectedIndexChanged);
-            // 
-            // respuesta
-            // 
-            this.respuesta.DataPropertyName = "respuesta";
-            this.respuesta.HeaderText = "Resposta";
-            this.respuesta.Name = "respuesta";
-            this.respuesta.ReadOnly = true;
-            this.respuesta.Width = 280;
-            // 
-            // Correcta
-            // 
-            this.Correcta.DataPropertyName = "correcta";
-            this.Correcta.HeaderText = "Correcta";
-            this.Correcta.Name = "Correcta";
-            this.Correcta.ReadOnly = true;
             // 
             // FormGestionPreguntas
             // 

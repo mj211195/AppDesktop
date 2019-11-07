@@ -15,6 +15,7 @@ namespace AppDesktop
         Nivel castellano;
         Nivel ingles;
         Nivel catalan;
+        Pregunta pregunta = new Pregunta();
 
 
         public AnadirPregunta(Nivel castellano, Nivel catalan, Nivel ingles)
@@ -24,7 +25,23 @@ namespace AppDesktop
             this.catalan = catalan;
             this.ingles = ingles;
         }
-        
+
+        public AnadirPregunta(Nivel castellano, Nivel catalan, Nivel ingles, Pregunta pregunta, String idioma, String nivel)
+        {
+            InitializeComponent();
+            this.castellano = castellano;
+            this.catalan = catalan;
+            this.ingles = ingles;
+            this.pregunta = pregunta;
+            eliminarPregunta();
+            comboBoxIdioma.SelectedItem= idioma;
+            comboBoxNivel.SelectedItem = nivel;
+            textBoxPregunta.Text = pregunta.pregunta;
+            listaRespuestas = pregunta.respuestas;
+            actualizarDGV();
+
+        }
+
         private void AnadirPregunta_Load(object sender, EventArgs e)
         {
             //"Iniciamos" las labels de contadores de carácteres para pregunta y respuesta
@@ -37,20 +54,6 @@ namespace AppDesktop
             //Le indicamos al Visual que no genere automáticamente las columnas y conserve los headers tal cual
             //se lo hemos indicado
             dataGridView1.AutoGenerateColumns = false;
-        }
-
-        private void buttonValidar_Click(object sender, EventArgs e)
-        {
-            //Cambiamos el textBox pregunta a ReadOnly o no cada vez que presionemos el botón [Validar]
-            if (textBoxPregunta.ReadOnly)
-            {
-                textBoxPregunta.ReadOnly = false;
-            }
-            else
-            {
-                textBoxPregunta.ReadOnly = true;
-            }
-
         }
 
         private void buttonAnadir_Click(object sender, EventArgs e)
@@ -115,14 +118,13 @@ namespace AppDesktop
 
             //Checkeo de la pregunta
             if (textBoxPregunta.Text.Length <= MAX_CHAR_PREG &&
-                textBoxPregunta.Text.Length >= 10 &&
-                textBoxPregunta.ReadOnly == true)
+                textBoxPregunta.Text.Length >= 10)
             {
                 cont++;
             }
             else
             {
-                msgError += "\n  - S'ha d'escriure una pregunta vàlida i ha d'estar validada";
+                msgError += "\n  - S'ha d'escriure una pregunta vàlida";
             }
 
 
@@ -170,6 +172,7 @@ namespace AppDesktop
                             ingles.infantil.Add(p);
                             break;
                         case "Adult (Fàcil)":
+
                             ingles.facil.Add(p);
                             break;
                         case "Adult (Intermedi)":
@@ -304,6 +307,24 @@ namespace AppDesktop
 
                 }
             }
+        }
+        private void eliminarPregunta() //Elimina la pregunta que se pasa en el constructor en las listas para poder volver a modificar la pregunta
+        {
+            //Catalán
+            catalan.infantil.Remove(pregunta);
+            catalan.facil.Remove(pregunta);
+            catalan.medio.Remove(pregunta);
+            catalan.dificil.Remove(pregunta);
+            //Castellano
+            castellano.infantil.Remove(pregunta);
+            castellano.facil.Remove(pregunta);
+            castellano.medio.Remove(pregunta);
+            castellano.dificil.Remove(pregunta);
+            //Inglés
+            ingles.infantil.Remove(pregunta);
+            ingles.facil.Remove(pregunta);
+            ingles.medio.Remove(pregunta);
+            ingles.dificil.Remove(pregunta);
         }
     }
 }
