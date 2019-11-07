@@ -20,10 +20,18 @@ namespace AppDesktop
 
         private void button_WOCEnviar_Click(object sender, EventArgs e)
         {
-            String prueba = (String)richTextBoxContacto.Text;
-            prueba = prueba.Replace(" ", "%20");
-            String mensaje = "/c ipm.note /m carlos25840@gmail.com&subject=Contacte%20Museu%20Terrassa&body=" + prueba;
-            Process.Start("Outlook.exe", mensaje);
+            try
+            {
+                String prueba = (String)richTextBoxContacto.Text;
+                prueba = prueba.Replace(" ", "%20");
+                String mensaje = "/c ipm.note /m carlos25840@gmail.com&subject=Contacte%20Museu%20Terrassa&body=" + prueba;
+                Process.Start("Outlook.exe", mensaje);
+            }
+            catch
+            {
+                MessageBox.Show("No s'ha pogut obrir correctament l'Outlook.", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            
         }
     }
 }
