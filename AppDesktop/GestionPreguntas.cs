@@ -121,6 +121,10 @@ namespace AppDesktop
                 //Se crea un formulario del tipo AnadirPregunta, los 3 objetos del tipo Idioma, pasandole la pregunta, y los dos String
                 AnadirPregunta modificarPregunta = new AnadirPregunta(castellano, catalan, ingles, pregunta, idioma, nivel);
 
+                //Deseleccionamos la pregunta
+                listBoxPreguntas.SelectedIndex = -1;
+
+                //Abrimos el form Añadir Pregunta
                 modificarPregunta.ShowDialog();
             }
         }

@@ -20,6 +20,8 @@ namespace AppDesktop
         Idioma catalan;
         Pregunta pregunta = new Pregunta();
 
+        bool preguntaModificada = false;
+
         //Constructores
         public AnadirPregunta(Idioma castellano, Idioma catalan, Idioma ingles)
         {
@@ -30,6 +32,10 @@ namespace AppDesktop
         }
         public AnadirPregunta(Idioma castellano, Idioma catalan, Idioma ingles, Pregunta pregunta, String idioma, String nivel)
         {
+
+            /*
+             * PROBLEMA DE PUNTEROS, CREAR UNA COPIA EN LUGAR DE CHAFAR LA PREGUNTA
+             */
             InitializeComponent();
             this.castellano = castellano;
             this.catalan = catalan;
@@ -37,7 +43,10 @@ namespace AppDesktop
             this.pregunta = pregunta;
             comboBoxIdioma.SelectedItem= idioma;
             comboBoxNivel.SelectedItem = nivel;
-            eliminarPregunta(pregunta);
+            
+            //eliminarPregunta(pregunta);
+            preguntaModificada = true;
+
             textBoxPregunta.Text = pregunta.pregunta;
             listaRespuestas = pregunta.respuestas;
             actualizarDGV();
@@ -49,8 +58,8 @@ namespace AppDesktop
         private void AnadirPregunta_Load(object sender, EventArgs e)
         {
             //"Iniciamos" las labels de contadores de carácteres para pregunta y respuesta
-            labelCarPre.Text = MAX_CHAR_PREG.ToString();
-            labelCarRes.Text = MAX_CHAR_RESP.ToString();
+            mostrarCharsPregunta();
+            mostrarCharsResposta();
 
             //Indicamos que, de inicio, no se muestre la ayuda
             toolTipAyuda.Active = false;
@@ -63,13 +72,11 @@ namespace AppDesktop
         //Para los contadores de números de carácteres de los textBox: pregunta y respuesta
         private void textBoxPregunta_TextChanged(object sender, EventArgs e)
         {
-            int numCar = MAX_CHAR_PREG - textBoxPregunta.Text.Length;
-            labelCarPre.Text = numCar.ToString();
+            mostrarCharsPregunta();
         }
         private void textBoxResposta_TextChanged(object sender, EventArgs e)
         {
-            int numCar = MAX_CHAR_RESP - textBoxResposta.Text.Length;
-            labelCarRes.Text = numCar.ToString();
+            mostrarCharsResposta();
         }
 
         //Al clickar el botón [Añadir]
@@ -121,6 +128,12 @@ namespace AppDesktop
 
                 }
             }
+        }
+
+        //Al clickar el botón [Reiniciar]
+        private void buttonReiniciar_Click(object sender, EventArgs e)
+        {
+            limpiarCampos();
         }
 
         //Al clickar el botón [Guardar]
@@ -214,70 +227,15 @@ namespace AppDesktop
             //Si todos los campos son correctos se guarda la pregunta, si no, muestra mensaje indicando los errores
             if (cont==5)
             {
+                if (preguntaModificada)
+                {
+                    eliminarPregunta(pregunta);
+                }
                 //Creamos una pregunta: sus atributos pregunta y respuesta se le pasa por parámetro
                 Pregunta p = new Pregunta(textBoxPregunta.Text, listaRespuestas);
 
                 anadirPregunta(p);
 
-                //En función del idioma y nivel seleccionado, guardamos la pregunta con las respuestas en una lista o otra
-                //if (comboBoxIdioma.SelectedItem.ToString().Equals("Anglès"))
-                //{
-                //    switch (comboBoxNivel.SelectedItem.ToString())
-                //    {
-                //        case "Infantil":
-                //            ingles.infantil.Add(p);
-                //            break;
-
-                //        case "Adult (Fàcil)":
-                //            ingles.facil.Add(p);
-                //            break;
-
-                //        case "Adult (Intermedi)":
-                //            ingles.medio.Add(p);
-                //            break;
-
-                //        case "Adult (Difícil)":
-                //            ingles.dificil.Add(p);
-                //            break;
-                //    }
-                //}
-                //else if (comboBoxIdioma.SelectedItem.ToString().Equals("Català"))
-                //{
-                //    switch (comboBoxNivel.SelectedItem.ToString())
-                //    {
-                //        case "Infantil":
-                //            catalan.infantil.Add(p);
-                //            break;
-                //        case "Adult (Fàcil)":
-                //            catalan.facil.Add(p);
-                //            break;
-                //        case "Adult (Intermedi)":
-                //            catalan.medio.Add(p);
-                //            break;
-                //        case "Adult (Difícil)":
-                //            catalan.dificil.Add(p);
-                //            break;
-
-                //    }
-                //}
-                //else if (comboBoxIdioma.SelectedItem.ToString().Equals("Castellà"))
-                //{
-                //    switch (comboBoxNivel.SelectedItem.ToString())
-                //    {
-                //        case "Infantil":
-                //            castellano.infantil.Add(p);
-                //            break;
-                //        case "Adult (Fàcil)":
-                //            castellano.facil.Add(p);
-                //            break;
-                //        case "Adult (Intermedi)":
-                //            castellano.medio.Add(p);
-                //            break;
-                //        case "Adult (Difícil)":
-                //            castellano.dificil.Add(p);
-                //            break;
-                //    }
-                //}
                 MessageBox.Show("Pregunta afegida correctament!");
 
                 limpiarCampos();
@@ -287,12 +245,6 @@ namespace AppDesktop
                 MessageBox.Show(msgError, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-        }
-
-        //Al clickar el botón [Reiniciar]
-        private void buttonReiniciar_Click(object sender, EventArgs e)
-        {
-            limpiarCampos();
         }
 
         //Para activar/desactivar la ayuda (ToolTip)
@@ -400,7 +352,7 @@ namespace AppDesktop
         }
 
         /// <summary>
-        /// Elimina la pregunta que se pasa en el constructor en las listas para poder volver a modificar la pregunta. Se le pasa por parámetro la pregunta
+        /// Elimina la pregunta la lista en la que se encuentre. Se le pasa por parámetro la pregunta
         /// </summary>
         /// <param name="pregunta">Un objeto de la clase Pregunta</param>
         private void eliminarPregunta(Pregunta pregunta) 
@@ -469,6 +421,24 @@ namespace AppDesktop
                         break;
                 }
             }
+        }
+
+        /// <summary>
+        /// Cambia el label contador de carácteres restantes en el textBox pregunta
+        /// </summary>
+        private void mostrarCharsPregunta()
+        {
+            int numCar = MAX_CHAR_PREG - textBoxPregunta.Text.Length;
+            labelCarPre.Text = numCar.ToString();
+        }
+
+        /// <summary>
+        /// Cambia el label contador de carácteres restantes en el textBox pregunta
+        /// </summary>
+        private void mostrarCharsResposta()
+        {
+            int numCar = MAX_CHAR_RESP - textBoxResposta.Text.Length;
+            labelCarRes.Text = numCar.ToString();
         }
     }
 }
