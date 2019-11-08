@@ -21,6 +21,7 @@ namespace AppDesktop
         Idioma castellano = new Idioma();
         Idioma ingles = new Idioma();
         Idioma catalan = new Idioma();
+        
         //Rutas JSONs
         string fileCatalan = @"..\..\JSONs\catalan.json";
         string fileCastellano = @"..\..\JSONs\castellano.json";
@@ -64,6 +65,7 @@ namespace AppDesktop
         {
             //Al hacer click en el botón "Nova Pregunta" se inicia un formulario del tipo AnadirPregunta, donde se le pasan los 3 idiomas para así poder pasar la información entre forms
             AnadirPregunta anadirPregunta = new AnadirPregunta(castellano,catalan, ingles);
+
             anadirPregunta.ShowDialog();
         }
 
@@ -71,7 +73,9 @@ namespace AppDesktop
         {
             //Una vez seleccionado el idioma, habilita la comboBox de Nivel y nos carga las preguntas correspondientes llamando a cargarPreguntas
             comboBoxNivel.Enabled = true;
+
             cargarPreguntas();
+
             listBoxPreguntas.ClearSelected();
         }
 
@@ -79,19 +83,24 @@ namespace AppDesktop
         {
             //Nos carga las preguntas correspondientes llamando a cargarPreguntas
             cargarPreguntas();
+
             listBoxPreguntas.ClearSelected();
         }
 
         private void listBoxPreguntas_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Si hay una pregunta seleccionada, nos carga la dataGridRespuestas con la lista de respuestas de esa pregunta, si no, no nos muestra nada
+
             dataGridViewRespuestas.AutoGenerateColumns = false;
+
             Pregunta pregunta = (Pregunta)listBoxPreguntas.SelectedItem;
+
             if (pregunta != null)
             {
                 dataGridViewRespuestas.DataSource = null;
                 dataGridViewRespuestas.DataSource = pregunta.respuestas;
-            }else
+            }
+            else
             {
                 dataGridViewRespuestas.DataSource = null;
             }
@@ -101,28 +110,37 @@ namespace AppDesktop
         {
             //Al hacer click en el botón "Moficicar" se guarda la pregunta seleccionada en un objeto del tipo Pregunta
             Pregunta pregunta = (Pregunta)listBoxPreguntas.SelectedItem;
+
             //Después se comprueba que realmente se haya seleccionado una pregunta (que pregunta no sea null)
             if (pregunta != null)
             {
                 //Si hay una pregunta seleccionada, se guardan en dos String el nivel y el idioma
                 String idioma = comboBoxIdioma.SelectedItem.ToString();
                 String nivel = comboBoxNivel.SelectedItem.ToString();
+               
                 //Se crea un formulario del tipo AnadirPregunta, los 3 objetos del tipo Idioma, pasandole la pregunta, y los dos String
                 AnadirPregunta modificarPregunta = new AnadirPregunta(castellano, catalan, ingles, pregunta, idioma, nivel);
+
                 modificarPregunta.ShowDialog();
             }
         }
 
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
-            /*Se elimina la pregunta seleccionada de la lista que la contiene llamando a la funcion eliminarPregunta,
-             por ultimo se cargan las preguntas llamando a la función cargarPreguntas*/
+            //Se elimina la pregunta seleccionada de la lista que la contiene llamando a la funcion eliminarPregunta,
+            //por ultimo se cargan las preguntas llamando a la función cargarPreguntas
             Pregunta pregunta = (Pregunta)listBoxPreguntas.SelectedItem;
+
             eliminarPregunta(pregunta);
+
             cargarPreguntas();
         }
 
-        //Elimina la pregunta que se pasa en el constructor en las lista seleccionada
+
+        /// <summary>
+        /// Elimina la pregunta que se pasa en el constructor en las lista seleccionada
+        /// </summary>
+        /// <param name="pregunta"></param>
         private void eliminarPregunta(Pregunta pregunta) 
         {
             //Comprueba el idioma seleccionado y una vez encontrado comprueba el nivel seleccionado para saber donde tiene que eliminar la pregunta
@@ -187,7 +205,9 @@ namespace AppDesktop
             }
         }
 
-        //Función donde se implementa guardar el fichero
+        /// <summary>
+        /// Función donde se implementa guardar el fichero
+        /// </summary>
         private void guardarFichero(Idioma nivel, string idioma)
         {
             JObject jArrayNivel = (JObject)JToken.FromObject(nivel); //El objeto del tipo Idioma lo casteamos al tipo JObject y hacemos los pasos para guardar el archivo
@@ -197,7 +217,10 @@ namespace AppDesktop
             jsonWriter.Close(); //Cerramos el editor para que se guarden bien los cambios
         }
 
-        //Función que refresca la listBoxPreguntas
+        /// <summary>
+        /// Función que refresca la listBoxPreguntas
+        /// </summary>
+        /// <param name="preguntas">Lista (BindingList) de preguntas</param>
         private void refrescarPreguntas(BindingList<Pregunta> preguntas)
         {
             listBoxPreguntas.DataSource = null;
@@ -205,7 +228,10 @@ namespace AppDesktop
             listBoxPreguntas.DisplayMember = "pregunta";
         }
 
-        //Función que dependiendo del nivel seleccionado, nos llama a la función refrescarPreguntas, pasandole la lista correspondiente
+        /// <summary>
+        /// Función que dependiendo del nivel seleccionado, nos llama a la función refrescarPreguntas, pasandole la lista correspondiente
+        /// </summary>
+        /// <param name="nivel">El nivel</param>
         private void seleccionarNivel(Idioma nivel)
         {
             if (comboBoxNivel.SelectedItem.ToString().Equals("Infantil"))
@@ -226,7 +252,9 @@ namespace AppDesktop
             }
         }
 
-        //Función que dependiendo del idioma seleccionado nos llama a la función seleccionarNivel con uno u otro parametro
+        /// <summary>
+        /// Función que dependiendo del idioma seleccionado nos llama a la función seleccionarNivel con uno u otro parametro
+        /// </summary>
         private void cargarPreguntas()
         {
             if (comboBoxIdioma.SelectedIndex != -1 && comboBoxNivel.SelectedIndex != -1)

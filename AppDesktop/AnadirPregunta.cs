@@ -9,7 +9,9 @@ namespace AppDesktop
     {
         //Constantes
         const byte MAX_CHAR_PREG = 100;
+        const byte MIN_CHAR_PREG = 10;
         const byte MAX_CHAR_RESP = 35;
+        const byte MIN_CHAR_RESP = 0;
 
         //Objetos
         BindingList<Respuesta> listaRespuestas = new BindingList<Respuesta>();
@@ -26,7 +28,6 @@ namespace AppDesktop
             this.catalan = catalan;
             this.ingles = ingles;
         }
-
         public AnadirPregunta(Idioma castellano, Idioma catalan, Idioma ingles, Pregunta pregunta, String idioma, String nivel)
         {
             InitializeComponent();
@@ -43,6 +44,8 @@ namespace AppDesktop
 
         }
 
+        /*** E V E N T O S  ***/
+        //Al cargar el formulario
         private void AnadirPregunta_Load(object sender, EventArgs e)
         {
             //"Iniciamos" las labels de contadores de carácteres para pregunta y respuesta
@@ -56,16 +59,32 @@ namespace AppDesktop
             //se lo hemos indicado
             dataGridViewRespuestas.AutoGenerateColumns = false;
         }
+        
+        //Para los contadores de números de carácteres de los textBox: pregunta y respuesta
+        private void textBoxPregunta_TextChanged(object sender, EventArgs e)
+        {
+            int numCar = MAX_CHAR_PREG - textBoxPregunta.Text.Length;
+            labelCarPre.Text = numCar.ToString();
+        }
+        private void textBoxResposta_TextChanged(object sender, EventArgs e)
+        {
+            int numCar = MAX_CHAR_RESP - textBoxResposta.Text.Length;
+            labelCarRes.Text = numCar.ToString();
+        }
 
+        //Al clickar el botón [Añadir]
         private void buttonAnadir_Click(object sender, EventArgs e)
         {
             //Añadimos la respuesta si cumple ambos requisitos
-            if (textBoxResposta.Text.Length>0 &&
-                textBoxResposta.Text.Length<=MAX_CHAR_RESP)
+            if (textBoxResposta.Text.Length > MIN_CHAR_RESP &&
+                textBoxResposta.Text.Length <= MAX_CHAR_RESP)
             {
                 Respuesta r = new Respuesta();
 
+                //Asignamos la respuesta que hay en el TextBoxResposta al atributo respuesta del objeto respuesta
                 r.respuesta = textBoxResposta.Text;
+
+                //Si está marcada el checkbox de respuesta correcta, asignamos el atributo correcta del objeto respuesta a true
                 if (checkBoxCorrecta.Checked)
                 {
                     r.correcta = true;
@@ -75,33 +94,56 @@ namespace AppDesktop
                     r.correcta = false;
                 }
 
-                //La añadimos a la lista
+                //Añadimos el objeto respuesta creado a la lista de respuestas
                 listaRespuestas.Add(r);
 
                 //Limpiamos campos
                 textBoxResposta.Text = "";
                 checkBoxCorrecta.Checked = false;
 
+                //Actualizamos la DataGridView
                 actualizarDGV();
             }
         }
 
+        //Al clickar el botón [Eliminar]
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewRespuestas.CurrentRow != null)
+            {
+                if (dataGridViewRespuestas.CurrentRow.Index != -1)
+                {
+                    //Eliminamos la fila seleccionada
+                    listaRespuestas.RemoveAt(dataGridViewRespuestas.CurrentRow.Index);
+
+                    //Actualizamos el DataGridView para que se reflejen los cambios
+                    actualizarDGV();
+
+                }
+            }
+        }
+
+        //Al clickar el botón [Guardar]
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
             //Contador de campos correctos
             byte cont = 0;
 
+            //Mensaje inicial que saldrá cuando haya algun campo incorrecto (luego se concatenarán otros strings indicando qué errores hay)
             string msgError = "No s'ha pogut afegir correctament la pregunta perquè: ";
+
 
             //Comprobamos cuales son los campos correctos y los incorrectos
             //En los incorrectos, concatenamos mensajes de error para que luego la usuaria sepa qué debe hacer
             //Checkeo del Idioma
             if (comboBoxIdioma.SelectedIndex > -1)
             {
+                //Si hay algún campo seleccionado, aumentamos el contador en 1
                 cont++;
             }
             else
             {
+                //Sumamos (concatenamos) este string al string de errores
                 msgError += "\n  - S'ha d'escollir un idioma";
             }
 
@@ -119,7 +161,7 @@ namespace AppDesktop
 
             //Checkeo de la pregunta
             if (textBoxPregunta.Text.Length <= MAX_CHAR_PREG &&
-                textBoxPregunta.Text.Length >= 10)
+                textBoxPregunta.Text.Length >= MIN_CHAR_PREG)
             {
                 cont++;
             }
@@ -132,29 +174,37 @@ namespace AppDesktop
             //Checkeo de las respuestas
             if (dataGridViewRespuestas.RowCount == 4)
             {
+                //Si hay un total de 4 respuestas sumamos el contador de campos correctos en 1
                 cont++;
 
-                //Contamos cuantas respuestas están marcadas como válidas
+                //Contador de respuestas que están marcadas como válidas
                 byte numCorrectas = 0;
 
+                //Comprobamos respuesta por respuesta en la lista de respuestas
                 foreach (Respuesta r in listaRespuestas)
                 {
+                    //Si el atributo de la respuesta es true...
                     if (r.correcta)
                     {
+                        //... sumamos el contador en 1
                         numCorrectas++;
                     }
                 }
 
+
+                //Si el numero de respuestas correctas es 1...
                 if (numCorrectas==1)
                 {
+                    //...El numero de campos correctos lo sumamos en 1
                     cont++;
                 }
                 else
                 {
-                    msgError += "\n  - Només una de les respostes ha d'estar marcada com a correcte";
+                    msgError += "\n  - Només pot haver-hi una resposta marcada com a correcta";
                 }
 
             }
+            //Si no hay cuatro respuestas, concatena otro mensaje de error
             else
             {
                 msgError += "\n  - Ha d'haver-hi cuatre respostes";
@@ -164,73 +214,71 @@ namespace AppDesktop
             //Si todos los campos son correctos se guarda la pregunta, si no, muestra mensaje indicando los errores
             if (cont==5)
             {
+                //Creamos una pregunta: sus atributos pregunta y respuesta se le pasa por parámetro
                 Pregunta p = new Pregunta(textBoxPregunta.Text, listaRespuestas);
-                if (comboBoxIdioma.SelectedItem.ToString().Equals("Anglès"))
-                {
-                    switch (comboBoxNivel.SelectedItem.ToString())
-                    {
-                        case "Infantil":
-                            ingles.infantil.Add(p);
-                            break;
-                        case "Adult (Fàcil)":
 
-                            ingles.facil.Add(p);
-                            break;
-                        case "Adult (Intermedi)":
-                            ingles.medio.Add(p);
-                            break;
-                        case "Adult (Difícil)":
-                            ingles.dificil.Add(p);
-                            break;
-                    }
-                }
-                else if (comboBoxIdioma.SelectedItem.ToString().Equals("Català"))
-                {
-                    switch (comboBoxNivel.SelectedItem.ToString())
-                    {
-                        case "Infantil":
-                            catalan.infantil.Add(p);
-                            break;
-                        case "Adult (Fàcil)":
-                            catalan.facil.Add(p);
-                            break;
-                        case "Adult (Intermedi)":
-                            catalan.medio.Add(p);
-                            break;
-                        case "Adult (Difícil)":
-                            catalan.dificil.Add(p);
-                            break;
+                anadirPregunta(p);
 
-                    }
-                }
-                else if (comboBoxIdioma.SelectedItem.ToString().Equals("Castellà"))
-                {
-                    switch (comboBoxNivel.SelectedItem.ToString())
-                    {
-                        case "Infantil":
-                            castellano.infantil.Add(p);
-                            break;
-                        case "Adult (Fàcil)":
-                            castellano.facil.Add(p);
-                            break;
-                        case "Adult (Intermedi)":
-                            castellano.medio.Add(p);
-                            break;
-                        case "Adult (Difícil)":
-                            castellano.dificil.Add(p);
-                            break;
-                    }
-                }
+                //En función del idioma y nivel seleccionado, guardamos la pregunta con las respuestas en una lista o otra
+                //if (comboBoxIdioma.SelectedItem.ToString().Equals("Anglès"))
+                //{
+                //    switch (comboBoxNivel.SelectedItem.ToString())
+                //    {
+                //        case "Infantil":
+                //            ingles.infantil.Add(p);
+                //            break;
 
-                //listaPreguntas.Add(p);
+                //        case "Adult (Fàcil)":
+                //            ingles.facil.Add(p);
+                //            break;
 
+                //        case "Adult (Intermedi)":
+                //            ingles.medio.Add(p);
+                //            break;
+
+                //        case "Adult (Difícil)":
+                //            ingles.dificil.Add(p);
+                //            break;
+                //    }
+                //}
+                //else if (comboBoxIdioma.SelectedItem.ToString().Equals("Català"))
+                //{
+                //    switch (comboBoxNivel.SelectedItem.ToString())
+                //    {
+                //        case "Infantil":
+                //            catalan.infantil.Add(p);
+                //            break;
+                //        case "Adult (Fàcil)":
+                //            catalan.facil.Add(p);
+                //            break;
+                //        case "Adult (Intermedi)":
+                //            catalan.medio.Add(p);
+                //            break;
+                //        case "Adult (Difícil)":
+                //            catalan.dificil.Add(p);
+                //            break;
+
+                //    }
+                //}
+                //else if (comboBoxIdioma.SelectedItem.ToString().Equals("Castellà"))
+                //{
+                //    switch (comboBoxNivel.SelectedItem.ToString())
+                //    {
+                //        case "Infantil":
+                //            castellano.infantil.Add(p);
+                //            break;
+                //        case "Adult (Fàcil)":
+                //            castellano.facil.Add(p);
+                //            break;
+                //        case "Adult (Intermedi)":
+                //            castellano.medio.Add(p);
+                //            break;
+                //        case "Adult (Difícil)":
+                //            castellano.dificil.Add(p);
+                //            break;
+                //    }
+                //}
                 MessageBox.Show("Pregunta afegida correctament!");
-
-                /*
-                //chivato
-                int contador = listaPreguntas.Count;
-                MessageBox.Show("Numero de preguntas añadidas " + contador);
-                */
 
                 limpiarCampos();
             }
@@ -241,11 +289,24 @@ namespace AppDesktop
 
         }
 
+        //Al clickar el botón [Reiniciar]
         private void buttonReiniciar_Click(object sender, EventArgs e)
         {
             limpiarCampos();
         }
 
+        //Para activar/desactivar la ayuda (ToolTip)
+        private void radioButtonSi_CheckedChanged(object sender, EventArgs e)
+        {
+            toolTipAyuda.Active = true;
+        }
+        private void radioButtonNo_CheckedChanged(object sender, EventArgs e)
+        {
+            toolTipAyuda.Active = false;
+        }
+
+
+        /*** M E T O D O S  ***/
         /// <summary>
         /// Limpia (deja en blanco) todos los campos, comboBoxs, DGV...
         /// </summary>
@@ -263,53 +324,85 @@ namespace AppDesktop
             listaRespuestas.Clear();
         }
 
-        //Activamos/Desactivamos la ayuda (ToolTip)
-        private void radioButtonSi_CheckedChanged(object sender, EventArgs e)
-        {
-            toolTipAyuda.Active = true;
-        }
-        private void radioButtonNo_CheckedChanged(object sender, EventArgs e)
-        {
-            toolTipAyuda.Active = false;
-        }
-
-        //Eventos para los contadores de números de carácteres de los textBox pregunta y respuesta
-        private void textBoxPregunta_TextChanged(object sender, EventArgs e)
-        {
-            int numCar = MAX_CHAR_PREG - textBoxPregunta.Text.Length;
-            labelCarPre.Text = numCar.ToString();
-        }
-        private void textBoxResposta_TextChanged(object sender, EventArgs e)
-        {
-            int numCar = MAX_CHAR_RESP - textBoxResposta.Text.Length;
-            labelCarRes.Text = numCar.ToString();
-        }
-
-
-        //Refrescamos la DataGridView con la lista de respuestas
+        /// <summary>
+        /// Refrescamos la DataGridView con la lista de respuestas
+        /// </summary>
         private void actualizarDGV()
         {
             dataGridViewRespuestas.DataSource = null;
             dataGridViewRespuestas.DataSource = listaRespuestas;
         }
 
-        private void buttonEliminar_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Añadimos la pregunta, en función de su idioma y nivel, a una lista de preguntas. Se le pasa por parámetro una pregunta
+        /// </summary>
+        /// <param name="p">La pregunta</param>
+        private void anadirPregunta(Pregunta p)
         {
-            if (dataGridViewRespuestas.CurrentRow != null)
+            if (comboBoxIdioma.SelectedItem.ToString().Equals("Anglès"))
             {
-                if (dataGridViewRespuestas.CurrentRow.Index != -1)
+                switch (comboBoxNivel.SelectedItem.ToString())
                 {
-                    //Eliminamos la fila seleccionada
-                    listaRespuestas.RemoveAt(dataGridViewRespuestas.CurrentRow.Index);
+                    case "Infantil":
+                        ingles.infantil.Add(p);
+                        break;
 
-                    //Actualizamos el DataGridView para que se reflejen los cambios
-                    actualizarDGV();
+                    case "Adult (Fàcil)":
+                        ingles.facil.Add(p);
+                        break;
 
+                    case "Adult (Intermedi)":
+                        ingles.medio.Add(p);
+                        break;
+
+                    case "Adult (Difícil)":
+                        ingles.dificil.Add(p);
+                        break;
+                }
+            }
+            else if (comboBoxIdioma.SelectedItem.ToString().Equals("Català"))
+            {
+                switch (comboBoxNivel.SelectedItem.ToString())
+                {
+                    case "Infantil":
+                        catalan.infantil.Add(p);
+                        break;
+                    case "Adult (Fàcil)":
+                        catalan.facil.Add(p);
+                        break;
+                    case "Adult (Intermedi)":
+                        catalan.medio.Add(p);
+                        break;
+                    case "Adult (Difícil)":
+                        catalan.dificil.Add(p);
+                        break;
+
+                }
+            }
+            else if (comboBoxIdioma.SelectedItem.ToString().Equals("Castellà"))
+            {
+                switch (comboBoxNivel.SelectedItem.ToString())
+                {
+                    case "Infantil":
+                        castellano.infantil.Add(p);
+                        break;
+                    case "Adult (Fàcil)":
+                        castellano.facil.Add(p);
+                        break;
+                    case "Adult (Intermedi)":
+                        castellano.medio.Add(p);
+                        break;
+                    case "Adult (Difícil)":
+                        castellano.dificil.Add(p);
+                        break;
                 }
             }
         }
 
-        //Elimina la pregunta que se pasa en el constructor en las listas para poder volver a modificar la pregunta
+        /// <summary>
+        /// Elimina la pregunta que se pasa en el constructor en las listas para poder volver a modificar la pregunta. Se le pasa por parámetro la pregunta
+        /// </summary>
+        /// <param name="pregunta">Un objeto de la clase Pregunta</param>
         private void eliminarPregunta(Pregunta pregunta) 
         {
             if (comboBoxIdioma.SelectedItem.ToString().Equals("Anglès"))
@@ -319,13 +412,15 @@ namespace AppDesktop
                     case "Infantil":
                         ingles.infantil.Remove(pregunta);
                         break;
-                    case "Adult (Fàcil)":
 
+                    case "Adult (Fàcil)":
                         ingles.facil.Remove(pregunta);
                         break;
+
                     case "Adult (Intermedi)":
                         ingles.medio.Remove(pregunta);
                         break;
+
                     case "Adult (Difícil)":
                         ingles.dificil.Remove(pregunta);
                         break;
@@ -338,12 +433,15 @@ namespace AppDesktop
                     case "Infantil":
                         catalan.infantil.Remove(pregunta);
                         break;
+
                     case "Adult (Fàcil)":
                         catalan.facil.Remove(pregunta);
                         break;
+
                     case "Adult (Intermedi)":
                         catalan.medio.Remove(pregunta);
                         break;
+
                     case "Adult (Difícil)":
                         catalan.dificil.Remove(pregunta);
                         break;
@@ -357,12 +455,15 @@ namespace AppDesktop
                     case "Infantil":
                         castellano.infantil.Remove(pregunta);
                         break;
+
                     case "Adult (Fàcil)":
                         castellano.facil.Remove(pregunta);
                         break;
+
                     case "Adult (Intermedi)":
                         castellano.medio.Remove(pregunta);
                         break;
+
                     case "Adult (Difícil)":
                         castellano.dificil.Remove(pregunta);
                         break;
