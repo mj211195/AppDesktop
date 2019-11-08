@@ -39,19 +39,16 @@ namespace AppDesktop
             {
                 JObject jsonIdioma = JObject.Parse(File.ReadAllText(fileCatalan));
                 catalan = jsonIdioma.ToObject<Idioma>();
-                int i = 0;
             }
             if (File.Exists(fileCastellano) == true)
             {
                 JObject jsonIdioma = JObject.Parse(File.ReadAllText(fileCastellano));
                 castellano = jsonIdioma.ToObject<Idioma>();
-                int i = 0;
             }
             if (File.Exists(fileIngles) == true)
             {
                 JObject jsonIdioma = JObject.Parse(File.ReadAllText(fileIngles));
                 ingles = jsonIdioma.ToObject<Idioma>();
-                int i = 0;
             }
         }
 
