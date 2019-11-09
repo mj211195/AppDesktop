@@ -1,5 +1,6 @@
 ﻿using AppDesktop.Clases;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -30,13 +31,10 @@ namespace AppDesktop
             this.catalan = catalan;
             this.ingles = ingles;
         }
-        public AnadirPregunta(Idioma castellano, Idioma catalan, Idioma ingles, Pregunta pregunta, String idioma, String nivel)
+        public AnadirPregunta(Idioma castellano, Idioma catalan, Idioma ingles, Pregunta pregunta, Respuesta[] r, String idioma, String nivel)
         {
-
-            /*
-             * PROBLEMA DE PUNTEROS, CREAR UNA COPIA EN LUGAR DE CHAFAR LA PREGUNTA
-             */
             InitializeComponent();
+
             this.castellano = castellano;
             this.catalan = catalan;
             this.ingles = ingles;
@@ -48,15 +46,25 @@ namespace AppDesktop
             preguntaModificada = true;
 
             textBoxPregunta.Text = pregunta.pregunta;
-            listaRespuestas = pregunta.respuestas;
-            actualizarDGV();
 
+            List<Respuesta> lr = new List<Respuesta>(r);
+            BindingList<Respuesta> blist2 = new BindingList<Respuesta>(lr);
+            listaRespuestas = blist2;
+
+            actualizarDGV();
         }
 
         /*** E V E N T O S  ***/
         //Al cargar el formulario
         private void AnadirPregunta_Load(object sender, EventArgs e)
         {
+            if (preguntaModificada==true)
+            {
+                this.Text = "Modificar pregunta";
+                groupBoxAfegirPregunta.Text = "Modificar pregunta";
+            }
+
+
             //"Iniciamos" las labels de contadores de carácteres para pregunta y respuesta
             mostrarCharsPregunta();
             mostrarCharsResposta();
@@ -129,6 +137,18 @@ namespace AppDesktop
 
                 //Actualizamos la DataGridView
                 actualizarDGV();
+                dataGridViewRespuestas.ClearSelection();
+
+                //Cambiamos el focus para hacer más cómodo al tabular
+                if (dataGridViewRespuestas.RowCount < 4)
+                {
+                    textBoxResposta.Focus();
+                }
+                else if (dataGridViewRespuestas.RowCount == 4)
+                {
+                    buttonGuardar.Focus();
+
+                }
             }
         }
 
@@ -255,9 +275,17 @@ namespace AppDesktop
 
                 anadirPregunta(p);
 
-                MessageBox.Show("Pregunta afegida correctament!");
-
                 limpiarCampos();
+
+                if (preguntaModificada==true)
+                {
+                    MessageBox.Show("Pregunta modificada correctament!");
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Pregunta afegida correctament!");
+                }
             }
             else
             {

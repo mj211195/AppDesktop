@@ -136,6 +136,7 @@
             this.respuesta,
             this.Correcta});
             this.dataGridViewRespuestas.Location = new System.Drawing.Point(393, 72);
+            this.dataGridViewRespuestas.MultiSelect = false;
             this.dataGridViewRespuestas.Name = "dataGridViewRespuestas";
             this.dataGridViewRespuestas.ReadOnly = true;
             this.dataGridViewRespuestas.Size = new System.Drawing.Size(425, 290);

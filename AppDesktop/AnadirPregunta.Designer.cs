@@ -34,6 +34,8 @@
             this.labelIdioma = new System.Windows.Forms.Label();
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.dataGridViewRespuestas = new System.Windows.Forms.DataGridView();
+            this.dgvRespuesta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvCorrecta = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.checkBoxCorrecta = new System.Windows.Forms.CheckBox();
             this.textBoxResposta = new System.Windows.Forms.TextBox();
             this.textBoxPregunta = new System.Windows.Forms.TextBox();
@@ -52,8 +54,6 @@
             this.radioButtonSi = new System.Windows.Forms.RadioButton();
             this.groupBoxGestionRespuestas = new System.Windows.Forms.GroupBox();
             this.toolTipAyuda = new System.Windows.Forms.ToolTip(this.components);
-            this.dgvRespuesta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvCorrecta = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRespuestas)).BeginInit();
             this.groupBoxAfegirPregunta.SuspendLayout();
             this.groupBoxMostrarAjuda.SuspendLayout();
@@ -71,7 +71,7 @@
             this.comboBoxIdioma.Location = new System.Drawing.Point(73, 26);
             this.comboBoxIdioma.Name = "comboBoxIdioma";
             this.comboBoxIdioma.Size = new System.Drawing.Size(143, 21);
-            this.comboBoxIdioma.TabIndex = 54;
+            this.comboBoxIdioma.TabIndex = 0;
             this.toolTipAyuda.SetToolTip(this.comboBoxIdioma, "Seleccionar l\'idioma de la pregunta");
             // 
             // labelIdioma
@@ -88,7 +88,7 @@
             this.buttonGuardar.Location = new System.Drawing.Point(564, 464);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(108, 23);
-            this.buttonGuardar.TabIndex = 52;
+            this.buttonGuardar.TabIndex = 10;
             this.buttonGuardar.Text = "Guardar";
             this.toolTipAyuda.SetToolTip(this.buttonGuardar, "Guarda la pregunta");
             this.buttonGuardar.UseVisualStyleBackColor = true;
@@ -107,7 +107,23 @@
             this.dataGridViewRespuestas.Name = "dataGridViewRespuestas";
             this.dataGridViewRespuestas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewRespuestas.Size = new System.Drawing.Size(560, 167);
-            this.dataGridViewRespuestas.TabIndex = 51;
+            this.dataGridViewRespuestas.TabIndex = 7;
+            // 
+            // dgvRespuesta
+            // 
+            this.dgvRespuesta.DataPropertyName = "respuesta";
+            this.dgvRespuesta.HeaderText = "Respostes";
+            this.dgvRespuesta.Name = "dgvRespuesta";
+            this.dgvRespuesta.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRespuesta.Width = 400;
+            // 
+            // dgvCorrecta
+            // 
+            this.dgvCorrecta.DataPropertyName = "correcta";
+            this.dgvCorrecta.HeaderText = "Correcta";
+            this.dgvCorrecta.Name = "dgvCorrecta";
+            this.dgvCorrecta.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCorrecta.Width = 75;
             // 
             // checkBoxCorrecta
             // 
@@ -116,7 +132,7 @@
             this.checkBoxCorrecta.Location = new System.Drawing.Point(521, 153);
             this.checkBoxCorrecta.Name = "checkBoxCorrecta";
             this.checkBoxCorrecta.Size = new System.Drawing.Size(51, 31);
-            this.checkBoxCorrecta.TabIndex = 49;
+            this.checkBoxCorrecta.TabIndex = 5;
             this.checkBoxCorrecta.Text = "Correcta";
             this.toolTipAyuda.SetToolTip(this.checkBoxCorrecta, "Si aquesta resposta és la correcta, s\'ha de marcar amb el tick");
             this.checkBoxCorrecta.UseVisualStyleBackColor = true;
@@ -126,7 +142,7 @@
             this.textBoxResposta.Location = new System.Drawing.Point(88, 164);
             this.textBoxResposta.Name = "textBoxResposta";
             this.textBoxResposta.Size = new System.Drawing.Size(417, 20);
-            this.textBoxResposta.TabIndex = 47;
+            this.textBoxResposta.TabIndex = 4;
             this.textBoxResposta.TextChanged += new System.EventHandler(this.textBoxResposta_TextChanged);
             // 
             // textBoxPregunta
@@ -135,7 +151,7 @@
             this.textBoxPregunta.Multiline = true;
             this.textBoxPregunta.Name = "textBoxPregunta";
             this.textBoxPregunta.Size = new System.Drawing.Size(417, 43);
-            this.textBoxPregunta.TabIndex = 46;
+            this.textBoxPregunta.TabIndex = 3;
             this.textBoxPregunta.TextChanged += new System.EventHandler(this.textBoxPregunta_TextChanged);
             // 
             // comboBoxNivel
@@ -150,7 +166,7 @@
             this.comboBoxNivel.Location = new System.Drawing.Point(482, 26);
             this.comboBoxNivel.Name = "comboBoxNivel";
             this.comboBoxNivel.Size = new System.Drawing.Size(159, 21);
-            this.comboBoxNivel.TabIndex = 45;
+            this.comboBoxNivel.TabIndex = 1;
             this.toolTipAyuda.SetToolTip(this.comboBoxNivel, "Seleccionar el nivel de la pregunta");
             // 
             // buttonReiniciar
@@ -158,7 +174,7 @@
             this.buttonReiniciar.Location = new System.Drawing.Point(457, 464);
             this.buttonReiniciar.Name = "buttonReiniciar";
             this.buttonReiniciar.Size = new System.Drawing.Size(101, 23);
-            this.buttonReiniciar.TabIndex = 44;
+            this.buttonReiniciar.TabIndex = 9;
             this.buttonReiniciar.Text = "Reiniciar";
             this.toolTipAyuda.SetToolTip(this.buttonReiniciar, "Buida tots els camps i menús desplegables");
             this.buttonReiniciar.UseVisualStyleBackColor = true;
@@ -169,7 +185,7 @@
             this.buttonEliminar.Location = new System.Drawing.Point(578, 86);
             this.buttonEliminar.Name = "buttonEliminar";
             this.buttonEliminar.Size = new System.Drawing.Size(75, 23);
-            this.buttonEliminar.TabIndex = 43;
+            this.buttonEliminar.TabIndex = 8;
             this.buttonEliminar.Text = "Eliminar seleccionada";
             this.toolTipAyuda.SetToolTip(this.buttonEliminar, "Elimina la pregunta seleccionada");
             this.buttonEliminar.UseVisualStyleBackColor = true;
@@ -180,7 +196,7 @@
             this.buttonAnadir.Location = new System.Drawing.Point(584, 159);
             this.buttonAnadir.Name = "buttonAnadir";
             this.buttonAnadir.Size = new System.Drawing.Size(75, 23);
-            this.buttonAnadir.TabIndex = 41;
+            this.buttonAnadir.TabIndex = 6;
             this.buttonAnadir.Text = "Afegir";
             this.toolTipAyuda.SetToolTip(this.buttonAnadir, "La resposta s\'afageix a la llista de respostes, les quals es mostraran a la \"Grae" +
         "lla de respostes\"");
@@ -237,7 +253,7 @@
             this.groupBoxAfegirPregunta.Location = new System.Drawing.Point(12, 12);
             this.groupBoxAfegirPregunta.Name = "groupBoxAfegirPregunta";
             this.groupBoxAfegirPregunta.Size = new System.Drawing.Size(686, 493);
-            this.groupBoxAfegirPregunta.TabIndex = 55;
+            this.groupBoxAfegirPregunta.TabIndex = 0;
             this.groupBoxAfegirPregunta.TabStop = false;
             this.groupBoxAfegirPregunta.Text = "Afegir pregunta";
             // 
@@ -313,22 +329,6 @@
             this.toolTipAyuda.InitialDelay = 250;
             this.toolTipAyuda.ReshowDelay = 50;
             this.toolTipAyuda.ToolTipTitle = "Ajuda";
-            // 
-            // dgvRespuesta
-            // 
-            this.dgvRespuesta.DataPropertyName = "respuesta";
-            this.dgvRespuesta.HeaderText = "Respostes";
-            this.dgvRespuesta.Name = "dgvRespuesta";
-            this.dgvRespuesta.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRespuesta.Width = 400;
-            // 
-            // dgvCorrecta
-            // 
-            this.dgvCorrecta.DataPropertyName = "correcta";
-            this.dgvCorrecta.HeaderText = "Correcta";
-            this.dgvCorrecta.Name = "dgvCorrecta";
-            this.dgvCorrecta.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCorrecta.Width = 75;
             // 
             // AnadirPregunta
             // 

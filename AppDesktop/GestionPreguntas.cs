@@ -104,22 +104,30 @@ namespace AppDesktop
             {
                 dataGridViewRespuestas.DataSource = null;
             }
+
         }
 
         private void buttonModificarPregunta_Click(object sender, EventArgs e)
         {
-            //Al hacer click en el botón "Moficicar" se guarda la pregunta seleccionada en un objeto del tipo Pregunta
+            //Al hacer click en el botón "Modificar" se guarda la pregunta seleccionada en un objeto del tipo Pregunta
             Pregunta pregunta = (Pregunta)listBoxPreguntas.SelectedItem;
+
+            
+
+
 
             //Después se comprueba que realmente se haya seleccionado una pregunta (que pregunta no sea null)
             if (pregunta != null)
             {
+                Respuesta[] r;
+                r = pregunta.respuestas.ToArray();
+
                 //Si hay una pregunta seleccionada, se guardan en dos String el nivel y el idioma
                 String idioma = comboBoxIdioma.SelectedItem.ToString();
                 String nivel = comboBoxNivel.SelectedItem.ToString();
                
                 //Se crea un formulario del tipo AnadirPregunta, los 3 objetos del tipo Idioma, pasandole la pregunta, y los dos String
-                AnadirPregunta modificarPregunta = new AnadirPregunta(castellano, catalan, ingles, pregunta, idioma, nivel);
+                AnadirPregunta modificarPregunta = new AnadirPregunta(castellano, catalan, ingles, pregunta, r, idioma, nivel);
 
                 //Deseleccionamos la pregunta
                 listBoxPreguntas.SelectedIndex = -1;
