@@ -34,8 +34,6 @@
             this.labelIdioma = new System.Windows.Forms.Label();
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.dataGridViewRespuestas = new System.Windows.Forms.DataGridView();
-            this.dgvRespuesta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvCorrecta = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.checkBoxCorrecta = new System.Windows.Forms.CheckBox();
             this.textBoxResposta = new System.Windows.Forms.TextBox();
             this.textBoxPregunta = new System.Windows.Forms.TextBox();
@@ -54,6 +52,8 @@
             this.radioButtonSi = new System.Windows.Forms.RadioButton();
             this.groupBoxGestionRespuestas = new System.Windows.Forms.GroupBox();
             this.toolTipAyuda = new System.Windows.Forms.ToolTip(this.components);
+            this.dgvRespuesta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvCorrecta = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRespuestas)).BeginInit();
             this.groupBoxAfegirPregunta.SuspendLayout();
             this.groupBoxMostrarAjuda.SuspendLayout();
@@ -108,19 +108,6 @@
             this.dataGridViewRespuestas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewRespuestas.Size = new System.Drawing.Size(560, 167);
             this.dataGridViewRespuestas.TabIndex = 51;
-            // 
-            // dgvRespuesta
-            // 
-            this.dgvRespuesta.DataPropertyName = "respuesta";
-            this.dgvRespuesta.HeaderText = "Respostes";
-            this.dgvRespuesta.Name = "dgvRespuesta";
-            this.dgvRespuesta.Width = 400;
-            // 
-            // dgvCorrecta
-            // 
-            this.dgvCorrecta.DataPropertyName = "correcta";
-            this.dgvCorrecta.HeaderText = "Correcta";
-            this.dgvCorrecta.Name = "dgvCorrecta";
             // 
             // checkBoxCorrecta
             // 
@@ -195,6 +182,8 @@
             this.buttonAnadir.Size = new System.Drawing.Size(75, 23);
             this.buttonAnadir.TabIndex = 41;
             this.buttonAnadir.Text = "Afegir";
+            this.toolTipAyuda.SetToolTip(this.buttonAnadir, "La resposta s\'afageix a la llista de respostes, les quals es mostraran a la \"Grae" +
+        "lla de respostes\"");
             this.buttonAnadir.UseVisualStyleBackColor = true;
             this.buttonAnadir.Click += new System.EventHandler(this.buttonAnadir_Click);
             // 
@@ -325,6 +314,22 @@
             this.toolTipAyuda.ReshowDelay = 50;
             this.toolTipAyuda.ToolTipTitle = "Ajuda";
             // 
+            // dgvRespuesta
+            // 
+            this.dgvRespuesta.DataPropertyName = "respuesta";
+            this.dgvRespuesta.HeaderText = "Respostes";
+            this.dgvRespuesta.Name = "dgvRespuesta";
+            this.dgvRespuesta.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRespuesta.Width = 400;
+            // 
+            // dgvCorrecta
+            // 
+            this.dgvCorrecta.DataPropertyName = "correcta";
+            this.dgvCorrecta.HeaderText = "Correcta";
+            this.dgvCorrecta.Name = "dgvCorrecta";
+            this.dgvCorrecta.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCorrecta.Width = 75;
+            // 
             // AnadirPregunta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -340,6 +345,7 @@
             this.MinimumSize = new System.Drawing.Size(721, 556);
             this.Name = "AnadirPregunta";
             this.Text = "Afegir pregunta";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AnadirPregunta_FormClosing);
             this.Load += new System.EventHandler(this.AnadirPregunta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRespuestas)).EndInit();
             this.groupBoxAfegirPregunta.ResumeLayout(false);

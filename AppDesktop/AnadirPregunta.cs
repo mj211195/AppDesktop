@@ -68,7 +68,26 @@ namespace AppDesktop
             //se lo hemos indicado
             dataGridViewRespuestas.AutoGenerateColumns = false;
         }
-        
+
+        //Al cerrar el formulario
+        private void AnadirPregunta_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Si hay algún campo editado muestra un mensaje para confirmar el cerrado del formulario
+            if (comboBoxIdioma.SelectedIndex != -1 || comboBoxNivel.SelectedIndex != -1 ||
+                textBoxPregunta.Text.Length > 0 || textBoxResposta.Text.Length > 0 || listaRespuestas.Count > 0)
+            {
+                DialogResult result = MessageBox.Show("S'han fet modificacions pero no s'han guardat. \nDesitja sortir sense guardarles?", "Advertència",
+                                                        MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                
+                //Si se presiona el botón [Cancelar], no se cierra el formulario, de lo contrario sí
+                if (result == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                }
+
+            }
+        }
+
         //Para los contadores de números de carácteres de los textBox: pregunta y respuesta
         private void textBoxPregunta_TextChanged(object sender, EventArgs e)
         {
