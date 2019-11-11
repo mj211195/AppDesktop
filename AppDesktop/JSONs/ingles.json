@@ -1,1 +1,1 @@
-{"infantil":[],"facil":[],"medio":[],"dificil":[]}
+{"infantil":[{"pregunta":"How many planets are in our Solar System?","respuestas":[{"respuesta":"2","correcta":false},{"respuesta":"5","correcta":false},{"respuesta":"9","correcta":false},{"respuesta":"8","correcta":true}]}],"facil":[],"medio":[],"dificil":[{"pregunta":"¿Wich year was ESA founded?","respuestas":[{"respuesta":"1975","correcta":true},{"respuesta":"2000","correcta":false},{"respuesta":"2019","correcta":false},{"respuesta":"1959","correcta":false}]}]}
