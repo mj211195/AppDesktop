@@ -19,6 +19,8 @@ namespace AppDesktop
         Idioma castellano;
         Idioma ingles;
         Idioma catalan;
+        String idiomaOriginal = null,
+                nivelOrigional = null;
         Pregunta pregunta = new Pregunta();
 
         bool preguntaModificada = false;
@@ -39,10 +41,11 @@ namespace AppDesktop
             this.catalan = catalan;
             this.ingles = ingles;
             this.pregunta = pregunta;
-            comboBoxIdioma.SelectedItem= idioma;
+            this.idiomaOriginal = idioma;
+            this.nivelOrigional = nivel;
+            comboBoxIdioma.SelectedItem = idioma;
             comboBoxNivel.SelectedItem = nivel;
-            
-            //eliminarPregunta(pregunta);
+
             preguntaModificada = true;
 
             textBoxPregunta.Text = pregunta.pregunta;
@@ -58,7 +61,7 @@ namespace AppDesktop
         //Al cargar el formulario
         private void AnadirPregunta_Load(object sender, EventArgs e)
         {
-            if (preguntaModificada==true)
+            if (preguntaModificada == true)
             {
                 this.Text = "Modificar pregunta";
                 groupBoxAfegirPregunta.Text = "Modificar pregunta";
@@ -86,7 +89,7 @@ namespace AppDesktop
             {
                 DialogResult result = MessageBox.Show("S'han fet modificacions pero no s'han guardat. \nDesitja sortir sense guardarles?", "Advertència",
                                                         MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                
+
                 //Si se presiona el botón [Cancelar], no se cierra el formulario, de lo contrario sí
                 if (result == DialogResult.Cancel)
                 {
@@ -245,7 +248,7 @@ namespace AppDesktop
 
 
                 //Si el numero de respuestas correctas es 1...
-                if (numCorrectas==1)
+                if (numCorrectas == 1)
                 {
                     //...El numero de campos correctos lo sumamos en 1
                     cont++;
@@ -264,7 +267,7 @@ namespace AppDesktop
 
 
             //Si todos los campos son correctos se guarda la pregunta, si no, muestra mensaje indicando los errores
-            if (cont==5)
+            if (cont == 5)
             {
                 if (preguntaModificada)
                 {
@@ -277,7 +280,7 @@ namespace AppDesktop
 
                 limpiarCampos();
 
-                if (preguntaModificada==true)
+                if (preguntaModificada == true)
                 {
                     MessageBox.Show("Pregunta modificada correctament!");
                     Close();
@@ -402,70 +405,280 @@ namespace AppDesktop
         /// Elimina la pregunta la lista en la que se encuentre. Se le pasa por parámetro la pregunta
         /// </summary>
         /// <param name="pregunta">Un objeto de la clase Pregunta</param>
-        private void eliminarPregunta(Pregunta pregunta) 
+        private void eliminarPregunta(Pregunta pregunta)
         {
-            if (comboBoxIdioma.SelectedItem.ToString().Equals("Anglès"))
+            if (idiomaOriginal == comboBoxIdioma.SelectedItem.ToString())
             {
-                switch (comboBoxNivel.SelectedItem.ToString())
+                if (nivelOrigional == comboBoxNivel.SelectedItem.ToString())
                 {
-                    case "Infantil":
-                        ingles.infantil.Remove(pregunta);
-                        break;
+                    if (comboBoxIdioma.SelectedItem.ToString().Equals("Anglès"))
+                    {
+                        switch (comboBoxNivel.SelectedItem.ToString())
+                        {
+                            case "Infantil":
+                                ingles.infantil.Remove(pregunta);
+                                break;
 
-                    case "Adult (Fàcil)":
-                        ingles.facil.Remove(pregunta);
-                        break;
+                            case "Adult (Fàcil)":
+                                ingles.facil.Remove(pregunta);
+                                break;
 
-                    case "Adult (Intermedi)":
-                        ingles.medio.Remove(pregunta);
-                        break;
+                            case "Adult (Intermedi)":
+                                ingles.medio.Remove(pregunta);
+                                break;
 
-                    case "Adult (Difícil)":
-                        ingles.dificil.Remove(pregunta);
-                        break;
+                            case "Adult (Difícil)":
+                                ingles.dificil.Remove(pregunta);
+                                break;
+                        }
+                    }
+                    else if (comboBoxIdioma.SelectedItem.ToString().Equals("Català"))
+                    {
+                        switch (comboBoxNivel.SelectedItem.ToString())
+                        {
+                            case "Infantil":
+                                catalan.infantil.Remove(pregunta);
+                                break;
+
+                            case "Adult (Fàcil)":
+                                catalan.facil.Remove(pregunta);
+                                break;
+
+                            case "Adult (Intermedi)":
+                                catalan.medio.Remove(pregunta);
+                                break;
+
+                            case "Adult (Difícil)":
+                                catalan.dificil.Remove(pregunta);
+                                break;
+
+                        }
+                    }
+                    else if (comboBoxIdioma.SelectedItem.ToString().Equals("Castellà"))
+                    {
+                        switch (comboBoxNivel.SelectedItem.ToString())
+                        {
+                            case "Infantil":
+                                castellano.infantil.Remove(pregunta);
+                                break;
+
+                            case "Adult (Fàcil)":
+                                castellano.facil.Remove(pregunta);
+                                break;
+
+                            case "Adult (Intermedi)":
+                                castellano.medio.Remove(pregunta);
+                                break;
+
+                            case "Adult (Difícil)":
+                                castellano.dificil.Remove(pregunta);
+                                break;
+                        }
+                    }
+                }
+                else //nivel != original (se ha cambiado el nivel)
+                {
+                    if (comboBoxIdioma.SelectedItem.ToString().Equals("Anglès"))
+                    {
+                        switch (nivelOrigional)
+                        {
+                            case "Infantil":
+                                ingles.infantil.Remove(pregunta);
+                                break;
+
+                            case "Adult (Fàcil)":
+                                ingles.facil.Remove(pregunta);
+                                break;
+
+                            case "Adult (Intermedi)":
+                                ingles.medio.Remove(pregunta);
+                                break;
+
+                            case "Adult (Difícil)":
+                                ingles.dificil.Remove(pregunta);
+                                break;
+                        }
+                    }
+                    else if (comboBoxIdioma.SelectedItem.ToString().Equals("Català"))
+                    {
+                        switch (nivelOrigional)
+                        {
+                            case "Infantil":
+                                catalan.infantil.Remove(pregunta);
+                                break;
+
+                            case "Adult (Fàcil)":
+                                catalan.facil.Remove(pregunta);
+                                break;
+
+                            case "Adult (Intermedi)":
+                                catalan.medio.Remove(pregunta);
+                                break;
+
+                            case "Adult (Difícil)":
+                                catalan.dificil.Remove(pregunta);
+                                break;
+
+                        }
+                    }
+                    else if (comboBoxIdioma.SelectedItem.ToString().Equals("Castellà"))
+                    {
+                        switch (nivelOrigional)
+                        {
+                            case "Infantil":
+                                castellano.infantil.Remove(pregunta);
+                                break;
+
+                            case "Adult (Fàcil)":
+                                castellano.facil.Remove(pregunta);
+                                break;
+
+                            case "Adult (Intermedi)":
+                                castellano.medio.Remove(pregunta);
+                                break;
+
+                            case "Adult (Difícil)":
+                                castellano.dificil.Remove(pregunta);
+                                break;
+                        }
+                    }
                 }
             }
-            else if (comboBoxIdioma.SelectedItem.ToString().Equals("Català"))
+            else //idioma != original (ha cambiado de idioma)
             {
-                switch (comboBoxNivel.SelectedItem.ToString())
+                if (nivelOrigional == comboBoxNivel.SelectedItem.ToString())
                 {
-                    case "Infantil":
-                        catalan.infantil.Remove(pregunta);
-                        break;
+                    if (idiomaOriginal == "Anglès")
+                    {
+                        switch (comboBoxNivel.SelectedItem.ToString())
+                        {
+                            case "Infantil":
+                                ingles.infantil.Remove(pregunta);
+                                break;
 
-                    case "Adult (Fàcil)":
-                        catalan.facil.Remove(pregunta);
-                        break;
+                            case "Adult (Fàcil)":
+                                ingles.facil.Remove(pregunta);
+                                break;
 
-                    case "Adult (Intermedi)":
-                        catalan.medio.Remove(pregunta);
-                        break;
+                            case "Adult (Intermedi)":
+                                ingles.medio.Remove(pregunta);
+                                break;
 
-                    case "Adult (Difícil)":
-                        catalan.dificil.Remove(pregunta);
-                        break;
+                            case "Adult (Difícil)":
+                                ingles.dificil.Remove(pregunta);
+                                break;
+                        }
+                    }
+                    else if (idiomaOriginal == "Català")
+                    {
+                        switch (comboBoxNivel.SelectedItem.ToString())
+                        {
+                            case "Infantil":
+                                catalan.infantil.Remove(pregunta);
+                                break;
 
+                            case "Adult (Fàcil)":
+                                catalan.facil.Remove(pregunta);
+                                break;
+
+                            case "Adult (Intermedi)":
+                                catalan.medio.Remove(pregunta);
+                                break;
+
+                            case "Adult (Difícil)":
+                                catalan.dificil.Remove(pregunta);
+                                break;
+
+                        }
+                    }
+                    else if (idiomaOriginal == "Castellà")
+                    {
+                        switch (comboBoxNivel.SelectedItem.ToString())
+                        {
+                            case "Infantil":
+                                castellano.infantil.Remove(pregunta);
+                                break;
+
+                            case "Adult (Fàcil)":
+                                castellano.facil.Remove(pregunta);
+                                break;
+
+                            case "Adult (Intermedi)":
+                                castellano.medio.Remove(pregunta);
+                                break;
+
+                            case "Adult (Difícil)":
+                                castellano.dificil.Remove(pregunta);
+                                break;
+                        }
+                    }
                 }
-            }
-            else if (comboBoxIdioma.SelectedItem.ToString().Equals("Castellà"))
-            {
-                switch (comboBoxNivel.SelectedItem.ToString())
+                else //nivel != original (se ha cambiado el idioma)
                 {
-                    case "Infantil":
-                        castellano.infantil.Remove(pregunta);
-                        break;
+                    if (idiomaOriginal == "Anglès")
+                    {
+                        switch (nivelOrigional)
+                        {
+                            case "Infantil":
+                                ingles.infantil.Remove(pregunta);
+                                break;
 
-                    case "Adult (Fàcil)":
-                        castellano.facil.Remove(pregunta);
-                        break;
+                            case "Adult (Fàcil)":
+                                ingles.facil.Remove(pregunta);
+                                break;
 
-                    case "Adult (Intermedi)":
-                        castellano.medio.Remove(pregunta);
-                        break;
+                            case "Adult (Intermedi)":
+                                ingles.medio.Remove(pregunta);
+                                break;
 
-                    case "Adult (Difícil)":
-                        castellano.dificil.Remove(pregunta);
-                        break;
+                            case "Adult (Difícil)":
+                                ingles.dificil.Remove(pregunta);
+                                break;
+                        }
+                    }
+                    else if (idiomaOriginal == "Català")
+                    {
+                        switch (nivelOrigional)
+                        {
+                            case "Infantil":
+                                catalan.infantil.Remove(pregunta);
+                                break;
+
+                            case "Adult (Fàcil)":
+                                catalan.facil.Remove(pregunta);
+                                break;
+
+                            case "Adult (Intermedi)":
+                                catalan.medio.Remove(pregunta);
+                                break;
+
+                            case "Adult (Difícil)":
+                                catalan.dificil.Remove(pregunta);
+                                break;
+
+                        }
+                    }
+                    else if (idiomaOriginal == "Castellà")
+                    {
+                        switch (nivelOrigional)
+                        {
+                            case "Infantil":
+                                castellano.infantil.Remove(pregunta);
+                                break;
+
+                            case "Adult (Fàcil)":
+                                castellano.facil.Remove(pregunta);
+                                break;
+
+                            case "Adult (Intermedi)":
+                                castellano.medio.Remove(pregunta);
+                                break;
+
+                            case "Adult (Difícil)":
+                                castellano.dificil.Remove(pregunta);
+                                break;
+                        }
+                    }
                 }
             }
         }
