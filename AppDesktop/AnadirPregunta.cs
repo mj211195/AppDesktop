@@ -20,7 +20,8 @@ namespace AppDesktop
         Idioma ingles;
         Idioma catalan;
         String idiomaOriginal = null,
-                nivelOrigional = null;
+                nivelOrigional = null,
+                strPregunta = null;
         Pregunta pregunta = new Pregunta();
 
         bool preguntaModificada = false;
