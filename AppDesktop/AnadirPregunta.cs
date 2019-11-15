@@ -15,7 +15,8 @@ namespace AppDesktop
         const byte MIN_CHAR_RESP = 0;
 
         //Objetos
-        BindingList<Respuesta> listaRespuestas = new BindingList<Respuesta>();
+        BindingList<Respuesta> listaRespuestas = new BindingList<Respuesta>(),
+                               blist2 = new BindingList<Respuesta>();
         Idioma castellano;
         Idioma ingles;
         Idioma catalan;
@@ -44,6 +45,7 @@ namespace AppDesktop
             this.pregunta = pregunta;
             this.idiomaOriginal = idioma;
             this.nivelOrigional = nivel;
+            this.strPregunta = pregunta.pregunta;
             comboBoxIdioma.SelectedItem = idioma;
             comboBoxNivel.SelectedItem = nivel;
 
@@ -52,7 +54,7 @@ namespace AppDesktop
             textBoxPregunta.Text = pregunta.pregunta;
 
             List<Respuesta> lr = new List<Respuesta>(r);
-            BindingList<Respuesta> blist2 = new BindingList<Respuesta>(lr);
+            blist2 = new BindingList<Respuesta>(lr);
             listaRespuestas = blist2;
 
             actualizarDGV();
@@ -84,20 +86,27 @@ namespace AppDesktop
         //Al cerrar el formulario
         private void AnadirPregunta_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //Si hay algún campo editado muestra un mensaje para confirmar el cerrado del formulario
-            if (comboBoxIdioma.SelectedIndex != -1 || comboBoxNivel.SelectedIndex != -1 ||
-                textBoxPregunta.Text.Length > 0 || textBoxResposta.Text.Length > 0 || listaRespuestas.Count > 0)
+            //Si hemos accedido a través de [Modificar Pregunta]...
+            if (preguntaModificada)
             {
-                DialogResult result = MessageBox.Show("S'han fet modificacions pero no s'han guardat. \nDesitja sortir sense guardarles?", "Advertència",
-                                                        MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-
-                //Si se presiona el botón [Cancelar], no se cierra el formulario, de lo contrario sí
-                if (result == DialogResult.Cancel)
+                //Si han hecho modificaciones de la pregunta a modificar y se intenta cerrar el form...
+                if (idiomaOriginal != comboBoxIdioma.SelectedItem.ToString() || nivelOrigional != comboBoxNivel.SelectedItem.ToString()
+                    || strPregunta != textBoxPregunta.Text || listaRespuestas != blist2)
                 {
-                    e.Cancel = true;
+                    mostrarMensajeCambiosSinGuardar(e);
                 }
-
             }
+            //Si hemos accedido a través de [Nueva Pregunta]...
+            else
+            {
+                //Si hay algún campo modificado y se intenta cerrar el form...
+                if (comboBoxIdioma.SelectedIndex != -1 || comboBoxNivel.SelectedIndex != -1 ||
+                    textBoxPregunta.Text.Length > 0 || textBoxResposta.Text.Length > 0 || listaRespuestas.Count > 0)
+                {
+                    mostrarMensajeCambiosSinGuardar(e);
+                }
+            }
+            
         }
 
         //Para los contadores de números de carácteres de los textBox: pregunta y respuesta
@@ -700,6 +709,21 @@ namespace AppDesktop
         {
             int numCar = MAX_CHAR_RESP - textBoxResposta.Text.Length;
             labelCarRes.Text = numCar.ToString();
+        }
+
+        /// <summary>
+        /// Muestra un mensaje cuando se intenta cerrar el formulario, se han hecho cambios pero no se han guardado
+        /// </summary>
+        private void mostrarMensajeCambiosSinGuardar(FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("S'han fet modificacions pero no s'han guardat. \nDesitja sortir sense guardarles?", "Advertència",
+                                                       MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            //Si se presiona el botón [Cancelar], no se cierra el formulario, de lo contrario sí
+            if (result == DialogResult.Cancel)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

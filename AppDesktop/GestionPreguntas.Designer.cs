@@ -171,6 +171,7 @@
             this.listBoxPreguntas.FormattingEnabled = true;
             this.listBoxPreguntas.Location = new System.Drawing.Point(18, 72);
             this.listBoxPreguntas.Name = "listBoxPreguntas";
+            this.listBoxPreguntas.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBoxPreguntas.Size = new System.Drawing.Size(322, 290);
             this.listBoxPreguntas.TabIndex = 6;
             this.listBoxPreguntas.SelectedIndexChanged += new System.EventHandler(this.listBoxPreguntas_SelectedIndexChanged);

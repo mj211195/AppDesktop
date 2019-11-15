@@ -112,10 +112,6 @@ namespace AppDesktop
             //Al hacer click en el botón "Modificar" se guarda la pregunta seleccionada en un objeto del tipo Pregunta
             Pregunta pregunta = (Pregunta)listBoxPreguntas.SelectedItem;
 
-            
-
-
-
             //Después se comprueba que realmente se haya seleccionado una pregunta (que pregunta no sea null)
             if (pregunta != null)
             {
@@ -125,7 +121,8 @@ namespace AppDesktop
                 //Si hay una pregunta seleccionada, se guardan en dos String el nivel y el idioma
                 String idioma = comboBoxIdioma.SelectedItem.ToString();
                 String nivel = comboBoxNivel.SelectedItem.ToString();
-               
+                String strPregunta = listBoxPreguntas.SelectedItem.ToString();
+
                 //Se crea un formulario del tipo AnadirPregunta, los 3 objetos del tipo Idioma, pasandole la pregunta, y los dos String
                 AnadirPregunta modificarPregunta = new AnadirPregunta(castellano, catalan, ingles, pregunta, r, idioma, nivel);
 
@@ -141,11 +138,40 @@ namespace AppDesktop
         {
             //Se elimina la pregunta seleccionada de la lista que la contiene llamando a la funcion eliminarPregunta,
             //por ultimo se cargan las preguntas llamando a la función cargarPreguntas
-            Pregunta pregunta = (Pregunta)listBoxPreguntas.SelectedItem;
 
-            eliminarPregunta(pregunta);
+            int numPreguntesSeleccionades = 0;
+            //Lista para guardar las preguntas seleccionadas
+            List<Pregunta> listaPreg = new List<Pregunta>();
 
-            cargarPreguntas();
+            foreach (Pregunta p in listBoxPreguntas.SelectedItems)
+            {
+                listaPreg.Add(p);
+                numPreguntesSeleccionades++;
+            }
+
+            DialogResult result;
+            //En funcion del numero de preguntas seleccionadas mostramos un mensaje de advertencia o otro
+            if (numPreguntesSeleccionades>1)
+            {
+                result = MessageBox.Show("S'han seleccionat " + numPreguntesSeleccionades + " preguntes, desitja eliminarles?", "Advertència",
+                                                       MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                result = MessageBox.Show("Desitja eliminar aquesta pregunta?", "Advertència",
+                                                       MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            }
+
+            //Si se presiona el botón [Cancelar], no se cierra el formulario, de lo contrario sí
+            if (result == DialogResult.OK)
+            {
+                foreach (Pregunta p in listaPreg)
+                {
+                    eliminarPregunta(p);
+                }
+
+                cargarPreguntas();
+            }
         }
 
 
