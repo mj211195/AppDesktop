@@ -30,14 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSuport));
             this.groupBoxContacto = new System.Windows.Forms.GroupBox();
-            this.button_WOCEnviar = new AppDesktop.Button_WOC();
             this.richTextBoxContacto = new System.Windows.Forms.RichTextBox();
+            this.button_WOCreiniciar = new AppDesktop.Button_WOC();
+            this.button_WOCEnviar = new AppDesktop.Button_WOC();
             this.groupBoxContacto.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxContacto
             // 
             this.groupBoxContacto.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxContacto.Controls.Add(this.button_WOCreiniciar);
             this.groupBoxContacto.Controls.Add(this.button_WOCEnviar);
             this.groupBoxContacto.Controls.Add(this.richTextBoxContacto);
             this.groupBoxContacto.Location = new System.Drawing.Point(13, 13);
@@ -46,6 +48,36 @@
             this.groupBoxContacto.TabIndex = 2;
             this.groupBoxContacto.TabStop = false;
             this.groupBoxContacto.Text = "Contacte";
+            // 
+            // richTextBoxContacto
+            // 
+            this.richTextBoxContacto.Location = new System.Drawing.Point(7, 20);
+            this.richTextBoxContacto.Name = "richTextBoxContacto";
+            this.richTextBoxContacto.Size = new System.Drawing.Size(350, 186);
+            this.richTextBoxContacto.TabIndex = 2;
+            this.richTextBoxContacto.Text = "";
+            // 
+            // button_WOCreiniciar
+            // 
+            this.button_WOCreiniciar.BackColor = System.Drawing.Color.Transparent;
+            this.button_WOCreiniciar.BorderColor = System.Drawing.Color.Black;
+            this.button_WOCreiniciar.ButtonColor = System.Drawing.SystemColors.Info;
+            this.button_WOCreiniciar.FlatAppearance.BorderSize = 0;
+            this.button_WOCreiniciar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button_WOCreiniciar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button_WOCreiniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_WOCreiniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_WOCreiniciar.Location = new System.Drawing.Point(163, 212);
+            this.button_WOCreiniciar.Name = "button_WOCreiniciar";
+            this.button_WOCreiniciar.OnHoverBorderColor = System.Drawing.Color.Gray;
+            this.button_WOCreiniciar.OnHoverButtonColor = System.Drawing.Color.Beige;
+            this.button_WOCreiniciar.OnHoverTextColor = System.Drawing.Color.Gray;
+            this.button_WOCreiniciar.Size = new System.Drawing.Size(88, 28);
+            this.button_WOCreiniciar.TabIndex = 5;
+            this.button_WOCreiniciar.Text = "Reiniciar";
+            this.button_WOCreiniciar.TextColor = System.Drawing.Color.Black;
+            this.button_WOCreiniciar.UseVisualStyleBackColor = false;
+            this.button_WOCreiniciar.Click += new System.EventHandler(this.button_WOCreiniciar_Click);
             // 
             // button_WOCEnviar
             // 
@@ -69,14 +101,6 @@
             this.button_WOCEnviar.UseVisualStyleBackColor = false;
             this.button_WOCEnviar.Click += new System.EventHandler(this.button_WOCEnviar_Click);
             // 
-            // richTextBoxContacto
-            // 
-            this.richTextBoxContacto.Location = new System.Drawing.Point(7, 20);
-            this.richTextBoxContacto.Name = "richTextBoxContacto";
-            this.richTextBoxContacto.Size = new System.Drawing.Size(350, 186);
-            this.richTextBoxContacto.TabIndex = 2;
-            this.richTextBoxContacto.Text = "";
-            // 
             // FormSuport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -90,6 +114,7 @@
             this.MaximizeBox = false;
             this.Name = "FormSuport";
             this.Text = "Suport";
+            this.Load += new System.EventHandler(this.FormSuport_Load);
             this.groupBoxContacto.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -99,5 +124,6 @@
         private System.Windows.Forms.GroupBox groupBoxContacto;
         private System.Windows.Forms.RichTextBox richTextBoxContacto;
         private Button_WOC button_WOCEnviar;
+        private Button_WOC button_WOCreiniciar;
     }
 }
