@@ -35,6 +35,15 @@ namespace AppDesktop
             this.catalan = catalan;
             this.ingles = ingles;
         }
+        public AnadirPregunta(Idioma castellano, Idioma catalan, Idioma ingles, String idioma, String nivel)
+        {
+            InitializeComponent();
+            this.castellano = castellano;
+            this.catalan = catalan;
+            this.ingles = ingles;
+            comboBoxIdioma.SelectedItem = idioma;
+            comboBoxNivel.SelectedItem = nivel;
+        }
         public AnadirPregunta(Idioma castellano, Idioma catalan, Idioma ingles, Pregunta pregunta, Respuesta[] r, String idioma, String nivel)
         {
             InitializeComponent();

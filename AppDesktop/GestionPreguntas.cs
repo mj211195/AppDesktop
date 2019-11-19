@@ -149,28 +149,31 @@ namespace AppDesktop
                 numPreguntesSeleccionades++;
             }
 
-            DialogResult result;
-            //En funcion del numero de preguntas seleccionadas mostramos un mensaje de advertencia o otro
-            if (numPreguntesSeleccionades>1)
+            if (listBoxPreguntas.SelectedItems.Count == 0)
             {
-                result = MessageBox.Show("S'han seleccionat " + numPreguntesSeleccionades + " preguntes, desitja eliminarles?", "Advertència",
-                                                       MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                result = MessageBox.Show("Desitja eliminar aquesta pregunta?", "Advertència",
-                                                       MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            }
-
-            //Si se presiona el botón [Cancelar], no se cierra el formulario, de lo contrario sí
-            if (result == DialogResult.OK)
-            {
-                foreach (Pregunta p in listaPreg)
+                DialogResult result;
+                //En funcion del numero de preguntas seleccionadas mostramos un mensaje de advertencia o otro
+                if (listBoxPreguntas.SelectedItems.Count > 1)//(numPreguntesSeleccionades > 1)
                 {
-                    eliminarPregunta(p);
+                    result = MessageBox.Show("S'han seleccionat " + numPreguntesSeleccionades + " preguntes, desitja eliminarles?", "Advertència",
+                                                           MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    result = MessageBox.Show("Desitja eliminar aquesta pregunta?", "Advertència",
+                                                           MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 }
 
-                cargarPreguntas();
+                //Si se presiona el botón [Cancelar], no se cierra el formulario, de lo contrario sí
+                if (result == DialogResult.OK)
+                {
+                    foreach (Pregunta p in listaPreg)
+                    {
+                        eliminarPregunta(p);
+                    }
+
+                    cargarPreguntas();
+                }
             }
         }
 
@@ -310,6 +313,101 @@ namespace AppDesktop
                         break;
                 }
             }
+        }
+
+        private void button_WOC_NovaPregunta_Click(object sender, EventArgs e)
+        {
+            String  idioma = null,
+                    nivel = null;
+
+            if (!(comboBoxIdioma.SelectedIndex == -1))
+            {
+                idioma = comboBoxIdioma.SelectedItem.ToString();
+            }
+            if (!(comboBoxIdioma.SelectedIndex == -1))
+            {
+                nivel = comboBoxNivel.SelectedItem.ToString();
+            }
+            
+            //Al hacer click en el botón "Nova Pregunta" se inicia un formulario del tipo AnadirPregunta, donde se le pasan los 3 idiomas para así poder pasar la información entre forms
+            AnadirPregunta anadirPregunta = new AnadirPregunta(castellano, catalan, ingles, idioma, nivel);
+
+            anadirPregunta.ShowDialog();
+        }
+
+        private void button_WOC_Modificar_Click(object sender, EventArgs e)
+        {
+            //Al hacer click en el botón "Modificar" se guarda la pregunta seleccionada en un objeto del tipo Pregunta
+            Pregunta pregunta = (Pregunta)listBoxPreguntas.SelectedItem;
+
+            //Después se comprueba que realmente se haya seleccionado una pregunta (que pregunta no sea null)
+            if (pregunta != null)
+            {
+                Respuesta[] r;
+                r = pregunta.respuestas.ToArray();
+
+                //Si hay una pregunta seleccionada, se guardan en dos String el nivel y el idioma
+                String idioma = comboBoxIdioma.SelectedItem.ToString();
+                String nivel = comboBoxNivel.SelectedItem.ToString();
+                String strPregunta = listBoxPreguntas.SelectedItem.ToString();
+
+                //Se crea un formulario del tipo AnadirPregunta, los 3 objetos del tipo Idioma, pasandole la pregunta, y los dos String
+                AnadirPregunta modificarPregunta = new AnadirPregunta(castellano, catalan, ingles, pregunta, r, idioma, nivel);
+
+                //Deseleccionamos la pregunta
+                listBoxPreguntas.SelectedIndex = -1;
+
+                //Abrimos el form Añadir Pregunta
+                modificarPregunta.ShowDialog();
+            }
+        }
+
+        private void button_WOC_Eliminar_Click(object sender, EventArgs e)
+        {
+            //Se elimina la pregunta seleccionada de la lista que la contiene llamando a la funcion eliminarPregunta,
+            //por ultimo se cargan las preguntas llamando a la función cargarPreguntas
+
+            int numPreguntesSeleccionades = 0;
+            //Lista para guardar las preguntas seleccionadas
+            List<Pregunta> listaPreg = new List<Pregunta>();
+
+            foreach (Pregunta p in listBoxPreguntas.SelectedItems)
+            {
+                listaPreg.Add(p);
+                numPreguntesSeleccionades++;
+            }
+
+            if (listBoxPreguntas.SelectedItems.Count > 0)
+            {
+                DialogResult result;
+                //En funcion del numero de preguntas seleccionadas mostramos un mensaje de advertencia o otro
+                if (numPreguntesSeleccionades > 1)
+                {
+                    result = MessageBox.Show("S'han seleccionat " + numPreguntesSeleccionades + " preguntes, desitja eliminarles?", "Advertència",
+                                                           MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    result = MessageBox.Show("Desitja eliminar aquesta pregunta?", "Advertència",
+                                                           MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                }
+
+                //Si se presiona el botón [Cancelar], no se cierra el formulario, de lo contrario sí
+                if (result == DialogResult.OK)
+                {
+                    foreach (Pregunta p in listaPreg)
+                    {
+                        eliminarPregunta(p);
+                    }
+
+                    cargarPreguntas();
+                }
+            }
+        }
+
+        private void button_WOC_Modificar_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

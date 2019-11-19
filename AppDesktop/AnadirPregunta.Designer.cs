@@ -68,7 +68,7 @@
             "Català",
             "Castellà",
             "Anglès"});
-            this.comboBoxIdioma.Location = new System.Drawing.Point(73, 26);
+            this.comboBoxIdioma.Location = new System.Drawing.Point(88, 26);
             this.comboBoxIdioma.Name = "comboBoxIdioma";
             this.comboBoxIdioma.Size = new System.Drawing.Size(143, 21);
             this.comboBoxIdioma.TabIndex = 0;
@@ -129,7 +129,7 @@
             // 
             this.checkBoxCorrecta.AutoSize = true;
             this.checkBoxCorrecta.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.checkBoxCorrecta.Location = new System.Drawing.Point(521, 153);
+            this.checkBoxCorrecta.Location = new System.Drawing.Point(521, 152);
             this.checkBoxCorrecta.Name = "checkBoxCorrecta";
             this.checkBoxCorrecta.Size = new System.Drawing.Size(51, 31);
             this.checkBoxCorrecta.TabIndex = 5;
@@ -139,7 +139,7 @@
             // 
             // textBoxResposta
             // 
-            this.textBoxResposta.Location = new System.Drawing.Point(88, 164);
+            this.textBoxResposta.Location = new System.Drawing.Point(88, 163);
             this.textBoxResposta.Name = "textBoxResposta";
             this.textBoxResposta.Size = new System.Drawing.Size(417, 20);
             this.textBoxResposta.TabIndex = 4;
@@ -147,7 +147,7 @@
             // 
             // textBoxPregunta
             // 
-            this.textBoxPregunta.Location = new System.Drawing.Point(88, 76);
+            this.textBoxPregunta.Location = new System.Drawing.Point(88, 75);
             this.textBoxPregunta.Multiline = true;
             this.textBoxPregunta.Name = "textBoxPregunta";
             this.textBoxPregunta.Size = new System.Drawing.Size(417, 43);
@@ -163,7 +163,7 @@
             "Adult (Fàcil)",
             "Adult (Intermedi)",
             "Adult (Difícil)"});
-            this.comboBoxNivel.Location = new System.Drawing.Point(482, 26);
+            this.comboBoxNivel.Location = new System.Drawing.Point(490, 26);
             this.comboBoxNivel.Name = "comboBoxNivel";
             this.comboBoxNivel.Size = new System.Drawing.Size(159, 21);
             this.comboBoxNivel.TabIndex = 1;
@@ -224,7 +224,7 @@
             // labelNivel
             // 
             this.labelNivel.AutoSize = true;
-            this.labelNivel.Location = new System.Drawing.Point(433, 29);
+            this.labelNivel.Location = new System.Drawing.Point(427, 29);
             this.labelNivel.Name = "labelNivel";
             this.labelNivel.Size = new System.Drawing.Size(33, 13);
             this.labelNivel.TabIndex = 37;

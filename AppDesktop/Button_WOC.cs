@@ -16,8 +16,8 @@ namespace AppDesktop
         private Color _onHoverTextColor = Color.Gray;
 
         private bool _isHovering;
-        private int _borderThickness = 6;
-        private int _borderThicknessByTwo = 3;
+        private int _borderThickness = 1; //6
+        private int _borderThicknessByTwo = 1; //3
 
         public Button_WOC()
         {
