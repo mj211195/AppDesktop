@@ -54,6 +54,10 @@
             this.radioButtonSi = new System.Windows.Forms.RadioButton();
             this.groupBoxGestionRespuestas = new System.Windows.Forms.GroupBox();
             this.toolTipAyuda = new System.Windows.Forms.ToolTip(this.components);
+            this.button_WOC_Reiniciar = new AppDesktop.Button_WOC();
+            this.button_WOC_Guardar = new AppDesktop.Button_WOC();
+            this.button_WOC_Eliminar = new AppDesktop.Button_WOC();
+            this.button_WOC_Afegir = new AppDesktop.Button_WOC();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRespuestas)).BeginInit();
             this.groupBoxAfegirPregunta.SuspendLayout();
             this.groupBoxMostrarAjuda.SuspendLayout();
@@ -234,6 +238,9 @@
             // 
             this.groupBoxAfegirPregunta.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxAfegirPregunta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.groupBoxAfegirPregunta.Controls.Add(this.button_WOC_Afegir);
+            this.groupBoxAfegirPregunta.Controls.Add(this.button_WOC_Guardar);
+            this.groupBoxAfegirPregunta.Controls.Add(this.button_WOC_Reiniciar);
             this.groupBoxAfegirPregunta.Controls.Add(this.labelCarRes);
             this.groupBoxAfegirPregunta.Controls.Add(this.labelCarPre);
             this.groupBoxAfegirPregunta.Controls.Add(this.groupBoxMostrarAjuda);
@@ -313,6 +320,7 @@
             // 
             // groupBoxGestionRespuestas
             // 
+            this.groupBoxGestionRespuestas.Controls.Add(this.button_WOC_Eliminar);
             this.groupBoxGestionRespuestas.Controls.Add(this.dataGridViewRespuestas);
             this.groupBoxGestionRespuestas.Controls.Add(this.buttonEliminar);
             this.groupBoxGestionRespuestas.Location = new System.Drawing.Point(6, 216);
@@ -329,6 +337,94 @@
             this.toolTipAyuda.InitialDelay = 250;
             this.toolTipAyuda.ReshowDelay = 50;
             this.toolTipAyuda.ToolTipTitle = "Ajuda";
+            // 
+            // button_WOC_Reiniciar
+            // 
+            this.button_WOC_Reiniciar.BackColor = System.Drawing.Color.Transparent;
+            this.button_WOC_Reiniciar.BorderColor = System.Drawing.Color.Black;
+            this.button_WOC_Reiniciar.ButtonColor = System.Drawing.SystemColors.Info;
+            this.button_WOC_Reiniciar.FlatAppearance.BorderSize = 0;
+            this.button_WOC_Reiniciar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button_WOC_Reiniciar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button_WOC_Reiniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_WOC_Reiniciar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_WOC_Reiniciar.Location = new System.Drawing.Point(350, 464);
+            this.button_WOC_Reiniciar.Name = "button_WOC_Reiniciar";
+            this.button_WOC_Reiniciar.OnHoverBorderColor = System.Drawing.Color.Gray;
+            this.button_WOC_Reiniciar.OnHoverButtonColor = System.Drawing.Color.Beige;
+            this.button_WOC_Reiniciar.OnHoverTextColor = System.Drawing.Color.Gray;
+            this.button_WOC_Reiniciar.Size = new System.Drawing.Size(101, 23);
+            this.button_WOC_Reiniciar.TabIndex = 63;
+            this.button_WOC_Reiniciar.Text = "Reiniciar";
+            this.button_WOC_Reiniciar.TextColor = System.Drawing.Color.Black;
+            this.button_WOC_Reiniciar.UseVisualStyleBackColor = false;
+            this.button_WOC_Reiniciar.Click += new System.EventHandler(this.button_WOC_Reiniciar_Click);
+            // 
+            // button_WOC_Guardar
+            // 
+            this.button_WOC_Guardar.BackColor = System.Drawing.Color.Transparent;
+            this.button_WOC_Guardar.BorderColor = System.Drawing.Color.Black;
+            this.button_WOC_Guardar.ButtonColor = System.Drawing.SystemColors.Info;
+            this.button_WOC_Guardar.FlatAppearance.BorderSize = 0;
+            this.button_WOC_Guardar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button_WOC_Guardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button_WOC_Guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_WOC_Guardar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_WOC_Guardar.Location = new System.Drawing.Point(243, 464);
+            this.button_WOC_Guardar.Name = "button_WOC_Guardar";
+            this.button_WOC_Guardar.OnHoverBorderColor = System.Drawing.Color.Gray;
+            this.button_WOC_Guardar.OnHoverButtonColor = System.Drawing.Color.Beige;
+            this.button_WOC_Guardar.OnHoverTextColor = System.Drawing.Color.Gray;
+            this.button_WOC_Guardar.Size = new System.Drawing.Size(101, 23);
+            this.button_WOC_Guardar.TabIndex = 64;
+            this.button_WOC_Guardar.Text = "Guardar";
+            this.button_WOC_Guardar.TextColor = System.Drawing.Color.Black;
+            this.button_WOC_Guardar.UseVisualStyleBackColor = false;
+            this.button_WOC_Guardar.Click += new System.EventHandler(this.button_WOC_Guardar_Click);
+            // 
+            // button_WOC_Eliminar
+            // 
+            this.button_WOC_Eliminar.BackColor = System.Drawing.Color.Transparent;
+            this.button_WOC_Eliminar.BorderColor = System.Drawing.Color.Black;
+            this.button_WOC_Eliminar.ButtonColor = System.Drawing.SystemColors.Info;
+            this.button_WOC_Eliminar.FlatAppearance.BorderSize = 0;
+            this.button_WOC_Eliminar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button_WOC_Eliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button_WOC_Eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_WOC_Eliminar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_WOC_Eliminar.Location = new System.Drawing.Point(569, 115);
+            this.button_WOC_Eliminar.Name = "button_WOC_Eliminar";
+            this.button_WOC_Eliminar.OnHoverBorderColor = System.Drawing.Color.Gray;
+            this.button_WOC_Eliminar.OnHoverButtonColor = System.Drawing.Color.Beige;
+            this.button_WOC_Eliminar.OnHoverTextColor = System.Drawing.Color.Gray;
+            this.button_WOC_Eliminar.Size = new System.Drawing.Size(101, 23);
+            this.button_WOC_Eliminar.TabIndex = 65;
+            this.button_WOC_Eliminar.Text = "Eliminar";
+            this.button_WOC_Eliminar.TextColor = System.Drawing.Color.Black;
+            this.button_WOC_Eliminar.UseVisualStyleBackColor = false;
+            this.button_WOC_Eliminar.Click += new System.EventHandler(this.button_WOC_Eliminar_Click);
+            // 
+            // button_WOC_Afegir
+            // 
+            this.button_WOC_Afegir.BackColor = System.Drawing.Color.Transparent;
+            this.button_WOC_Afegir.BorderColor = System.Drawing.Color.Black;
+            this.button_WOC_Afegir.ButtonColor = System.Drawing.SystemColors.Info;
+            this.button_WOC_Afegir.FlatAppearance.BorderSize = 0;
+            this.button_WOC_Afegir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button_WOC_Afegir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button_WOC_Afegir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_WOC_Afegir.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_WOC_Afegir.Location = new System.Drawing.Point(571, 187);
+            this.button_WOC_Afegir.Name = "button_WOC_Afegir";
+            this.button_WOC_Afegir.OnHoverBorderColor = System.Drawing.Color.Gray;
+            this.button_WOC_Afegir.OnHoverButtonColor = System.Drawing.Color.Beige;
+            this.button_WOC_Afegir.OnHoverTextColor = System.Drawing.Color.Gray;
+            this.button_WOC_Afegir.Size = new System.Drawing.Size(101, 23);
+            this.button_WOC_Afegir.TabIndex = 66;
+            this.button_WOC_Afegir.Text = "Afegir";
+            this.button_WOC_Afegir.TextColor = System.Drawing.Color.Black;
+            this.button_WOC_Afegir.UseVisualStyleBackColor = false;
+            this.button_WOC_Afegir.Click += new System.EventHandler(this.button_WOC_Afegir_Click);
             // 
             // AnadirPregunta
             // 
@@ -383,5 +479,9 @@
         private System.Windows.Forms.Label labelCarRes;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvRespuesta;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dgvCorrecta;
+        private Button_WOC button_WOC_Reiniciar;
+        private Button_WOC button_WOC_Guardar;
+        private Button_WOC button_WOC_Eliminar;
+        private Button_WOC button_WOC_Afegir;
     }
 }
