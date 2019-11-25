@@ -16,7 +16,8 @@ namespace AppDesktop
 
         //Objetos
         BindingList<Respuesta> listaRespuestas = new BindingList<Respuesta>(),
-                               blist2 = new BindingList<Respuesta>();
+                               blist2 = new BindingList<Respuesta>(),
+                                listaAux = new BindingList<Respuesta>();
         Idioma castellano;
         Idioma ingles;
         Idioma catalan;
@@ -27,6 +28,7 @@ namespace AppDesktop
 
         bool preguntaModificada = false,
                 guardada = false;
+        bool respuestaModificada = false;
 
         //Constructores
         public AnadirPregunta(Idioma castellano, Idioma catalan, Idioma ingles)
@@ -45,7 +47,7 @@ namespace AppDesktop
             comboBoxIdioma.SelectedItem = idioma;
             comboBoxNivel.SelectedItem = nivel;
         }
-        public AnadirPregunta(Idioma castellano, Idioma catalan, Idioma ingles, Pregunta pregunta, Respuesta[] r, String idioma, String nivel)
+        public AnadirPregunta(Idioma castellano, Idioma catalan, Idioma ingles, Pregunta pregunta, String idioma, String nivel)
         {
             InitializeComponent();
 
@@ -58,14 +60,19 @@ namespace AppDesktop
             this.strPregunta = pregunta.pregunta;
             comboBoxIdioma.SelectedItem = idioma;
             comboBoxNivel.SelectedItem = nivel;
-
+            listaRespuestas = pregunta.respuestas;
             preguntaModificada = true;
 
             textBoxPregunta.Text = pregunta.pregunta;
 
-            List<Respuesta> lr = new List<Respuesta>(r);
-            blist2 = new BindingList<Respuesta>(lr);
-            listaRespuestas = new BindingList<Respuesta>(blist2);
+            //Copia de la lista para que se pueda modificar la gridView
+            foreach (Respuesta resp in pregunta.respuestas)
+            {
+                Respuesta r = new Respuesta();
+                r.correcta = resp.correcta;
+                r.respuesta = resp.respuesta;
+                listaAux.Add(r);
+            }
 
             actualizarDGV();
         }
@@ -120,6 +127,20 @@ namespace AppDesktop
                             !(nivelOrigional.Equals(comboBoxNivel.SelectedItem.ToString())) ||
                             strPregunta != textBoxPregunta.Text ||
                             respuestasCambiadas == true)
+                        {
+                            mostrarMensajeCambiosSinGuardar(e);
+                        }
+                        foreach (Respuesta res in listaRespuestas)
+                        {
+                            foreach (Respuesta resp in pregunta.respuestas)
+                            {
+                                if(res.Equals(resp))
+                                {
+                                    respuestaModificada = true;
+                                }
+                            }
+                        }
+                        if(respuestaModificada)
                         {
                             mostrarMensajeCambiosSinGuardar(e);
                         }
@@ -951,6 +972,10 @@ namespace AppDesktop
             if (result == DialogResult.Cancel)
             {
                 e.Cancel = true;
+            }
+            if(result == DialogResult.OK)
+            {
+                pregunta.respuestas = listaAux;
             }
         }
     }

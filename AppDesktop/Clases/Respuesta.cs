@@ -11,4 +11,5 @@ namespace AppDesktop.Clases
         public String respuesta { get; set; }
         public bool correcta { get; set; }
     }
+
 }

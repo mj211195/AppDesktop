@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -115,8 +116,13 @@ namespace AppDesktop
             //Después se comprueba que realmente se haya seleccionado una pregunta (que pregunta no sea null)
             if (pregunta != null)
             {
-                Respuesta[] r;
-                r = pregunta.respuestas.ToArray();
+                List<Respuesta> r = new List<Respuesta>();
+
+                foreach (Respuesta resp in pregunta.respuestas)
+                {
+                    r.Add(resp);
+                }
+
 
                 //Si hay una pregunta seleccionada, se guardan en dos String el nivel y el idioma
                 String idioma = comboBoxIdioma.SelectedItem.ToString();
@@ -124,7 +130,7 @@ namespace AppDesktop
                 String strPregunta = listBoxPreguntas.SelectedItem.ToString();
 
                 //Se crea un formulario del tipo AnadirPregunta, los 3 objetos del tipo Idioma, pasandole la pregunta, y los dos String
-                AnadirPregunta modificarPregunta = new AnadirPregunta(castellano, catalan, ingles, pregunta, r, idioma, nivel);
+                AnadirPregunta modificarPregunta = new AnadirPregunta(castellano, catalan, ingles, pregunta, idioma, nivel);
 
                 //Deseleccionamos la pregunta
                 listBoxPreguntas.SelectedIndex = -1;
@@ -343,8 +349,8 @@ namespace AppDesktop
             //Después se comprueba que realmente se haya seleccionado una pregunta (que pregunta no sea null)
             if (pregunta != null)
             {
-                Respuesta[] r;
-                r = pregunta.respuestas.ToArray();
+                List<Respuesta> r = new List<Respuesta>();
+                r = pregunta.respuestas.ToList<Respuesta>();
 
                 //Si hay una pregunta seleccionada, se guardan en dos String el nivel y el idioma
                 String idioma = comboBoxIdioma.SelectedItem.ToString();
@@ -352,7 +358,7 @@ namespace AppDesktop
                 String strPregunta = listBoxPreguntas.SelectedItem.ToString();
 
                 //Se crea un formulario del tipo AnadirPregunta, los 3 objetos del tipo Idioma, pasandole la pregunta, y los dos String
-                AnadirPregunta modificarPregunta = new AnadirPregunta(castellano, catalan, ingles, pregunta, r, idioma, nivel);
+                AnadirPregunta modificarPregunta = new AnadirPregunta(castellano, catalan, ingles, pregunta, idioma, nivel);
 
                 //Deseleccionamos la pregunta
                 listBoxPreguntas.SelectedIndex = -1;
