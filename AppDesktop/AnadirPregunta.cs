@@ -129,7 +129,7 @@ namespace AppDesktop
                         {
                             mostrarMensajeCambiosSinGuardar(e);
                         }
-                        foreach (Respuesta res in listaRespuestas)
+                        foreach (Respuesta res in listaAux)
                         {
                             foreach (Respuesta resp in pregunta.respuestas)
                             {
