@@ -104,18 +104,14 @@ namespace AppDesktop
         {
             bool respuestasCambiadas = false;
 
+            dataGridViewRespuestas.EndEdit();
+
             //Si hemos accedido a través de [Modificar Pregunta]...
             if (preguntaModificada)
             {
                 //y si no hemos guardado la pregunta...
                 if (guardada == false)
-                {/*
-                    if(!(listaRespuestas.Equals(blist2)))
-                    {
-                        respuestasCambiadas = true;
-                    }*/
-
-
+                {
                     if (comboBoxIdioma.SelectedItem == null || comboBoxNivel.SelectedItem == null)
                     {
                         mostrarMensajeCambiosSinGuardar(e);
@@ -143,17 +139,7 @@ namespace AppDesktop
                         {
                             mostrarMensajeCambiosSinGuardar(e);
                         }
-                    }/*
-                    //Si han hecho modificaciones de la pregunta a modificar y se intenta cerrar el form...
-                    if ((!(idiomaOriginal.Equals(comboBoxIdioma.SelectedItem.ToString())) || comboBoxIdioma.SelectedItem.Equals(null)) ||
-                       // idiomaOriginal != comboBoxIdioma.SelectedItem.ToString() ||
-                       ((!nivelOrigional.Equals(comboBoxNivel.SelectedItem.ToString())) || comboBoxNivel.SelectedItem.Equals(null))||
-                        // nivelOrigional != comboBoxNivel.SelectedItem.ToString() ||
-                        strPregunta != textBoxPregunta.Text ||
-                        listaRespuestas != blist2)
-                    {
-                        mostrarMensajeCambiosSinGuardar(e);
-                    }*/
+                    }
                 }
             }
             //Si hemos accedido a través de [Nueva Pregunta]...
@@ -166,7 +152,6 @@ namespace AppDesktop
                     mostrarMensajeCambiosSinGuardar(e);
                 }
             }
-            
         }
 
         //Para los contadores de números de carácteres de los textBox: pregunta y respuesta
@@ -177,53 +162,7 @@ namespace AppDesktop
         private void textBoxResposta_TextChanged(object sender, EventArgs e)
         {
             mostrarCharsResposta();
-        }
-
-        //Al clickar el botón [Añadir]
-        private void buttonAnadir_Click(object sender, EventArgs e)
-        {
-            //Añadimos la respuesta si cumple ambos requisitos
-            if (textBoxResposta.Text.Length > MIN_CHAR_RESP &&
-                textBoxResposta.Text.Length <= MAX_CHAR_RESP)
-            {
-                Respuesta r = new Respuesta();
-
-                //Asignamos la respuesta que hay en el TextBoxResposta al atributo respuesta del objeto respuesta
-                r.respuesta = textBoxResposta.Text;
-
-                //Si está marcada el checkbox de respuesta correcta, asignamos el atributo correcta del objeto respuesta a true
-                if (checkBoxCorrecta.Checked)
-                {
-                    r.correcta = true;
-                }
-                else
-                {
-                    r.correcta = false;
-                }
-
-                //Añadimos el objeto respuesta creado a la lista de respuestas
-                listaRespuestas.Add(r);
-
-                //Limpiamos campos
-                textBoxResposta.Text = "";
-                checkBoxCorrecta.Checked = false;
-
-                //Actualizamos la DataGridView
-                actualizarDGV();
-                dataGridViewRespuestas.ClearSelection();
-
-                //Cambiamos el focus para hacer más cómodo al tabular
-                if (dataGridViewRespuestas.RowCount < 4)
-                {
-                    textBoxResposta.Focus();
-                }
-                else if (dataGridViewRespuestas.RowCount == 4)
-                {
-                    buttonGuardar.Focus();
-
-                }
-            }
-        }
+        }/*
 
         //Al clickar el botón [Eliminar]
         private void buttonEliminar_Click(object sender, EventArgs e)
@@ -254,7 +193,15 @@ namespace AppDesktop
             byte cont = 0;
 
             //Mensaje inicial que saldrá cuando haya algun campo incorrecto (luego se concatenarán otros strings indicando qué errores hay)
-            string msgError = "No s'ha pogut afegir correctament la pregunta perquè: ";
+            string msgError;
+            if (preguntaModificada)
+            {
+                msgError = "No s'ha pogut modificar correctament la pregunta perquè: ";
+            }
+            else
+            {
+                msgError = "No s'ha pogut afegir correctament la pregunta perquè: ";
+            }
 
 
             //Comprobamos cuales son los campos correctos y los incorrectos
@@ -365,8 +312,7 @@ namespace AppDesktop
             {
                 MessageBox.Show(msgError, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-        }
+        }*/
 
         //Para activar/desactivar la ayuda (ToolTip)
         private void radioButtonSi_CheckedChanged(object sender, EventArgs e)
@@ -766,7 +712,15 @@ namespace AppDesktop
             byte contadorCamposCorrectos = 0;
 
             //Mensaje inicial que saldrá cuando haya algun campo incorrecto (luego se concatenarán otros strings indicando qué errores hay)
-            string msgError = "No s'ha pogut afegir correctament la pregunta perquè: ";
+            string msgError;
+            if (preguntaModificada)
+            {
+                msgError = "No s'ha pogut modificar correctament la pregunta perquè: ";
+            }
+            else
+            {
+                msgError = "No s'ha pogut afegir correctament la pregunta perquè: ";
+            }
 
 
             //Comprobamos cuales son los campos correctos y los incorrectos
@@ -890,7 +844,6 @@ namespace AppDesktop
 
                     //Actualizamos el DataGridView para que se reflejen los cambios
                     actualizarDGV();
-
                 }
             }
         }
@@ -928,15 +881,14 @@ namespace AppDesktop
                 actualizarDGV();
                 dataGridViewRespuestas.ClearSelection();
 
-                //Cambiamos el focus para hacer más cómodo al tabular
+                //Cambiamos focus para que sea más comodo añadir respuestas tabulando
                 if (dataGridViewRespuestas.RowCount < 4)
                 {
                     textBoxResposta.Focus();
                 }
                 else if (dataGridViewRespuestas.RowCount == 4)
                 {
-                    buttonGuardar.Focus();
-
+                    button_WOC_Guardar.Focus();
                 }
             }
         }

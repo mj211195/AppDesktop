@@ -300,7 +300,7 @@ namespace AppDesktop
         }
 
         /// <summary>
-        /// Función que dependiendo del idioma seleccionado nos llama a la función seleccionarNivel con uno u otro parametro
+        /// Método que dependiendo del idioma seleccionado nos llama a la función seleccionarNivel con uno u otro parametro
         /// </summary>
         private void cargarPreguntas()
         {
@@ -326,11 +326,13 @@ namespace AppDesktop
             String  idioma = null,
                     nivel = null;
 
+            //Si hemos seleccionado un idioma y/o un nivel, los guardamos en sus variables
+            //para pasárselo al nuevo form por el constructor
             if (!(comboBoxIdioma.SelectedIndex == -1))
             {
                 idioma = comboBoxIdioma.SelectedItem.ToString();
             }
-            if (!(comboBoxIdioma.SelectedIndex == -1))
+            if (!(comboBoxNivel.SelectedIndex == -1))
             {
                 nivel = comboBoxNivel.SelectedItem.ToString();
             }
