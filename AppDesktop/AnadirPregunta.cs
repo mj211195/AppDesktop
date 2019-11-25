@@ -16,7 +16,6 @@ namespace AppDesktop
 
         //Objetos
         BindingList<Respuesta> listaRespuestas = new BindingList<Respuesta>(),
-                               blist2 = new BindingList<Respuesta>(),
                                 listaAux = new BindingList<Respuesta>();
         Idioma castellano;
         Idioma ingles;
