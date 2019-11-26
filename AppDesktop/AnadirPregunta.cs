@@ -28,6 +28,7 @@ namespace AppDesktop
         bool preguntaModificada = false,
                 preguntaGuardada = false,
                 respuestaModificada = false;
+        int contador;
 
         //Constructores
         //Form abierto través del botón [Nova] (sin nivel/idioma)
@@ -76,7 +77,7 @@ namespace AppDesktop
                 r.respuesta = resp.respuesta;
                 listaAux.Add(r);
             }
-
+            contador = 0;
             actualizarDGV();
         }
 
@@ -122,6 +123,17 @@ namespace AppDesktop
                     }
                     else
                     {
+                        foreach (Respuesta res in pregunta.respuestas)
+                        {
+                            foreach (Respuesta resp in listaAux)
+                            {
+                                //Se cuentan que todas las respuestas son iguales
+                                if (res.Equals(resp))
+                                {
+                                    contador++;
+                                }
+                            }
+                        }
                         if (!(idiomaOriginal.Equals(comboBoxIdioma.SelectedItem.ToString())) ||
                             !(nivelOrigional.Equals(comboBoxNivel.SelectedItem.ToString())) ||
                             strPregunta != textBoxPregunta.Text ||
@@ -129,17 +141,7 @@ namespace AppDesktop
                         {
                             mostrarMensajeCambiosSinGuardar(e);
                         }
-                        foreach (Respuesta res in listaAux)
-                        {
-                            foreach (Respuesta resp in pregunta.respuestas)
-                            {
-                                if(res.Equals(resp))
-                                {
-                                    respuestaModificada = true;
-                                }
-                            }
-                        }
-                        if(respuestaModificada)
+                        else if(contador < listaAux.Count)
                         {
                             mostrarMensajeCambiosSinGuardar(e);
                         }
