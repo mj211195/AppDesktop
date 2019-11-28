@@ -131,6 +131,7 @@
     <Content Include="Resources\016-info.png" />
     <Content Include="Resources\020-folder-1.png" />
     <Content Include="Resources\022-logout.png" />
+    <None Include="Resources\triangulo.png" />
     <Content Include="Resources\Fondo.jpg" />
     <Content Include="Resources\grande_fondo1.jpg" />
     <Content Include="Resources\Logo Museu.png" />

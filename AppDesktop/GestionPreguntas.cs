@@ -4,14 +4,9 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Serialization;
 
 namespace AppDesktop
 {
@@ -33,6 +28,8 @@ namespace AppDesktop
             InitializeComponent();
         }
 
+        /*** E V E N T O S  ***/
+        //Al cargar el form
         private void FormGestionPreguntas_Load(object sender, EventArgs e)
         {
             //Al cargar el formulario nos carga el contenido de los 3 JSONs de idiomas en el correspondiente objecto del tipo Idioma
@@ -53,6 +50,7 @@ namespace AppDesktop
             }
         }
 
+        //Al cerrar el form
         private void FormGestionPreguntas_FormClosing(object sender, FormClosingEventArgs e)
         {
             //Al cerrar el formulario se guardan los objetos del tipo Idioma, en los JSONs correspondientes, para ello se llama a la función guardarFichero
@@ -60,15 +58,8 @@ namespace AppDesktop
             guardarFichero(castellano, fileCastellano);
             guardarFichero(ingles, fileIngles);
         }
-        
-        private void buttonNuevaPregunta_Click(object sender, EventArgs e)
-        {
-            //Al hacer click en el botón "Nova Pregunta" se inicia un formulario del tipo AnadirPregunta, donde se le pasan los 3 idiomas para así poder pasar la información entre forms
-            AnadirPregunta anadirPregunta = new AnadirPregunta(castellano,catalan, ingles);
 
-            anadirPregunta.ShowDialog();
-        }
-
+        //Cuando se selecciona un idioma del comboBoxIdioma
         private void comboBoxIdioma_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Una vez seleccionado el idioma, habilita la comboBox de Nivel y nos carga las preguntas correspondientes llamando a cargarPreguntas
@@ -79,6 +70,7 @@ namespace AppDesktop
             listBoxPreguntas.ClearSelected();
         }
 
+        //Cuando se selecciona un nivel del comboBoxNivel
         private void comboBoxNivel_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Nos carga las preguntas correspondientes llamando a cargarPreguntas
@@ -87,6 +79,7 @@ namespace AppDesktop
             listBoxPreguntas.ClearSelected();
         }
 
+        //Cuando se selecciona una pregunta de la listBoxPreguntas
         private void listBoxPreguntas_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Si hay una pregunta seleccionada, nos carga la dataGridRespuestas con la lista de respuestas de esa pregunta, si no, no nos muestra nada
@@ -104,60 +97,127 @@ namespace AppDesktop
             {
                 dataGridViewRespuestas.DataSource = null;
             }
-
         }
 
-        private void buttonModificarPregunta_Click(object sender, EventArgs e)
+        //Al clickar el botón [Nova]
+        private void button_WOC_NovaPregunta_Click(object sender, EventArgs e)
+        {
+            String idioma = null,
+                    nivel = null;
+
+            //Si hemos seleccionado un idioma y/o un nivel, los guardamos en sus variables
+            //para pasárselo al nuevo form por el constructor
+            if (!(comboBoxIdioma.SelectedIndex == -1))
+            {
+                idioma = comboBoxIdioma.SelectedItem.ToString();
+            }
+            if (!(comboBoxNivel.SelectedIndex == -1))
+            {
+                nivel = comboBoxNivel.SelectedItem.ToString();
+            }
+
+            //Al hacer click en el botón "Nova Pregunta" se inicia un formulario del tipo AnadirPregunta, donde se le pasan los 3 idiomas para así poder pasar la información entre forms
+            AnadirPregunta anadirPregunta = new AnadirPregunta(castellano, catalan, ingles, idioma, nivel);
+
+            anadirPregunta.ShowDialog();
+        }
+
+        //Al clickar el botón [Modificar]
+        private void button_WOC_Modificar_Click(object sender, EventArgs e)
         {
             //Al hacer click en el botón "Modificar" se guarda la pregunta seleccionada en un objeto del tipo Pregunta
             Pregunta pregunta = (Pregunta)listBoxPreguntas.SelectedItem;
 
-            
-
-
-
-            //Después se comprueba que realmente se haya seleccionado una pregunta (que pregunta no sea null)
-            if (pregunta != null)
+            if(listBoxPreguntas.SelectedItems.Count == 1)
             {
-                Respuesta[] r;
-                r = pregunta.respuestas.ToArray();
+                //Después se comprueba que realmente se haya seleccionado una pregunta (que pregunta no sea null)
+                if (pregunta != null)
+                {
+                    List<Respuesta> r = new List<Respuesta>();
+                    r = pregunta.respuestas.ToList<Respuesta>();
 
-                //Si hay una pregunta seleccionada, se guardan en dos String el nivel y el idioma
-                String idioma = comboBoxIdioma.SelectedItem.ToString();
-                String nivel = comboBoxNivel.SelectedItem.ToString();
-               
-                //Se crea un formulario del tipo AnadirPregunta, los 3 objetos del tipo Idioma, pasandole la pregunta, y los dos String
-                AnadirPregunta modificarPregunta = new AnadirPregunta(castellano, catalan, ingles, pregunta, r, idioma, nivel);
+                    //Si hay una pregunta seleccionada, se guardan en dos String el nivel y el idioma
+                    String idioma = comboBoxIdioma.SelectedItem.ToString();
+                    String nivel = comboBoxNivel.SelectedItem.ToString();
+                    String strPregunta = listBoxPreguntas.SelectedItem.ToString();
 
-                //Deseleccionamos la pregunta
-                listBoxPreguntas.SelectedIndex = -1;
+                    //Se crea un formulario del tipo AnadirPregunta, los 3 objetos del tipo Idioma, pasandole la pregunta, y los dos String
+                    AnadirPregunta modificarPregunta = new AnadirPregunta(castellano, catalan, ingles, pregunta, idioma, nivel);
 
-                //Abrimos el form Añadir Pregunta
-                modificarPregunta.ShowDialog();
+                    //Deseleccionamos la pregunta
+                    listBoxPreguntas.SelectedIndex = -1;
+
+                    //Abrimos el form Añadir Pregunta 
+                    modificarPregunta.ShowDialog();
+
+                    //Deseleccionamos la pregunta
+                    listBoxPreguntas.SelectedIndex = -1;
+                }
             }
+            else if(listBoxPreguntas.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Només es pot modificar una pregunta alhora.");
+                listBoxPreguntas.SelectedIndex = -1;
+            }
+            
         }
 
-        private void buttonEliminar_Click(object sender, EventArgs e)
+        //Al clickar el botón [Eliminar]
+        private void button_WOC_Eliminar_Click(object sender, EventArgs e)
         {
             //Se elimina la pregunta seleccionada de la lista que la contiene llamando a la funcion eliminarPregunta,
             //por ultimo se cargan las preguntas llamando a la función cargarPreguntas
-            Pregunta pregunta = (Pregunta)listBoxPreguntas.SelectedItem;
 
-            eliminarPregunta(pregunta);
+            int numPreguntesSeleccionades = 0;
+            //Lista para guardar las preguntas seleccionadas
+            List<Pregunta> listaPreg = new List<Pregunta>();
 
-            cargarPreguntas();
+            foreach (Pregunta p in listBoxPreguntas.SelectedItems)
+            {
+                listaPreg.Add(p);
+                numPreguntesSeleccionades++;
+            }
+
+            if (listBoxPreguntas.SelectedItems.Count > 0)
+            {
+                DialogResult result;
+                //En funcion del numero de preguntas seleccionadas mostramos un mensaje de advertencia o otro
+                if (numPreguntesSeleccionades > 1)
+                {
+                    result = MessageBox.Show("S'han seleccionat " + numPreguntesSeleccionades + " preguntes, desitja eliminarles?", "Advertència",
+                                                           MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    result = MessageBox.Show("Desitja eliminar aquesta pregunta?", "Advertència",
+                                                           MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                }
+
+                //Si se presiona el botón [Cancelar], no se cierra el formulario, de lo contrario sí
+                if (result == DialogResult.OK)
+                {
+                    foreach (Pregunta p in listaPreg)
+                    {
+                        eliminarPregunta(p);
+                    }
+
+                    cargarPreguntas();
+                }
+            }
         }
 
-
+        /*** M E T O D O S ***/
         /// <summary>
-        /// Elimina la pregunta que se pasa en el constructor en las lista seleccionada
+        /// Elimina una pregunta, que se selecciona en la listBoxPreguntas, que se
+        /// pasará por parámetro
         /// </summary>
-        /// <param name="pregunta"></param>
+        /// <param name="pregunta">La pregunta a eliminar</param>
         private void eliminarPregunta(Pregunta pregunta) 
         {
-            //Comprueba el idioma seleccionado y una vez encontrado comprueba el nivel seleccionado para saber donde tiene que eliminar la pregunta
+            //Comprueba que el idioma y el nivel no sean campos nulos
             if(comboBoxIdioma.SelectedItem != null && comboBoxNivel.SelectedItem != null)
             {
+                //Identifica el nivel y borra la pregunta de su respectivo JSON
                 if (comboBoxIdioma.SelectedItem.ToString().Equals("Anglès"))
                 {
                     switch (comboBoxNivel.SelectedItem.ToString())
@@ -218,7 +278,7 @@ namespace AppDesktop
         }
 
         /// <summary>
-        /// Función donde se implementa guardar el fichero
+        /// Método donde se implementa guardar el fichero
         /// </summary>
         private void guardarFichero(Idioma nivel, string idioma)
         {
@@ -230,7 +290,7 @@ namespace AppDesktop
         }
 
         /// <summary>
-        /// Función que refresca la listBoxPreguntas
+        /// Método que refresca la listBoxPreguntas
         /// </summary>
         /// <param name="preguntas">Lista (BindingList) de preguntas</param>
         private void refrescarPreguntas(BindingList<Pregunta> preguntas)
@@ -241,7 +301,8 @@ namespace AppDesktop
         }
 
         /// <summary>
-        /// Función que dependiendo del nivel seleccionado, nos llama a la función refrescarPreguntas, pasandole la lista correspondiente
+        /// Método que en función del nivel seleccionado, llama al método refrescarPreguntas,
+        /// pasandole la lista correspondiente
         /// </summary>
         /// <param name="nivel">El nivel</param>
         private void seleccionarNivel(Idioma nivel)
@@ -265,7 +326,8 @@ namespace AppDesktop
         }
 
         /// <summary>
-        /// Función que dependiendo del idioma seleccionado nos llama a la función seleccionarNivel con uno u otro parametro
+        /// Método que dependiendo del idioma seleccionado nos llama al método seleccionarNivel
+        /// con uno u otro parametro
         /// </summary>
         private void cargarPreguntas()
         {

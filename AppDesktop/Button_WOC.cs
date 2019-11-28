@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Linq;
-using System.Threading;
 
 namespace AppDesktop
 {
@@ -16,8 +14,8 @@ namespace AppDesktop
         private Color _onHoverTextColor = Color.Gray;
 
         private bool _isHovering;
-        private int _borderThickness = 6;
-        private int _borderThicknessByTwo = 3;
+        private int _borderThickness = 1; //6
+        private int _borderThicknessByTwo = 1; //3
 
         public Button_WOC()
         {
@@ -78,6 +76,19 @@ namespace AppDesktop
             base.OnMouseUp(mevent);
             OnHoverButtonColor = Color.Beige;
         }
+
+        ///Propios
+        protected override void OnGotFocus(EventArgs e)
+        {
+            base.OnGotFocus(e);
+            ButtonColor = Color.BlanchedAlmond;
+        }
+        protected override void OnLostFocus(EventArgs e)
+        {
+            base.OnLostFocus(e);
+            ButtonColor = Color.Beige;
+        }
+        //////////////////////////////
 
         public Color BorderColor
         {

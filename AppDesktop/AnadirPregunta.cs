@@ -1,6 +1,5 @@
 ﻿using AppDesktop.Clases;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -12,10 +11,11 @@ namespace AppDesktop
         const byte MAX_CHAR_PREG = 100;
         const byte MIN_CHAR_PREG = 10;
         const byte MAX_CHAR_RESP = 35;
-        const byte MIN_CHAR_RESP = 0;
+        const byte MIN_CHAR_RESP = 1;
 
         //Objetos
-        BindingList<Respuesta> listaRespuestas = new BindingList<Respuesta>();
+        BindingList<Respuesta> listaRespuestas = new BindingList<Respuesta>(),
+                                listaAux = new BindingList<Respuesta>();
         Idioma castellano;
         Idioma ingles;
         Idioma catalan;
@@ -24,9 +24,11 @@ namespace AppDesktop
                 strPregunta = null;
         Pregunta pregunta = new Pregunta();
 
-        bool preguntaModificada = false;
+        bool preguntaModificada = false,
+                preguntaGuardada = false;
 
         //Constructores
+        //Form abierto través del botón [Nova] (sin nivel/idioma)
         public AnadirPregunta(Idioma castellano, Idioma catalan, Idioma ingles)
         {
             InitializeComponent();
@@ -34,7 +36,18 @@ namespace AppDesktop
             this.catalan = catalan;
             this.ingles = ingles;
         }
-        public AnadirPregunta(Idioma castellano, Idioma catalan, Idioma ingles, Pregunta pregunta, Respuesta[] r, String idioma, String nivel)
+        //Form abierto a través del botón [Nova] (con nivel/idioma)
+        public AnadirPregunta(Idioma castellano, Idioma catalan, Idioma ingles, String idioma, String nivel)
+        {
+            InitializeComponent();
+            this.castellano = castellano;
+            this.catalan = catalan;
+            this.ingles = ingles;
+            comboBoxIdioma.SelectedItem = idioma;
+            comboBoxNivel.SelectedItem = nivel;
+        }
+        //Form abierto a través del botón [Modificar]
+        public AnadirPregunta(Idioma castellano, Idioma catalan, Idioma ingles, Pregunta pregunta, String idioma, String nivel)
         {
             InitializeComponent();
 
@@ -44,17 +57,24 @@ namespace AppDesktop
             this.pregunta = pregunta;
             this.idiomaOriginal = idioma;
             this.nivelOrigional = nivel;
+            this.strPregunta = pregunta.pregunta;
             comboBoxIdioma.SelectedItem = idioma;
             comboBoxNivel.SelectedItem = nivel;
+            listaRespuestas = pregunta.respuestas;
 
             preguntaModificada = true;
 
             textBoxPregunta.Text = pregunta.pregunta;
 
-            List<Respuesta> lr = new List<Respuesta>(r);
-            BindingList<Respuesta> blist2 = new BindingList<Respuesta>(lr);
-            listaRespuestas = blist2;
-
+            //Copia de la lista para que se pueda modificar la gridView
+            foreach (Respuesta resp in pregunta.respuestas)
+            {
+                Respuesta r = new Respuesta();
+                r.correcta = resp.correcta;
+                r.respuesta = resp.respuesta;
+                listaAux.Add(r);
+            }
+            //contador = 0;
             actualizarDGV();
         }
 
@@ -62,7 +82,7 @@ namespace AppDesktop
         //Al cargar el formulario
         private void AnadirPregunta_Load(object sender, EventArgs e)
         {
-            if (preguntaModificada == true)
+            if (preguntaModificada)
             {
                 this.Text = "Modificar pregunta";
                 groupBoxAfegirPregunta.Text = "Modificar pregunta";
@@ -84,19 +104,57 @@ namespace AppDesktop
         //Al cerrar el formulario
         private void AnadirPregunta_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //Si hay algún campo editado muestra un mensaje para confirmar el cerrado del formulario
-            if (comboBoxIdioma.SelectedIndex != -1 || comboBoxNivel.SelectedIndex != -1 ||
-                textBoxPregunta.Text.Length > 0 || textBoxResposta.Text.Length > 0 || listaRespuestas.Count > 0)
+            int contadorRespuestasIguales = 0;
+            bool respuestasCambiadas = false;
+
+            dataGridViewRespuestas.EndEdit();
+
+            //Si hemos accedido a través de [Modificar Pregunta]...
+            if (preguntaModificada)
             {
-                DialogResult result = MessageBox.Show("S'han fet modificacions pero no s'han guardat. \nDesitja sortir sense guardarles?", "Advertència",
-                                                        MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-
-                //Si se presiona el botón [Cancelar], no se cierra el formulario, de lo contrario sí
-                if (result == DialogResult.Cancel)
+                //y si no hemos guardado la pregunta...
+                if (preguntaGuardada == false)
                 {
-                    e.Cancel = true;
+                    if (comboBoxIdioma.SelectedItem == null || comboBoxNivel.SelectedItem == null)
+                    {
+                        mostrarMensajeCambiosSinGuardar(e);
+                    }
+                    else
+                    {
+                        foreach (Respuesta res in pregunta.respuestas)
+                        {
+                            foreach (Respuesta resp in listaAux)
+                            {
+                                //Se cuentan que todas las respuestas son iguales
+                                if (res.Equals(resp))
+                                {
+                                    contadorRespuestasIguales++;
+                                }
+                            }
+                        }
+                        if (!(idiomaOriginal.Equals(comboBoxIdioma.SelectedItem.ToString())) ||
+                            !(nivelOrigional.Equals(comboBoxNivel.SelectedItem.ToString())) ||
+                            strPregunta != textBoxPregunta.Text ||
+                            respuestasCambiadas == true)
+                        {
+                            mostrarMensajeCambiosSinGuardar(e);
+                        }
+                        else if(contadorRespuestasIguales < listaAux.Count)
+                        {
+                            mostrarMensajeCambiosSinGuardar(e);
+                        }
+                    }
                 }
-
+            }
+            //Si hemos accedido a través de [Nueva Pregunta]...
+            else
+            {
+                //Si hay algún campo modificado y se intenta cerrar el form...
+                if (comboBoxIdioma.SelectedIndex != -1 || comboBoxNivel.SelectedIndex != -1 ||
+                    textBoxPregunta.Text.Length > 0 || textBoxResposta.Text.Length > 0 || listaRespuestas.Count > 0)
+                {
+                    mostrarMensajeCambiosSinGuardar(e);
+                }
             }
         }
 
@@ -110,11 +168,21 @@ namespace AppDesktop
             mostrarCharsResposta();
         }
 
-        //Al clickar el botón [Añadir]
-        private void buttonAnadir_Click(object sender, EventArgs e)
+        //Para activar/desactivar la ayuda (ToolTip)
+        private void radioButtonSi_CheckedChanged(object sender, EventArgs e)
+        {
+            toolTipAyuda.Active = true;
+        }
+        private void radioButtonNo_CheckedChanged(object sender, EventArgs e)
+        {
+            toolTipAyuda.Active = false;
+        }
+
+        //Al clickar el botón [Afegir]
+        private void button_WOC_Afegir_Click(object sender, EventArgs e)
         {
             //Añadimos la respuesta si cumple ambos requisitos
-            if (textBoxResposta.Text.Length > MIN_CHAR_RESP &&
+            if (textBoxResposta.Text.Length >= MIN_CHAR_RESP &&
                 textBoxResposta.Text.Length <= MAX_CHAR_RESP)
             {
                 Respuesta r = new Respuesta();
@@ -143,22 +211,22 @@ namespace AppDesktop
                 actualizarDGV();
                 dataGridViewRespuestas.ClearSelection();
 
-                //Cambiamos el focus para hacer más cómodo al tabular
+                //Cambiamos focus para que sea más comodo añadir respuestas tabulando
                 if (dataGridViewRespuestas.RowCount < 4)
                 {
                     textBoxResposta.Focus();
                 }
                 else if (dataGridViewRespuestas.RowCount == 4)
                 {
-                    buttonGuardar.Focus();
-
+                    button_WOC_Guardar.Focus();
                 }
             }
         }
 
         //Al clickar el botón [Eliminar]
-        private void buttonEliminar_Click(object sender, EventArgs e)
+        private void button_WOC_Eliminar_Click(object sender, EventArgs e)
         {
+
             if (dataGridViewRespuestas.CurrentRow != null)
             {
                 if (dataGridViewRespuestas.CurrentRow.Index != -1)
@@ -168,25 +236,33 @@ namespace AppDesktop
 
                     //Actualizamos el DataGridView para que se reflejen los cambios
                     actualizarDGV();
-
                 }
             }
         }
 
         //Al clickar el botón [Reiniciar]
-        private void buttonReiniciar_Click(object sender, EventArgs e)
+        private void button_WOC_Reiniciar_Click(object sender, EventArgs e)
         {
             limpiarCampos();
         }
 
         //Al clickar el botón [Guardar]
-        private void buttonGuardar_Click(object sender, EventArgs e)
+        private void button_WOC_Guardar_Click(object sender, EventArgs e)
         {
+
             //Contador de campos correctos
-            byte cont = 0;
+            byte contadorCamposCorrectos = 0;
 
             //Mensaje inicial que saldrá cuando haya algun campo incorrecto (luego se concatenarán otros strings indicando qué errores hay)
-            string msgError = "No s'ha pogut afegir correctament la pregunta perquè: ";
+            string msgError;
+            if (preguntaModificada)
+            {
+                msgError = "No s'ha pogut modificar correctament la pregunta perquè: ";
+            }
+            else
+            {
+                msgError = "No s'ha pogut afegir correctament la pregunta perquè: ";
+            }
 
 
             //Comprobamos cuales son los campos correctos y los incorrectos
@@ -195,7 +271,7 @@ namespace AppDesktop
             if (comboBoxIdioma.SelectedIndex > -1)
             {
                 //Si hay algún campo seleccionado, aumentamos el contador en 1
-                cont++;
+                contadorCamposCorrectos++;
             }
             else
             {
@@ -207,7 +283,7 @@ namespace AppDesktop
             //Checkeo del Nivel
             if (comboBoxNivel.SelectedIndex > -1)
             {
-                cont++;
+                contadorCamposCorrectos++;
             }
             else
             {
@@ -219,7 +295,7 @@ namespace AppDesktop
             if (textBoxPregunta.Text.Length <= MAX_CHAR_PREG &&
                 textBoxPregunta.Text.Length >= MIN_CHAR_PREG)
             {
-                cont++;
+                contadorCamposCorrectos++;
             }
             else
             {
@@ -231,7 +307,7 @@ namespace AppDesktop
             if (dataGridViewRespuestas.RowCount == 4)
             {
                 //Si hay un total de 4 respuestas sumamos el contador de campos correctos en 1
-                cont++;
+                contadorCamposCorrectos++;
 
                 //Contador de respuestas que están marcadas como válidas
                 byte numCorrectas = 0;
@@ -252,7 +328,7 @@ namespace AppDesktop
                 if (numCorrectas == 1)
                 {
                     //...El numero de campos correctos lo sumamos en 1
-                    cont++;
+                    contadorCamposCorrectos++;
                 }
                 else
                 {
@@ -268,7 +344,7 @@ namespace AppDesktop
 
 
             //Si todos los campos son correctos se guarda la pregunta, si no, muestra mensaje indicando los errores
-            if (cont == 5)
+            if (contadorCamposCorrectos == 5)
             {
                 if (preguntaModificada)
                 {
@@ -279,7 +355,7 @@ namespace AppDesktop
 
                 anadirPregunta(p);
 
-                limpiarCampos();
+                preguntaGuardada = true;
 
                 if (preguntaModificada == true)
                 {
@@ -288,6 +364,7 @@ namespace AppDesktop
                 }
                 else
                 {
+                    limpiarCampos();
                     MessageBox.Show("Pregunta afegida correctament!");
                 }
             }
@@ -295,17 +372,6 @@ namespace AppDesktop
             {
                 MessageBox.Show(msgError, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-        }
-
-        //Para activar/desactivar la ayuda (ToolTip)
-        private void radioButtonSi_CheckedChanged(object sender, EventArgs e)
-        {
-            toolTipAyuda.Active = true;
-        }
-        private void radioButtonNo_CheckedChanged(object sender, EventArgs e)
-        {
-            toolTipAyuda.Active = false;
         }
 
 
@@ -700,6 +766,25 @@ namespace AppDesktop
         {
             int numCar = MAX_CHAR_RESP - textBoxResposta.Text.Length;
             labelCarRes.Text = numCar.ToString();
+        }
+
+        /// <summary>
+        /// Muestra un mensaje cuando se intenta cerrar el formulario, se han hecho cambios pero no se han guardado
+        /// </summary>
+        private void mostrarMensajeCambiosSinGuardar(FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("S'han fet modificacions pero no s'han guardat. \nDesitja sortir sense guardarles?", "Advertència",
+                                                       MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            //Si se presiona el botón [Cancelar], no se cierra el formulario, de lo contrario sí
+            if (result == DialogResult.Cancel)
+            {
+                e.Cancel = true;
+            }
+            if(result == DialogResult.OK)
+            {
+                pregunta.respuestas = listaAux;
+            }
         }
     }
 }
