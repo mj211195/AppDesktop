@@ -33,6 +33,10 @@
             this.labelNom = new System.Windows.Forms.Label();
             this.labelCorreo = new System.Windows.Forms.Label();
             this.groupBoxContacto = new System.Windows.Forms.GroupBox();
+            this.pictureBoxErrorMensaje = new System.Windows.Forms.PictureBox();
+            this.pictureBoxErrorAsunto = new System.Windows.Forms.PictureBox();
+            this.pictureBoxErrorEmailValid = new System.Windows.Forms.PictureBox();
+            this.pictureBoxErrorEmail = new System.Windows.Forms.PictureBox();
             this.pictureBoxErrorNombre = new System.Windows.Forms.PictureBox();
             this.textBoxMensaje = new System.Windows.Forms.TextBox();
             this.textBoxAsunto = new System.Windows.Forms.TextBox();
@@ -42,20 +46,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBoxErrorEmail = new System.Windows.Forms.PictureBox();
-            this.pictureBoxErrorEmailValid = new System.Windows.Forms.PictureBox();
-            this.pictureBoxErrorAsunto = new System.Windows.Forms.PictureBox();
-            this.pictureBoxErrorMensaje = new System.Windows.Forms.PictureBox();
-            this.button_WOCreiniciar = new AppDesktop.Button_WOC();
-            this.button_WOCEnviar = new AppDesktop.Button_WOC();
             this.toolTipErrores = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipInfo = new System.Windows.Forms.ToolTip(this.components);
+            this.button_WOCreiniciar = new AppDesktop.Button_WOC();
+            this.button_WOCEnviar = new AppDesktop.Button_WOC();
             this.groupBoxContacto.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorNombre)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorEmail)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorEmailValid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorAsunto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorMensaje)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorAsunto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorEmailValid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorNombre)).BeginInit();
             this.SuspendLayout();
             // 
             // labelNom
@@ -106,16 +106,72 @@
             this.groupBoxContacto.TabStop = false;
             this.groupBoxContacto.Text = "Formulari de contacte";
             // 
+            // pictureBoxErrorMensaje
+            // 
+            this.pictureBoxErrorMensaje.Image = global::AppDesktop.Properties.Resources.triangulo;
+            this.pictureBoxErrorMensaje.Location = new System.Drawing.Point(364, 300);
+            this.pictureBoxErrorMensaje.Name = "pictureBoxErrorMensaje";
+            this.pictureBoxErrorMensaje.Size = new System.Drawing.Size(25, 25);
+            this.pictureBoxErrorMensaje.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxErrorMensaje.TabIndex = 18;
+            this.pictureBoxErrorMensaje.TabStop = false;
+            this.toolTipErrores.SetToolTip(this.pictureBoxErrorMensaje, "Per a que aquest camp sigui vàlid:\r\n    - No pot estar buit\r\n    - No pot estar c" +
+        "ompost íntegrament d\'espais en blanc\r\n    - Ha de tenir una llargària mínima i m" +
+        "àxima adients");
+            this.pictureBoxErrorMensaje.Visible = false;
+            // 
+            // pictureBoxErrorAsunto
+            // 
+            this.pictureBoxErrorAsunto.Image = global::AppDesktop.Properties.Resources.triangulo;
+            this.pictureBoxErrorAsunto.Location = new System.Drawing.Point(277, 257);
+            this.pictureBoxErrorAsunto.Name = "pictureBoxErrorAsunto";
+            this.pictureBoxErrorAsunto.Size = new System.Drawing.Size(25, 25);
+            this.pictureBoxErrorAsunto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxErrorAsunto.TabIndex = 17;
+            this.pictureBoxErrorAsunto.TabStop = false;
+            this.toolTipErrores.SetToolTip(this.pictureBoxErrorAsunto, "Per a que aquest camp sigui vàlid:\r\n    - No pot estar buit\r\n    - No pot estar c" +
+        "ompost íntegrament d\'espais en blanc\r\n    - Ha de tenir una llargària mínima i m" +
+        "àxima adients");
+            this.pictureBoxErrorAsunto.Visible = false;
+            // 
+            // pictureBoxErrorEmailValid
+            // 
+            this.pictureBoxErrorEmailValid.Image = global::AppDesktop.Properties.Resources.triangulo;
+            this.pictureBoxErrorEmailValid.Location = new System.Drawing.Point(277, 188);
+            this.pictureBoxErrorEmailValid.Name = "pictureBoxErrorEmailValid";
+            this.pictureBoxErrorEmailValid.Size = new System.Drawing.Size(25, 25);
+            this.pictureBoxErrorEmailValid.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxErrorEmailValid.TabIndex = 16;
+            this.pictureBoxErrorEmailValid.TabStop = false;
+            this.toolTipErrores.SetToolTip(this.pictureBoxErrorEmailValid, "Per a que aquest camp sigui vàlid:\r\n    - No pot estar buit\r\n    - Ha de ser idèn" +
+        "tic al correu previ");
+            this.pictureBoxErrorEmailValid.Visible = false;
+            // 
+            // pictureBoxErrorEmail
+            // 
+            this.pictureBoxErrorEmail.Image = global::AppDesktop.Properties.Resources.triangulo;
+            this.pictureBoxErrorEmail.Location = new System.Drawing.Point(277, 119);
+            this.pictureBoxErrorEmail.Name = "pictureBoxErrorEmail";
+            this.pictureBoxErrorEmail.Size = new System.Drawing.Size(25, 25);
+            this.pictureBoxErrorEmail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxErrorEmail.TabIndex = 15;
+            this.pictureBoxErrorEmail.TabStop = false;
+            this.toolTipErrores.SetToolTip(this.pictureBoxErrorEmail, "Per a que aquest camp sigui vàlid:\r\n    - No pot estar buit\r\n    - No pot tenir e" +
+        "spais en blanc\r\n    - Ha de tenir una llargària mínima i màxima adients");
+            this.pictureBoxErrorEmail.Visible = false;
+            // 
             // pictureBoxErrorNombre
             // 
-            this.pictureBoxErrorNombre.Image = global::AppDesktop.Properties.Resources.imageonline_co_whitebackgroundremoved;
-            this.pictureBoxErrorNombre.Location = new System.Drawing.Point(277, 53);
+            this.pictureBoxErrorNombre.Image = global::AppDesktop.Properties.Resources.triangulo;
+            this.pictureBoxErrorNombre.Location = new System.Drawing.Point(277, 50);
             this.pictureBoxErrorNombre.Name = "pictureBoxErrorNombre";
             this.pictureBoxErrorNombre.Size = new System.Drawing.Size(25, 25);
             this.pictureBoxErrorNombre.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxErrorNombre.TabIndex = 14;
             this.pictureBoxErrorNombre.TabStop = false;
-            this.toolTipErrores.SetToolTip(this.pictureBoxErrorNombre, resources.GetString("pictureBoxErrorNombre.ToolTip"));
+            this.toolTipErrores.SetToolTip(this.pictureBoxErrorNombre, "Per a que aquest camp sigui vàlid:\r\n     - No pot estar buit\r\n     - No pot estar" +
+        " compost íntegrament d\'espais en blanc\r\n     - Ha de tenir una llargària mínima " +
+        "i màxima adients");
             this.pictureBoxErrorNombre.Visible = false;
             // 
             // textBoxMensaje
@@ -186,54 +242,16 @@
             this.label1.Text = "Verificar correu";
             this.toolTipInfo.SetToolTip(this.label1, "Verifiqui el correu de contacte per tal de que no hi hagi caràcters erronis");
             // 
-            // pictureBoxErrorEmail
+            // toolTipErrores
             // 
-            this.pictureBoxErrorEmail.Image = global::AppDesktop.Properties.Resources.imageonline_co_whitebackgroundremoved;
-            this.pictureBoxErrorEmail.Location = new System.Drawing.Point(277, 122);
-            this.pictureBoxErrorEmail.Name = "pictureBoxErrorEmail";
-            this.pictureBoxErrorEmail.Size = new System.Drawing.Size(25, 25);
-            this.pictureBoxErrorEmail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxErrorEmail.TabIndex = 15;
-            this.pictureBoxErrorEmail.TabStop = false;
-            this.toolTipErrores.SetToolTip(this.pictureBoxErrorEmail, resources.GetString("pictureBoxErrorEmail.ToolTip"));
-            this.pictureBoxErrorEmail.Visible = false;
+            this.toolTipErrores.AutoPopDelay = 5000;
+            this.toolTipErrores.InitialDelay = 500;
+            this.toolTipErrores.ReshowDelay = 100;
             // 
-            // pictureBoxErrorEmailValid
+            // toolTipInfo
             // 
-            this.pictureBoxErrorEmailValid.Image = global::AppDesktop.Properties.Resources.imageonline_co_whitebackgroundremoved;
-            this.pictureBoxErrorEmailValid.Location = new System.Drawing.Point(277, 191);
-            this.pictureBoxErrorEmailValid.Name = "pictureBoxErrorEmailValid";
-            this.pictureBoxErrorEmailValid.Size = new System.Drawing.Size(25, 25);
-            this.pictureBoxErrorEmailValid.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxErrorEmailValid.TabIndex = 16;
-            this.pictureBoxErrorEmailValid.TabStop = false;
-            this.toolTipErrores.SetToolTip(this.pictureBoxErrorEmailValid, "Per poder enviar correctament el missatge és necessari\r\nque aquest camp sigui omp" +
-        "lert correctament:\r\n    - Ha de ser idèntic al correu previ");
-            this.pictureBoxErrorEmailValid.Visible = false;
-            // 
-            // pictureBoxErrorAsunto
-            // 
-            this.pictureBoxErrorAsunto.Image = global::AppDesktop.Properties.Resources.imageonline_co_whitebackgroundremoved;
-            this.pictureBoxErrorAsunto.Location = new System.Drawing.Point(277, 260);
-            this.pictureBoxErrorAsunto.Name = "pictureBoxErrorAsunto";
-            this.pictureBoxErrorAsunto.Size = new System.Drawing.Size(25, 25);
-            this.pictureBoxErrorAsunto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxErrorAsunto.TabIndex = 17;
-            this.pictureBoxErrorAsunto.TabStop = false;
-            this.toolTipErrores.SetToolTip(this.pictureBoxErrorAsunto, resources.GetString("pictureBoxErrorAsunto.ToolTip"));
-            this.pictureBoxErrorAsunto.Visible = false;
-            // 
-            // pictureBoxErrorMensaje
-            // 
-            this.pictureBoxErrorMensaje.Image = global::AppDesktop.Properties.Resources.imageonline_co_whitebackgroundremoved;
-            this.pictureBoxErrorMensaje.Location = new System.Drawing.Point(363, 303);
-            this.pictureBoxErrorMensaje.Name = "pictureBoxErrorMensaje";
-            this.pictureBoxErrorMensaje.Size = new System.Drawing.Size(25, 25);
-            this.pictureBoxErrorMensaje.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxErrorMensaje.TabIndex = 18;
-            this.pictureBoxErrorMensaje.TabStop = false;
-            this.toolTipErrores.SetToolTip(this.pictureBoxErrorMensaje, resources.GetString("pictureBoxErrorMensaje.ToolTip"));
-            this.pictureBoxErrorMensaje.Visible = false;
+            this.toolTipInfo.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipInfo.ToolTipTitle = "Info";
             // 
             // button_WOCreiniciar
             // 
@@ -279,19 +297,6 @@
             this.button_WOCEnviar.UseVisualStyleBackColor = false;
             this.button_WOCEnviar.Click += new System.EventHandler(this.button_WOCEnviar_Click);
             // 
-            // toolTipErrores
-            // 
-            this.toolTipErrores.AutoPopDelay = 5000;
-            this.toolTipErrores.InitialDelay = 500;
-            this.toolTipErrores.ReshowDelay = 100;
-            this.toolTipErrores.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Error;
-            this.toolTipErrores.ToolTipTitle = "Error";
-            // 
-            // toolTipInfo
-            // 
-            this.toolTipInfo.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTipInfo.ToolTipTitle = "Info";
-            // 
             // FormSuport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -307,11 +312,11 @@
             this.Text = "Suport";
             this.groupBoxContacto.ResumeLayout(false);
             this.groupBoxContacto.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorNombre)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorEmail)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorEmailValid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorAsunto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorMensaje)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorAsunto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorEmailValid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorNombre)).EndInit();
             this.ResumeLayout(false);
 
         }

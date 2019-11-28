@@ -124,8 +124,8 @@
   <data name="022-logout" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\022-logout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Terrasa1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Terrasa1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="imageonline-co-whitebackgroundremoved" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imageonline-co-whitebackgroundremoved.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Fondo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Fondo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -135,6 +135,9 @@
   </data>
   <data name="exclamationMark1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\exclamationMark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Logo Museu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logo Museu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="012-envelope" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\012-envelope.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,8 +157,8 @@
   <data name="001-phone-call" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\001-phone-call.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Logo Museu" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logo Museu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Terrasa1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Terrasa1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Terrasa" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Terrasa.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,7 +169,7 @@
   <data name="logoHelp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logoHelp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imageonline-co-whitebackgroundremoved" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imageonline-co-whitebackgroundremoved.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="triangulo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\triangulo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

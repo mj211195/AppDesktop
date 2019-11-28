@@ -120,37 +120,8 @@
   <metadata name="toolTipInfo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>139, 15</value>
   </metadata>
-  <data name="pictureBoxErrorNombre.ToolTip" xml:space="preserve">
-    <value>Per poder enviar correctament el missatge és necessari
-que aquest camp sigui omplert correctament:
-    - No pot estar compost íntegrament d'espais en blanc
-    - Ha de tenir una llargària mínima i màxima adients</value>
-  </data>
-  <data name="pictureBoxErrorEmail.ToolTip" xml:space="preserve">
-    <value>Per poder enviar correctament el missatge és necessari
-que aquest camp sigui omplert correctament:
-    - No pot tenir espais en blanc
-    - Ha de tenir una llargària mínima i màxima adients
-
-El fet d'afegir un email correcte servirà per poder mantenir una comunicació entre el Museu i l'equip de desenvolupadors.</value>
-  </data>
-  <data name="pictureBoxErrorAsunto.ToolTip" xml:space="preserve">
-    <value>Per poder enviar correctament el missatge és necessari
-que aquest camp sigui omplert correctament:
-    - No pot estar compost íntegrament d'espais en blanc
-    - Ha de tenir una llargària mínima i màxima adients</value>
-  </data>
   <metadata name="toolTipErrores.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
-  </metadata>
-  <data name="pictureBoxErrorMensaje.ToolTip" xml:space="preserve">
-    <value>Per poder enviar correctament el missatge és necessari
-que aquest camp sigui omplert correctament:
-    - No pot estar compost íntegrament d'espais en blanc
-    - Ha de tenir una llargària mínima i màxima adients</value>
-  </data>
-  <metadata name="toolTipInfo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>139, 15</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

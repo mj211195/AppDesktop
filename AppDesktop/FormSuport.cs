@@ -15,15 +15,15 @@ namespace AppDesktop
     public partial class FormSuport : Form
     {
         //Constantes
-       private const string emailSpace = "space.experience.game@gmail.com";
-       private const byte   MAX_CAR_NOM = 40,
-                            MIN_CAR_NOM = 3,
-                            MAX_CAR_EMAIL = 50,
-                            MIN_CAR_EMAIL = 5,
-                            MAX_CAR_ASUN = 45,
-                            MIN_CAR_ASUN = 5,
-                            MIN_CAR_MSJ = 10;
-        private const int   MAX_CAR_MSJ = 1000;
+        private const string emailSpace = "space.experience.game@gmail.com";
+        private const byte MAX_CAR_NOM = 40,
+                             MIN_CAR_NOM = 3,
+                             MAX_CAR_EMAIL = 50,
+                             MIN_CAR_EMAIL = 5,
+                             MAX_CAR_ASUN = 45,
+                             MIN_CAR_ASUN = 5,
+                             MIN_CAR_MSJ = 10;
+        private const int MAX_CAR_MSJ = 1000;
 
 
         public FormSuport()
@@ -33,27 +33,18 @@ namespace AppDesktop
 
         private void button_WOCEnviar_Click(object sender, EventArgs e)
         {
-            ///TODO
-            ///PROBLEM CON EL TRIM, NO SE ELIMINAN LOS ESPACIOS COMO DEBERÍA. POR CORREGIR.            
-            ///MODIFICAR LA IMAGEN QUE SALTA CUANDO HAY CAMPOS ERRÓNEOS. ESCALARLA MEJOR.
-
-
-
-
             //Asignamos el valor de los textbox a unas variables para trabajar más cómodamente
             //con ellos
-            String  nombre = textBoxNom.Text,
+            String nombre = textBoxNom.Text,
                     email = textBoxCorreo.Text,
                     emailVerif = textBoxCorreoVerificado.Text,
                     asunto = textBoxAsunto.Text,
                     mensaje = textBoxMensaje.Text;
 
-            //String msjError = "No s'ha pogut enviar correctament el missatge: ";
             int numCamposCorrectos = 0;
 
             //Nombre
-            nombre.TrimStart(' ');
-            nombre.TrimEnd(' ');
+            nombre = nombre.Trim(' ');
             if (comprobarCampoSimple(nombre, "nombre"))
             {
                 pictureBoxErrorNombre.Visible = false;
@@ -62,9 +53,8 @@ namespace AppDesktop
             else
             {
                 pictureBoxErrorNombre.Visible = true;
-               // msjError += "\n  - S'ha d'escriure un nom vàlid";
             }
-            
+
             //Emails
             if (comprobarEmail(email))
             {
@@ -74,10 +64,9 @@ namespace AppDesktop
             else
             {
                 pictureBoxErrorEmail.Visible = true;
-               // msjError += "\n  - S'ha d'escriure un email vàlid";
             }
 
-            if (email.Equals(emailVerif))
+            if (email.Equals(emailVerif) && !String.IsNullOrEmpty(emailVerif))
             {
                 pictureBoxErrorEmailValid.Visible = false;
                 numCamposCorrectos++;
@@ -85,12 +74,10 @@ namespace AppDesktop
             else
             {
                 pictureBoxErrorEmailValid.Visible = true;
-               // msjError += "\n  - El correu ha de ser el mateix en ambdós camps";
             }
 
             //Asunto
-            asunto.TrimStart(' ');
-            asunto.TrimEnd(' ');
+            asunto = asunto.Trim(' ');
             if (comprobarCampoSimple(asunto, "asunto"))
             {
                 pictureBoxErrorAsunto.Visible = false;
@@ -99,12 +86,10 @@ namespace AppDesktop
             else
             {
                 pictureBoxErrorAsunto.Visible = true;
-              //  msjError += "\n  - S'ha d'escriure un assumpte vàlid";
             }
 
             //Mensaje
-            mensaje.TrimStart(' ');
-            mensaje.TrimEnd(' ');
+            mensaje = mensaje.Trim(' ');
             if (comprobarCampoSimple(mensaje, "mensaje"))
             {
                 pictureBoxErrorMensaje.Visible = false;
@@ -113,7 +98,6 @@ namespace AppDesktop
             else
             {
                 pictureBoxErrorMensaje.Visible = true;
-              //  msjError += "\n  - S'ha d'escriure un missatge vàlid";
             }
 
 
@@ -134,14 +118,13 @@ namespace AppDesktop
                     mail.From = new MailAddress(emailSpace);
                     mail.To.Add(emailSpace);
                     mail.Subject = asunto;
-                    //mail.Body = "This is for testing SMTP mail from GMAIL";
                     mail.Body = "----------------------------------------" +
                                 "\nDatos de contacto: " +
-                                "\n  Nombre: " + nombre +
-                                "\n  Email: " + email +
+                                "\n\tNombre: " + nombre +
+                                "\n\tEmail: " + email +
                                 "\n----------------------------------------" +
                                 "\n\n" + mensaje +
-                                "\n\n\n" + 
+                                "\n\n\n" +
                                 "**Mensaje enviado desde la app de escritorio**";
 
                     SmtpServer.Port = 587;
@@ -149,27 +132,21 @@ namespace AppDesktop
                     SmtpServer.EnableSsl = true;
 
                     SmtpServer.Send(mail);
-                    MessageBox.Show("Missatge enviat!" + 
-                                    "\nL'hi respondrem al correu que ens ha facilitat en la màxima brevetat possible. " + 
-                                    "\n\nGràcies,"+
-                                    "\nSpace Experience Team", "Missatge enviat",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Missatge enviat!" +
+                                    "\nL'hi respondrem al correu que ens ha facilitat en la màxima brevetat possible. " +
+                                    "\n\nGràcies," +
+                                    "\nSpace Experience Team", "Missatge enviat", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     Close();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Hi ha hagut algún problema a l'hora d'enviar el missatge." +
                                     "\nSi us plau, posi's en contacte amb nosaltres a través del nostre email:" +
-                                    "\n\nspace.experience.game@gmail.com" +
-                                    "\n\nMoltes gràcies.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                                    "\n\n    space.experience.game@gmail.com" +
+                                    "\n\nMoltes gràcies.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else
-            {
-               // MessageBox.Show(msjError, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            
 
 
 
@@ -232,9 +209,9 @@ namespace AppDesktop
             bool correcto = true;
 
             int contadorArrobas = 0;
-            foreach(char c in email)
+            foreach (char c in email)
             {
-                if(c == '@')
+                if (c == '@')
                 {
                     contadorArrobas++;
                 }
@@ -253,7 +230,7 @@ namespace AppDesktop
             {
                 correcto = false;
             }
-            else if(email.Contains(" "))
+            else if (email.Contains(" "))
             {
                 correcto = false;
             }
@@ -304,7 +281,7 @@ namespace AppDesktop
 
                 default:
                     if (str.Length < MIN_CAR_MSJ || str.Length > MAX_CAR_MSJ)
-                    correcto = false;
+                        correcto = false;
                     break;
             }
 

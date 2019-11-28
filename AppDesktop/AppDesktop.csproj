@@ -131,6 +131,7 @@
     <Content Include="Resources\020-folder-1.png" />
     <Content Include="Resources\022-logout.png" />
     <Content Include="Resources\exclamationMark.jpg" />
+    <None Include="Resources\triangulo.png" />
     <None Include="Resources\exclamationMark.png" />
     <Content Include="Resources\Fondo.jpg" />
     <Content Include="Resources\grande_fondo1.jpg" />
