@@ -133,6 +133,26 @@ namespace AppDesktop.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap exclamationMark {
+            get {
+                object obj = ResourceManager.GetObject("exclamationMark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exclamationMark1 {
+            get {
+                object obj = ResourceManager.GetObject("exclamationMark1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Fondo {
             get {
                 object obj = ResourceManager.GetObject("Fondo", resourceCulture);
@@ -146,6 +166,16 @@ namespace AppDesktop.Properties {
         internal static System.Drawing.Bitmap grande_fondo {
             get {
                 object obj = ResourceManager.GetObject("grande_fondo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imageonline_co_whitebackgroundremoved {
+            get {
+                object obj = ResourceManager.GetObject("imageonline-co-whitebackgroundremoved", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
