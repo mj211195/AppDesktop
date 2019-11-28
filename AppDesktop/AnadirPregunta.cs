@@ -1,6 +1,5 @@
 ﻿using AppDesktop.Clases;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -12,7 +11,7 @@ namespace AppDesktop
         const byte MAX_CHAR_PREG = 100;
         const byte MIN_CHAR_PREG = 10;
         const byte MAX_CHAR_RESP = 35;
-        const byte MIN_CHAR_RESP = 0;
+        const byte MIN_CHAR_RESP = 1;
 
         //Objetos
         BindingList<Respuesta> listaRespuestas = new BindingList<Respuesta>(),
@@ -27,7 +26,6 @@ namespace AppDesktop
 
         bool preguntaModificada = false,
                 preguntaGuardada = false;
-        int contador;
 
         //Constructores
         //Form abierto través del botón [Nova] (sin nivel/idioma)
@@ -76,7 +74,7 @@ namespace AppDesktop
                 r.respuesta = resp.respuesta;
                 listaAux.Add(r);
             }
-            contador = 0;
+            //contador = 0;
             actualizarDGV();
         }
 
@@ -84,7 +82,7 @@ namespace AppDesktop
         //Al cargar el formulario
         private void AnadirPregunta_Load(object sender, EventArgs e)
         {
-            if (preguntaModificada == true)
+            if (preguntaModificada)
             {
                 this.Text = "Modificar pregunta";
                 groupBoxAfegirPregunta.Text = "Modificar pregunta";
@@ -106,6 +104,7 @@ namespace AppDesktop
         //Al cerrar el formulario
         private void AnadirPregunta_FormClosing(object sender, FormClosingEventArgs e)
         {
+            int contadorRespuestasIguales = 0;
             bool respuestasCambiadas = false;
 
             dataGridViewRespuestas.EndEdit();
@@ -129,7 +128,7 @@ namespace AppDesktop
                                 //Se cuentan que todas las respuestas son iguales
                                 if (res.Equals(resp))
                                 {
-                                    contador++;
+                                    contadorRespuestasIguales++;
                                 }
                             }
                         }
@@ -140,7 +139,7 @@ namespace AppDesktop
                         {
                             mostrarMensajeCambiosSinGuardar(e);
                         }
-                        else if(contador < listaAux.Count)
+                        else if(contadorRespuestasIguales < listaAux.Count)
                         {
                             mostrarMensajeCambiosSinGuardar(e);
                         }
@@ -182,9 +181,8 @@ namespace AppDesktop
         //Al clickar el botón [Afegir]
         private void button_WOC_Afegir_Click(object sender, EventArgs e)
         {
-
             //Añadimos la respuesta si cumple ambos requisitos
-            if (textBoxResposta.Text.Length > MIN_CHAR_RESP &&
+            if (textBoxResposta.Text.Length >= MIN_CHAR_RESP &&
                 textBoxResposta.Text.Length <= MAX_CHAR_RESP)
             {
                 Respuesta r = new Respuesta();

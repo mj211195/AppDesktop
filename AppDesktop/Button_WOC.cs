@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Linq;
-using System.Threading;
 
 namespace AppDesktop
 {
@@ -78,6 +76,19 @@ namespace AppDesktop
             base.OnMouseUp(mevent);
             OnHoverButtonColor = Color.Beige;
         }
+
+        ///Propios
+        protected override void OnGotFocus(EventArgs e)
+        {
+            base.OnGotFocus(e);
+            ButtonColor = Color.BlanchedAlmond;
+        }
+        protected override void OnLostFocus(EventArgs e)
+        {
+            base.OnLostFocus(e);
+            ButtonColor = Color.Beige;
+        }
+        //////////////////////////////
 
         public Color BorderColor
         {

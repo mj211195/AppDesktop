@@ -2,17 +2,11 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Serialization;
 
 namespace AppDesktop
 {
@@ -134,29 +128,38 @@ namespace AppDesktop
             //Al hacer click en el botón "Modificar" se guarda la pregunta seleccionada en un objeto del tipo Pregunta
             Pregunta pregunta = (Pregunta)listBoxPreguntas.SelectedItem;
 
-            //Después se comprueba que realmente se haya seleccionado una pregunta (que pregunta no sea null)
-            if (pregunta != null)
+            if(listBoxPreguntas.SelectedItems.Count == 1)
             {
-                List<Respuesta> r = new List<Respuesta>();
-                r = pregunta.respuestas.ToList<Respuesta>();
+                //Después se comprueba que realmente se haya seleccionado una pregunta (que pregunta no sea null)
+                if (pregunta != null)
+                {
+                    List<Respuesta> r = new List<Respuesta>();
+                    r = pregunta.respuestas.ToList<Respuesta>();
 
-                //Si hay una pregunta seleccionada, se guardan en dos String el nivel y el idioma
-                String idioma = comboBoxIdioma.SelectedItem.ToString();
-                String nivel = comboBoxNivel.SelectedItem.ToString();
-                String strPregunta = listBoxPreguntas.SelectedItem.ToString();
+                    //Si hay una pregunta seleccionada, se guardan en dos String el nivel y el idioma
+                    String idioma = comboBoxIdioma.SelectedItem.ToString();
+                    String nivel = comboBoxNivel.SelectedItem.ToString();
+                    String strPregunta = listBoxPreguntas.SelectedItem.ToString();
 
-                //Se crea un formulario del tipo AnadirPregunta, los 3 objetos del tipo Idioma, pasandole la pregunta, y los dos String
-                AnadirPregunta modificarPregunta = new AnadirPregunta(castellano, catalan, ingles, pregunta, idioma, nivel);
+                    //Se crea un formulario del tipo AnadirPregunta, los 3 objetos del tipo Idioma, pasandole la pregunta, y los dos String
+                    AnadirPregunta modificarPregunta = new AnadirPregunta(castellano, catalan, ingles, pregunta, idioma, nivel);
 
-                //Deseleccionamos la pregunta
-                listBoxPreguntas.SelectedIndex = -1;
+                    //Deseleccionamos la pregunta
+                    listBoxPreguntas.SelectedIndex = -1;
 
-                //Abrimos el form Añadir Pregunta 
-                modificarPregunta.ShowDialog();
+                    //Abrimos el form Añadir Pregunta 
+                    modificarPregunta.ShowDialog();
 
-                //Deseleccionamos la pregunta
+                    //Deseleccionamos la pregunta
+                    listBoxPreguntas.SelectedIndex = -1;
+                }
+            }
+            else if(listBoxPreguntas.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Només es pot modificar una pregunta alhora.");
                 listBoxPreguntas.SelectedIndex = -1;
             }
+            
         }
 
         //Al clickar el botón [Eliminar]
