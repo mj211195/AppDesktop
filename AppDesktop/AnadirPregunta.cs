@@ -26,8 +26,7 @@ namespace AppDesktop
         Pregunta pregunta = new Pregunta();
 
         bool preguntaModificada = false,
-                preguntaGuardada = false,
-                respuestaModificada = false;
+                preguntaGuardada = false;
         int contador;
 
         //Constructores
