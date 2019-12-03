@@ -31,25 +31,26 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGestionPreguntas));
             this.labelNivel = new System.Windows.Forms.Label();
             this.comboBoxNivel = new System.Windows.Forms.ComboBox();
-            this.labelPreguntas = new System.Windows.Forms.Label();
             this.groupBoxPreguntas = new System.Windows.Forms.GroupBox();
             this.button_WOC_Eliminar = new AppDesktop.Button_WOC();
             this.button_WOC_Modificar = new AppDesktop.Button_WOC();
             this.button_WOC_NovaPregunta = new AppDesktop.Button_WOC();
+            this.listBoxPreguntas = new System.Windows.Forms.ListBox();
             this.dataGridViewRespuestas = new System.Windows.Forms.DataGridView();
             this.respuesta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Correcta = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.labelRespuestas = new System.Windows.Forms.Label();
-            this.listBoxPreguntas = new System.Windows.Forms.ListBox();
             this.labelIdioma = new System.Windows.Forms.Label();
             this.comboBoxIdioma = new System.Windows.Forms.ComboBox();
+            this.groupBoxResposta = new System.Windows.Forms.GroupBox();
             this.groupBoxPreguntas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRespuestas)).BeginInit();
+            this.groupBoxResposta.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelNivel
             // 
             this.labelNivel.AutoSize = true;
+            this.labelNivel.BackColor = System.Drawing.Color.Transparent;
             this.labelNivel.Font = new System.Drawing.Font("Consolas", 9F);
             this.labelNivel.Location = new System.Drawing.Point(340, 31);
             this.labelNivel.Name = "labelNivel";
@@ -74,29 +75,17 @@
             this.comboBoxNivel.TabIndex = 1;
             this.comboBoxNivel.SelectedIndexChanged += new System.EventHandler(this.comboBoxNivel_SelectedIndexChanged);
             // 
-            // labelPreguntas
-            // 
-            this.labelPreguntas.AutoSize = true;
-            this.labelPreguntas.Location = new System.Drawing.Point(15, 56);
-            this.labelPreguntas.Name = "labelPreguntas";
-            this.labelPreguntas.Size = new System.Drawing.Size(70, 14);
-            this.labelPreguntas.TabIndex = 5;
-            this.labelPreguntas.Text = "Preguntes";
-            // 
             // groupBoxPreguntas
             // 
             this.groupBoxPreguntas.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxPreguntas.Controls.Add(this.button_WOC_Eliminar);
             this.groupBoxPreguntas.Controls.Add(this.button_WOC_Modificar);
             this.groupBoxPreguntas.Controls.Add(this.button_WOC_NovaPregunta);
-            this.groupBoxPreguntas.Controls.Add(this.dataGridViewRespuestas);
-            this.groupBoxPreguntas.Controls.Add(this.labelRespuestas);
             this.groupBoxPreguntas.Controls.Add(this.listBoxPreguntas);
-            this.groupBoxPreguntas.Controls.Add(this.labelPreguntas);
             this.groupBoxPreguntas.Font = new System.Drawing.Font("Consolas", 9F);
             this.groupBoxPreguntas.Location = new System.Drawing.Point(14, 79);
             this.groupBoxPreguntas.Name = "groupBoxPreguntas";
-            this.groupBoxPreguntas.Size = new System.Drawing.Size(846, 390);
+            this.groupBoxPreguntas.Size = new System.Drawing.Size(375, 390);
             this.groupBoxPreguntas.TabIndex = 6;
             this.groupBoxPreguntas.TabStop = false;
             this.groupBoxPreguntas.Text = "Preguntes";
@@ -111,7 +100,7 @@
             this.button_WOC_Eliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button_WOC_Eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_WOC_Eliminar.Font = new System.Drawing.Font("Consolas", 10F);
-            this.button_WOC_Eliminar.Location = new System.Drawing.Point(256, 18);
+            this.button_WOC_Eliminar.Location = new System.Drawing.Point(252, 18);
             this.button_WOC_Eliminar.Name = "button_WOC_Eliminar";
             this.button_WOC_Eliminar.OnHoverBorderColor = System.Drawing.Color.Gray;
             this.button_WOC_Eliminar.OnHoverButtonColor = System.Drawing.Color.Beige;
@@ -133,7 +122,7 @@
             this.button_WOC_Modificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button_WOC_Modificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_WOC_Modificar.Font = new System.Drawing.Font("Consolas", 10F);
-            this.button_WOC_Modificar.Location = new System.Drawing.Point(146, 18);
+            this.button_WOC_Modificar.Location = new System.Drawing.Point(138, 18);
             this.button_WOC_Modificar.Name = "button_WOC_Modificar";
             this.button_WOC_Modificar.OnHoverBorderColor = System.Drawing.Color.Gray;
             this.button_WOC_Modificar.OnHoverButtonColor = System.Drawing.Color.Beige;
@@ -156,7 +145,7 @@
             this.button_WOC_NovaPregunta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button_WOC_NovaPregunta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_WOC_NovaPregunta.Font = new System.Drawing.Font("Consolas", 10F);
-            this.button_WOC_NovaPregunta.Location = new System.Drawing.Point(36, 18);
+            this.button_WOC_NovaPregunta.Location = new System.Drawing.Point(24, 18);
             this.button_WOC_NovaPregunta.Name = "button_WOC_NovaPregunta";
             this.button_WOC_NovaPregunta.OnHoverBorderColor = System.Drawing.Color.Gray;
             this.button_WOC_NovaPregunta.OnHoverButtonColor = System.Drawing.Color.Beige;
@@ -168,6 +157,18 @@
             this.button_WOC_NovaPregunta.UseVisualStyleBackColor = false;
             this.button_WOC_NovaPregunta.Click += new System.EventHandler(this.button_WOC_NovaPregunta_Click);
             // 
+            // listBoxPreguntas
+            // 
+            this.listBoxPreguntas.Font = new System.Drawing.Font("Lucida Sans", 8.25F);
+            this.listBoxPreguntas.FormattingEnabled = true;
+            this.listBoxPreguntas.ItemHeight = 14;
+            this.listBoxPreguntas.Location = new System.Drawing.Point(18, 72);
+            this.listBoxPreguntas.Name = "listBoxPreguntas";
+            this.listBoxPreguntas.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.listBoxPreguntas.Size = new System.Drawing.Size(322, 284);
+            this.listBoxPreguntas.TabIndex = 6;
+            this.listBoxPreguntas.SelectedIndexChanged += new System.EventHandler(this.listBoxPreguntas_SelectedIndexChanged);
+            // 
             // dataGridViewRespuestas
             // 
             this.dataGridViewRespuestas.AllowUserToAddRows = false;
@@ -176,11 +177,11 @@
             this.dataGridViewRespuestas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.respuesta,
             this.Correcta});
-            this.dataGridViewRespuestas.Location = new System.Drawing.Point(393, 72);
+            this.dataGridViewRespuestas.Location = new System.Drawing.Point(6, 21);
             this.dataGridViewRespuestas.MultiSelect = false;
             this.dataGridViewRespuestas.Name = "dataGridViewRespuestas";
             this.dataGridViewRespuestas.ReadOnly = true;
-            this.dataGridViewRespuestas.Size = new System.Drawing.Size(425, 290);
+            this.dataGridViewRespuestas.Size = new System.Drawing.Size(461, 284);
             this.dataGridViewRespuestas.TabIndex = 8;
             // 
             // respuesta
@@ -198,30 +199,10 @@
             this.Correcta.Name = "Correcta";
             this.Correcta.ReadOnly = true;
             // 
-            // labelRespuestas
-            // 
-            this.labelRespuestas.AutoSize = true;
-            this.labelRespuestas.Location = new System.Drawing.Point(390, 55);
-            this.labelRespuestas.Name = "labelRespuestas";
-            this.labelRespuestas.Size = new System.Drawing.Size(70, 14);
-            this.labelRespuestas.TabIndex = 7;
-            this.labelRespuestas.Text = "Respostes";
-            // 
-            // listBoxPreguntas
-            // 
-            this.listBoxPreguntas.Font = new System.Drawing.Font("Lucida Sans", 8.25F);
-            this.listBoxPreguntas.FormattingEnabled = true;
-            this.listBoxPreguntas.ItemHeight = 14;
-            this.listBoxPreguntas.Location = new System.Drawing.Point(18, 72);
-            this.listBoxPreguntas.Name = "listBoxPreguntas";
-            this.listBoxPreguntas.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxPreguntas.Size = new System.Drawing.Size(322, 284);
-            this.listBoxPreguntas.TabIndex = 6;
-            this.listBoxPreguntas.SelectedIndexChanged += new System.EventHandler(this.listBoxPreguntas_SelectedIndexChanged);
-            // 
             // labelIdioma
             // 
             this.labelIdioma.AutoSize = true;
+            this.labelIdioma.BackColor = System.Drawing.Color.Transparent;
             this.labelIdioma.Font = new System.Drawing.Font("Consolas", 9F);
             this.labelIdioma.Location = new System.Drawing.Point(21, 31);
             this.labelIdioma.Name = "labelIdioma";
@@ -244,6 +225,18 @@
             this.comboBoxIdioma.TabIndex = 8;
             this.comboBoxIdioma.SelectedIndexChanged += new System.EventHandler(this.comboBoxIdioma_SelectedIndexChanged);
             // 
+            // groupBoxResposta
+            // 
+            this.groupBoxResposta.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxResposta.Controls.Add(this.dataGridViewRespuestas);
+            this.groupBoxResposta.Font = new System.Drawing.Font("Consolas", 9F);
+            this.groupBoxResposta.Location = new System.Drawing.Point(395, 131);
+            this.groupBoxResposta.Name = "groupBoxResposta";
+            this.groupBoxResposta.Size = new System.Drawing.Size(473, 338);
+            this.groupBoxResposta.TabIndex = 9;
+            this.groupBoxResposta.TabStop = false;
+            this.groupBoxResposta.Text = "Respostes";
+            // 
             // FormGestionPreguntas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -251,6 +244,7 @@
             this.BackgroundImage = global::AppDesktop.Properties.Resources.grande_fondo;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(880, 478);
+            this.Controls.Add(this.groupBoxResposta);
             this.Controls.Add(this.comboBoxIdioma);
             this.Controls.Add(this.labelIdioma);
             this.Controls.Add(this.groupBoxPreguntas);
@@ -262,8 +256,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormGestionPreguntas_FormClosing);
             this.Load += new System.EventHandler(this.FormGestionPreguntas_Load);
             this.groupBoxPreguntas.ResumeLayout(false);
-            this.groupBoxPreguntas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRespuestas)).EndInit();
+            this.groupBoxResposta.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,10 +267,8 @@
 
         private System.Windows.Forms.Label labelNivel;
         private System.Windows.Forms.ComboBox comboBoxNivel;
-        private System.Windows.Forms.Label labelPreguntas;
         private System.Windows.Forms.GroupBox groupBoxPreguntas;
         private System.Windows.Forms.ListBox listBoxPreguntas;
-        private System.Windows.Forms.Label labelRespuestas;
         private System.Windows.Forms.Label labelIdioma;
         private System.Windows.Forms.ComboBox comboBoxIdioma;
         private System.Windows.Forms.DataGridView dataGridViewRespuestas;
@@ -285,5 +277,6 @@
         private Button_WOC button_WOC_NovaPregunta;
         private Button_WOC button_WOC_Modificar;
         private Button_WOC button_WOC_Eliminar;
+        private System.Windows.Forms.GroupBox groupBoxResposta;
     }
 }
