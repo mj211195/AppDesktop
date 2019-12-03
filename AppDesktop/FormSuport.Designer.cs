@@ -46,24 +46,27 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.toolTipErrores = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTipInfo = new System.Windows.Forms.ToolTip(this.components);
             this.button_WOCreiniciar = new AppDesktop.Button_WOC();
             this.button_WOCEnviar = new AppDesktop.Button_WOC();
+            this.toolTipErrores = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipInfo = new System.Windows.Forms.ToolTip(this.components);
+            this.pictureBoxLogoSE = new System.Windows.Forms.PictureBox();
             this.groupBoxContacto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorMensaje)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorAsunto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorEmailValid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorNombre)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoSE)).BeginInit();
             this.SuspendLayout();
             // 
             // labelNom
             // 
             this.labelNom.AutoSize = true;
+            this.labelNom.Font = new System.Drawing.Font("Consolas", 9.5F);
             this.labelNom.Location = new System.Drawing.Point(26, 36);
             this.labelNom.Name = "labelNom";
-            this.labelNom.Size = new System.Drawing.Size(29, 13);
+            this.labelNom.Size = new System.Drawing.Size(28, 15);
             this.labelNom.TabIndex = 3;
             this.labelNom.Text = "Nom";
             this.toolTipInfo.SetToolTip(this.labelNom, "Indiqui el nom de la persona a la qual vol que ens referim\r\na l\'hora de contestar" +
@@ -72,9 +75,10 @@
             // labelCorreo
             // 
             this.labelCorreo.AutoSize = true;
+            this.labelCorreo.Font = new System.Drawing.Font("Consolas", 9F);
             this.labelCorreo.Location = new System.Drawing.Point(26, 105);
             this.labelCorreo.Name = "labelCorreo";
-            this.labelCorreo.Size = new System.Drawing.Size(98, 13);
+            this.labelCorreo.Size = new System.Drawing.Size(133, 14);
             this.labelCorreo.TabIndex = 4;
             this.labelCorreo.Text = "Correu de contacte";
             this.toolTipInfo.SetToolTip(this.labelCorreo, "Indiqui un correu vàlid per tal de que podem contestar el missatge");
@@ -82,6 +86,7 @@
             // groupBoxContacto
             // 
             this.groupBoxContacto.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxContacto.Controls.Add(this.pictureBoxLogoSE);
             this.groupBoxContacto.Controls.Add(this.pictureBoxErrorMensaje);
             this.groupBoxContacto.Controls.Add(this.pictureBoxErrorAsunto);
             this.groupBoxContacto.Controls.Add(this.pictureBoxErrorEmailValid);
@@ -99,6 +104,7 @@
             this.groupBoxContacto.Controls.Add(this.button_WOCreiniciar);
             this.groupBoxContacto.Controls.Add(this.labelNom);
             this.groupBoxContacto.Controls.Add(this.button_WOCEnviar);
+            this.groupBoxContacto.Font = new System.Drawing.Font("Consolas", 9F);
             this.groupBoxContacto.Location = new System.Drawing.Point(13, 13);
             this.groupBoxContacto.Name = "groupBoxContacto";
             this.groupBoxContacto.Size = new System.Drawing.Size(398, 551);
@@ -176,6 +182,7 @@
             // 
             // textBoxMensaje
             // 
+            this.textBoxMensaje.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxMensaje.Location = new System.Drawing.Point(29, 331);
             this.textBoxMensaje.Multiline = true;
             this.textBoxMensaje.Name = "textBoxMensaje";
@@ -184,6 +191,7 @@
             // 
             // textBoxAsunto
             // 
+            this.textBoxAsunto.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxAsunto.Location = new System.Drawing.Point(29, 262);
             this.textBoxAsunto.Name = "textBoxAsunto";
             this.textBoxAsunto.Size = new System.Drawing.Size(242, 20);
@@ -191,6 +199,7 @@
             // 
             // textBoxCorreoVerificado
             // 
+            this.textBoxCorreoVerificado.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxCorreoVerificado.Location = new System.Drawing.Point(29, 193);
             this.textBoxCorreoVerificado.Name = "textBoxCorreoVerificado";
             this.textBoxCorreoVerificado.ShortcutsEnabled = false;
@@ -199,6 +208,7 @@
             // 
             // textBoxCorreo
             // 
+            this.textBoxCorreo.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxCorreo.Location = new System.Drawing.Point(29, 124);
             this.textBoxCorreo.Name = "textBoxCorreo";
             this.textBoxCorreo.Size = new System.Drawing.Size(242, 20);
@@ -206,6 +216,7 @@
             // 
             // textBoxNom
             // 
+            this.textBoxNom.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxNom.Location = new System.Drawing.Point(29, 55);
             this.textBoxNom.Name = "textBoxNom";
             this.textBoxNom.Size = new System.Drawing.Size(242, 20);
@@ -214,9 +225,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Consolas", 9F);
             this.label3.Location = new System.Drawing.Point(29, 312);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 13);
+            this.label3.Size = new System.Drawing.Size(112, 14);
             this.label3.TabIndex = 8;
             this.label3.Text = "El seu missatge";
             this.toolTipInfo.SetToolTip(this.label3, "El missatge com a tal");
@@ -224,9 +236,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Consolas", 9F);
             this.label2.Location = new System.Drawing.Point(26, 243);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
+            this.label2.Size = new System.Drawing.Size(63, 14);
             this.label2.TabIndex = 7;
             this.label2.Text = "Assumpte";
             this.toolTipInfo.SetToolTip(this.label2, "Indiqui l\'assumpte del missatge, per exemple, si es una sugerència,\r\nuna queixa, " +
@@ -235,23 +248,13 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Consolas", 9F);
             this.label1.Location = new System.Drawing.Point(26, 174);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 13);
+            this.label1.Size = new System.Drawing.Size(119, 14);
             this.label1.TabIndex = 6;
             this.label1.Text = "Verificar correu";
             this.toolTipInfo.SetToolTip(this.label1, "Verifiqui el correu de contacte per tal de que no hi hagi caràcters erronis");
-            // 
-            // toolTipErrores
-            // 
-            this.toolTipErrores.AutoPopDelay = 5000;
-            this.toolTipErrores.InitialDelay = 500;
-            this.toolTipErrores.ReshowDelay = 100;
-            // 
-            // toolTipInfo
-            // 
-            this.toolTipInfo.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTipInfo.ToolTipTitle = "Info";
             // 
             // button_WOCreiniciar
             // 
@@ -262,13 +265,13 @@
             this.button_WOCreiniciar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button_WOCreiniciar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button_WOCreiniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_WOCreiniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_WOCreiniciar.Location = new System.Drawing.Point(201, 517);
+            this.button_WOCreiniciar.Font = new System.Drawing.Font("Arial", 11F);
+            this.button_WOCreiniciar.Location = new System.Drawing.Point(194, 516);
             this.button_WOCreiniciar.Name = "button_WOCreiniciar";
             this.button_WOCreiniciar.OnHoverBorderColor = System.Drawing.Color.Gray;
             this.button_WOCreiniciar.OnHoverButtonColor = System.Drawing.Color.Beige;
             this.button_WOCreiniciar.OnHoverTextColor = System.Drawing.Color.Gray;
-            this.button_WOCreiniciar.Size = new System.Drawing.Size(88, 28);
+            this.button_WOCreiniciar.Size = new System.Drawing.Size(95, 28);
             this.button_WOCreiniciar.TabIndex = 7;
             this.button_WOCreiniciar.Text = "Reiniciar";
             this.button_WOCreiniciar.TextColor = System.Drawing.Color.Black;
@@ -284,18 +287,39 @@
             this.button_WOCEnviar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button_WOCEnviar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button_WOCEnviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_WOCEnviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_WOCEnviar.Location = new System.Drawing.Point(307, 517);
+            this.button_WOCEnviar.Font = new System.Drawing.Font("Arial", 11F);
+            this.button_WOCEnviar.Location = new System.Drawing.Point(297, 516);
             this.button_WOCEnviar.Name = "button_WOCEnviar";
             this.button_WOCEnviar.OnHoverBorderColor = System.Drawing.Color.Gray;
             this.button_WOCEnviar.OnHoverButtonColor = System.Drawing.Color.Beige;
             this.button_WOCEnviar.OnHoverTextColor = System.Drawing.Color.Gray;
-            this.button_WOCEnviar.Size = new System.Drawing.Size(88, 28);
+            this.button_WOCEnviar.Size = new System.Drawing.Size(95, 28);
             this.button_WOCEnviar.TabIndex = 6;
             this.button_WOCEnviar.Text = "Enviar";
             this.button_WOCEnviar.TextColor = System.Drawing.Color.Black;
             this.button_WOCEnviar.UseVisualStyleBackColor = false;
             this.button_WOCEnviar.Click += new System.EventHandler(this.button_WOCEnviar_Click);
+            // 
+            // toolTipErrores
+            // 
+            this.toolTipErrores.AutoPopDelay = 5000;
+            this.toolTipErrores.InitialDelay = 500;
+            this.toolTipErrores.ReshowDelay = 100;
+            // 
+            // toolTipInfo
+            // 
+            this.toolTipInfo.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipInfo.ToolTipTitle = "Info";
+            // 
+            // pictureBoxLogoSE
+            // 
+            this.pictureBoxLogoSE.Image = global::AppDesktop.Properties.Resources.logo_sin_fondo;
+            this.pictureBoxLogoSE.Location = new System.Drawing.Point(308, 19);
+            this.pictureBoxLogoSE.Name = "pictureBoxLogoSE";
+            this.pictureBoxLogoSE.Size = new System.Drawing.Size(84, 68);
+            this.pictureBoxLogoSE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxLogoSE.TabIndex = 19;
+            this.pictureBoxLogoSE.TabStop = false;
             // 
             // FormSuport
             // 
@@ -318,6 +342,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorEmailValid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorNombre)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoSE)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -344,5 +369,6 @@
         private System.Windows.Forms.PictureBox pictureBoxErrorEmailValid;
         private System.Windows.Forms.ToolTip toolTipErrores;
         private System.Windows.Forms.ToolTip toolTipInfo;
+        private System.Windows.Forms.PictureBox pictureBoxLogoSE;
     }
 }

@@ -39,10 +39,12 @@ namespace AppDesktop
             this.toolStripButtonSuport = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonSortir = new System.Windows.Forms.ToolStripButton();
+            this.pictureBoxLogoSE = new System.Windows.Forms.PictureBox();
             this.button_WOCSuport = new AppDesktop.Button_WOC();
             this.button_WOCGestionar = new AppDesktop.Button_WOC();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.toolStripInicio.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoSE)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxLogo
@@ -110,6 +112,17 @@ namespace AppDesktop
             this.toolStripButtonSortir.Text = "Sortir";
             this.toolStripButtonSortir.Click += new System.EventHandler(this.toolStripButtonSortir_Click);
             // 
+            // pictureBoxLogoSE
+            // 
+            this.pictureBoxLogoSE.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxLogoSE.Image = global::AppDesktop.Properties.Resources.logo_sin_fondo;
+            this.pictureBoxLogoSE.Location = new System.Drawing.Point(125, 333);
+            this.pictureBoxLogoSE.Name = "pictureBoxLogoSE";
+            this.pictureBoxLogoSE.Size = new System.Drawing.Size(87, 72);
+            this.pictureBoxLogoSE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxLogoSE.TabIndex = 7;
+            this.pictureBoxLogoSE.TabStop = false;
+            // 
             // button_WOCSuport
             // 
             this.button_WOCSuport.BackColor = System.Drawing.Color.Transparent;
@@ -119,7 +132,7 @@ namespace AppDesktop
             this.button_WOCSuport.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button_WOCSuport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button_WOCSuport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_WOCSuport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_WOCSuport.Font = new System.Drawing.Font("Consolas", 12F);
             this.button_WOCSuport.Location = new System.Drawing.Point(106, 251);
             this.button_WOCSuport.Name = "button_WOCSuport";
             this.button_WOCSuport.OnHoverBorderColor = System.Drawing.Color.Gray;
@@ -141,7 +154,7 @@ namespace AppDesktop
             this.button_WOCGestionar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button_WOCGestionar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button_WOCGestionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_WOCGestionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_WOCGestionar.Font = new System.Drawing.Font("Consolas", 12F);
             this.button_WOCGestionar.Location = new System.Drawing.Point(106, 192);
             this.button_WOCGestionar.Name = "button_WOCGestionar";
             this.button_WOCGestionar.OnHoverBorderColor = System.Drawing.Color.Gray;
@@ -160,7 +173,8 @@ namespace AppDesktop
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::AppDesktop.Properties.Resources.Fondo;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(341, 359);
+            this.ClientSize = new System.Drawing.Size(341, 431);
+            this.Controls.Add(this.pictureBoxLogoSE);
             this.Controls.Add(this.toolStripInicio);
             this.Controls.Add(this.button_WOCSuport);
             this.Controls.Add(this.button_WOCGestionar);
@@ -173,6 +187,7 @@ namespace AppDesktop
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.toolStripInicio.ResumeLayout(false);
             this.toolStripInicio.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoSE)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,6 +205,7 @@ namespace AppDesktop
         private System.Windows.Forms.ToolStripButton toolStripButtonSuport;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton toolStripButtonSortir;
+        private System.Windows.Forms.PictureBox pictureBoxLogoSE;
     }
 }
 

@@ -50,25 +50,27 @@
             // labelNivel
             // 
             this.labelNivel.AutoSize = true;
-            this.labelNivel.Location = new System.Drawing.Point(313, 31);
+            this.labelNivel.Font = new System.Drawing.Font("Consolas", 9F);
+            this.labelNivel.Location = new System.Drawing.Point(340, 31);
             this.labelNivel.Name = "labelNivel";
-            this.labelNivel.Size = new System.Drawing.Size(36, 13);
+            this.labelNivel.Size = new System.Drawing.Size(49, 14);
             this.labelNivel.TabIndex = 0;
-            this.labelNivel.Text = "Nivell:";
+            this.labelNivel.Text = "Nivell";
             // 
             // comboBoxNivel
             // 
             this.comboBoxNivel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxNivel.Enabled = false;
+            this.comboBoxNivel.Font = new System.Drawing.Font("Lucida Sans", 8.25F);
             this.comboBoxNivel.FormattingEnabled = true;
             this.comboBoxNivel.Items.AddRange(new object[] {
             "Infantil",
             "Adult (Fàcil)",
             "Adult (Intermedi)",
             "Adult (Difícil)"});
-            this.comboBoxNivel.Location = new System.Drawing.Point(355, 28);
+            this.comboBoxNivel.Location = new System.Drawing.Point(400, 28);
             this.comboBoxNivel.Name = "comboBoxNivel";
-            this.comboBoxNivel.Size = new System.Drawing.Size(204, 21);
+            this.comboBoxNivel.Size = new System.Drawing.Size(204, 22);
             this.comboBoxNivel.TabIndex = 1;
             this.comboBoxNivel.SelectedIndexChanged += new System.EventHandler(this.comboBoxNivel_SelectedIndexChanged);
             // 
@@ -77,9 +79,9 @@
             this.labelPreguntas.AutoSize = true;
             this.labelPreguntas.Location = new System.Drawing.Point(15, 56);
             this.labelPreguntas.Name = "labelPreguntas";
-            this.labelPreguntas.Size = new System.Drawing.Size(58, 13);
+            this.labelPreguntas.Size = new System.Drawing.Size(70, 14);
             this.labelPreguntas.TabIndex = 5;
-            this.labelPreguntas.Text = "Preguntes:";
+            this.labelPreguntas.Text = "Preguntes";
             // 
             // groupBoxPreguntas
             // 
@@ -91,6 +93,7 @@
             this.groupBoxPreguntas.Controls.Add(this.labelRespuestas);
             this.groupBoxPreguntas.Controls.Add(this.listBoxPreguntas);
             this.groupBoxPreguntas.Controls.Add(this.labelPreguntas);
+            this.groupBoxPreguntas.Font = new System.Drawing.Font("Consolas", 9F);
             this.groupBoxPreguntas.Location = new System.Drawing.Point(14, 79);
             this.groupBoxPreguntas.Name = "groupBoxPreguntas";
             this.groupBoxPreguntas.Size = new System.Drawing.Size(846, 390);
@@ -107,7 +110,7 @@
             this.button_WOC_Eliminar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button_WOC_Eliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button_WOC_Eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_WOC_Eliminar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_WOC_Eliminar.Font = new System.Drawing.Font("Consolas", 10F);
             this.button_WOC_Eliminar.Location = new System.Drawing.Point(256, 18);
             this.button_WOC_Eliminar.Name = "button_WOC_Eliminar";
             this.button_WOC_Eliminar.OnHoverBorderColor = System.Drawing.Color.Gray;
@@ -129,7 +132,7 @@
             this.button_WOC_Modificar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button_WOC_Modificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button_WOC_Modificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_WOC_Modificar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_WOC_Modificar.Font = new System.Drawing.Font("Consolas", 10F);
             this.button_WOC_Modificar.Location = new System.Drawing.Point(146, 18);
             this.button_WOC_Modificar.Name = "button_WOC_Modificar";
             this.button_WOC_Modificar.OnHoverBorderColor = System.Drawing.Color.Gray;
@@ -147,11 +150,12 @@
             this.button_WOC_NovaPregunta.BackColor = System.Drawing.Color.Transparent;
             this.button_WOC_NovaPregunta.BorderColor = System.Drawing.Color.Black;
             this.button_WOC_NovaPregunta.ButtonColor = System.Drawing.SystemColors.Info;
+            this.button_WOC_NovaPregunta.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.button_WOC_NovaPregunta.FlatAppearance.BorderSize = 0;
             this.button_WOC_NovaPregunta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button_WOC_NovaPregunta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button_WOC_NovaPregunta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_WOC_NovaPregunta.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_WOC_NovaPregunta.Font = new System.Drawing.Font("Consolas", 10F);
             this.button_WOC_NovaPregunta.Location = new System.Drawing.Point(36, 18);
             this.button_WOC_NovaPregunta.Name = "button_WOC_NovaPregunta";
             this.button_WOC_NovaPregunta.OnHoverBorderColor = System.Drawing.Color.Gray;
@@ -199,40 +203,44 @@
             this.labelRespuestas.AutoSize = true;
             this.labelRespuestas.Location = new System.Drawing.Point(390, 55);
             this.labelRespuestas.Name = "labelRespuestas";
-            this.labelRespuestas.Size = new System.Drawing.Size(60, 13);
+            this.labelRespuestas.Size = new System.Drawing.Size(70, 14);
             this.labelRespuestas.TabIndex = 7;
-            this.labelRespuestas.Text = "Respostes:";
+            this.labelRespuestas.Text = "Respostes";
             // 
             // listBoxPreguntas
             // 
+            this.listBoxPreguntas.Font = new System.Drawing.Font("Lucida Sans", 8.25F);
             this.listBoxPreguntas.FormattingEnabled = true;
+            this.listBoxPreguntas.ItemHeight = 14;
             this.listBoxPreguntas.Location = new System.Drawing.Point(18, 72);
             this.listBoxPreguntas.Name = "listBoxPreguntas";
             this.listBoxPreguntas.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxPreguntas.Size = new System.Drawing.Size(322, 290);
+            this.listBoxPreguntas.Size = new System.Drawing.Size(322, 284);
             this.listBoxPreguntas.TabIndex = 6;
             this.listBoxPreguntas.SelectedIndexChanged += new System.EventHandler(this.listBoxPreguntas_SelectedIndexChanged);
             // 
             // labelIdioma
             // 
             this.labelIdioma.AutoSize = true;
-            this.labelIdioma.Location = new System.Drawing.Point(13, 31);
+            this.labelIdioma.Font = new System.Drawing.Font("Consolas", 9F);
+            this.labelIdioma.Location = new System.Drawing.Point(21, 31);
             this.labelIdioma.Name = "labelIdioma";
-            this.labelIdioma.Size = new System.Drawing.Size(41, 13);
+            this.labelIdioma.Size = new System.Drawing.Size(49, 14);
             this.labelIdioma.TabIndex = 7;
-            this.labelIdioma.Text = "Idioma:";
+            this.labelIdioma.Text = "Idioma";
             // 
             // comboBoxIdioma
             // 
             this.comboBoxIdioma.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxIdioma.Font = new System.Drawing.Font("Lucida Sans", 8.25F);
             this.comboBoxIdioma.FormattingEnabled = true;
             this.comboBoxIdioma.Items.AddRange(new object[] {
             "Català",
             "Castellà",
             "Anglès"});
-            this.comboBoxIdioma.Location = new System.Drawing.Point(60, 28);
+            this.comboBoxIdioma.Location = new System.Drawing.Point(81, 28);
             this.comboBoxIdioma.Name = "comboBoxIdioma";
-            this.comboBoxIdioma.Size = new System.Drawing.Size(204, 21);
+            this.comboBoxIdioma.Size = new System.Drawing.Size(204, 22);
             this.comboBoxIdioma.TabIndex = 8;
             this.comboBoxIdioma.SelectedIndexChanged += new System.EventHandler(this.comboBoxIdioma_SelectedIndexChanged);
             // 

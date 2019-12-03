@@ -137,6 +137,7 @@
     <Content Include="Resources\Logo Museu.png" />
     <Content Include="Resources\logo.ico" />
     <Content Include="Resources\logoHelp.png" />
+    <Content Include="Resources\logo_sin_fondo.png" />
     <Content Include="Resources\museu.jpg" />
     <Content Include="Resources\Terrasa.jpg" />
     <Content Include="Resources\Terrasa1.jpg" />

@@ -751,21 +751,39 @@ namespace AppDesktop
         }
 
         /// <summary>
-        /// Cambia el label contador de carácteres restantes en el textBox pregunta
+        /// Cambia el label (y su estilo) contador de carácteres restantes en el textBox pregunta
         /// </summary>
         private void mostrarCharsPregunta()
         {
             int numCar = MAX_CHAR_PREG - textBoxPregunta.Text.Length;
             labelCarPre.Text = numCar.ToString();
+
+            if (numCar < 0)
+            {
+                labelCarPre.ForeColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+                labelCarPre.ForeColor = System.Drawing.Color.Black;
+            }
         }
 
         /// <summary>
-        /// Cambia el label contador de carácteres restantes en el textBox pregunta
+        /// Cambia el label (y su estilo)  contador de carácteres restantes en el textBox pregunta
         /// </summary>
         private void mostrarCharsResposta()
         {
             int numCar = MAX_CHAR_RESP - textBoxResposta.Text.Length;
             labelCarRes.Text = numCar.ToString();
+
+            if (numCar < 0)
+            {
+                labelCarRes.ForeColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+                labelCarRes.ForeColor = System.Drawing.Color.Black;
+            }
         }
 
         /// <summary>
