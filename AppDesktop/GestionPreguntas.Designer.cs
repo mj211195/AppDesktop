@@ -120,6 +120,7 @@
             // 
             this.dataGridViewRespuestas.AllowUserToAddRows = false;
             this.dataGridViewRespuestas.AllowUserToDeleteRows = false;
+            this.dataGridViewRespuestas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Consolas", 9F);
@@ -155,7 +156,7 @@
             this.dataGridViewRespuestas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewRespuestas.RowHeadersVisible = false;
             this.dataGridViewRespuestas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewRespuestas.Size = new System.Drawing.Size(460, 92);
+            this.dataGridViewRespuestas.Size = new System.Drawing.Size(460, 90);
             this.dataGridViewRespuestas.TabIndex = 8;
             this.dataGridViewRespuestas.TabStop = false;
             // 
@@ -192,7 +193,7 @@
             this.groupBoxResposta.Font = new System.Drawing.Font("Consolas", 9F);
             this.groupBoxResposta.Location = new System.Drawing.Point(395, 133);
             this.groupBoxResposta.Name = "groupBoxResposta";
-            this.groupBoxResposta.Size = new System.Drawing.Size(473, 173);
+            this.groupBoxResposta.Size = new System.Drawing.Size(473, 125);
             this.groupBoxResposta.TabIndex = 9;
             this.groupBoxResposta.TabStop = false;
             this.groupBoxResposta.Text = "Respostes";
@@ -211,7 +212,7 @@
             this.Correcta.HeaderText = "Correcta";
             this.Correcta.Name = "Correcta";
             this.Correcta.ReadOnly = true;
-            this.Correcta.Width = 102;
+            this.Correcta.Width = 103;
             // 
             // button_WOC_Eliminar
             // 
