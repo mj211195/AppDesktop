@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Mail;
 using System.Windows.Forms;
 
@@ -106,6 +107,8 @@ namespace AppDesktop
 
                     MailMessage mail = new MailMessage();
                     SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+
+                    
 
                     mail.From = new MailAddress(emailSpace);
                     mail.To.Add(emailSpace);
