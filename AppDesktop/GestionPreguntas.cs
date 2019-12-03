@@ -68,6 +68,8 @@ namespace AppDesktop
             cargarPreguntas();
 
             listBoxPreguntas.ClearSelected();
+
+            actualizarContadorPreguntas();
         }
 
         //Cuando se selecciona un nivel del comboBoxNivel
@@ -76,7 +78,10 @@ namespace AppDesktop
             //Nos carga las preguntas correspondientes llamando a cargarPreguntas
             cargarPreguntas();
 
+            //Limpia la selección (no habrá ninguna pregunta seleccionada)
             listBoxPreguntas.ClearSelected();
+
+            actualizarContadorPreguntas();
         }
 
         //Cuando se selecciona una pregunta de la listBoxPreguntas
@@ -92,6 +97,7 @@ namespace AppDesktop
             {
                 dataGridViewRespuestas.DataSource = null;
                 dataGridViewRespuestas.DataSource = pregunta.respuestas;
+                dataGridViewRespuestas.ClearSelection();
             }
             else
             {
@@ -120,6 +126,8 @@ namespace AppDesktop
             AnadirPregunta anadirPregunta = new AnadirPregunta(castellano, catalan, ingles, idioma, nivel);
 
             anadirPregunta.ShowDialog();
+
+            actualizarContadorPreguntas();
         }
 
         //Al clickar el botón [Modificar]
@@ -159,7 +167,8 @@ namespace AppDesktop
                 MessageBox.Show("Només es pot modificar una pregunta alhora.");
                 listBoxPreguntas.SelectedIndex = -1;
             }
-            
+
+            actualizarContadorPreguntas();
         }
 
         //Al clickar el botón [Eliminar]
@@ -202,6 +211,8 @@ namespace AppDesktop
                     }
 
                     cargarPreguntas();
+
+                    actualizarContadorPreguntas();
                 }
             }
         }
@@ -345,6 +356,25 @@ namespace AppDesktop
                         seleccionarNivel(ingles);
                         break;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Método que muestra en un label el total de respuestas de un nivel e idioma concretos
+        /// </summary>
+        private void actualizarContadorPreguntas()
+        {
+            int num;
+            
+            //Tiene que haber un nivel e idioma seleccionados para mostrar el label
+            if(comboBoxIdioma.SelectedIndex != -1 && comboBoxNivel.SelectedIndex != -1)
+            {
+                num = listBoxPreguntas.Items.Count;
+                labelContadorPreguntas.Text = "Número de preguntes: " + num;
+            }
+            else
+            {
+                labelContadorPreguntas.Text = "";
             }
         }
     }

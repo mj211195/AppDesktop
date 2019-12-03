@@ -33,6 +33,7 @@
             this.labelNom = new System.Windows.Forms.Label();
             this.labelCorreo = new System.Windows.Forms.Label();
             this.groupBoxContacto = new System.Windows.Forms.GroupBox();
+            this.pictureBoxLogoSE = new System.Windows.Forms.PictureBox();
             this.pictureBoxErrorMensaje = new System.Windows.Forms.PictureBox();
             this.pictureBoxErrorAsunto = new System.Windows.Forms.PictureBox();
             this.pictureBoxErrorEmailValid = new System.Windows.Forms.PictureBox();
@@ -50,14 +51,13 @@
             this.button_WOCEnviar = new AppDesktop.Button_WOC();
             this.toolTipErrores = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipInfo = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureBoxLogoSE = new System.Windows.Forms.PictureBox();
             this.groupBoxContacto.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoSE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorMensaje)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorAsunto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorEmailValid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorNombre)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoSE)).BeginInit();
             this.SuspendLayout();
             // 
             // labelNom
@@ -111,6 +111,16 @@
             this.groupBoxContacto.TabIndex = 2;
             this.groupBoxContacto.TabStop = false;
             this.groupBoxContacto.Text = "Formulari de contacte";
+            // 
+            // pictureBoxLogoSE
+            // 
+            this.pictureBoxLogoSE.Image = global::AppDesktop.Properties.Resources.logo_sin_fondo;
+            this.pictureBoxLogoSE.Location = new System.Drawing.Point(308, 19);
+            this.pictureBoxLogoSE.Name = "pictureBoxLogoSE";
+            this.pictureBoxLogoSE.Size = new System.Drawing.Size(84, 68);
+            this.pictureBoxLogoSE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxLogoSE.TabIndex = 19;
+            this.pictureBoxLogoSE.TabStop = false;
             // 
             // pictureBoxErrorMensaje
             // 
@@ -311,16 +321,6 @@
             this.toolTipInfo.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTipInfo.ToolTipTitle = "Info";
             // 
-            // pictureBoxLogoSE
-            // 
-            this.pictureBoxLogoSE.Image = global::AppDesktop.Properties.Resources.logo_sin_fondo;
-            this.pictureBoxLogoSE.Location = new System.Drawing.Point(308, 19);
-            this.pictureBoxLogoSE.Name = "pictureBoxLogoSE";
-            this.pictureBoxLogoSE.Size = new System.Drawing.Size(84, 68);
-            this.pictureBoxLogoSE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxLogoSE.TabIndex = 19;
-            this.pictureBoxLogoSE.TabStop = false;
-            // 
             // FormSuport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -337,12 +337,12 @@
             this.Text = "Suport";
             this.groupBoxContacto.ResumeLayout(false);
             this.groupBoxContacto.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoSE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorMensaje)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorAsunto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorEmailValid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErrorNombre)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoSE)).EndInit();
             this.ResumeLayout(false);
 
         }

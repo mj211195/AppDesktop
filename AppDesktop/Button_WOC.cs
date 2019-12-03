@@ -81,7 +81,7 @@ namespace AppDesktop
         protected override void OnGotFocus(EventArgs e)
         {
             base.OnGotFocus(e);
-            ButtonColor = Color.BlanchedAlmond;
+            ButtonColor = Color.FromArgb(234, 210, 179);
         }
         protected override void OnLostFocus(EventArgs e)
         {
