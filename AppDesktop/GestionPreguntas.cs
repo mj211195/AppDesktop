@@ -158,8 +158,8 @@ namespace AppDesktop
                     //Abrimos el form Añadir Pregunta 
                     modificarPregunta.ShowDialog();
 
-                    //Deseleccionamos la pregunta
-                    listBoxPreguntas.SelectedIndex = -1;
+
+                    listBoxPreguntas.Focus();
                 }
             }
             else if(listBoxPreguntas.SelectedItems.Count > 1)

@@ -192,7 +192,7 @@
             // 
             // textBoxMensaje
             // 
-            this.textBoxMensaje.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxMensaje.Font = new System.Drawing.Font("Tahoma", 8.5F);
             this.textBoxMensaje.Location = new System.Drawing.Point(29, 331);
             this.textBoxMensaje.Multiline = true;
             this.textBoxMensaje.Name = "textBoxMensaje";
@@ -201,35 +201,35 @@
             // 
             // textBoxAsunto
             // 
-            this.textBoxAsunto.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxAsunto.Font = new System.Drawing.Font("Tahoma", 8.5F);
             this.textBoxAsunto.Location = new System.Drawing.Point(29, 262);
             this.textBoxAsunto.Name = "textBoxAsunto";
-            this.textBoxAsunto.Size = new System.Drawing.Size(242, 20);
+            this.textBoxAsunto.Size = new System.Drawing.Size(242, 21);
             this.textBoxAsunto.TabIndex = 4;
             // 
             // textBoxCorreoVerificado
             // 
-            this.textBoxCorreoVerificado.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCorreoVerificado.Font = new System.Drawing.Font("Tahoma", 8.5F);
             this.textBoxCorreoVerificado.Location = new System.Drawing.Point(29, 193);
             this.textBoxCorreoVerificado.Name = "textBoxCorreoVerificado";
             this.textBoxCorreoVerificado.ShortcutsEnabled = false;
-            this.textBoxCorreoVerificado.Size = new System.Drawing.Size(242, 20);
+            this.textBoxCorreoVerificado.Size = new System.Drawing.Size(242, 21);
             this.textBoxCorreoVerificado.TabIndex = 3;
             // 
             // textBoxCorreo
             // 
-            this.textBoxCorreo.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCorreo.Font = new System.Drawing.Font("Tahoma", 8.5F);
             this.textBoxCorreo.Location = new System.Drawing.Point(29, 124);
             this.textBoxCorreo.Name = "textBoxCorreo";
-            this.textBoxCorreo.Size = new System.Drawing.Size(242, 20);
+            this.textBoxCorreo.Size = new System.Drawing.Size(242, 21);
             this.textBoxCorreo.TabIndex = 2;
             // 
             // textBoxNom
             // 
-            this.textBoxNom.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNom.Font = new System.Drawing.Font("Tahoma", 8.5F);
             this.textBoxNom.Location = new System.Drawing.Point(29, 55);
             this.textBoxNom.Name = "textBoxNom";
-            this.textBoxNom.Size = new System.Drawing.Size(242, 20);
+            this.textBoxNom.Size = new System.Drawing.Size(242, 21);
             this.textBoxNom.TabIndex = 1;
             // 
             // label3
@@ -241,7 +241,9 @@
             this.label3.Size = new System.Drawing.Size(112, 14);
             this.label3.TabIndex = 8;
             this.label3.Text = "El seu missatge";
-            this.toolTipInfo.SetToolTip(this.label3, "El missatge com a tal");
+            this.toolTipInfo.SetToolTip(this.label3, "Qualsevol missatge que ens vulgui fer arrivar, ja sigui que hi ha un problema amb" +
+        " l\'aplicació d\'escriptori o Android, que té alguna suggeriment per tal de millor" +
+        "ar el programa, etc.\r\n");
             // 
             // label2
             // 
@@ -315,11 +317,6 @@
             this.toolTipErrores.AutoPopDelay = 5000;
             this.toolTipErrores.InitialDelay = 500;
             this.toolTipErrores.ReshowDelay = 100;
-            // 
-            // toolTipInfo
-            // 
-            this.toolTipInfo.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTipInfo.ToolTipTitle = "Info";
             // 
             // FormSuport
             // 

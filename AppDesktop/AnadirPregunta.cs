@@ -82,10 +82,20 @@ namespace AppDesktop
         //Al cargar el formulario
         private void AnadirPregunta_Load(object sender, EventArgs e)
         {
+            //Si el form se ha abierto porque se quiere modificar una pregunta...
             if (preguntaModificada)
             {
                 this.Text = "Modificar pregunta";
                 groupBoxAfegirPregunta.Text = "Modificar pregunta";
+
+                button_WOC_Reiniciar.Visible = false;
+                button_WOC_Guardar.Text = "Guardar i sortir";
+                //Hacemos la fuente del botón Guardar más pequeña
+                button_WOC_Guardar.Font = new System.Drawing.Font(button_WOC_Guardar.Font.FontFamily, (button_WOC_Guardar.Font.Size - 2));
+                //La movemos un poco a la izquierda (entre los dos botones)
+                button_WOC_Guardar.Location = new System.Drawing.Point(550, 368);
+                //Hacemos el botón un poco más grande
+                button_WOC_Guardar.Width = 120;
             }
 
 
@@ -181,14 +191,16 @@ namespace AppDesktop
         //Al clickar el botón [Afegir]
         private void button_WOC_Afegir_Click(object sender, EventArgs e)
         {
+            string respuestaTrimeada = textBoxResposta.Text.Trim(' ');
             //Añadimos la respuesta si cumple ambos requisitos
-            if (textBoxResposta.Text.Length >= MIN_CHAR_RESP &&
-                textBoxResposta.Text.Length <= MAX_CHAR_RESP)
+            if (respuestaTrimeada.Length >= MIN_CHAR_RESP &&
+                respuestaTrimeada.Length <= MAX_CHAR_RESP &&
+                !String.IsNullOrWhiteSpace(textBoxResposta.Text))
             {
                 Respuesta r = new Respuesta();
 
                 //Asignamos la respuesta que hay en el TextBoxResposta al atributo respuesta del objeto respuesta
-                r.respuesta = textBoxResposta.Text;
+                r.respuesta = textBoxResposta.Text.Trim(' ');
 
                 //Si está marcada el checkbox de respuesta correcta, asignamos el atributo correcta del objeto respuesta a true
                 if (checkBoxCorrecta.Checked)
@@ -291,9 +303,10 @@ namespace AppDesktop
             }
 
 
+            string preguntaTrimeada = textBoxPregunta.Text.Trim(' ');
             //Checkeo de la pregunta
-            if (textBoxPregunta.Text.Length <= MAX_CHAR_PREG &&
-                textBoxPregunta.Text.Length >= MIN_CHAR_PREG)
+            if (preguntaTrimeada.Length <= MAX_CHAR_PREG &&
+                preguntaTrimeada.Length >= MIN_CHAR_PREG)
             {
                 contadorCamposCorrectos++;
             }
@@ -350,8 +363,9 @@ namespace AppDesktop
                 {
                     eliminarPregunta(pregunta);
                 }
+
                 //Creamos una pregunta: sus atributos pregunta y respuesta se le pasa por parámetro
-                Pregunta p = new Pregunta(textBoxPregunta.Text, listaRespuestas);
+                Pregunta p = new Pregunta(textBoxPregunta.Text.Trim(' '), listaRespuestas);
 
                 anadirPregunta(p);
 

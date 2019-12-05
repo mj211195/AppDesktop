@@ -38,11 +38,11 @@
             this.labelContadorPreguntas = new System.Windows.Forms.Label();
             this.listBoxPreguntas = new System.Windows.Forms.ListBox();
             this.dataGridViewRespuestas = new System.Windows.Forms.DataGridView();
+            this.respuesta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Correcta = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.labelIdioma = new System.Windows.Forms.Label();
             this.comboBoxIdioma = new System.Windows.Forms.ComboBox();
             this.groupBoxResposta = new System.Windows.Forms.GroupBox();
-            this.respuesta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Correcta = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.button_WOC_Eliminar = new AppDesktop.Button_WOC();
             this.button_WOC_Modificar = new AppDesktop.Button_WOC();
             this.button_WOC_NovaPregunta = new AppDesktop.Button_WOC();
@@ -66,7 +66,7 @@
             // 
             this.comboBoxNivel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxNivel.Enabled = false;
-            this.comboBoxNivel.Font = new System.Drawing.Font("Lucida Sans", 8.25F);
+            this.comboBoxNivel.Font = new System.Drawing.Font("Tahoma", 8.5F);
             this.comboBoxNivel.FormattingEnabled = true;
             this.comboBoxNivel.Items.AddRange(new object[] {
             "Infantil",
@@ -75,7 +75,7 @@
             "Adult (Difícil)"});
             this.comboBoxNivel.Location = new System.Drawing.Point(400, 28);
             this.comboBoxNivel.Name = "comboBoxNivel";
-            this.comboBoxNivel.Size = new System.Drawing.Size(204, 22);
+            this.comboBoxNivel.Size = new System.Drawing.Size(204, 21);
             this.comboBoxNivel.TabIndex = 2;
             this.comboBoxNivel.SelectedIndexChanged += new System.EventHandler(this.comboBoxNivel_SelectedIndexChanged);
             // 
@@ -106,13 +106,12 @@
             // 
             // listBoxPreguntas
             // 
-            this.listBoxPreguntas.Font = new System.Drawing.Font("Lucida Sans", 8.25F);
+            this.listBoxPreguntas.Font = new System.Drawing.Font("Tahoma", 8.5F);
             this.listBoxPreguntas.FormattingEnabled = true;
-            this.listBoxPreguntas.ItemHeight = 14;
             this.listBoxPreguntas.Location = new System.Drawing.Point(18, 72);
             this.listBoxPreguntas.Name = "listBoxPreguntas";
             this.listBoxPreguntas.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxPreguntas.Size = new System.Drawing.Size(322, 284);
+            this.listBoxPreguntas.Size = new System.Drawing.Size(322, 277);
             this.listBoxPreguntas.TabIndex = 3;
             this.listBoxPreguntas.SelectedIndexChanged += new System.EventHandler(this.listBoxPreguntas_SelectedIndexChanged);
             // 
@@ -160,44 +159,6 @@
             this.dataGridViewRespuestas.TabIndex = 8;
             this.dataGridViewRespuestas.TabStop = false;
             // 
-            // labelIdioma
-            // 
-            this.labelIdioma.AutoSize = true;
-            this.labelIdioma.BackColor = System.Drawing.Color.Transparent;
-            this.labelIdioma.Font = new System.Drawing.Font("Consolas", 9F);
-            this.labelIdioma.Location = new System.Drawing.Point(21, 31);
-            this.labelIdioma.Name = "labelIdioma";
-            this.labelIdioma.Size = new System.Drawing.Size(49, 14);
-            this.labelIdioma.TabIndex = 7;
-            this.labelIdioma.Text = "Idioma";
-            // 
-            // comboBoxIdioma
-            // 
-            this.comboBoxIdioma.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxIdioma.Font = new System.Drawing.Font("Lucida Sans", 8.25F);
-            this.comboBoxIdioma.FormattingEnabled = true;
-            this.comboBoxIdioma.Items.AddRange(new object[] {
-            "Català",
-            "Castellà",
-            "Anglès"});
-            this.comboBoxIdioma.Location = new System.Drawing.Point(81, 28);
-            this.comboBoxIdioma.Name = "comboBoxIdioma";
-            this.comboBoxIdioma.Size = new System.Drawing.Size(204, 22);
-            this.comboBoxIdioma.TabIndex = 1;
-            this.comboBoxIdioma.SelectedIndexChanged += new System.EventHandler(this.comboBoxIdioma_SelectedIndexChanged);
-            // 
-            // groupBoxResposta
-            // 
-            this.groupBoxResposta.BackColor = System.Drawing.Color.Transparent;
-            this.groupBoxResposta.Controls.Add(this.dataGridViewRespuestas);
-            this.groupBoxResposta.Font = new System.Drawing.Font("Consolas", 9F);
-            this.groupBoxResposta.Location = new System.Drawing.Point(395, 133);
-            this.groupBoxResposta.Name = "groupBoxResposta";
-            this.groupBoxResposta.Size = new System.Drawing.Size(473, 125);
-            this.groupBoxResposta.TabIndex = 9;
-            this.groupBoxResposta.TabStop = false;
-            this.groupBoxResposta.Text = "Respostes";
-            // 
             // respuesta
             // 
             this.respuesta.DataPropertyName = "respuesta";
@@ -213,6 +174,44 @@
             this.Correcta.Name = "Correcta";
             this.Correcta.ReadOnly = true;
             this.Correcta.Width = 103;
+            // 
+            // labelIdioma
+            // 
+            this.labelIdioma.AutoSize = true;
+            this.labelIdioma.BackColor = System.Drawing.Color.Transparent;
+            this.labelIdioma.Font = new System.Drawing.Font("Consolas", 9F);
+            this.labelIdioma.Location = new System.Drawing.Point(21, 31);
+            this.labelIdioma.Name = "labelIdioma";
+            this.labelIdioma.Size = new System.Drawing.Size(49, 14);
+            this.labelIdioma.TabIndex = 7;
+            this.labelIdioma.Text = "Idioma";
+            // 
+            // comboBoxIdioma
+            // 
+            this.comboBoxIdioma.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxIdioma.Font = new System.Drawing.Font("Tahoma", 8.5F);
+            this.comboBoxIdioma.FormattingEnabled = true;
+            this.comboBoxIdioma.Items.AddRange(new object[] {
+            "Català",
+            "Castellà",
+            "Anglès"});
+            this.comboBoxIdioma.Location = new System.Drawing.Point(81, 28);
+            this.comboBoxIdioma.Name = "comboBoxIdioma";
+            this.comboBoxIdioma.Size = new System.Drawing.Size(204, 21);
+            this.comboBoxIdioma.TabIndex = 1;
+            this.comboBoxIdioma.SelectedIndexChanged += new System.EventHandler(this.comboBoxIdioma_SelectedIndexChanged);
+            // 
+            // groupBoxResposta
+            // 
+            this.groupBoxResposta.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxResposta.Controls.Add(this.dataGridViewRespuestas);
+            this.groupBoxResposta.Font = new System.Drawing.Font("Consolas", 9F);
+            this.groupBoxResposta.Location = new System.Drawing.Point(395, 133);
+            this.groupBoxResposta.Name = "groupBoxResposta";
+            this.groupBoxResposta.Size = new System.Drawing.Size(473, 125);
+            this.groupBoxResposta.TabIndex = 9;
+            this.groupBoxResposta.TabStop = false;
+            this.groupBoxResposta.Text = "Respostes";
             // 
             // button_WOC_Eliminar
             // 
