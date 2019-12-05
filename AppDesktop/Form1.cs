@@ -53,6 +53,7 @@ namespace AppDesktop
             ChangeControlStyles(button_WOCGestionar, ControlStyles.Selectable, false);
             ChangeControlStyles(button_WOCSuport, ControlStyles.Selectable, false);
         }
+        //Método que anula la selección de los botones
         private void ChangeControlStyles(Control ctrl, ControlStyles flag, bool value)
         {
             MethodInfo method = ctrl.GetType().GetMethod("SetStyle", BindingFlags.Instance | BindingFlags.NonPublic);
