@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace AppDesktop
 {
@@ -45,6 +46,18 @@ namespace AppDesktop
         {
             FormSuport formSuport = new FormSuport();
             formSuport.ShowDialog();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            ChangeControlStyles(button_WOCGestionar, ControlStyles.Selectable, false);
+            ChangeControlStyles(button_WOCSuport, ControlStyles.Selectable, false);
+        }
+        private void ChangeControlStyles(Control ctrl, ControlStyles flag, bool value)
+        {
+            MethodInfo method = ctrl.GetType().GetMethod("SetStyle", BindingFlags.Instance | BindingFlags.NonPublic);
+            if (method != null)
+                method.Invoke(ctrl, new object[] { flag, value });
         }
     }
 }
