@@ -127,7 +127,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="AppDesktop_TemporaryKey.pfx" />
     <None Include="JSONs\ingles.json" />
     <None Include="JSONs\catalan.json" />
     <None Include="JSONs\castellano.json" />
